@@ -140,7 +140,7 @@ export function Pricing() {
           ))}
         </div>
         <p className="text-[9.5px] text-muted mt-6">
-          Pagamento sicuro via Gumroad · Fattura inclusa · Rimborso 14 giorni · Per ordini degli avvocati e fatturazione differita: <a href="mailto:fatture@claudeperavvocati.it" className="text-terracotta-soft hover:underline">fatture@claudeperavvocati.it</a>
+          Pagamento sicuro via Stripe · Fattura inclusa · Rimborso 14 giorni · Per ordini degli avvocati e fatturazione differita: <a href="mailto:fatture@claudeperavvocati.it" className="text-terracotta-soft hover:underline">fatture@claudeperavvocati.it</a>
         </p>
       </div>
     </section>

@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { signSession, type Tier } from '../../../lib/token';
 
 /**
-  * Development-only shortcut: bypasses Gumroad + Resend + KV and just sets a valid
+  * Development-only shortcut: bypasses Stripe + Resend + KV and just sets a valid
   * session cookie so you can demo the post-purchase flow without external accounts.
   *
   * Disabled in production.

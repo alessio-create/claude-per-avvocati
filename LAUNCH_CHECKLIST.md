@@ -5,27 +5,29 @@ Run through this before going live. Each item must pass.
 ## Prerequisites
 
 - [ ] Domain `claudeperavvocati.it` purchased and DNS pointing to Vercel
-- [ ] Vercel project linked to this monorepo's root, with build/install set to filter `claude-per-avvocati`
+- [ ] Vercel project linked to this standalone repo
 - [ ] Upstash Redis provisioned via Vercel Marketplace and linked to the project (env vars auto-injected)
 - [ ] Resend account created, sending domain verified, API key generated
-- [ ] Gumroad seller account active with 3 products created (Avvocato / Studio / Studio+)
-- [ ] Webhook URL configured in Gumroad: `https://claudeperavvocati.it/api/webhook/gumroad`
-- [ ] Gumroad webhook secret copied to Vercel env
+- [ ] Stripe account active with 2 Products + Prices created (Avvocato €79, Studio €149) and optionally a bump Product (FutureLaw audit €29)
+- [ ] Stripe webhook endpoint configured: `https://claudeperavvocati.it/api/webhook/stripe`, listening for `checkout.session.completed` + `charge.refunded`
+- [ ] Stripe webhook secret copied to Vercel env
 
 ## Env vars (Vercel project settings)
 
 - [ ] `JWT_SECRET` (32+ char base64 `openssl rand -base64 32`)
-- [ ] `GUMROAD_WEBHOOK_SECRET`
-- [ ] `GUMROAD_PRODUCT_AVVOCATO`, `GUMROAD_PRODUCT_STUDIO`, `GUMROAD_PRODUCT_STUDIO_PLUS` (permalink strings)
+- [ ] `STRIPE_SECRET_KEY` (sk_live_… for prod, sk_test_… for dev)
+- [ ] `STRIPE_WEBHOOK_SECRET` (whsec_… from the webhook endpoint settings)
+- [ ] `STRIPE_PRICE_AVVOCATO`, `STRIPE_PRICE_STUDIO`, optionally `STRIPE_PRICE_STUDIO_PLUS`
+- [ ] `STRIPE_PRICE_BUMP` (optional, only if you want the order-bump enabled)
 - [ ] `RESEND_API_KEY`, `RESEND_FROM_EMAIL`
 - [ ] `KV_REST_API_URL`, `KV_REST_API_TOKEN` (auto from Upstash integration)
 - [ ] `SITE_URL=https://claudeperavvocati.it`
-- [ ] Replace href="#" in components/marketing/Pricing.tsx with real Gumroad checkout URLs for each tier (Avvocato / Studio / Studio+)
+- [ ] `ANTHROPIC_API_KEY` (Anthropic key sk-ant-… OR OpenRouter key sk-or-…, auto-detected)
 
 ## End-to-end purchase flow
 
-- [ ] Buy via Gumroad sandbox using a real email you control
-- [ ] Webhook fires (check Gumroad webhook log + Vercel function log)
+- [ ] Buy via Stripe test mode using a test card (4242 4242 4242 4242) and a real email you control
+- [ ] Webhook fires (check Stripe dashboard → Webhooks → recent events + Vercel function log)
 - [ ] Magic-link email arrives within 30s
 - [ ] Click magic link → land on `/corso` with sidebar + content
 - [ ] Refresh `/corso` directly → still authenticated (cookie persists)
@@ -35,8 +37,8 @@ Run through this before going live. Each item must pass.
 
 ## Refund flow
 
-- [ ] Refund the sandbox purchase in Gumroad
-- [ ] Webhook fires `refunded` → KV entry deleted (verify in Upstash dashboard)
+- [ ] Refund the test purchase in Stripe dashboard
+- [ ] `charge.refunded` webhook fires → KV entry deleted (verify in Upstash dashboard)
 - [ ] Existing cookie session still works (accepted per spec)
 
 ## Page checks

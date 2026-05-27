@@ -55,12 +55,6 @@ export function CheckoutForm({ tier }: { tier: TierKey }) {
   const tierInfo = TIERS[tier];
   const [bumpOn, setBumpOn] = useState(true); // default on (the upsell)
   const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
-  const [studio, setStudio] = useState('');
-  const [piva, setPiva] = useState('');
-  const [card, setCard] = useState('');
-  const [exp, setExp] = useState('');
-  const [cvv, setCvv] = useState('');
   const [accept, setAccept] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -69,98 +63,50 @@ export function CheckoutForm({ tier }: { tier: TierKey }) {
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
-    if (!email || !name || !card || !accept) {
-      setError('Compila i campi obbligatori e accetta i termini per continuare.');
+    if (!email || !accept) {
+      setError('Inserisci l\'email e accetta i termini per continuare.');
       return;
     }
     setError(null);
     setSubmitting(true);
-    // In production: POST to /api/checkout → Stripe/Gumroad, returns redirect URL.
-    // For the demo flow, hit dev-unlock with the tier and bump preference;
-    // it sets the cpa_session cookie and redirects to /corso.
-    window.location.href = `/api/dev-unlock?tier=${tier}${bumpOn ? '&bump=1' : ''}`;
+    try {
+      const response = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ tier, email: email.trim(), bump: bumpOn }),
+      });
+      const data = (await response.json().catch(() => null)) as { url?: string; error?: string } | null;
+      if (!response.ok || !data?.url) {
+        setError(data?.error ?? 'Errore nel contattare Stripe. Riprova fra qualche istante.');
+        setSubmitting(false);
+        return;
+      }
+      window.location.href = data.url;
+    } catch {
+      setError('Errore di rete. Riprova fra qualche istante.');
+      setSubmitting(false);
+    }
   }
 
   return (
     <form onSubmit={onSubmit} className="grid lg:grid-cols-[1fr_360px] gap-6 items-start">
-      {/* LEFT: payment form */}
+      {/* LEFT: minimal pre-checkout form */}
       <div className="bg-white border border-line rounded-xl p-6 shadow-sm">
-        <h2 className="font-serif text-xl font-bold mb-1">Dati di pagamento</h2>
-        <p className="text-xs text-muted mb-5">Pagamento sicuro processato via Gumroad. Nessun dato carta passa dal nostro server.</p>
+        <h2 className="font-serif text-xl font-bold mb-1">Vai al pagamento sicuro</h2>
+        <p className="text-xs text-muted mb-5">
+          Pagamento processato da <strong>Stripe</strong>. Dati di fatturazione (P.IVA, indirizzo) e carta li inserisci nella pagina protetta Stripe. Nessun dato sensibile passa dal nostro server.
+        </p>
 
-        {/* Buyer info */}
         <div className="space-y-3 mb-6">
-          <Field label="Email per fattura e accesso" required>
+          <Field label="Email per accesso al corso e fattura" required>
             <input
               type="email" required value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="mario.rossi@studiolegale.it"
               className="cpa-input"
+              autoComplete="email"
             />
           </Field>
-          <Field label="Nome e cognome" required>
-            <input
-              type="text" required value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Mario Rossi"
-              className="cpa-input"
-            />
-          </Field>
-          <div className="grid grid-cols-2 gap-3">
-            <Field label="Ragione sociale / Studio">
-              <input
-                type="text" value={studio}
-                onChange={(e) => setStudio(e.target.value)}
-                placeholder="Studio Legale Rossi"
-                className="cpa-input"
-              />
-            </Field>
-            <Field label="P. IVA / Cod. Fiscale">
-              <input
-                type="text" value={piva}
-                onChange={(e) => setPiva(e.target.value)}
-                placeholder="01234567890"
-                className="cpa-input"
-              />
-            </Field>
-          </div>
-        </div>
-
-        {/* Card */}
-        <div className="border-t border-line pt-5 mb-6">
-          <h3 className="text-[11px] uppercase tracking-widest text-muted font-bold mb-3">Carta di credito</h3>
-          <div className="space-y-3">
-            <Field label="Numero carta" required>
-              <input
-                type="text" required value={card}
-                onChange={(e) => setCard(e.target.value)}
-                placeholder="1234 5678 9012 3456"
-                className="cpa-input font-mono"
-                inputMode="numeric"
-                autoComplete="cc-number"
-              />
-            </Field>
-            <div className="grid grid-cols-2 gap-3">
-              <Field label="Scadenza (MM/AA)">
-                <input
-                  type="text" value={exp}
-                  onChange={(e) => setExp(e.target.value)}
-                  placeholder="12/28"
-                  className="cpa-input font-mono"
-                  autoComplete="cc-exp"
-                />
-              </Field>
-              <Field label="CVV">
-                <input
-                  type="text" value={cvv}
-                  onChange={(e) => setCvv(e.target.value)}
-                  placeholder="123"
-                  className="cpa-input font-mono"
-                  autoComplete="cc-csc"
-                />
-              </Field>
-            </div>
-          </div>
         </div>
 
         <label className="flex items-start gap-2 text-xs text-muted leading-snug mb-5">
@@ -172,7 +118,7 @@ export function CheckoutForm({ tier }: { tier: TierKey }) {
           <span>
             Accetto i <Link href="/termini" className="text-terracotta hover:underline">termini</Link> e
             la <Link href="/privacy" className="text-terracotta hover:underline">privacy</Link>.
-            Confermo che i dati di fatturazione sono corretti.
+            Lo Studio rilascia fattura nel Paese di residenza.
           </span>
         </label>
 
@@ -182,11 +128,11 @@ export function CheckoutForm({ tier }: { tier: TierKey }) {
           type="submit" disabled={submitting}
           className="w-full bg-terracotta text-white py-3.5 rounded-md font-bold text-sm shadow hover:bg-terracotta/90 disabled:bg-line disabled:text-muted"
         >
-          {submitting ? 'Elaborazione…' : `Paga €${total} e accedi al corso →`}
+          {submitting ? 'Elaborazione…' : `Vai al pagamento sicuro · €${total} →`}
         </button>
 
         <p className="text-[10px] text-muted text-center mt-3">
-          🔒 Connessione cifrata · Rimborso 14 giorni senza domande
+          🔒 Stripe Checkout · Rimborso 14 giorni senza domande
         </p>
       </div>
 
