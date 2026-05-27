@@ -1,0 +1,156 @@
+---
+titolo: "Condividere Skills nello studio"
+sottotitolo: "Da un autore a tutto il team"
+durata: 6
+ordine: 4
+aggiornato: "2026-05-23"
+quiz: false
+---
+
+Hai costruito la libreria. Ottimo lavoro, ma se resta sul PC del partner senior vale meno della metà del suo potenziale. Le Skills condivise moltiplicano l'investimento per il numero di persone che le usano davvero.
+
+Questa lezione spiega i tre modi per condividere Skills nello studio, dal più semplice al più strutturato.
+
+## Modo 1: Skills nel workspace Team (più semplice)
+
+Se siete su piano Team (Modulo 3 lezione 4), Claude offre Skills a livello workspace.
+
+**Setup (admin):**
+- Vai nelle impostazioni del workspace
+- Sezione "Workspace Skills"
+- Aggiungi una nuova Skill (incolli il SKILL.md)
+- Pubblica → tutti gli utenti del workspace la vedono
+
+**Risultato:** un associato apre Claude, scrive un prompt, e Claude attinge alle Skills personali + alle Skills del workspace. Trasparente per l'utente.
+
+**Pro:**
+- Zero setup tecnico per i singoli utenti
+- Modifiche centralizzate (l'admin aggiorna la Skill, propaga subito a tutti)
+- Visibilità: l'admin vede chi usa quali Skills
+
+**Contro:**
+- Solo su piano Team (€25/utente/mese minimo 5)
+- Modifiche possibili solo dall'admin
+
+## Modo 2: Repository git interno
+
+Se non siete su Team, o se preferite il controllo file-based, mettete le Skills in un repository git privato accessibile a tutti gli associati.
+
+**Setup:**
+1. Create un repo privato (GitHub privato, GitLab, Bitbucket, gratis fino a N utenti)
+2. Mettete dentro `skills/` con tutte le Skills dello studio
+3. Ogni associato clona il repo nella propria cartella `~/.claude/skills/`
+
+```bash
+cd ~/.claude/skills
+git clone https://github.com/studio-legale-rossi/skills.git studio
+```
+
+D'ora in poi, le Skills sono in `~/.claude/skills/studio/`.
+
+**Workflow di aggiornamento:**
+- Partner senior modifica la Skill nel repo (commit + push)
+- Settimanalmente, associati fanno `git pull` per sincronizzarsi
+- Cambiamenti propagati con disciplina
+
+**Pro:**
+- Funziona su qualsiasi piano (Pro singolo, Team, Enterprise)
+- Versionato (vedi storia delle modifiche)
+- Branching per Skills sperimentali
+
+**Contro:**
+- Richiede confidenza con git (ma 30 minuti per imparare il minimo)
+- Setup iniziale 1 ora
+
+## Modo 3: Cartella condivisa (sync drive)
+
+Compromesso semplice se non volete git. Mettete le Skills in una cartella OneDrive / Google Drive / Dropbox condivisa con gli associati.
+
+Ogni associato configura un symlink (o copia manuale) dalla cartella sync a `~/.claude/skills/`.
+
+**Pro:**
+- Setup in 10 minuti
+- Funziona per tutti i livelli tecnici
+
+**Contro:**
+- Nessuna versione (modifica errata = persa)
+- Conflitti se due persone modificano simultaneamente
+- Meno robusto di git
+
+<Esempio>
+Lo Studio Marchetti & Partners di Milano, 7 associati, ha messo le Skills su un repo privato GitHub. Il partner senior scrive e modifica, gli associati fanno `git pull` ogni lunedì mattina come prima cosa. In sei mesi sono passati da 0 a 18 Skills condivise. Risultato concreto: i tre nuovi praticanti arrivati a settembre sono entrati a regime in 3 settimane invece di 8, perché lo "stile studio" era già nelle Skills, non da imparare per osmosi guardando le bozze del partner. Il partner ha calcolato che il setup git è costato 90 minuti complessivi su tutto lo studio. Le ore risparmiate sull'onboarding solo: oltre 100.
+</Esempio>
+
+## Quale scegliere
+
+| Situazione | Raccomandazione |
+|---|---|
+| Studio 1-2 persone | Modo 3 (drive condiviso) |
+| Studio 3-5 persone | Modo 1 (Team) o Modo 2 (git), dipende dalla familiarità tecnica |
+| Studio 5-15 persone | Modo 1 (Team) |
+| Studio 15+ persone | Modo 1 (Team) + Modo 2 (git per backup e versioning) |
+| Studio con un IT interno | Modo 2 (git), più professionale, scala meglio |
+
+## Governance delle Skills condivise
+
+Quando 4-5 persone usano le stesse Skills, serve un minimo di governance:
+
+### 1. Owner per ogni Skill
+
+Una persona è responsabile di mantenere/aggiornare la Skill. Senza owner, le Skills si rompono nel tempo.
+
+### 2. Processo di modifica
+
+Definite: chi può modificare? Solo l'owner? Chiunque con review dell'owner? Definite e seguite.
+
+### 3. Naming convention
+
+Convenzione condivisa. Esempi:
+
+```
+[ambito]-[task].md
+
+drafting-sollecito.md
+drafting-messa-in-mora.md
+drafting-parere-societario.md
+review-nda.md
+review-contratto.md
+analytics-sintesi-sentenza.md
+intake-nuova-causa.md
+```
+
+Ambiti coerenti facilitano la ricerca.
+
+### 4. Documentazione interna
+
+Un file `STUDIO-SKILLS.md` nella radice del repo con:
+- Lista Skills disponibili
+- Quando usare quale
+- Owner di ognuna
+- Stato (active / experimental / deprecated)
+
+### 5. Onboarding nuovi associati
+
+Aggiungete "leggi `STUDIO-SKILLS.md`" alla checklist del primo giorno di un nuovo praticante. Sa subito cosa esiste e quando usarlo.
+
+## Esempio di rollout in uno studio reale
+
+**Settimana 1:** partner senior scrive 3 Skills core (sollecito, revisione-NDA, redazione-parere).
+
+**Settimana 2:** condivide via [scelta del metodo]. Associati le installano.
+
+**Settimana 3:** ognuno usa le Skills per 1 settimana. Settimana fine: 30 minuti di team retrospective. Cosa ha funzionato? Cosa va modificato?
+
+**Settimana 4:** partner aggiorna Skills basandosi sul feedback. Aggiunge 2 nuove Skills.
+
+**Settimane 5-8:** cadenza standard di aggiornamento (1 nuova Skill / settimana, modifica delle esistenti).
+
+A 2 mesi dall'inizio, libreria a 10-12 Skills usate consistentemente da tutti. Non è veloce in valore assoluto, ma è la cosa più veloce per costruire un asset che vale per anni.
+
+<Nota tipo="suggerimento">
+Anche se siete singoli avvocati senza studio, **considerate di condividere Skills con colleghi fidati**. Una rete informale di 4-5 avvocati che si scambia Skills cresce la libreria di ognuno x5. Sicuramente più produttivo che reinventare.
+</Nota>
+
+<RiferimentoCorso lezione="05-meta-skill" />
+
+Nella prossima e ultima lezione del modulo: le meta-Skills, Skills che scrivono altre Skills.

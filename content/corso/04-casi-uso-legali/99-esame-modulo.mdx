@@ -1,0 +1,92 @@
+---
+titolo: "Esame del Modulo 4"
+sottotitolo: "Verifica i casi d'uso legali prima di passare al Modulo 5"
+durata: 6
+ordine: 99
+aggiornato: "2026-05-26"
+quiz: true
+tipo: "esame"
+---
+
+<div className="border border-terracotta/30 bg-terracotta/5 rounded-md p-5 mb-8">
+ <div className="text-[11px] uppercase tracking-widest text-terracotta font-bold mb-1">Esame del modulo</div>
+ <div className="text-sm text-body leading-snug">
+  Rispondi alle 6 domande qui sotto per consolidare i casi d'uso legali (pareri, contratti, atti, ricerca, email, workflow). Devi rispondere correttamente ad almeno l'80% per sbloccare il <strong>Modulo 5, Skills &amp; repository</strong> e guadagnare <strong>+3 ✦</strong>.
+ </div>
+</div>
+
+<Quiz
+ modulo="04-casi-uso-legali"
+ lezione="99-esame-modulo"
+ etichetta="Esame"
+ titolo="6 domande per chiudere il modulo."
+ passaCon={5}
+ domande={[
+  {
+   domanda: "Nel prompt-base per un parere, qual è la regola corretta sui riferimenti giurisprudenziali?",
+   opzioni: [
+    "Chiedere sempre a Claude di citare almeno 5 sentenze di Cassazione recenti",
+    "Lasciare Claude libero, tanto le sentenze si verificano dopo",
+    "Istruire Claude a scrivere 'verificare' quando non è certo, invece di citare",
+    "Vietare ogni riferimento normativo nel parere"
+   ],
+   corretta: 2,
+   spiega: "Claude può inventare sentenze plausibili ma false. La regola è: nel dubbio scrive 'verificare', e tu controlli su DeJure o Pluris prima di firmare."
+  },
+  {
+   domanda: "Nel Workflow 1 di revisione contrattuale (NDA lato cliente), Claude restituisce un output organizzato in:",
+   opzioni: [
+    "Una tabella con clausola, status, note o modifica proposta",
+    "Un parere libero di 2000 parole",
+    "Una lettera formale alla controparte",
+    "Un elenco puntato di articoli del codice civile"
+   ],
+   corretta: 0,
+   spiega: "La struttura a tabella (clausola, status, note) rende immediato il triage tra clausole problematiche, accettabili da chiarire, standard e mancanti."
+  },
+  {
+   domanda: "Per il drafting di un atto di citazione ex art. 163 c.p.c. o di un decreto ingiuntivo ex art. 633 c.p.c., qual è la regola d'oro non negoziabile?",
+   opzioni: [
+    "Depositare la prima bozza di Claude per risparmiare tempo",
+    "Lavorare dentro un Project dedicato alla causa e verificare sempre le citazioni in banca dati",
+    "Evitare i Project, una nuova chat ogni atto",
+    "Far firmare l'atto direttamente al praticante"
+   ],
+   corretta: 1,
+   spiega: "Un Project per causa conserva il contesto (atti, prove, sentenze) e ogni citazione va comunque verificata sulla banca dati prima del deposito."
+  },
+  {
+   domanda: "Sulla ricerca giurisprudenziale, quale uso di Claude è sbagliato?",
+   opzioni: [
+    "Sintetizzare 10 sentenze già scaricate da DeJure per fare triage",
+    "Chiedere a Claude di trovare 5 sentenze recenti su un articolo del codice",
+    "Farsi suggerire query mirate da lanciare sulla banca dati",
+    "Testare un'ipotesi argomentativa per capire se vale la ricerca approfondita"
+   ],
+   corretta: 1,
+   spiega: "Claude non legge in tempo reale la Cassazione: se gli chiedi di 'trovare' sentenze, le inventa con numero, data e organo plausibili ma falsi."
+  },
+  {
+   domanda: "Quando il cliente contesta la parcella o la controparte ti scrive una mail sgarbata, l'approccio corretto è:",
+   opzioni: [
+    "Rispondere subito di getto, prima che la rabbia passi",
+    "Lasciare la mail senza risposta per qualche giorno",
+    "Aspettare 10 minuti, far scrivere a Claude una bozza fredda, rileggere e poi inviare",
+    "Inoltrare la mail al cliente per fargli vedere il tono"
+   ],
+   corretta: 2,
+   spiega: "Una bozza scritta a freddo da Claude è quasi sempre migliore di quella di pancia: nessun bias emotivo, struttura fissa, e tu resti il filtro finale."
+  },
+  {
+   domanda: "Qual è l'abitudine singola che, da sola, libera 5-10 ore a settimana nel workflow giornaliero col Claude integrato?",
+   opzioni: [
+    "Aprire Claude solo nei momenti di emergenza",
+    "Mai scrivere a freddo qualcosa di più di 200 parole, prima chiedi una bozza e poi rifinisci",
+    "Automatizzare le telefonate ai clienti",
+    "Far gestire a Claude le decisioni strategiche complesse"
+   ],
+   corretta: 1,
+   spiega: "Bozza prima, rifinitura dopo: è la singola abitudine che trasforma Claude da 'uso occasionale' a 'parte sistematica del lavoro', con 40-60 ore liberate al mese."
+  }
+ ]}
+/>

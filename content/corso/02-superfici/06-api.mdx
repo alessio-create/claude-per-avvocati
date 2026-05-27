@@ -1,0 +1,112 @@
+---
+titolo: "API, la base tecnica per tool su misura"
+sottotitolo: "Quando uno studio è pronto a costruire qualcosa di proprio"
+durata: 5
+ordine: 6
+aggiornato: "2026-05-23"
+quiz: false
+---
+
+Hai mai pensato "vorrei un piccolo software che faccia *esattamente* X per il mio studio, e che giri da solo"? Quello è il momento in cui si parla di API (l'accesso programmatico a Claude, ti serve solo se vuoi farti scrivere uno script o un'automazione). È il livello più tecnico di Claude: non lo usi direttamente come avvocato, è la base su cui un consulente o uno sviluppatore può costruire **tool custom per il tuo studio**. Questa lezione è breve perché 99% degli avvocati non avrà bisogno di toccare l'API direttamente. Ma vale sapere cos'è e quando ha senso valutarla.
+
+## Cos'è
+
+L'API (Application Programming Interface) di Anthropic (l'azienda che fa Claude) è il modo "grezzo" di parlare con Claude. Niente Chat, niente Project, solo richieste tecniche che un software manda ai server Anthropic, e risposte che tornano in formato strutturato (JSON, un formato testuale che i software leggono facilmente).
+
+Pensa a Chat come al "front-end di Claude per umani", e all'API come al "back-end per sviluppatori".
+
+## Quando uno studio ha senso valutarla
+
+### 1. Workflow super-ripetitivo, super-strutturato
+
+Esempio: ogni settimana arrivano 50 contratti standard di nuovi clienti che devi triage-are (accettabili / da revisionare / da rifiutare). Workflow:
+
+1. PDF caricato in una cartella condivisa
+2. Email automatica → script che richiama API → Claude valuta → genera report
+3. Report arriva via email al partner
+4. Decisione finale: ✓ / rivedere / rifiutare
+
+Questo è un classico use case API: 50 documenti × 52 settimane = 2.600 contratti l'anno triage-ati senza un'ora umana per la prima fase.
+
+### 2. Integrazione profonda col gestionale
+
+Esempio: ogni nuova pratica aperta in Cliens scatena automaticamente:
+
+- API a Claude per generare la prima bozza di lettera di incarico
+- Bozza salvata come allegato nella pratica
+- Notifica al referente
+
+Lo costruisci una volta (un consulente, qualche giorno di lavoro), gira da solo per anni.
+
+<Esempio>
+Lo Studio De Luca di Napoli, specializzato in recupero crediti per società di utilities, riceve ogni lunedì un file Excel con 200-400 nuove posizioni insolute da gestire. Prima un'assistente passava due giorni interi a generare le lettere di sollecito personalizzate (intestazione cliente, importo, scadenza, riferimenti contratto). Hanno commissionato a un consulente uno script che usa l'API: legge il file Excel, manda ogni riga a Claude con un template di sollecito, salva il PDF firmato pronto per la PEC. Costo del consulente: €3.500 una tantum. Costo API mensile: €40 circa. Due giorni di lavoro a settimana diventano 15 minuti di review prima della firma. L'assistente ora fa altro.
+</Esempio>
+
+### 3. Tool prodotto interno
+
+Esempio: lo studio sviluppa un piccolo tool web interno dove l'assistenza inserisce i dati di un sollecito, e il tool genera automaticamente la lettera. Sotto il cofano, l'API.
+
+## Quanto costa
+
+L'API si paga **a consumo**, in base ai token elaborati. Ordini di grandezza per Claude Sonnet (modello bilanciato per produzione):
+
+| Volume mensile | Costo orientativo |
+|---|---|
+| 100 richieste/mese | qualche euro |
+| 1.000 richieste/mese | €10-30 |
+| 10.000 richieste/mese | €100-300 |
+| 100.000 richieste/mese | €1.000-3.000 |
+
+A confronto, un abbonamento Pro è €18/mese fisso. L'API conviene quando vuoi automazione che gira da sola, non come sostituto del piano Pro.
+
+## Cosa serve per implementarla
+
+- **Una chiave API** (creata in pochi click su `console.anthropic.com`)
+- **Uno sviluppatore o consulente** che scriva il codice (Python, JavaScript, qualsiasi linguaggio moderno)
+- **Una fattura aziendale Anthropic** (esiste, in inglese)
+
+Il consulente giusto per uno studio legale italiano è qualcuno che:
+
+- Conosce Python o JavaScript
+- Ha lavorato con API LLM (Claude, OpenAI)
+- Capisce il GDPR (per i dati dei clienti)
+
+Tariffa orientativa: €60-120/ora. Un tool semplice (es. "automazione triage contratti") = 20-40 ore di lavoro = €1.500-5.000 una tantum + costi API mensili.
+
+## Cosa fai questa settimana
+
+Niente. Probabilmente niente. Padroneggia prima Chat → Projects → Skills (procedure riutilizzabili) → MCP (collegamenti con i tuoi software). Quando senti che hai un workflow ripetitivo che non scala via Skills, è il momento di pensare all'API.
+
+A quel punto:
+
+1. Documenta il workflow su carta (input, step, output)
+2. Stima quante volte al mese accade
+3. Calcola quanto tempo ti farebbe risparmiare se fosse automatico
+4. Se il numero è > 1 giornata/mese di tempo risparmiato, chiama un consulente
+
+<Nota tipo="suggerimento">
+Anthropic ha anche un piano "API Free Tier" con €5 di credito iniziale. Se sei tecnicamente curioso, basta per fare i primi esperimenti senza impegno. La documentazione ufficiale è in inglese su `docs.anthropic.com`.
+</Nota>
+
+## Fine del Modulo 2
+
+Ora conosci tutte le superfici:
+
+1. **Chat**, task isolati
+2. **Projects**, pratiche persistenti
+3. **Code**, molti file insieme
+4. **Skills**, automazioni riutilizzabili
+5. **MCP**, collegamento ad altri tool
+6. **API**, base per tool custom
+
+La regola d'oro: parti dalla superficie più semplice che risolve il tuo problema. Sali di livello solo quando il problema lo giustifica.
+
+<Risorse items={[
+ { titolo: "Building with the Claude API (corso completo)", url: "https://anthropic.skilljar.com", fonte: "Anthropic Academy", durata: "8.1 hr · 84 lezioni · 10 quiz" },
+ { titolo: "Anthropic API documentation", url: "https://docs.anthropic.com", fonte: "Anthropic Docs" },
+ { titolo: "Claude with Amazon Bedrock", url: "https://anthropic.skilljar.com", fonte: "Anthropic Academy", durata: "8 hr · per deploy aziendale" },
+]} />
+
+<RiferimentoCorso lezione="01-piani-claude" />
+
+Nel Modulo 3 entriamo nel setup pratico, quale piano scegliere, come configurare il tuo account, le custom instructions, gli output styles.

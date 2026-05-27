@@ -1,0 +1,119 @@
+---
+titolo: "10 prompt-template pronti per oggi"
+sottotitolo: "Copia, adatta, manda"
+durata: 8
+ordine: 1
+aggiornato: "2026-05-24"
+quiz: false
+---
+
+Questa è la pagina che probabilmente bookmarki e tieni aperta in un'altra scheda quando inizi a lavorare. Sono i dieci prompt-template (un prompt scritto bene una volta sola, con campi tra parentesi quadre che riempi al volo) che uso più spesso nel mio studio. Ognuno è ottimizzato per produrre output usabile in massimo due iterazioni: la prima per generare, la seconda per rifinire il tono. Non sono "esempi didattici", sono testi che girano davvero ogni settimana.
+
+Come si usa: copi il blocco, sostituisci i campi tra parentesi quadre, incolli in Claude. Poi rileggi e ritocchi due o tre frasi. Tempo medio per produrre un output pulito: 5-10 minuti contro 30-45 minuti di scrittura da zero.
+
+## 1. Messa in mora
+
+<Prompt>
+Sei l'assistente dell'Avv. [NOME], [SPECIALIZZAZIONE], [CITTÀ]. Redigi una lettera di messa in mora ex art. 1219 c.c. per il cliente [DEBITORE], debitore di €[IMPORTO] dal [DATA SCADENZA ORIGINARIA] (fattura n. [N] per [PRESTAZIONE]). Tono fermo, professionale, non emotivo. Cita esplicitamente: importo, data scadenza, [N] solleciti precedenti datati [DATE], termine di 15 giorni dalla ricezione, conseguenze (decreto ingiuntivo). Lunghezza: 280 parole max. Chiudi con "Cordiali saluti, Avv. [NOME]". Output: solo testo della lettera, pronto per PEC.
+</Prompt>
+
+## 2. Sintesi sentenza
+
+<Prompt>
+Sei un assistente di Avv. [NOME], [SPECIALIZZAZIONE]. Leggi la sentenza incollata sotto e sintetizzala in 250 parole strutturate così:
+1. Imputazione/questione di diritto (60 parole)
+2. Decisione (40 parole)
+3. Motivazione principale (100 parole)
+4. Potenziale rilevanza per casi simili nel mio studio (50 parole)
+
+Tono: tecnico ma accessibile. Niente formule arcaiche. Se mancano elementi, segnalalo.
+
+[INCOLLA SENTENZA]
+</Prompt>
+
+## 3. Confronto NDA / contratti
+
+<Prompt>
+Sei un assistente di Avv. [NOME], diritto [MATERIA]. Confronta le due versioni di [CONTRATTO/NDA] sotto e dammi una tabella con le differenze rilevanti. Colonne: clausola, versione A, versione B, quale preferire e perché. Concentrati su: durata, ambito, conseguenze del breach, foro competente, legge applicabile. Output: solo la tabella.
+
+[VERSIONE A]
+---
+[VERSIONE B]
+</Prompt>
+
+## 4. Domande primo colloquio col cliente
+
+<Prompt>
+Sei l'assistente di Avv. [NOME], [SPECIALIZZAZIONE]. Cliente: [DESCRIZIONE BREVE, chi, problema, urgenza]. Genera 10 domande chiave da fare al primo colloquio per:
+- Capire se il caso è forte
+- Identificare elementi mancanti
+- Stimare durata e complessità
+
+Output: elenco puntato, ordinato dalle più importanti alle meno.
+</Prompt>
+
+## 5. Email difficile (contestazione parcella)
+
+<Prompt>
+Sei l'assistente di Avv. [NOME]. Cliente [NOME CLIENTE] ha contestato la parcella di €[IMPORTO], sostiene sia eccessiva. Stiamo difendendo il valore della consulenza. Task: bozza di risposta via email, tono fermo ma collaborativo, 220 parole max. Ricorda il dettaglio delle attività svolte (vedi sotto), proponi un incontro per chiarire.
+
+[INCOLLA DETTAGLIO ATTIVITÀ ORE/DATE]
+</Prompt>
+
+<Esempio>
+L'Avv. Carla Ferrari di Modena, lavorista, ha scaricato il prompt-template "messa in mora" dal kit. La prima volta l'ha usato così com'era: output buono al 70%, da rifinire. La seconda volta ha aggiunto due righe sue (la formula di chiusura che usa abitualmente e un richiamo al D.lgs. 231/2002 che le serve nei B2B). Da quel momento il template gira a 9/10 ed è diventato il suo standard di studio. Tempo per produrre una lettera di messa in mora: 35 minuti, 8 minuti adesso. Ha condiviso la versione personalizzata con la praticante, e la praticante non le chiede più "come la imposto?".
+</Esempio>
+
+## 6. Spiegare al cliente non-giurista
+
+<Prompt>
+Sei l'assistente di Avv. [NOME]. Cliente: persona fisica, non giurista, ansia rispetto al processo. Task: spiega in massimo 250 parole, linguaggio comprensibile, cosa succede tra [EVENTO ATTUALE] e [PROSSIMO EVENTO]. Tono: rassicurante senza essere paternalistico. Evita tecnicismi non necessari.
+</Prompt>
+
+## 7. Bozza atto formale (citazione)
+
+<Prompt>
+Sei l'assistente di Avv. [NOME], [SPECIALIZZAZIONE]. Redigi la bozza di atto di citazione per [CLIENTE] vs [CONTROPARTE]. Petitum: [RICHIESTA]. Causa petendi: [BASE GIURIDICA + 3-5 FATTI]. Foro: [TRIBUNALE]. Includi: intestazione, esposizione dei fatti, motivi di diritto, conclusioni, indicazione mezzi di prova. Lunghezza: max 4 pagine. NOTA: cita solo norme di cui sei certo. Per giurisprudenza, scrivi [VERIFICARE] dove dovrei inserire pronunce.
+</Prompt>
+
+## 8. Workflow giornaliero (riepilogo posta)
+
+<Prompt>
+Sei il mio assistente. Sotto trovi 8 email arrivate stamattina. Per ognuna dimmi:
+1. Mittente e oggetto (1 riga)
+2. Urgenza (alta/media/bassa)
+3. Azione richiesta da me (1 riga)
+4. Tempo stimato (in minuti)
+
+Alla fine: ordina per urgenza e dimmi quali 2-3 affrontare per prime.
+
+[INCOLLA THREAD EMAIL]
+</Prompt>
+
+## 9. Generazione 5 varianti
+
+<Prompt>
+Sei l'assistente di Avv. [NOME]. Ho scritto questa frase: "[FRASE]". Generami 5 varianti per ottenere lo stesso significato ma con [REGISTRO: più formale / più diretto / più empatico / più conciso]. Output: lista numerata, niente preambolo.
+</Prompt>
+
+## 10. Riepilogo settimanale pratica
+
+<Prompt>
+Sei l'assistente di Avv. [NOME]. Cliente: [NOME], pratica: [DESCRIZIONE]. Sotto trovi tutti i documenti aggiunti questa settimana al fascicolo. Genera un riepilogo di 200 parole per il cliente:
+- Cosa è successo (2-3 frasi)
+- Cosa sta succedendo ora (2-3 frasi)
+- Prossimi passi e tempi (elenco puntato 3-5 voci)
+- Eventuale azione richiesta al cliente
+
+Tono: chiaro, professionale, niente allarmismo.
+
+[INCOLLA DOCUMENTI]
+</Prompt>
+
+Una nota di metodo: questi template non sono scolpiti nella pietra. La prima volta che li usi su un tuo caso, troverai 2-3 punti da adattare allo stile dello studio. Fallo, e poi salva la tua versione personalizzata. È così che un template generico diventa "il template di studio".
+
+<Nota tipo="suggerimento">
+Salva i template che usi più di una volta come **Skills personali** (una procedura riutilizzabile che insegni a Claude una volta sola e poi la richiami con una frase, vedi Modulo 5). Una Skill ben fatta ti permette di richiamare il template dicendo "applica messa-in-mora per Bianchi srl, importo 14.500, fattura 234", invece di copiare/incollare ogni volta.
+</Nota>
+
+Nella prossima lezione: tre Skills già scritte e pronte all'installazione, sempre per il civilista italiano.

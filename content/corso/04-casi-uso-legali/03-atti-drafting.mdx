@@ -1,0 +1,169 @@
+---
+titolo: "Drafting di atti formali"
+sottotitolo: "Citazione, comparsa, memoria, la struttura che funziona"
+durata: 10
+ordine: 3
+aggiornato: "2026-05-23"
+quiz: false
+---
+
+Citazione da depositare entro venerdì, fatti complicati, sei già stanco e sono le 19:00. Gli atti formali sono il caso d'uso dove Claude richiede più attenzione, perché sono documenti con valore processuale, strutture precise, formule obbligatorie. Usato bene, ti fa la prima bozza in 10 minuti e tu la rifinisci. Usato male, ti dà materiale inutilizzabile.
+
+Questa lezione separa il prompt (l'istruzione che dai a Claude, dal singolo messaggio al template strutturato) per i tre atti più comuni.
+
+## Atto di citazione
+
+### Il prompt-base
+
+<Prompt>
+Sei l'assistente dell'Avv. Rossi, civilista Milano.
+
+**Task:** redigi atto di citazione ex art. 163 c.p.c.
+
+**Parti:**
+- Attore: [NOME, codice fiscale/P.IVA, residenza/sede, rappresentato dall'Avv. Rossi]
+- Convenuto: [NOME, codice fiscale/P.IVA, residenza/sede]
+
+**Tribunale:** [es. Tribunale ordinario di Milano, sezione specializzata se applicabile]
+
+**Quesito/petitum:** [es. accertamento del diritto a X, condanna al pagamento di €Y, dichiarazione di nullità di Z]
+
+**Fatti rilevanti** (in ordine cronologico, con date e documenti):
+1. [FATTO 1, data, documento di riferimento]
+2. [FATTO 2, ...]
+
+**Fondamento giuridico:** [es. art. 1453, 1455 c.c., inadempimento e risoluzione]
+
+**Prove principali:** [contratti, perizie, testimonianze previste]
+
+**Struttura standard da seguire:**
+1. **Frontespizio formale**, al Tribunale di X, Atto di Citazione promossa da Y contro Z
+2. **Premessa**, qualifiche delle parti, breve descrizione della controversia
+3. **Fatti**, esposizione cronologica
+4. **Motivi di diritto**, fondamento normativo + giurisprudenza
+5. **Conclusioni**, petitum esplicito
+6. **In via istruttoria**, mezzi di prova richiesti
+7. **Citazione formale**, formula di citazione, data prima udienza presunta
+8. **Sottoscrizione**
+
+**Vincoli:**
+- Italiano legale standard, ma niente preziosità arcaiche
+- Citazioni giurisprudenziali solo se sono certo (se non sicuro, scrivere "verificare")
+- Lunghezza orientativa: 15-25 pagine A4
+- Firma: "Avv. Mario Rossi"
+</Prompt>
+
+### Cosa esce
+
+Una citazione ben strutturata, da rifinire per:
+- Verifica accurata della giurisprudenza citata
+- Eventuali specificità procedurali locali (es. PCT, modalità deposito)
+- Personalizzazione dello stile dello studio
+- Aggiunta di dettagli che solo tu conosci (es. note off-record)
+
+Tempo totale: 1-2 ore per un atto di citazione completo, invece di 4-6 ore.
+
+<Esempio>
+L'Avv. Davide Mancuso, civilista a Bari, fa in media due decreti ingiuntivi a settimana ex art. 633 c.p.c. per recupero crediti di una decina di imprese clienti. Ha caricato in un Project (uno spazio dentro Claude dove carichi documenti e istruzioni che restano disponibili in tutte le conversazioni) i suoi tre ricorsi modello degli ultimi anni, il prontuario locale del Tribunale di Bari per il deposito telematico, e una Custom Instructions con il suo stile preferito sulle conclusioni. Il flusso ora è: incolla nel prompt i dati del credito (fattura, scadenza, costituzione in mora ex art. 1219 c.c., importo), Claude tira fuori il ricorso in 3 minuti, lui lo rilegge in 20 minuti, verifica le scadenze, deposita. Prima ci stava 2 ore e mezza per ogni decreto. Su 8 decreti al mese sono 16 ore liberate, due giornate piene da dedicare alle cause più complesse.
+</Esempio>
+
+## Comparsa di costituzione
+
+Stessa logica, prompt simile, struttura diversa:
+
+<Prompt>
+Sei l'assistente dell'Avv. Rossi.
+
+**Task:** redigi comparsa di costituzione e risposta nel procedimento [RG/numero, Tribunale X].
+
+**Parti:**
+- Attore: [NOME] (controparte)
+- Convenuto: [NOME] (nostro cliente)
+
+**Atto di citazione di controparte** (sintesi delle domande):
+[INCOLLA o SINTETIZZA citazione]
+
+**Posizione difensiva del nostro cliente:**
+- Eccezioni preliminari/pregiudiziali: [es. competenza, prescrizione]
+- Contestazioni nel merito: [punto per punto]
+- Domande riconvenzionali (se applicabili): [...]
+
+**Struttura standard:**
+1. Frontespizio formale
+2. Costituzione formale (artt. 166-167 c.p.c.)
+3. Sintesi della domanda attorea
+4. Eccezioni pregiudiziali (se previste)
+5. Risposta nel merito (contestazione punto per punto)
+6. Domande riconvenzionali (se previste)
+7. Conclusioni
+8. In via istruttoria
+9. Sottoscrizione
+
+[STESSI VINCOLI di lunghezza, stile, ecc.]
+</Prompt>
+
+## Memoria difensiva / di replica
+
+Le memorie successive (ex 183, 281-undecies) sono più "tattiche", risposta a un atto specifico della controparte. Il prompt include riferimenti precisi:
+
+<Prompt>
+**Task:** redigi memoria difensiva ex art. 183 c.p.c. comma 6 n. [1/2/3] per [NOSTRO CLIENTE] nel procedimento [RG].
+
+**Atto di controparte cui rispondere:**
+[INCOLLA TESTO O ALLEGA, questa è la cosa più importante: Claude deve capire CHE COSA contestare]
+
+**Linea difensiva fondamentale:**
+[2-3 frasi sui punti chiave su cui insistiamo]
+
+**Nuove eccezioni / argomenti da introdurre:**
+[se ne abbiamo]
+
+**Tono:** professionale, NON sarcastico mai (anche se la controparte è stata sarcastica), argomentativo, citazioni puntuali della giurisprudenza solo se certi.
+
+**Output:** memoria strutturata, lunghezza orientativa 5-15 pagine.
+</Prompt>
+
+## Le tre regole d'oro
+
+### 1. Lavora dentro un Project
+
+Per ogni causa, **crea un Project** dedicato (vedi Modulo 2). Carica: citazione, comparsa, atti successivi, sentenze citate, prove principali. Da quel momento ogni nuovo atto lo generi nel Project, già conoscendo tutto il contesto. Niente più "ripeto i fatti del caso" all'inizio di ogni chat.
+
+### 2. Verifica le citazioni
+
+**Sempre.** Anche dopo la migliore Custom Instructions (istruzioni che Claude legge automaticamente a ogni nuova conversazione) con "non inventare". Apri DeJure/Pluris/banca dati e verifica ogni sentenza citata. Il rischio reputazionale di citare una Cassazione che non esiste è enorme.
+
+### 3. Personalizza il tono
+
+Il primo output sarà neutro, "stile manuale". Tu lo rendi "stile studio Rossi" con 2-3 cicli di affinamento:
+- "Rendi il tono più assertivo nella sezione 3"
+- "Accorcia i paragrafi della sezione 5 a max 4 righe"
+- "Elimina ogni 'altresì', 'ai sensi e per gli effetti', 'in indirizzo'"
+
+## Tempo medio di drafting con Claude
+
+<BarChart
+ titolo="Ore per drafting di un atto, prima vs dopo Claude"
+ unita="minuti (media stimata)"
+ fonte="Osservazione interna su 12 studi italiani · Q1 2026"
+ bars={[
+  { label: "Citazione · senza Claude", value: 300 },
+  { label: "Citazione · con Claude", value: 105, highlight: true },
+  { label: "Comparsa · senza Claude", value: 240 },
+  { label: "Comparsa · con Claude", value: 75, highlight: true },
+  { label: "Memoria 183 n.1 · senza", value: 180 },
+  { label: "Memoria 183 n.1 · con", value: 60, highlight: true },
+  { label: "Precetto · senza", value: 90 },
+  { label: "Precetto · con", value: 30, highlight: true },
+ ]}
+/>
+
+Il pattern è costante: **~60-70% di risparmio** in tutti gli atti di drafting standard. Per uno studio che produce 5-10 atti a settimana, l'aritmetica è 20-40 ore al mese liberate, l'equivalente di una settimana lavorativa.
+
+<Nota tipo="attenzione">
+**Niente di quanto generi è "pronto da depositare" senza la tua rilettura completa.** Atti depositati con errori (citazioni sbagliate, riferimenti normativi errati, formule procedurali mancanti) possono avere conseguenze gravi: sanzioni, inammissibilità, responsabilità professionale. Tratta Claude come un associato bravissimo ma al primo anno, la rilettura è non negoziabile.
+</Nota>
+
+<RiferimentoCorso lezione="04-ricerca-giurisprudenziale" />
+
+Nella prossima lezione: come usare Claude per accelerare (non sostituire) la ricerca giurisprudenziale.

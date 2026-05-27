@@ -1,0 +1,125 @@
+---
+titolo: "L'ecosistema Claude in 5 minuti"
+sottotitolo: "Chat, Projects, Code, Skills, MCP, API, chi è chi"
+durata: 6
+ordine: 3
+aggiornato: "2026-05-23"
+quiz: true
+---
+
+Quando dici "Claude" intendi una di sei cose diverse. Il singolo motivo per cui gli avvocati abbandonano Claude è non sapere quale stanno usando, quindi lo usano sempre come Chat, quando per il loro task servirebbe Projects o Skills.
+
+Questa lezione è una mappa orientativa. Il Modulo 2 entra nel dettaglio di ogni superficie. Per ora, basta sapere quando aprire cosa.
+
+## 1. Chat (claude.ai)
+
+L'interfaccia che conosci. Apri claude.ai, scrivi un messaggio, ricevi una risposta. La conversazione si chiude quando chiudi la tab, Claude non si ricorda di te al prossimo accesso (a meno di **Custom Instructions**, istruzioni che Claude legge automaticamente a ogni nuova conversazione, senza che tu le ripeta).
+
+**Per quando serve:** drafting puntuale, brainstorming, riformulazione di un singolo testo. Task "una tantum" che non hanno seguito.
+
+**Esempio:** ti arriva un'email difficile da un cliente, vuoi una bozza di risposta. Apri Chat, incolli l'email, scrivi "Bozza di risposta empatica ma ferma", ricevi 3 varianti.
+
+## 2. Projects
+
+Una "stanza" persistente con contesto condiviso. Carichi documenti (atti, contratti, sentenze), scrivi istruzioni una volta, e ogni conversazione dentro il Project parte già conoscendo quel contesto.
+
+**Per quando serve:** una pratica, un cliente, un dossier. Tutto il materiale resta caricato, tutte le chat in quel Project conoscono il caso.
+
+**Esempio:** crei un Project "Cliente Bianchi vs. Rossi". Carichi: atto di citazione, comparsa di costituzione, contratto in contestazione, le 12 email tra le parti. D'ora in poi ogni conversazione dentro quel Project parte con tutto il dossier già in memoria.
+
+<Nota tipo="suggerimento">
+La regola d'oro: **un cliente = un Project**. Una causa importante = un Project dedicato. Una consulenza ricorrente con uno studio aziendale = un Project. Non lavorare mai una pratica complessa in Chat singola.
+</Nota>
+
+<Esempio>
+Lo Studio Verdi & Associati a Verona ha un cliente fisso, una società di logistica, che ogni trimestre gira contratti di trasporto da rivedere. Prima il senior partner ricevuva 12-15 PDF, li smistava ai due collaboratori, ognuno faceva la prima passata sulle clausole abusive, poi si rivedevano insieme. Quattro ore di lavoro fisse a trimestre, solo per la prima passata. Hanno creato un Project Claude dedicato con i loro standard contrattuali, le clausole vietate, gli scostamenti accettabili. Ora la prima passata sulle clausole abusive la fa Claude, in mezz'ora. I due collaboratori partono dal report di Claude e rivedono solo i punti segnalati. Tempo passato sui contratti standard: da 4 ore a 45 minuti. Hanno usato il tempo recuperato per prendere un altro cliente con bisogni simili.
+</Esempio>
+
+## 3. Claude Code
+
+Claude che gira dal terminale del tuo computer. Può leggere, scrivere e modificare file sul tuo disco. Non serve saper programmare per usarlo, anche se è nato per gli sviluppatori.
+
+**Per quando serve:** lavorare su molti file insieme. Esempio: "leggi tutti i 47 contratti nella cartella `clienti-2026/`, estrai le clausole di durata, fammi un foglio con cliente / data / durata / scadenza".
+
+**Esempio:** hai 30 sentenze in PDF di una raccolta. Apri Claude Code nella cartella, scrivi "leggi tutti questi PDF e fammi un foglio Excel con: numero, data, parti, massima in 2 righe". 5 minuti, fatto.
+
+## 4. Skills
+
+Una **Skill** è una procedura riutilizzabile che insegni a Claude una volta sola e poi la richiami con una frase. Scrivi la skill **una volta** ("come Claude deve redigere un parere per il mio studio") e da quel momento la richiami in ogni Project, in Chat, in Code, senza ripetere le istruzioni.
+
+**Per quando serve:** automatizzare task che fai ogni settimana, sempre nello stesso modo. Drafting di pareri, revisione di NDA standard, generazione di email tipo.
+
+**Esempio:** crei una skill "redazione-parere-stile-studio-rossi" che codifica come scrivi un parere, struttura, tono, citazioni preferite, formule di chiusura. Da quel momento dici "scrivi un parere su X usando skill redazione-parere" e ottieni il tuo stile.
+
+## 5. MCP (Model Context Protocol)
+
+**MCP** è il protocollo che permette a Claude di parlare con i tuoi software, gestionale, drive, calendar. Tradotto in pratica: connettori che mettono Claude in comunicazione con software esterni, il gestionale dello studio (Cliens, Cicero, Lawnext), Outlook, Drive, banche dati che espongono un'**API** (l'accesso programmatico, ti serve solo se il software offre già un canale tecnico per essere letto). Praticamente: Claude legge i tuoi dati dove vivono, senza copy-paste.
+
+**Per quando serve:** quando ti accorgi che fai sempre lo stesso copy-paste tra Claude e un altro tool. Esempio: copi tutte le email di un cliente da Outlook a Claude per chiedere un riassunto.
+
+**Esempio:** colleghi Claude al tuo gestionale via MCP. Chiedi "elenca tutte le scadenze processuali della settimana prossima". Claude legge il calendario del gestionale e risponde. Niente più estrazione manuale.
+
+## 6. API
+
+Per chi vuole costruire integrazioni custom. Non riguarda l'uso quotidiano, è la base tecnica su cui qualcuno (consulente, sviluppatore interno) può costruire workflow su misura per lo studio.
+
+**Per quando serve:** mai direttamente, ma è utile sapere che esiste, perché se vuoi un tool su misura, è da lì che si parte.
+
+## Riassunto in una tabella
+
+| Superficie | Quando usarla | Sforzo iniziale |
+|---|---|---|
+| **Chat** | Task isolati | Zero |
+| **Projects** | Una pratica, un cliente | 10 minuti per Project |
+| **Code** | Molti file insieme | Mezz'ora setup |
+| **Skills** | Task ripetitivi | 1 ora per skill |
+| **MCP** | Collegare al gestionale | Mezza giornata setup |
+| **API** | Tool custom | Settimane (sviluppatore) |
+
+## Cosa fai questa settimana
+
+Apri **Projects** e crea il tuo primo: uno qualsiasi dei tuoi clienti attivi. Carica i 3-5 documenti più importanti. La prossima volta che devi fare qualcosa su quel cliente, prova a farlo dentro il Project anziché in Chat. Vedrai la differenza al primo prompt.
+
+<Quiz
+ modulo="01-fondamenta"
+ lezione="03-ecosistema-in-5-minuti"
+ domande={[
+  {
+   domanda: "Quale superficie usi per gestire UNA pratica con tanti documenti caricati in modo persistente?",
+   opzioni: [
+    "Chat",
+    "Projects",
+    "Claude Code",
+    "API"
+   ],
+   corretta: 1,
+   spiega: "Un Project per cliente/pratica. Tutto il dossier resta in memoria, ogni conversazione parte già conoscendolo."
+  },
+  {
+   domanda: "Cosa serve Claude Code rispetto a Chat?",
+   opzioni: [
+    "Permette di chattare a voce con Claude",
+    "Lavora direttamente sui file del tuo computer, ideale per task su molti file insieme",
+    "È solo un'interfaccia più veloce della Chat",
+    "Serve a programmare in Python e Java"
+   ],
+   corretta: 1,
+   spiega: "Claude Code gira dal terminale e legge/scrive file. Non serve programmare, ma serve per task su decine di documenti insieme."
+  },
+  {
+   domanda: "MCP (Model Context Protocol) serve a:",
+   opzioni: [
+    "Aumentare la velocità delle risposte di Claude",
+    "Collegare Claude a software esterni (gestionale, Outlook, Drive)",
+    "Comprimere il contesto delle conversazioni",
+    "Pagare meno l'abbonamento"
+   ],
+   corretta: 1,
+   spiega: "MCP è il connettore universale. Una volta installato, Claude legge dati dal tuo gestionale/Outlook/Drive senza copy-paste."
+  }
+ ]}
+/>
+
+<RiferimentoCorso lezione="04-contesto-è-tutto" />
+
+Nella prossima lezione: perché il contesto è tutto, con la regola pratica che cambia subito la qualità dei tuoi output.

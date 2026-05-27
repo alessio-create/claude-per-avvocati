@@ -1,0 +1,186 @@
+---
+titolo: "Configurazione studio a norma"
+sottotitolo: "Privacy + deontologia + governance in 1 ora di setup"
+durata: 10
+ordine: 2
+aggiornato: "2026-05-23"
+quiz: false
+---
+
+Se la lezione precedente ti ha lasciato un po' in ansia, questa è il riequilibrio. La conformità non è una cosa che ti tieni in testa e speri di ricordare il martedì sera quando un praticante ti gira un PDF "veloce veloce". È una configurazione che fai una volta, e poi vive da sola.
+
+Sapere cosa puoi mandare a Claude è solo metà del lavoro. L'altra metà è configurare lo studio in modo che la conformità sia **automatica**, non dipendente dalla memoria dell'associato di turno.
+
+Questa lezione è una checklist operativa. Un'ora di setup oggi, anni di tranquillità domani.
+
+## Step 1: Firma il DPA (10 minuti)
+
+Il **DPA** (Data Processing Agreement) è l'accordo tra te e il fornitore del servizio (qui Anthropic, l'azienda che fa Claude) che fissa cosa può e non può fare con i tuoi dati. Vai sul tuo account Claude:
+
+1. Settings → Compliance → Data Processing Agreement
+2. Leggi (5 minuti, è in inglese, breve, standard)
+3. Firma digitalmente
+4. Salva copia PDF nel tuo archivio "Compliance/Fornitori"
+
+Se sei su Team, lo fa l'admin a livello workspace (vale per tutti).
+
+Senza questo step, qualsiasi caricamento di dati cliente è tecnicamente non conforme. Fallo PRIMA di tutto il resto.
+
+<Esempio>
+L'Avv. Sergio Lentini di Catania ha fatto questa cosa in coda al lunedì mattina, davanti al caffè. Account Pro aperto, DPA scaricato in PDF, firma digitale con il suo dispositivo, salvato nella cartella "Compliance/Fornitori AI". Tempo cronometrato dalla segretaria: 7 minuti. Da quel momento i suoi 4 associati possono caricare materiale anonimizzato senza che lui debba pensare ogni volta se sono "in regola". Sette minuti che ha smesso di pagare in ansia ricorrente.
+</Esempio>
+
+## Step 2: Aggiorna l'informativa privacy dello studio (20 minuti)
+
+L'informativa che date ai clienti deve menzionare l'uso di strumenti AI. Esempio di clausola da aggiungere alla sezione "Categorie di soggetti che potrebbero trattare i dati":
+
+> **Fornitori di servizi di intelligenza artificiale**
+>
+> Lo studio utilizza strumenti di AI (in particolare Claude, fornito da Anthropic PBC, USA) per supportare attività di drafting, ricerca e analisi documentale. I dati personali eventualmente condivisi con tali strumenti sono trattati nel rispetto della normativa GDPR e di un Data Processing Agreement firmato con il fornitore. **I dati non vengono utilizzati per addestrare modelli di AI.** Per maggiori dettagli sulla privacy policy del fornitore, vedi anthropic.com/legal/privacy.
+
+Aggiungi questa clausola e fai approvare al tuo consulente privacy.
+
+## Step 3: Aggiorna il registro dei trattamenti (10 minuti)
+
+Il registro è già nel tuo armadio, lo aggiorni di una riga. Nel registro dei trattamenti dello studio (obbligatorio ex art. 30 GDPR), aggiungi una voce:
+
+| Campo | Valore |
+|---|---|
+| Finalità del trattamento | Supporto AI a drafting, ricerca, analisi |
+| Categorie di dati | Dati di clienti e controparti come definiti nelle singole pratiche |
+| Categorie di soggetti | Clienti, controparti, terzi citati nei documenti |
+| Destinatari | Anthropic PBC (responsabile esterno) |
+| Trasferimenti extra-UE | Sì (USA), coperti da clausole contrattuali standard |
+| Tempi di conservazione | Come da pratica generale dello studio |
+| Misure di sicurezza | DPA con fornitore, accessi profilati, anonimizzazione dove possibile |
+
+Il registro va aggiornato. Non serve approvazione esterna, ma deve essere pronto in caso di ispezione.
+
+## Step 4: Policy interna "uso di AI" (15 minuti)
+
+Crea un breve documento (1-2 pagine) per gli associati e praticanti. Esempio struttura:
+
+### Policy Uso AI, Studio Legale Rossi & Associati
+
+**Strumenti approvati:** Claude (Anthropic), accesso via account workspace dello studio.
+
+**Strumenti non approvati:** ChatGPT, Gemini, e qualsiasi altro fornitore AI per dati di clienti reali.
+
+**Regole d'uso:**
+
+1. **Anonimizzazione obbligatoria** per dati identificativi di clienti, controparti, terzi (nomi, P.IVA, importi specifici)
+2. **Mai per pratiche penali in corso**, segreto stretto, lavoro solo interno
+3. **Verifica sempre i riferimenti giurisprudenziali** prima di citarli in atto
+4. **Output di Claude = bozza**, la rilettura completa è non negoziabile, la responsabilità è dell'associato firmatario
+
+**Strumenti vietati per dati di clienti:**
+- Chat consumer (ChatGPT free, Gemini consumer)
+- Modelli open source self-hosted senza setup verificato dal partner senior
+- Strumenti senza DPA firmato
+
+**Violazioni:** chi viola la policy è personalmente responsabile delle conseguenze deontologiche e civili. Lo studio non copre violazioni evidenti della policy.
+
+Distribuiscila ad ogni associato/praticante con conferma di lettura.
+
+## Step 5: Naming convention per i Project (5 minuti)
+
+Piccolo trucco che vale dieci volte il tempo che ci metti. Convenzione per i Project Claude che facilita compliance:
+
+```
+[PRIVACY-LEVEL] - [CLIENTE-ID-ANONIMO] - [DESCRIZIONE]
+```
+
+Esempi:
+- `[A] - Generic - Modelli contratti standard`
+- `[B] - Cliente-Alfa - Causa civile recupero credito`
+- (NO Project per dati Categoria C, non vanno mai in Claude)
+
+A colpo d'occhio sai cosa contiene ogni Project, e qual è il livello di rischio.
+
+## Step 6: Setup di backup/audit (5 minuti)
+
+Configura:
+
+1. **Export periodico dei Project**, Anthropic offre export. Su Team, l'admin lo fa mensilmente per disaster recovery
+2. **Log degli accessi**, su Team, vedi chi ha avuto accesso a cosa
+3. **Revoca rapida**, quando un praticante va via, l'admin revoca l'accesso al workspace (5 secondi)
+
+## Step 7: Formazione iniziale (30 minuti, una volta)
+
+Fai una riunione di 30 minuti con tutti gli associati per:
+
+1. Mostrare l'esistenza della policy interna
+2. Mostrare un esempio di anonimizzazione
+3. Mostrare un esempio di workflow conforme (Project setup → caricamento documenti già anonimizzati → uso → output rivisto)
+4. Q&A
+
+Una volta sola, all'inizio. Poi ogni nuovo entrato fa onboarding di 15 minuti col partner di riferimento.
+
+## Cosa NON serve fare
+
+- **Chiedere consenso al cliente ogni volta** che usi Claude per il suo caso, l'informativa privacy + il DPA bastano (se anonimizzi correttamente)
+- **Sondaggi mensili sull'uso AI**, basta la policy + onboarding una volta
+- **Auditor esterno per la policy AI**, utile ma non obbligatorio per studi medio-piccoli; per studi grandi (50+) sì
+
+## La verifica annuale
+
+Ogni 12 mesi:
+
+1. Riverifica il DPA, Anthropic potrebbe averlo aggiornato
+2. Riguarda la policy interna, qualcosa è cambiato? (es. nuovo strumento adottato)
+3. Riverifica il registro dei trattamenti
+4. Check: ci sono state segnalazioni/incidenti? Documenta + correggi
+
+Mezza giornata l'anno. Mantiene la conformità nel tempo, e ti dà argomenti pronti se domani arriva una richiesta da Ordine, Garante, o cliente curioso.
+
+## Risorse esterne consigliate
+
+- **Garante Privacy**, `garanteprivacy.it`, sezione "Intelligenza Artificiale" con linee guida aggiornate
+- **CNF**, circolari del Consiglio Nazionale Forense su AI per la professione legale (in evoluzione)
+- **Anthropic Trust Center**, `trust.anthropic.com`, documentazione su sicurezza/privacy
+
+<Nota tipo="attenzione">
+Le normative su AI evolvono velocemente. L'**AI Act europeo** (Regolamento UE 2024/1689) prevede obblighi specifici per "sistemi AI ad alto rischio" che potrebbero applicarsi a usi avanzati di Claude in ambito legale. Verifica con un consulente specializzato se sviluppi workflow particolarmente automatizzati (es. triage automatico di pratiche).
+</Nota>
+
+## Fine del corso
+
+Hai completato Claude per Avvocati. Le sei aree:
+
+| Modulo | Lezioni | Cosa hai imparato |
+|---|---|---|
+| **01, Fondamenta** | 5 | Modello mentale, ruolo di Claude, prompt template base |
+| **02, Le superfici di Claude** | 6 | Chat, Projects, Code, Skills, MCP, API |
+| **03, Setup & stile** | 5 | Piano giusto, Custom Instructions, configurazione studio |
+| **04, Casi d'uso legali** | 7 | Pareri, contratti, atti, ricerca, comunicazione, workflow |
+| **05, Skills & repository** | 5 | Anatomia, repository pubblici, libreria studio, condivisione, meta-skills |
+| **06, Privacy & deontologia** | 2 | Cosa puoi mandare, configurazione a norma |
+
+Totale: 30 lezioni, ~5 ore di lettura attenta, anni di applicazione pratica.
+
+## Cosa fare ora
+
+Non rileggere il corso. **Applicalo.**
+
+Settimana 1: Modulo 1 + apri il primo Project
+Settimana 2: Modulo 2 + esperimenti su una superficie nuova al giorno
+Settimana 3: Modulo 3 + Custom Instructions + prima Skill
+Settimana 4: Modulo 4 + cinque casi reali la settimana
+Settimana 5: Modulo 5 + cinque Skills core dello studio
+Settimana 6: Modulo 6 + setup compliance completo
+
+In 6 settimane, Claude è un membro funzionale dello studio. Non un esperimento.
+
+Tieni questa pagina aperta come reminder. Torna al modulo specifico quando ti serve refresh. Hai accesso a vita.
+
+Buon lavoro.
+
+ Alessio
+
+<Risorse items={[
+ { titolo: "Anthropic Trust Center, sicurezza e compliance", url: "https://trust.anthropic.com", fonte: "Anthropic" },
+ { titolo: "Anthropic DPA standard (download)", url: "https://www.anthropic.com/legal/dpa", fonte: "Anthropic Legal" },
+ { titolo: "Garante Privacy, sezione AI", url: "https://www.garanteprivacy.it", fonte: "Autorità Garante Privacy" },
+ { titolo: "AI Act europeo, testo consolidato", url: "https://eur-lex.europa.eu/eli/reg/2024/1689/oj", fonte: "EUR-Lex" },
+ { titolo: "CNF, circolari deontologia su AI", url: "https://www.consiglionazionaleforense.it", fonte: "Consiglio Nazionale Forense" },
+]} />

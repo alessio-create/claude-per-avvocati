@@ -1,0 +1,128 @@
+---
+titolo: "Revisione contrattuale"
+sottotitolo: "Dove Claude diventa il tuo migliore associato"
+durata: 9
+ordine: 2
+aggiornato: "2026-05-23"
+quiz: false
+---
+
+Il cliente ti manda un PDF di 38 pagine alle 18:00 con scritto "ce l'ho da firmare domani, mi dici se va bene?". Se Claude eccelle in una cosa, è esattamente questa: leggere un testo lungo, identificare pattern problematici, suggerire alternative. Un associato senior ci impiega 1-2 ore. Claude lo fa in 5 minuti.
+
+Questa lezione ti dà i tre workflow di revisione contrattuale che useresti in uno studio.
+
+## Workflow 1: Revisione lato cliente (NDA / contratti standard)
+
+Scenario: il cliente ti manda un NDA che gli ha proposto la controparte. Vuoi capire se è accettabile, e proporre eventuali modifiche.
+
+<Prompt>
+Sei l'assistente dell'Avv. Rossi, civilista Milano, studio di diritto societario.
+
+**Cliente:** PMI manifatturiera del nord Italia, deve firmare un NDA proposto dalla controparte (azienda multinazionale che gli vuole comprare componenti).
+
+**Posizione del nostro cliente:** prevalentemente fornitore. Possibile interesse a fornitura ricorrente. Non vuole essere bloccato in vincoli eccessivi (clausole non-compete, durata, materiale).
+
+**Task:** rileggi l'NDA sotto, identifica:
+
+1. **Clausole problematiche** per il nostro cliente (perché problematica + alternativa proposta)
+2. **Clausole accettabili** ma da chiarire (perché chiarire + come)
+3. **Clausole standard** che vanno bene
+4. **Mancanze**, clausole che ci aspetteremmo e non ci sono (es. limitazione di responsabilità reciproca)
+
+Output: tabella con colonne `Clausola | Status | Note/Modifica proposta`.
+
+**NDA da revisionare:**
+[INCOLLA TESTO]
+</Prompt>
+
+**Cosa ti aspetti:**
+
+| Clausola | Status | Note |
+|---|---|---|
+| Art. 3 - Durata 10 anni | ❌ Problematica | Eccessiva per NDA. Proporre 3-5 anni |
+| Art. 5 - Riservatezza monodirezionale | ❌ Problematica | Solo cliente è obbligato. Chiedere reciprocità |
+| Art. 7 - Foro Roma | ⚠ Da chiarire | Verificare se c'è sede italiana controparte |
+| Art. 9 - Definizioni | ✓ Standard | OK |
+| (manca) - Limitazione responsabilità | ⚠ Mancante | Proporre cap a importo X |
+
+Tu poi: leggi, valuti, scrivi una mail al cliente con 3-4 proposte di modifica concrete. Tempo: 20 minuti totali invece di 1-2 ore.
+
+<Esempio>
+L'Avv. Federico Conti, commercialista d'impresa a Bologna, segue una PMI di componentistica industriale che firma in media tre NDA al mese con clienti tedeschi e francesi. Ha creato una Skill (una procedura riutilizzabile che insegni a Claude una volta sola e poi la richiami con una frase) chiamata "nda-pmi-fornitore" che codifica la sua checklist: clausole problematiche tipiche (non-compete oltre 24 mesi, riservatezza monodirezionale, foro estero senza arbitrato), wording alternativo già preferito dallo studio, frasi standard per la mail al cliente. Ora quando arriva un NDA scrive "applica nda-pmi-fornitore al file allegato" e in 4 minuti ha la tabella delle clausole e la bozza di mail. Prima ci passava 90 minuti per ogni NDA, quasi mezzo pomeriggio a settimana.
+</Esempio>
+
+## Workflow 2: Confronto fra due versioni
+
+Scenario: la controparte ti restituisce il tuo contratto con modifiche. Vuoi capire al volo cosa è cambiato.
+
+<Prompt>
+Confronta le due versioni del contratto sotto:
+
+**Versione A** (nostra proposta originaria): [INCOLLA]
+
+**Versione B** (controproposta della controparte): [INCOLLA]
+
+Output:
+- Tabella con tutte le differenze rilevanti
+- Per ogni differenza: numero clausola, testo A, testo B, **valutazione** (modifica accettabile per noi / problematica per noi / neutra)
+- In coda, un riassunto in 3 punti del "verso" della controproposta (es. "controparte chiede più libertà su X, più protezione su Y, neutralizza Z")
+</Prompt>
+
+Risultato: una mappa chiara del negoziato, in 5 minuti.
+
+## Workflow 3: Drafting di un contratto da zero
+
+Scenario: il cliente ti chiede di redigere un contratto su una situazione specifica.
+
+<Prompt>
+Sei l'assistente dell'Avv. Rossi, diritto commerciale Milano.
+
+**Task:** redigi una bozza di [TIPO CONTRATTO] tra [PARTE A] e [PARTE B] per [SCOPO].
+
+**Contesto:**
+- [PARTE A] è il nostro cliente
+- La situazione è [DESCRIVI: routine / negoziazione difficile / parti già in conflitto pregresso]
+- Importi/quantità rilevanti: [DETTAGLI]
+- Durata: [N anni / a termine / indeterminato]
+- Vincoli normativi noti: [eventuali, es. "regolamento UE 2016/679 se trattamento dati"]
+
+**Clausole standard che voglio sempre includere:**
+1. Risoluzione automatica per inadempimento (art. 1456 c.c.)
+2. Clausola penale per ritardo nei pagamenti (mese × 1% importo, max 10%)
+3. Foro esclusivo Milano
+4. Legge applicabile italiana
+5. Clausola di riservatezza reciproca
+
+**Clausole che NON voglio:**
+- Niente penali sproporzionate (potrebbero essere annullate ex art. 1384)
+- Niente esclusione totale responsabilità (nulla per dolo/colpa grave)
+
+**Output:** bozza completa del contratto in italiano legale standard. Mai citare clausole-tipo CCC o linee guida ANAC se non specificate (queste sono boilerplate generico che spesso non si applica al caso concreto).
+</Prompt>
+
+## Cosa Claude fa meglio nella revisione contrattuale
+
+- **Trovare clausole nascoste** in contratti lunghi (50+ pagine)
+- **Identificare incongruenze interne** ("art. 5 dice X ma art. 12 dice Y, sono in tensione")
+- **Suggerire wording alternativo** per clausole problematiche
+- **Sintetizzare in 5 punti** un contratto di 30 pagine
+
+## Cosa Claude NON fa bene
+
+- **Valutare strategie negoziali complesse**, questo richiede contesto sui rapporti tra le parti che Claude non ha
+- **Confronto con giurisprudenza specifica recentissima**, Claude non legge in tempo reale le sentenze del mese scorso
+- **Identificare rischi reputazionali / extra-giuridici**, questi sono giudizi umani
+
+## Tip pro: la "voce" del contratto
+
+Se lo studio ha uno stile specifico per contratti (es. "preferiamo formule passive", "usiamo sempre 'Parte' maiuscolo", "definiamo i termini all'inizio"), codificalo in Custom Instructions (istruzioni che Claude legge automaticamente a ogni nuova conversazione) o in una Skill `redazione-contratto-stile-studio`.
+
+Da quel momento ogni contratto generato da Claude segue automaticamente lo stile dello studio. Lo stagista non ti chiederà più "ma come si scrive di solito da noi?".
+
+<Nota tipo="attenzione">
+Quando incolli un contratto reale di un cliente in Claude, anonimizza i dati identificativi (nomi parti, P.IVA, importi specifici). Sostituisci con segnaposto ("Parte A", "€XXX.XXX", "data X"). Per contratti molto sensibili o con NDA stretti, valuta sempre il Modulo 6 prima.
+</Nota>
+
+<RiferimentoCorso lezione="03-atti-drafting" />
+
+Nella prossima lezione: drafting di atti formali (citazione, comparsa, memoria).

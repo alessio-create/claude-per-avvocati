@@ -1,0 +1,12 @@
+{
+  "titolo": "Kit Pratico: risorse pronte all'uso",
+  "sottotitolo": "Prompt-template, Skill installabili, progetti hands-on, risorse curate",
+  "ordine": 10,
+  "categoria": "Bonus · Toolkit",
+  "icona": "kit",
+  "coloreCover": "mint",
+  "lezioniPianificate": 4,
+  "durataMinutiPianificati": 43,
+  "bonus": true,
+  "costoGemme": 50
+}

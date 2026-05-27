@@ -1,0 +1,152 @@
+---
+titolo: "Privacy by design: configurare Claude per uno studio a norma GDPR"
+sottotitolo: "Setup operativo in 8 punti, accessi, conservazione, registro dei trattamenti, breach response"
+data: "2026-04-26"
+autore: "Alessio Massaro"
+tempo: 10
+tag: ["Privacy", "Compliance"]
+coverColor: "peach"
+coverIcon: "shield-check"
+estratto: "Privacy by design non è uno slogan: è un setup concreto. Otto azioni che uno studio strutturato dovrebbe fare prima ancora di scrivere il primo prompt."
+---
+
+Il GDPR all'art. 25 introduce il concetto di **privacy by design**: la protezione dei dati non è una patch da applicare dopo, ma una scelta architetturale iniziale. Per uno studio che integra Claude nel workflow, questo significa configurare lo strumento da subito in modo conforme, non scoprire a sei mesi che mezza pratica è stata processata su un account Pro consumer.
+
+Questo articolo è la checklist operativa in 8 punti. Da fare prima ancora di scrivere il primo prompt aziendale.
+
+## 1. Scegli il piano giusto dall'inizio
+
+Pro singolo (€18-22/mese) va bene per:
+- Singolo avvocato che lavora su dati anonimizzati o di Categoria A
+- Esplorazione e training individuale
+- NON per uno studio strutturato con dati di clienti reali
+
+Cowork (€25-30/utente con minimi) è il setup per:
+- Studi con 3+ persone che condividono Project
+- Necessità di DPA firmato a livello organizzazione
+- Audit log e gestione accessi centralizzata
+- Lavoro su dati di Categoria B con regolarità, o Categoria C
+
+**Errore tipico:** iniziare con Pro "per provare", poi accumulare Project con dati di clienti, e ritrovarsi a sei mesi con un piano sbagliato e una migrazione complicata. Costo del cambio rotta: alto.
+
+## 2. Firma il DPA prima del primo prompt aziendale
+
+Su Cowork, Anthropic mette a disposizione un **Data Processing Agreement** standard. È un PDF di 12-15 pagine. Va letto, eventualmente integrato con clausole specifiche del tuo studio, e firmato a livello workspace.
+
+Una volta firmato:
+- Anthropic è formalmente **responsabile esterno** del trattamento
+- Tu (studio) sei **titolare**
+- Le responsabilità sono chiare
+
+**Tempo:** mezza giornata per leggerlo bene + eventuale revisione legale. Da fare prima dell'attivazione del workspace.
+
+## 3. Configura la conservazione dei prompt
+
+Sui piani consumer, default di Anthropic: prompt conservati per 30 giorni, non usati per training.
+
+Su Cowork: puoi configurare conservazione a:
+- 0 giorni (prompt cancellati dopo la sessione)
+- 30 giorni
+- 90 giorni
+- Configurazione custom
+
+Per uno studio legale, raccomandazione: **30 giorni**. È il giusto compromesso tra:
+- Utilità (poter recuperare una conversazione di 2-3 settimane fa)
+- Minimizzazione del rischio (in caso di breach lato Anthropic, esposizione limitata)
+
+## 4. Definisci i livelli di accesso
+
+L'admin del workspace è il responsabile. Per ogni utente, devi definire:
+
+| Ruolo | Accesso | Tipo dato |
+|---|---|---|
+| Partner | Tutti i Project | A, B, C |
+| Senior associate | Project assegnati | A, B, C |
+| Junior associate | Project assegnati | A, B (non C) |
+| Praticante | Solo Project di formazione | A, B (no dati cliente vivi) |
+| Staff amministrativo | Solo Project amministrativi | A, B (no dati cliente) |
+
+Documenta questa matrice in un file `accessi-AI.md` interno. Aggiornala quando entra/esce qualcuno.
+
+## 5. Convenzione naming dei Project
+
+Quando 5 persone creano Project nello stesso workspace, in 3 mesi hai 200 Project con nomi tipo "Test", "Cliente Bianchi", "Bianchi v2", "Provo cosa". Ingestibile.
+
+Definisci una convenzione:
+
+```
+[A/B/C]-[ClienteID]-[Descrizione]
+
+Esempi:
+A-template-messa-in-mora
+B-CLI001-causa-lavoro-Bianchi-2026
+C-CLI002-penale-Rossi-NON-CONDIVIDERE
+```
+
+Il primo carattere dice la categoria privacy. Il `ClienteID` è un codice interno (non il nome). La descrizione è in inglese-tecnico per chiarezza.
+
+## 6. Mantieni un registro dei trattamenti aggiornato
+
+Per il GDPR (art. 30), uno studio sopra una certa dimensione deve avere un registro dei trattamenti. Aggiungici **la voce AI**:
+
+```
+Categoria di trattamento: Assistenza alla redazione di atti e
+pareri tramite AI generativa (Claude / Anthropic)
+Base giuridica: Contratto col cliente; legittimo interesse dello
+studio per efficienza
+Categorie di dati: Dati comuni di cliente, dati di contesto giuridico
+Soggetti interessati: Clienti, controparti menzionate nei prompt
+Misure di sicurezza: DPA con Anthropic; policy interna di
+anonimizzazione (vedi STUDIO-AI-POLICY.md);
+formazione obbligatoria dei collaboratori
+Conservazione: 30 giorni (configurazione workspace)
+Trasferimenti extra-UE: Stati Uniti, sotto accordi standard
+contrattuali ex Modello UE
+```
+
+Tempo per redigerla: 1 ora. Vita utile: la durata del tuo uso di Claude.
+
+## 7. Scrivi una policy interna
+
+Documento `STUDIO-AI-POLICY.md`, 2-3 pagine. Contenuto minimo:
+
+1. **Strumenti approvati** (solo Cowork dello studio, niente account personali per dati di clienti)
+2. **Classificazione dati** (A/B/C, con esempi specifici per il tuo studio)
+3. **Workflow obbligatori** (anonimizzazione prima dell'invio, rilettura dopo l'output, verifica giurisprudenza prima del deposito)
+4. **Conseguenze violazioni** (responsabilità personale, sospensione accesso)
+
+Tutti firmano per ricezione. Conservi la firma per due anni.
+
+Tempo: mezza giornata di lavoro iniziale. Vita utile: anni.
+
+## 8. Prepara un protocollo di breach response
+
+Se succede l'incidente (es. condivisione errata di un Project, account compromesso, allucinazione finita in un atto), devi sapere cosa fare PRIMA che succeda:
+
+1. **Account compromesso** → admin revoca immediatamente, valuta notifica al Garante entro 72h se ci sono dati personali coinvolti
+2. **Sharing errato di un Project** → revoca accesso, valuta esposizione, eventualmente notifica clienti coinvolti
+3. **Allucinazione di Claude usata in un atto depositato** → comunicazione al giudice, valutazione responsabilità professionale
+
+Protocollo di 1 pagina, pronto per essere consultato sotto stress. Quando capita, non vuoi inventarti la procedura.
+
+## L'audit periodico
+
+Una volta tutto è in place, configura un audit periodico:
+
+- **Settimanale (5 min, partner senior)**, quanti Project nuovi, ce ne sono di Categoria C?
+- **Mensile (15 min, admin)**, utenti attivi vs invitati, audit log per accessi anomali
+- **Annuale (mezza giornata, partner + consulente privacy)**, DPA aggiornato, policy attuale, registro aggiornato
+
+Il [Modulo 7 del corso](/corso/07-cowork/04-governance-cowork) ha esempi pronti per ognuno di questi passi.
+
+## L'AI Act all'orizzonte
+
+Il **Regolamento UE 2024/1689** (AI Act) sta entrando in fase di applicazione. Per uno studio che usa AI in modo strutturato, vale la pena pianificare una revisione nel 2026-2027 con un consulente specializzato. Per ora le obbligazioni più stringenti riguardano i fornitori di AI ad alto rischio, non i singoli utilizzatori finali, ma il panorama evolve velocemente.
+
+## La regola dell'asticella alta
+
+Uno studio legale che gestisce dati di clienti è già sopra l'asticella minima del GDPR per molti aspetti. Configurare Claude bene **non aggiunge** rischio: lo distribuisce su un nuovo strumento, ma con minori margini di errore di mezza dozzina di altri strumenti che già usi (email, cloud storage, gestionale).
+
+Mezza giornata di setup iniziale + un'ora al mese di audit. È un costo basso. Il costo alto è scoprire a posteriori che mezzo studio ha lavorato su account personali con dati di clienti per un anno.
+
+Privacy by design vale come **vaccino**, non come trattamento.

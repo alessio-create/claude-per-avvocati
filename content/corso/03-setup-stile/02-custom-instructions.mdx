@@ -1,0 +1,120 @@
+---
+titolo: "Custom Instructions, l'investimento di 30 minuti con ROI più alto"
+sottotitolo: "Insegna a Claude chi sei. Una volta, per sempre."
+durata: 8
+ordine: 2
+aggiornato: "2026-05-23"
+quiz: false
+---
+
+Se in tutto il corso c'è una cosa che vale la pena fare oggi, sono le Custom Instructions. Trenta minuti scritti una volta che si applicano a ogni conversazione futura con Claude, per anni. È l'equivalente di assumere un assistente che la mattina non chiede mai "scusa, come ti firmi?".
+
+Le **Custom Instructions** sono istruzioni che Claude legge automaticamente a ogni nuova conversazione, senza che tu le ripeta.
+
+## Cosa sono
+
+Un blocco di testo che imposti **una volta** nelle Impostazioni del tuo account Claude. Da quel momento, ogni Chat, ogni **Project** (lo spazio dentro Claude dove carichi documenti e istruzioni che restano disponibili in tutte le conversazioni di quel progetto), ogni conversazione parte con quel testo "in testa". Claude sa già chi sei, cosa fai, come scrivi.
+
+Pensa: la differenza tra un nuovo praticante che ogni mattina riparte da zero, e un assistente di 5 anni che sa già tutto.
+
+## Dove le imposti
+
+Su claude.ai:
+
+1. Click sul tuo profilo (in basso a sinistra)
+2. Settings → Profile
+3. Scorri fino a "Custom Instructions" (o "What would you like Claude to know about you?")
+4. Incolla, salva.
+
+## Il template per un avvocato italiano
+
+<Prompt>
+**Chi sono:** Avvocato civilista a Milano, titolare di studio individuale di 4 persone (1 partner = me, 2 associati, 1 praticante). Specializzazione: diritto societario e commerciale. Clientela prevalente: PMI manifatturiere del nord Italia.
+
+**Come lavoro:** Direttamente. Niente "spettabile", niente "in indirizzo", niente "ai sensi e per gli effetti", niente formule arcaiche. Paragrafi corti, max 4-5 righe. Citazioni normative solo quando strettamente necessarie. Quando cito giurisprudenza, preferisco Cassazione recente (≤ 2 anni), solo sentenze di merito se di rilievo riconosciuto.
+
+**Come firmo:** "Cordiali saluti, Avv. Mario Rossi". Mai "Distinti", mai "Ossequi", mai "Restando in attesa di un Vostro cortese cenno".
+
+**Come voglio che mi rispondi:**
+- Vai dritto al punto. Mai preamboli tipo "Ottima domanda!" o "Capisco perfettamente."
+- Se la risposta richiede una struttura, usala (elenchi, tabelle, paragrafi numerati)
+- Se ti mancano informazioni essenziali per dare una risposta utile, chiedimele PRIMA di rispondere
+- Quando produci un drafting (lettera, parere, atto), dammi solo il testo finale, niente "Ecco la bozza:" o "Spero sia utile"
+- Italiano corretto, formale ma non rigido
+
+**Cosa NON fare mai:**
+- Inventare giurisprudenza o riferimenti normativi (allucinazioni). Se non sei sicuro di una citazione, dimmi "non sono sicuro, verifica" anziché inventare
+- Suggerire azioni che violano il segreto professionale o la deontologia forense
+- Concludere risposte con domande tipo "Hai bisogno di altro?"
+</Prompt>
+
+## Come adattarlo per te
+
+Personalizza tre cose principali:
+
+### 1. Identità
+
+Sostituisci con i tuoi dati reali: città, specializzazione, dimensione studio, tipo di clientela prevalente.
+
+### 2. Stile
+
+Pensa a un parere ben scritto dello studio. Quali sono i suoi tratti?
+
+- Lunghezza paragrafi
+- Lessico (formale vs colloquiale)
+- Formule da bandire
+- Formule da preferire
+
+### 3. Output preferito
+
+Cosa vuoi che Claude faccia di default? Brevità o profondità? Strutturato o discorsivo? Italiano formale o colloquiale?
+
+<Esempio>
+L'Avv. Sara Conti, giuslavorista a Padova, era stanca di riscrivere lo stesso disclaimer alla fine di ogni email a un nuovo cliente, più la solita formula "il presente parere si basa esclusivamente sulla documentazione fornita". Ha messo entrambi nelle Custom Instructions una volta sola, insieme alla sua firma e al tono che usa. Ora Claude li aggiunge da soli a ogni bozza che le prepara, e lei si è ripresa circa 10 minuti al giorno solo da lì. In un anno fa più di 40 ore: una settimana di lavoro restituita.
+</Esempio>
+
+## Esempi di Custom Instructions specifiche per pratica
+
+### Per un penalista
+
+> "Specializzato in diritto penale d'impresa. Quando analizzi un caso, struttura sempre la risposta in: 1) qualificazione giuridica del fatto, 2) elementi soggettivi rilevanti, 3) strategia difensiva, 4) prove a discarico da raccogliere."
+
+### Per un giuslavorista
+
+> "Quando produci atti, distingui sempre il punto di vista del datore di lavoro vs del lavoratore prima di formulare il consiglio. Cita sempre il CCNL applicabile se rilevante."
+
+### Per un avvocato di famiglia
+
+> "Tono empatico ma professionale. Quando spieghi al cliente cosa succederà, evita gergo tecnico, usa termini semplici e definisci i giuridismi necessari (es. 'separazione consensuale = quando entrambi i coniugi sono d'accordo')."
+
+## Limiti delle Custom Instructions
+
+### 1. Lunghezza
+
+Anthropic non pubblica un limite preciso ma in pratica oltre ~2000 parole le Custom Instructions iniziano a essere "diluite", Claude le applica meno consistentemente. Mantienile compatte.
+
+### 2. Specificità per pratica
+
+Se hai contesti molto diversi (es. metà del lavoro è civile, metà penale), le Custom Instructions globali devono restare generali, i dettagli specifici vanno nelle Project Instructions.
+
+### 3. Non sono leggi
+
+Le Custom Instructions sono indicazioni forti, non comandi. Se chiedi qualcosa che contraddice le tue stesse Custom Instructions, Claude segue la richiesta corrente. Esempio: hai scritto "mai formule arcaiche" ma chiedi "scrivi una lettera in stile aulico", riceverai la lettera aulica.
+
+## Cosa fai oggi
+
+Trenta minuti, una volta, e hai investito per anni di uso più produttivo:
+
+1. Apri claude.ai → Settings → Profile
+2. Copia il template sopra
+3. Adattalo (identità, stile, output)
+4. Salva
+5. Apri una nuova Chat e prova un task qualsiasi, noterai subito la differenza
+
+<Nota tipo="suggerimento">
+Tienine una **copia salvata sul tuo PC** (es. file `claude-custom-instructions.md`). Se devi cambiare account o ricreare le impostazioni, ti basta copiare-incollare anziché riscrivere.
+</Nota>
+
+<RiferimentoCorso lezione="03-output-styles" />
+
+Nella prossima lezione: Output Styles, come avere risposte sempre nel formato che ti serve.

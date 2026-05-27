@@ -1,0 +1,122 @@
+---
+titolo: "Projects, il dossier digitale"
+sottotitolo: "Una stanza Claude per ogni cliente"
+durata: 8
+ordine: 2
+aggiornato: "2026-05-23"
+quiz: false
+---
+
+Hai un cliente che ti dà 10 task al mese e ogni volta devi reincollare la stessa storia in una nuova Chat? Quello è il momento in cui Chat smette di bastare. Projects (uno spazio dentro Claude dove carichi documenti e istruzioni che restano disponibili in tutte le conversazioni di quel progetto) è la **stanza di lavoro**: carichi documenti, scrivi istruzioni una volta, e d'ora in poi ogni conversazione dentro quel Project parte già conoscendo tutto. È la singola feature che cambia di più la produttività di un avvocato.
+
+## Cosa fa diverso un Project rispetto a una Chat
+
+| | Chat | Project |
+|---|---|---|
+| Memoria | Solo dentro la stessa conversazione | Persistente fra tutte le conversazioni |
+| Documenti | Da incollare ogni volta | Caricati una volta, sempre disponibili |
+| Istruzioni | Solo Custom Instructions globali | Project Instructions specifiche |
+| Conversazioni | Una alla volta | Quante vuoi, tutte sullo stesso contesto |
+
+## La regola: un cliente = un Project
+
+Per ogni cliente attivo, crea un Project dedicato. Nominalo in modo chiaro:
+
+- "Bianchi srl - consulenza societaria continuativa"
+- "Rossi vs Verdi - causa civile RG 1234/2026"
+- "Studio Notarile Bianchi - revisione contratti"
+
+## Cosa caricare in un Project
+
+Per una **causa** in corso:
+
+- Atto di citazione
+- Comparsa di costituzione (vostra e di controparte)
+- Memorie successive
+- Documenti probatori chiave (max 20-30, i più rilevanti)
+- Le sentenze citate da una parte e dall'altra
+- Eventuali consulenze tecniche
+
+Per una **consulenza ricorrente** ad uno studio aziendale:
+
+- L'ultimo contratto-tipo
+- Le clausole standard dello studio aziendale (se diverse dalle vostre)
+- Note interne su come piace lavorare al CFO/legale interno
+- Email rappresentative dello scambio recente
+
+## Project Instructions: il vero potere
+
+Dentro ogni Project puoi scrivere "Istruzioni" che si applicano ad ogni conversazione dentro quel Project. Esempio:
+
+<Prompt>
+Sei l'assistente dell'Avv. Mario Rossi nella causa Bianchi vs Verdi (RG 1234/2026, Tribunale di Milano, prima udienza 15/09/2026).
+
+**Contesto del caso:** controversia su recesso anticipato di contratto di somministrazione. Bianchi srl (nostro cliente) ha recesso al 12° mese di un contratto di 24 mesi, contestando inadempimenti di Verdi spa nella qualità del prodotto. Verdi rivendica €120.000 di penali contrattuali.
+
+**La nostra strategia difensiva:**
+1. Eccezione di inadempimento (Verdi non ha rispettato le specifiche tecniche dell'art. 4.2)
+2. Vessatorietà della clausola penale (10% sul valore residuo è eccessivo, art. 1341 c.c.)
+3. Modifica di fatto del contratto via email del 03/2025 (riduzione della soglia di qualità)
+
+**Stile per ogni atto/memoria:** diretto, citazioni normative solo quando necessario, paragrafi corti, mai più di 10 pagine se non strettamente necessario.
+
+**Firma di chiusura:** Avv. Mario Rossi.
+
+Quando ti chiedo di scrivere una memoria, una nota o una lettera, applica sempre questo contesto.
+</Prompt>
+
+D'ora in poi, ogni conversazione dentro questo Project parte "sapendo" tutto questo. Non devi mai più ri-spiegarlo.
+
+<Esempio>
+Lo Studio Verdi & Associati di Milano segue da anni una società di logistica che ogni trimestre gira 15-20 contratti di trasporto da rivedere. Prima li si dividevano fra tre associati, ognuno con il proprio "stile" di revisione, risultato: il cliente si lamentava perché le osservazioni cambiavano di tono e di rigore a seconda di chi ci metteva mano. Hanno creato un Project Claude dedicato, con gli standard dello studio nelle Project Instructions (clausole sensibili, soglie di responsabilità accettabili, modelli di linguaggio preferiti) e i 12 contratti-tipo della società caricati come riferimento. Ora la prima passata sulle clausole abusive la fa Claude, gli associati rileggono e affinano. Il tempo medio per contratto è sceso da 4 ore a 45 minuti, e soprattutto le osservazioni sono uniformi.
+</Esempio>
+
+## Esempio pratico: una settimana nella vita del Project
+
+**Lunedì mattina.** Ti arriva l'eccezione di controparte. La carichi nel Project. Apri una nuova chat: "Riassumi questa eccezione in 5 punti e dimmi quali sono le 3 argomentazioni più pericolose per noi."
+
+**Lunedì pomeriggio.** Stessa chat: "Per ognuna delle 3 argomentazioni, dammi una contro-argomentazione e suggerisci giurisprudenza pertinente da cercare."
+
+**Martedì.** Nuova chat nello stesso Project: "Scrivi la bozza della nostra controdeduzione, focalizzata sulle 3 argomentazioni dell'eccezione, applicando il nostro stile."
+
+**Mercoledì.** Hai modificato la bozza. Nuova chat: "Ho fatto queste modifiche [incolli], rivedi e suggerisci miglioramenti di stile/argomentativi."
+
+**Venerdì.** Nuova chat: "Genera 10 domande che il giudice potrebbe farci alla prima udienza, in base ai documenti che hai."
+
+Cinque chat diverse, una sola Project Instructions, un solo upload di documenti. Senza Projects, questo workflow ti costringerebbe a re-incollare il dossier 5 volte.
+
+## Limiti dei Project
+
+### 1. Spazio finito
+
+Ogni Project ha un limite di documenti che può tenere "in memoria attiva". Su piano Pro, parecchi MB; su Team, di più. Per dossier enormi (50+ documenti), valuta:
+
+- Caricare solo i 20 più rilevanti
+- Sintetizzare alcuni documenti in note di 1 pagina e caricare le note invece dei PDF
+- Usare Claude Code (la versione di Claude che lavora direttamente sui file del tuo computer, con il tuo permesso, vedi Modulo 2, lezione 3) per task che richiedono di leggere tutto
+
+### 2. Aggiornamento manuale
+
+Se aggiungi documenti nuovi al caso, devi caricarli a mano nel Project. Non c'è una sync automatica con cartelle locali (per quella, esiste MCP, il protocollo che permette a Claude di parlare con i tuoi software, gestionale, drive, calendar, lezione 5).
+
+### 3. Condivisione
+
+Su piano Pro singolo, i Project sono solo tuoi. Su piano Team, i Project si possono condividere con i colleghi dello studio, utile per associati e praticanti.
+
+<Nota tipo="attenzione">
+Prima di caricare documenti reali di un cliente in un Project, verifica con il Modulo 6 (Privacy & deontologia) cosa puoi e non puoi caricare. Per pratiche sensibili, valuta sempre l'anonimizzazione dei nomi.
+</Nota>
+
+## Cosa fai questa settimana
+
+Scegli **tre clienti** attivi. Per ognuno:
+
+1. Crea un Project
+2. Scrivi 3-5 righe di Project Instructions (chi, caso, stile)
+3. Carica 3-5 documenti chiave
+
+Al prossimo task per uno di questi clienti, prova a farlo nel Project anziché in Chat. La differenza la senti dalla prima conversazione.
+
+<RiferimentoCorso lezione="03-claude-code" />
+
+Nella prossima lezione: Claude Code, lo strumento da terminale che cambia le regole quando hai molti documenti da processare insieme.

@@ -1,0 +1,116 @@
+---
+titolo: "Risorse esterne curate per chi vuole approfondire"
+sottotitolo: "Sei categorie, niente liste-di-mille-link. Solo quello che vale la pena leggere"
+durata: 8
+ordine: 4
+aggiornato: "2026-05-26"
+quiz: false
+---
+
+Questa è una pagina che probabilmente torni a riaprire ogni volta che hai un dubbio specifico: "il Garante ha detto qualcosa sul punto?", "esiste un parere CNF su questo?", "come verifico la sentenza che Claude mi ha citato?". Il corso copre il 90% di quello che un avvocato civilista italiano deve sapere per usare Claude bene. Qui trovi il **resto**: risorse esterne curate per quando vuoi approfondire un punto specifico, capire dove il panorama si sta muovendo, o iniziare una conversazione interna allo studio basata su materiali condivisi.
+
+Non è una lista esaustiva, è una lista **filtrata**: cose che ho consultato io e che valgono il tempo. Niente liste-di-mille-link che poi non apri mai.
+
+## 1. Documentazione ufficiale Anthropic
+
+Il punto di partenza non negoziabile per qualunque cosa tecnica. Anthropic (l'azienda che fa Claude) aggiorna i docs in tempo reale rispetto alle release di prodotto, e una funzione "nuova" del corso può essere già evoluta nel frattempo.
+
+<Risorse items={[
+  { titolo: "Anthropic Docs", url: "https://docs.anthropic.com", fonte: "Anthropic" },
+  { titolo: "Claude Skills Reference", url: "https://docs.anthropic.com/claude/docs/skills", fonte: "Anthropic" },
+  { titolo: "Anthropic Academy (corsi liberi)", url: "https://anthropic.skilljar.com", fonte: "Anthropic" },
+  { titolo: "Claude API Reference", url: "https://docs.anthropic.com/claude/reference", fonte: "Anthropic" },
+]} />
+
+**Cosa cercare:** quando una funzione del corso ti sembra cambiata o evoluta, vai sui docs ufficiali per primo. Gli aggiornamenti di prodotto stanno andando rapidi: i docs sono la fonte di verità.
+
+## 2. Diritto della privacy e dell'AI in Italia
+
+Il punto di riferimento istituzionale per la conformità GDPR e per l'AI Act in fase di applicazione.
+
+<Risorse items={[
+  { titolo: "Garante per la Protezione dei Dati Personali", url: "https://www.garanteprivacy.it", fonte: "Autorità" },
+  { titolo: "AI Act, testo consolidato (Reg. UE 2024/1689)", url: "https://eur-lex.europa.eu/eli/reg/2024/1689/oj", fonte: "EUR-Lex" },
+  { titolo: "European Data Protection Board, linee guida AI", url: "https://edpb.europa.eu", fonte: "EDPB" },
+]} />
+
+**Cosa cercare:** ogni volta che dubiti su una scelta di compliance, parti dalle linee guida del Garante. Sono scritte in italiano e con esempi pratici. L'AI Act è ancora in fase di rodaggio applicativo (2026-2027 per molti obblighi): rileggi periodicamente lo stato dell'applicazione.
+
+## 3. Deontologia forense e uso AI
+
+Il dibattito sulla compatibilità dell'uso di AI generativa con il Codice Deontologico Forense è aperto e in evoluzione.
+
+<Risorse items={[
+  { titolo: "Consiglio Nazionale Forense, area pubblicazioni", url: "https://www.consiglionazionaleforense.it", fonte: "CNF" },
+  { titolo: "Codice Deontologico Forense, testo vigente", url: "https://www.consiglionazionaleforense.it/codice-deontologico", fonte: "CNF" },
+  { titolo: "Cassa Forense, pubblicazioni e webinar AI", url: "https://www.cassaforense.it", fonte: "Cassa Forense" },
+]} />
+
+**Cosa cercare:** pareri del CNF sull'uso di AI, in particolare in relazione al segreto professionale (artt. 13, 28 CDF), alla diligenza nell'esecuzione del mandato (art. 12), e alla pubblicità informativa professionale.
+
+## 4. Banche dati giurisprudenziali italiane
+
+Per la **verifica delle citazioni** che Claude potrebbe produrre. Mai depositare un atto basato su giurisprudenza non verificata su banca dati.
+
+<Risorse items={[
+  { titolo: "DeJure (Giuffrè)", url: "https://dejure.it", fonte: "Editore" },
+  { titolo: "Pluris Cedam (Wolters Kluwer)", url: "https://pluris-cedam.utetgiuridica.it", fonte: "Editore" },
+  { titolo: "Altalex", url: "https://www.altalex.com", fonte: "Editore" },
+  { titolo: "Italgiure (Cassazione)", url: "https://www.italgiure.giustizia.it", fonte: "Pubblica" },
+  { titolo: "Foro Italiano", url: "https://www.foroitaliano.it", fonte: "Editore" },
+]} />
+
+**Cosa cercare:** ogni numero di sentenza che Claude ti suggerisce, va riscontrato qui prima di citarlo. Italgiure è gratuito per le sentenze di Cassazione. Le altre richiedono abbonamento, di solito presente già nello studio.
+
+<Esempio>
+L'Avv. Pietro Russo di Verona, civilista, ha preso l'abitudine di verificare ogni sentenza che Claude gli cita prima di metterla in atto. Sul primo atto importante in cui l'ha usata, Claude gli aveva citato una Cass. 14523/2019 in tema di responsabilità contrattuale che sembrava perfettamente in punto. Russo ha aperto Italgiure: il numero esisteva, ma la sentenza riguardava materia diversa, non c'entrava nulla con il suo caso. Ha eliminato la citazione, atto depositato senza danno. Da allora regola fissa nello studio: zero numeri di sentenza in atti senza riscontro su DeJure o Italgiure. Tempo della verifica: 3-4 minuti per sentenza. Errori evitati: incalcolabili.
+</Esempio>
+
+## 5. Comunità e formazione continua
+
+Confronto con colleghi che stanno facendo lo stesso percorso.
+
+<Risorse items={[
+  { titolo: "Legal Tech Italia (LinkedIn group)", url: "https://www.linkedin.com/groups/legal-tech-italia", fonte: "Community" },
+  { titolo: "Codex (Stanford CodeX, in inglese)", url: "https://law.stanford.edu/codex", fonte: "Università" },
+  { titolo: "Future Lawyer Magazine", url: "https://www.futurelawyermagazine.com", fonte: "Editoriale" },
+]} />
+
+**Cosa cercare:** post di colleghi italiani che stanno sperimentando AI nel loro studio. Le discussioni concrete (errori, successi, dubbi reali) valgono più dei white paper. Cerca chi pubblica casi pratici, non chi pubblica solo riflessioni filosofiche.
+
+## 6. Letture lunghe consigliate (carta o ebook)
+
+Solo libri che valgono il tempo, non liste delle 100 cose da leggere.
+
+<Risorse items={[
+  { titolo: "Tales of the Law and How They Are Pleaded (vari)", url: "", fonte: "Letture professionali generaliste" },
+  { titolo: "Codice Civile annotato, edizione corrente", url: "", fonte: "Riferimento" },
+  { titolo: "Manuale di diritto deontologico forense, di Remo Danovi", url: "", fonte: "Trattazione" },
+  { titolo: "AI Snake Oil, Arvind Narayanan e Sayash Kapoor (in inglese)", url: "", fonte: "Critica AI" },
+]} />
+
+**Cosa cercare:** un libro per anno è già molto. Scegli in base alla domanda professionale che hai aperta, non in base alle classifiche.
+
+## La regola del consumo
+
+Le risorse esterne sono utili ma diventano facilmente un alibi per non fare. La regola: **una risorsa esterna al giorno, massimo 20 minuti**. Il resto del tempo va sulla pratica reale.
+
+Se ti accorgi di stare passando 2 ore al giorno a leggere articoli sull'AI nella professione legale, stai sbagliando rapporto. Le ore vanno sul lavoro vero, supportato dagli strumenti.
+
+<Nota tipo="suggerimento">
+Crea su Claude un Project dedicato "Risorse AI legale" dove caricare articoli, paper, linee guida del Garante che leggi nel tempo. Chiedi a Claude di sintetizzarli e di estrarre le 3 cose applicabili al tuo studio. Trasforma il consumo passivo in input azionabili. È anche un buon modo per non perdere quello che leggi: a 6 mesi di distanza, il Project ti ricorda cosa hai letto e perché era rilevante.
+</Nota>
+
+## La domanda da farsi prima di leggere qualunque cosa esterna
+
+> "Cosa farò di diverso lunedì mattina dopo aver letto questo?"
+
+Se la risposta è "niente, è solo informativa", probabilmente non vale 20 minuti del tuo tempo. Sposta su qualcos'altro.
+
+<Recap titolo="Tre principi di consumo informazione">
+  <Punto>Banche dati giurisprudenziali: la verifica delle citazioni Claude è non negoziabile.</Punto>
+  <Punto>Garante e CNF: sono la fonte di verità per i dubbi di compliance e deontologia.</Punto>
+  <Punto>Un'ora al giorno di lettura passiva è troppo: la regola è 20 minuti, il resto sul lavoro vero.</Punto>
+</Recap>
+
+Hai chiuso il Modulo 10, e con questo l'intero corso. Da qui parte la parte che fa davvero la differenza: l'uso quotidiano sui tuoi casi veri. Sei pronto per la **prova finale e la certificazione**.

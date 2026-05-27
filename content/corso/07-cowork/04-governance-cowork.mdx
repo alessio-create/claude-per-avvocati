@@ -1,0 +1,114 @@
+---
+titolo: "Governance e compliance in Cowork"
+sottotitolo: "Quando l'uso individuale diventa responsabilità di studio"
+durata: 8
+ordine: 4
+aggiornato: "2026-05-24"
+quiz: false
+---
+
+Hai mai pensato a cosa succederebbe se domani il Garante bussasse alla porta dello studio e chiedesse "chi ha caricato cosa su Claude negli ultimi 6 mesi"? Con Pro individuali, ognuno gestisce da sé e il quadro è frammentato. Con Cowork, la domanda ha una risposta tracciabile: lo dice l'audit log.
+
+Con Pro individuali, ogni avvocato è responsabile del proprio uso. Con Cowork, lo **studio** diventa responsabile collettivo. Le implicazioni GDPR e deontologiche cambiano. Questa lezione codifica le policy minime di governance.
+
+## I quattro livelli di responsabilità
+
+<Pillari items={[
+ { numero: "1", titolo: "Studio = titolare del trattamento", descrizione: "Per ogni dato di cliente che entra in Cowork, lo studio (P.IVA) è titolare ai sensi del GDPR. Anthropic è responsabile esterno. DPA (Data Processing Agreement, l'accordo che fissa cosa il fornitore può e non può fare con i tuoi dati) firmato a livello workspace." },
+ { numero: "2", titolo: "Admin = controllo accessi", descrizione: "L'admin del workspace è responsabile di chi entra, chi vede cosa, chi viene revocato. Tracciabilità via audit log." },
+ { numero: "3", titolo: "Associato = uso conforme", descrizione: "Ogni associato è personalmente responsabile dell'uso conforme alla policy interna (anonimizzazione, Categoria C off-limits, verifica output)." },
+ { numero: "4", titolo: "Praticante = formazione obbligatoria", descrizione: "Praticanti senza onboarding formale non possono accedere a Project con dati clienti. Formazione documentata, firmata." },
+]} />
+
+## La policy minima per Cowork
+
+Crea un documento `STUDIO-AI-POLICY.md` di 2-3 pagine. Contenuto essenziale:
+
+### Sezione 1, Strumenti approvati
+
+Solo Claude Cowork (Team workspace dello studio). Esplicito divieto di:
+- ChatGPT consumer / Gemini consumer / altri LLM per dati clienti reali
+- Strumenti AI senza DPA firmato
+- Account personali Claude per lavoro di studio
+
+### Sezione 2, Categorie dati
+
+Tabella di classificazione (vedi Modulo 6 lezione 1):
+
+| Categoria | Esempio | Cosa puoi fare in Cowork |
+|---|---|---|
+| **A, Libera** | Modelli generici, formule, prompt-template | Sì, libero |
+| **B, Anonimizzata** | Contratti reali, email reali (anonimizzati) | Sì, dopo anonimizzazione |
+| **C, Vietata** | Penale in corso, sanitari, NDA stretti | NO, lavoro solo interno |
+
+### Sezione 3, Workflow obbligatori
+
+- **Prima di caricare:** verifica categoria, anonimizza se serve
+- **Dopo l'output:** rilettura completa prima di usare/inviare
+- **Citazioni giurisprudenziali:** sempre verificate su banca dati prima del deposito
+- **Project naming:** convenzione `[A/B] - Cliente-ID - Descrizione`
+
+### Sezione 4, Conseguenze violazioni
+
+Chi viola la policy:
+- È personalmente responsabile delle conseguenze deontologiche e civili
+- Lo studio non copre violazioni evidenti
+- Sospensione accesso al workspace fino a revisione
+
+Distribuiscilo a tutti, firma per ricezione.
+
+<Esempio>
+Lo Studio Bellini di Trieste aveva un problema di governance: l'avvocato senior non sapeva chi caricava cosa su Claude. Con Cowork ha attivato l'audit log e ora vede esattamente: chi ha caricato quale documento, quando, in che Project. Da quel momento il DPO interno ha smesso di chiamarlo ogni venerdì. La policy l'hanno firmata in 20 minuti, durante il caffè del lunedì.
+</Esempio>
+
+
+## Audit periodici
+
+### Settimanale (5 min, partner senior)
+
+- Quanti Project nuovi creati?
+- Ci sono Project con dati che dovrebbero essere Categoria C?
+- Skills nuove condivise?
+
+### Mensile (15 min, admin)
+
+- Lista utenti attivi vs invitati ma silenti (eventualmente revoca i silenti)
+- Audit log: accessi anomali (orari strani, accessi a Project non rilevanti per il ruolo)?
+- Spesa mensile: è in linea con utenti attivi?
+
+### Annuale (mezza giornata, partner + consulente privacy)
+
+- DPA con Anthropic ancora valido? Aggiornamenti?
+- Policy interna ancora attuale? (es. nuove categorie di clienti, nuove materie)
+- Registro dei trattamenti aggiornato?
+- Eventuali incidenti da documentare?
+
+## Cosa fare in caso di breach
+
+Scenario raro ma da prepararsi:
+
+1. **Account compromesso (es. password rubata):** admin revoca immediatamente. Notifica obbligatoria al Garante entro 72h se ci sono dati personali coinvolti.
+2. **Errore di sharing (Project condiviso con persona sbagliata):** revoca accesso, valuta se i dati sono Categoria B/C, eventualmente notifica clienti coinvolti.
+3. **Allucinazione di Claude usata in atto depositato:** comunicazione formale al giudice, valutazione responsabilità professionale interna.
+
+Mantieni un protocollo di breach scritto. È 1 pagina, ma quando serve è preziosa: il momento del breach non è il momento per improvvisare.
+
+## L'errore più comune
+
+Studi che attivano Cowork e poi **non aggiornano la policy interna**. Risultato: praticanti che usano Cowork come Pro, senza onboarding formale, senza tracciabilità. È il singolo errore che trasforma uno strumento di efficienza in un rischio di compliance.
+
+Mezzo giorno di setup di governance ti risparmia anni di rischio.
+
+<Nota tipo="attenzione">
+L'AI Act europeo (Reg. UE 2024/1689) sta entrando in fase di applicazione. Per studi che usano AI in modo strutturato (come Cowork), valuta nel 2026-2027 una revisione formale con consulente AI Act. Per ora le obbligazioni più stringenti riguardano sistemi ad alto rischio e fornitori di AI, meno gli utilizzatori finali, ma il panorama evolve velocemente.
+</Nota>
+
+## Fine del Modulo 7
+
+Cowork è il salto da uso individuale a vero asset di studio. Richiede investimento di setup + governance, ma sblocca workflow impossibili con account separati.
+
+<Risorse items={[
+ { titolo: "Introduction to Claude Cowork", url: "https://anthropic.skilljar.com", fonte: "Anthropic Academy" },
+ { titolo: "Claude for Work, implementazione organizzativa", url: "https://claude.com/work", fonte: "Anthropic" },
+ { titolo: "AI Act, testo consolidato", url: "https://eur-lex.europa.eu/eli/reg/2024/1689/oj", fonte: "EUR-Lex" },
+]} />

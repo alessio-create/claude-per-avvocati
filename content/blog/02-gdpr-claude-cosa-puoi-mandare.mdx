@@ -1,0 +1,130 @@
+---
+titolo: "GDPR e Claude: cosa puoi davvero mettere in un prompt"
+sottotitolo: "Una mappa pratica dei dati di clienti, divisi per livello di rischio"
+data: "2026-05-18"
+autore: "Alessio Massaro"
+tempo: 11
+tag: ["Privacy", "GDPR"]
+coverColor: "sage"
+coverIcon: "shield"
+estratto: "Prima di chiedere a Claude di rivedere quel contratto, devi sapere cosa puoi davvero condividere. Tre categorie di dati, tre regole semplici, e quando il piano Pro non basta."
+---
+
+La prima settimana che un avvocato apre Claude, la domanda inevitabile arriva entro pochi giorni: *"Ma posso mettere i dati dei miei clienti?"*. La risposta corretta non è "sì" e non è "no". È: **dipende da che tipo di dato, su quale piano stai lavorando, e cosa hai firmato con Anthropic.**
+
+Questo articolo è una mappa pratica, scritta per essere stampata e tenuta sul tavolo dello studio. Non sostituisce una valutazione del DPO o di un consulente privacy, la integra.
+
+## Le tre categorie di dati
+
+Distinguere serve. Qualunque ragionamento serio parte da qui.
+
+### Categoria A, Libera
+
+Sono dati che NON identificano nessuno e non rivelano nulla di confidenziale. Esempi:
+
+- Modelli di lettera, contratti tipo, formule
+- Domande astratte di diritto ("come si calcola la decadenza nel processo civile?")
+- Prompt-template del tuo studio
+- Codici e articoli del codice civile
+
+Questi possono andare in qualsiasi piano di Claude, compresi quelli consumer. Nessun problema.
+
+### Categoria B, Anonimizzata
+
+Sono dati di clienti reali, ma anonimizzati prima di essere inviati. Esempi:
+
+- Un contratto reale dove hai sostituito i nomi: *"Studio Bianchi srl"* → *"il cliente C"*
+- Un'email di controparte dove hai mascherato l'importo: *"€14.500"* → *"€X.XXX"*
+- Una sentenza dove hai oscurato le parti
+
+Puoi mandarli su un piano Pro (con attenzione: spesso l'anonimizzazione non è sufficiente da sola, un dato che identifica indirettamente la persona, ad esempio "il cliente X, la srl tessile di Bergamo con 30 dipendenti", è ancora un dato personale ai sensi del GDPR).
+
+La regola pratica: **se un terzo, leggendo il prompt, potrebbe risalire al cliente entro 30 secondi di ricerca su Google, l'anonimizzazione non basta.**
+
+### Categoria C, Vietata
+
+Sono dati che NON vanno su Claude in alcuna forma, finché non hai configurato un workspace con DPA firmato (Team o Cowork). Esempi:
+
+- Procedimenti penali in corso
+- Dati sanitari di clienti
+- NDA stretti con clausole di riservatezza vincolanti
+- Dati di minori
+- Documenti coperti da segreto industriale
+
+Per questi, lavora solo su strumenti interni allo studio o, se proprio devi usare AI, usa Claude Cowork con DPA firmato a livello workspace (vedi il [Modulo 7 del corso](/corso/07-cowork/01-cosa-e-cowork)).
+
+## Cosa dice (davvero) la policy di Anthropic
+
+Sul piano consumer (Pro singolo a €18-22/mese), Anthropic dichiara che:
+
+- I tuoi prompt **non sono usati per addestrare i modelli** (opt-out di default su Pro)
+- I prompt sono conservati per un periodo limitato (default: 30 giorni, modificabile)
+- I dipendenti di Anthropic non li leggono salvo casi di violazioni delle policy o richieste legali
+
+È sufficiente per la Categoria A e (con attenzione) per la B. Non è sufficiente per la C, perché manca un DPA scritto e personalizzato col tuo studio.
+
+Su Claude Team / Cowork (€25-30/utente/mese con minimi):
+
+- DPA firmato a livello organizzazione
+- I prompt **non lasciano l'organizzazione** (l'admin del workspace è il titolare)
+- Audit log, gestione accessi, conservazione configurabile
+- Conformità SOC 2 documentata
+
+Per uno studio che gestisce regolarmente Categoria C, Cowork è il setup minimo richiesto.
+
+## L'errore più comune
+
+Il singolo errore che vediamo più spesso è questo: l'avvocato anonimizza i nomi pensando di aver fatto abbastanza, e dimentica che l'anonimizzazione del **nome** non è anonimizzazione del **caso**.
+
+Esempio: *"Il mio cliente, una srl manifatturiera di Como con sede in via Verdi 12, settore tessile, ci segue da 5 anni, ha avuto un contenzioso con un fornitore di Padova nel 2023 per €280.000..."*
+
+Anche se hai tolto il nome della srl, il caso è identificabile. Per un GDPR puro, è ancora un dato personale.
+
+**La regola del "vicino in treno":** se descrivessi il caso a voce a uno sconosciuto seduto vicino a te in treno, sarebbe identificabile? Se sì, ricorri a categorie generiche (settore, dimensione, regione invece di città) prima di mandare.
+
+## Una checklist da 30 secondi
+
+Prima di mandare un prompt che riguarda un caso reale:
+
+1. **Nomi propri di persone fisiche?** → Rimuovi.
+2. **Nomi propri di società o studi?** → Rimuovi o usa "il cliente C".
+3. **Importi specifici?** → Arrotonda o usa "€X.XXX".
+4. **Date specifiche?** → Usa "in [mese/anno]" o "X mesi fa".
+5. **Sede/indirizzo specifico?** → Usa "città del nord", "regione X".
+6. **Settore + dimensione + storico molto specifici?** → Generalizza.
+
+Se dopo questa pulizia il prompt non perde significato giuridico (il caso è ancora comprensibile abbastanza per ricevere una risposta utile), sei a posto per il piano Pro.
+
+Se il prompt **perde significato** dopo l'anonimizzazione, hai un dato di Categoria C, usa Cowork o lavora a mano.
+
+## Un esempio prima/dopo
+
+**Prima (problematico):**
+
+> Il mio cliente Studio Verdi & Associati ha un'azione di Tizio Rossi (CF VRDXXX), 67 anni, ricoverato al San Raffaele di Milano dal 12/03/2026 per un infarto, contro l'INPS per il riconoscimento di una pensione anticipata...
+
+**Dopo (Categoria B accettabile):**
+
+> Un cliente persona fisica, pensionato, ha avviato un'azione contro l'INPS per il riconoscimento di una pensione anticipata. Le condizioni di salute (gravi, recenti) potrebbero essere rilevanti ai fini della valutazione. La questione di diritto è...
+
+La versione "dopo" è ancora utile, ma non identifica nessuno. Va bene per Pro.
+
+## Il registro dei trattamenti
+
+Per uno studio strutturato, vale la pena documentare l'uso di Claude nel registro dei trattamenti:
+
+- **Categoria di trattamento:** assistenza alla redazione di atti e pareri tramite AI generativa
+- **Base giuridica:** legittimo interesse / contratto col cliente (se rilevante)
+- **Categorie di dati:** dati comuni di cliente, dati di contesto giuridico
+- **Conservazione:** 30 giorni (default Anthropic Pro) o configurazione workspace
+- **Misure di sicurezza:** policy interna allo studio sull'anonimizzazione (vedi Modulo 6)
+
+Per studi che già fanno un registro serio, è 30 minuti di lavoro. Per chi non lo fa ancora, è una buona occasione per iniziare.
+
+## La regola d'oro
+
+> Tratta ogni prompt come se la trascrizione finisse stampata e affissa nella sala riunioni dello studio.
+
+Questa è l'intuizione che, in pratica, salva da quasi tutti gli errori. Se quella stampa ti farebbe arrossire (perché contiene il nome di un cliente che non avresti dovuto menzionare), il prompt va riformulato.
+
+Il [Modulo 6 del corso](/corso/06-privacy-deontologia/01-cosa-puoi-mandare) approfondisce ogni punto con esempi reali tratti da casi concreti.

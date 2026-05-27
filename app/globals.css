@@ -1,0 +1,108 @@
+@import 'tailwindcss';
+
+@theme {
+  /* Palette */
+  --color-cream: #faf7f2;
+  --color-cream-panel: #f3ede0;
+  --color-ink: #1a1714;
+  --color-ink-deep: #0f0c0a;
+  --color-terracotta: #d97757;
+  --color-terracotta-deep: #c4623f;
+  --color-terracotta-soft: #cc8a73;
+  --color-body: #463d33;
+  --color-muted: #6b6055;
+  --color-line: #e8e2d6;
+  --color-yellow: #ffd166;
+  --color-blush: #ef9b7e;
+
+  /* Module covers (fixed) */
+  --color-cover-lilac: #c8c6df;
+  --color-cover-sage: #6fa28b;
+  --color-cover-peach: #f0c4ad;
+  --color-cover-lavender: #9b8ad4;
+  --color-cover-terracotta: #d97757;
+  --color-cover-mint: #b3d4c8;
+
+  /* Type */
+  /* Tiempos requires a paid license — Newsreader (free, Google Fonts) is the substitute. Switch to Tiempos via @font-face when license is acquired. */
+  --font-serif: var(--font-serif-loaded, 'Newsreader'), 'Source Serif Pro', Georgia, serif;
+  --font-sans: var(--font-sans-loaded, 'Inter'), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, 'JetBrains Mono', monospace;
+}
+
+@layer base {
+  html { font-family: var(--font-sans); color: var(--color-body); background: var(--color-cream); }
+  h1, h2, h3, h4, h5 { font-family: var(--font-serif); font-weight: 700; color: var(--color-ink); letter-spacing: -0.018em; }
+}
+
+@keyframes pulse-dot { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.5); opacity: 0.5; } }
+@keyframes gradient-sweep { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+@keyframes float-soft { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes glow { 0%,100% { box-shadow: 0 0 0 0 rgba(217,119,87,0); } 50% { box-shadow: 0 0 24px 4px rgba(217,119,87,0.25); } }
+@keyframes bulb-glow { 0%,100% { filter: drop-shadow(0 0 8px rgba(255,200,80,0.4)); } 50% { filter: drop-shadow(0 0 18px rgba(255,200,80,0.85)); } }
+@keyframes flow-pulse { 0% { stroke-dashoffset: 12; } 100% { stroke-dashoffset: 0; } }
+@keyframes twinkle { 0%,100% { opacity: 0.3; } 50% { opacity: 1; } }
+@keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px) scale(0.985); filter: blur(2px); }
+  to   { opacity: 1; transform: none; filter: blur(0); }
+}
+
+@utility anim-pulse-dot { animation: pulse-dot 1.4s ease-in-out infinite; }
+@utility anim-float { animation: float-soft 3.6s ease-in-out infinite; }
+@utility anim-marquee { animation: marquee 30s linear infinite; }
+@utility anim-glow { animation: glow 3s ease-in-out infinite; }
+@utility anim-bulb { animation: bulb-glow 2.4s ease-in-out infinite; }
+@utility anim-gradient-sweep {
+  animation: gradient-sweep 2.6s linear infinite;
+  background-size: 200% 100%;
+}
+@utility anim-bob { animation: bob 2.6s ease-in-out infinite; }
+
+/* Premium staggered entrance, fade + lift + de-blur. Combine with delay utilities. */
+@utility anim-rise {
+  animation: rise 760ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+@utility anim-d-1 { animation-delay: 60ms; }
+@utility anim-d-2 { animation-delay: 160ms; }
+@utility anim-d-3 { animation-delay: 260ms; }
+@utility anim-d-4 { animation-delay: 380ms; }
+@utility anim-d-5 { animation-delay: 500ms; }
+@utility anim-d-6 { animation-delay: 620ms; }
+@utility anim-d-7 { animation-delay: 760ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-rise,
+  .anim-pulse-dot,
+  .anim-float,
+  .anim-marquee,
+  .anim-glow,
+  .anim-bulb,
+  .anim-gradient-sweep,
+  .anim-bob {
+    animation: none !important;
+  }
+}
+
+/* Print: only the certificate card on the page when the user clicks
+   "Scarica il certificato (PDF)" — everything else (sidebars, sticky
+   progress bar, chatbot, share buttons) is suppressed. */
+@media print {
+  body * { visibility: hidden !important; }
+  .cert-printable, .cert-printable * { visibility: visible !important; }
+  .cert-printable {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 24mm 18mm !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+  }
+  .cert-no-print { display: none !important; }
+  /* Chrome/Safari hint to print background colors so the terracotta accents survive */
+  html, body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+}

@@ -1,0 +1,10 @@
+{
+  "titolo": "Setup & stile",
+  "sottotitolo": "Piani, custom instructions, output styles, configurazione studio",
+  "ordine": 3,
+  "categoria": "Configurazione",
+  "icona": "setup",
+  "coloreCover": "peach",
+  "lezioniPianificate": 5,
+  "durataMinutiPianificati": 40
+}

@@ -1,0 +1,81 @@
+---
+titolo: "Esame del Modulo 3"
+sottotitolo: "Verifica setup e stile prima di passare al Modulo 4"
+durata: 5
+ordine: 99
+aggiornato: "2026-05-26"
+quiz: true
+tipo: "esame"
+---
+
+<div className="border border-terracotta/30 bg-terracotta/5 rounded-md p-5 mb-8">
+ <div className="text-[11px] uppercase tracking-widest text-terracotta font-bold mb-1">Esame del modulo</div>
+ <div className="text-sm text-body leading-snug">
+  Rispondi alle 5 domande qui sotto per consolidare piani, Custom Instructions, output styles e la prima Skill. Devi rispondere correttamente ad almeno l'80% per sbloccare il <strong>Modulo 4, Casi d'uso legali</strong> e guadagnare <strong>+3 ✦</strong>.
+ </div>
+</div>
+
+<Quiz
+ modulo="03-setup-stile"
+ lezione="99-esame-modulo"
+ etichetta="Esame"
+ titolo="5 domande per chiudere il modulo."
+ passaCon={4}
+ domande={[
+  {
+   domanda: "Per un avvocato singolo che inizia oggi a usare Claude in modo professionale, quale piano conviene?",
+   opzioni: [
+    "Pro a €18/mese, copre il 90% dei casi e ha Projects, Skills e MCP",
+    "Free, almeno per i primi mesi per non sprecare soldi",
+    "Max subito, così non si rischia di sbattere contro i limiti",
+    "Team, perché la fattura è intestata alla P.IVA"
+   ],
+   corretta: 0,
+   spiega: "Pro è il piano base per il 70% degli avvocati. Si sale a Max o Team solo quando arrivano sintomi concreti di limite, non prima."
+  },
+  {
+   domanda: "Cosa distingue le Custom Instructions da un prompt normale?",
+   opzioni: [
+    "Sono più costose e occupano spazio nel piano",
+    "Funzionano solo dentro un Project specifico",
+    "Si scrivono una volta nelle impostazioni e Claude le applica automaticamente a ogni nuova conversazione",
+    "Vanno riscritte all'inizio di ogni chat per avere effetto"
+   ],
+   corretta: 2,
+   spiega: "Le Custom Instructions vivono in Settings, Claude le legge in testa a ogni conversazione senza che tu le ripeta. Trenta minuti scritti una volta, valgono per anni."
+  },
+  {
+   domanda: "Qual è il modo corretto di distinguere Custom Instructions e Output Styles?",
+   opzioni: [
+    "Le Custom Instructions controllano 'come' Claude risponde, gli Output Styles controllano 'chi' Claude è",
+    "Le Custom Instructions controllano 'chi' Claude è per te (identità, stile), gli Output Styles controllano 'come' formatta le risposte",
+    "Sono sinonimi, due nomi diversi per la stessa funzione",
+    "Custom Instructions sono solo su Team, Output Styles solo su Pro"
+   ],
+   corretta: 1,
+   spiega: "Custom Instructions dicono 'chi', Output Styles dicono 'come'. Si combinano: identità + formato di risposta."
+  },
+  {
+   domanda: "In un workspace Team, chi è il titolare del trattamento dei dati che entrano in Claude?",
+   opzioni: [
+    "Anthropic, in quanto fornitore della piattaforma",
+    "Il singolo utente che fa il prompt",
+    "Lo studio legale che ha attivato il workspace",
+    "Nessuno, i dati delle chat non sono considerati trattamento"
+   ],
+   corretta: 2,
+   spiega: "Per i dati che entrano in Claude via workspace Team lo studio è titolare del trattamento. Anthropic è responsabile esterno e va indicato nell'informativa privacy."
+  },
+  {
+   domanda: "Qual è la regola pratica per capire se un task merita di diventare una Skill?",
+   opzioni: [
+    "Quando il task è particolarmente complesso e richiede ragionamento giuridico avanzato",
+    "Quando lo hai già fatto almeno 3 volte scrivendo prompt simili",
+    "Quando il cliente lo chiede espressamente",
+    "Quando hai tempo libero in studio"
+   ],
+   corretta: 1,
+   spiega: "La regola del 3: se hai ripetuto lo stesso tipo di prompt tre volte, è candidato perfetto per una Skill. Ricorrente più struttura fissa uguale leva massima."
+  }
+ ]}
+/>

@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+
+# Next.js build output
+.next/
+out/
+
+# Turborepo cache (if ever re-introduced)
+.turbo/
+
+# TypeScript incremental build info
+*.tsbuildinfo
+
+# Logs
+*.log
+npm-debug.log*
+
+# Local env files (only .env.example is committed)
+.env
+.env*.local
+
+# Vercel
+.vercel/
+
+# Test coverage
+coverage/
+
+# OS / editor noise
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+.idea/

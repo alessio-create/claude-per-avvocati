@@ -1,0 +1,92 @@
+---
+titolo: "Workflow tipici con Cowork"
+sottotitolo: "Tre scenari reali di studio collaborativo"
+durata: 8
+ordine: 3
+aggiornato: "2026-05-24"
+quiz: false
+---
+
+Hai mai mandato la stessa email tre volte alla stessa controparte perché tu, l'associato e il praticante stavate lavorando ciascuno su una versione diversa del fascicolo? Con account separati capita. Con Cowork no: tutti vedono la stessa stanza.
+
+Cowork sblocca pattern di lavoro che con Pro individuali sono impossibili. Vediamo tre scenari reali per uno studio legale italiano.
+
+## Scenario 1, Causa complessa, partner + associato + praticante
+
+**Setup:** causa civile RG 1234/2026, cliente Bianchi srl, contro Verdi spa. Lavorano: Avv. Rossi (partner, strategia + atti), Avv. Bianchi (associato, ricerca + comparse), Praticante Verdi (estrazione dati).
+
+**Project condiviso:** "Bianchi vs Verdi, RG 1234/2026"
+
+### Flusso settimanale
+
+**Lunedì mattina (partner Rossi):**
+- Apre Project, chiede a Claude la sintesi di tutto quello che è stato fatto la settimana scorsa
+- Genera lista task della settimana → assegna ad associato e praticante
+
+**Lunedì pomeriggio (associato Bianchi):**
+- Apre stesso Project, vede subito i task assegnati
+- Lavora una bozza di memoria difensiva con la Skill `redazione-memoria-art183`
+- Salva la bozza nel Project come allegato
+
+**Martedì (praticante Verdi):**
+- Apre stesso Project, vede la bozza di memoria
+- Estrae con Claude tutti i precedenti citati dalla controparte negli ultimi 6 mesi (da banca dati)
+- Restituisce sintesi nel Project
+
+**Mercoledì (partner Rossi):**
+- Apre Project, vede bozza memoria + ricerca giurisprudenza
+- Una conversazione finale con Claude: "Affina la memoria di Bianchi inserendo i 3 precedenti più rilevanti che ha trovato il praticante. Mantieni il mio stile."
+- Versione finale pronta in 30 minuti
+
+Risultato: una memoria difensiva preparata in 3 giorni con coinvolgimento distribuito, vs. 5-7 giorni di lavoro sequenziale ping-pong via email.
+
+<Esempio>
+Lo Studio Conti & Russo di Padova, 5 avvocati, gestiva una causa di responsabilità medica con partner, due associati e una praticante. Prima di Cowork: ogni allegato girava via WeTransfer, gli appunti del partner stavano sul suo Claude personale, le ricerche giurisprudenziali della praticante in un PDF Drive. Dopo Cowork: tutto in un solo Project condiviso. La memoria del 183 è uscita in 2 giorni invece di 6, perché l'associato apriva il Project la mattina e vedeva già le note che il partner aveva lasciato a Claude la sera prima.
+</Esempio>
+
+
+## Scenario 2, Onboarding praticante nuovo
+
+Praticante arriva il lunedì. Vecchio mondo: 2-3 settimane di osmosi per capire come scrive lo studio.
+
+Con Cowork:
+
+- **Giorno 1:** accesso al workspace. Workspace Custom Instructions caricate. Leggi `STUDIO-SKILLS.md`.
+- **Giorno 2:** prova ad applicare la Skill `sollecito-pagamento` su 3 casi reali (anonimizzati). Confronta output con archivio.
+- **Giorno 3:** scrive il primo parere usando `redazione-parere-stile-studio`. Partner senior lo rivede.
+- **Settimana 2:** già produttivo a livelli simili agli associati.
+
+**Risultato:** onboarding compresso da 1 mese a 1 settimana. Stile dello studio applicato dal giorno 1.
+
+## Scenario 3, Knowledge management tra partner
+
+Studio con 4 partner. Storicamente ognuno tiene il proprio "tesoretto" di approcci, citazioni preferite, formule. Quando un partner va in vacanza, i casi fermano.
+
+Con Cowork:
+
+- Ogni partner contribuisce alle Skills condivise (`redazione-parere-civile`, `redazione-parere-societario`, etc.)
+- Lo "stile del partner X" diventa una Skill nominata
+- Quando il partner X è in vacanza, partner Y continua i suoi casi usando la sua Skill
+- Quando il partner X torna, il workflow non si è fermato, e magari trova workflow migliori che gli altri hanno scoperto
+
+**Risultato:** lo studio diventa **resiliente** rispetto alle assenze. Niente più "aspettiamo che torni l'avvocato X". Il sapere resta nel workspace, non in una testa che è in ferie a Pantelleria.
+
+## Le tre regole d'oro di Cowork
+
+### 1. Ogni Project ha un proprietario
+
+Sì, è condiviso. Ma serve una persona di riferimento per quel Project. Senza owner, le Skills nel Project si rompono e nessuno le aggiorna.
+
+### 2. Conversazioni nei Project, non in Chat privata
+
+Resisti alla tentazione di lavorare in Chat privata "perché va più veloce". Se la conversazione riguarda un cliente dello studio, va nel Project condiviso. Altrimenti hai info importanti bloccate nel tuo account, ed è esattamente il problema che Cowork doveva risolvere.
+
+### 3. Settimanale di team su Cowork (15 minuti)
+
+Una volta a settimana, 15 minuti dedicati: nuovi Project creati, Skills aggiornate, problemi incontrati, esempi di output particolarmente buoni o sbagliati. Senza questo rito, Cowork diventa "ognuno fa la sua cosa".
+
+<Nota tipo="suggerimento">
+Tieni un file `WORKSPACE-LOG.md` come Project condiviso, dove ogni settimana il partner senior aggiunge 3-5 osservazioni: cosa ha funzionato, cosa no, quale Skill nuova varrebbe la pena scrivere. In 6 mesi diventa una storia preziosa.
+</Nota>
+
+<RiferimentoCorso lezione="04-governance-cowork" />

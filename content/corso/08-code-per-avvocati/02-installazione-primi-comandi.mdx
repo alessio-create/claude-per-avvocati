@@ -1,0 +1,132 @@
+---
+titolo: "Installazione e primi tre comandi"
+sottotitolo: "Da zero a fascicolo riordinato in 15 minuti"
+durata: 12
+ordine: 2
+aggiornato: "2026-05-24"
+quiz: true
+---
+
+Ti racconto una cosa che cambia tutto: il Terminale fa paura solo finché non l'hai mai usato. Sono tre comandi. Letteralmente tre. Bastano per il 90% del valore di Claude Code.
+
+So che "Terminale" suona spaventoso, ma è solo una finestra (di solito nera o bianca, dipende dal tema) dove scrivi una riga di testo e premi Invio. Niente icone, niente mouse. Su Mac si chiama Terminale, su Windows è il PowerShell. Quando vedi un simbolo come `$` o `>` all'inizio di una riga, quello è il **prompt** del Terminale, qui significa due cose: l'istruzione che dai a Claude E il simbolo che vedi prima di scrivere nel Terminale, è il modo con cui il computer ti dice "sono pronto, scrivi".
+
+<Esempio>
+Lo Studio Romano-Petri di Roma riceveva ogni mese dal commercialista un foglio Excel con 400-500 righe di prestazioni da fatturare ai clienti dello studio. Prima la segretaria copia-incollava riga per riga nel gestionale, tre ore di lavoro a fine mese e nervi a pezzi. Dopo aver installato Claude Code seguendo esattamente i passi di questa lezione (Node.js dal sito, poi il comando `npm install -g @anthropic-ai/claude-code`), hanno chiesto a Code di leggere l'Excel e produrre il CSV nel formato esatto del loro gestionale. Tempo di esecuzione: 90 secondi. Adesso la segretaria fa solo il controllo finale, 10 minuti. Tutto questo da un'installazione che, la prima volta, ha richiesto 12 minuti.
+</Esempio>
+
+## Installazione (10 minuti, una volta sola)
+
+### 1. Installa Node.js
+
+Node.js è il motore tecnico su cui gira Claude Code. Non devi sapere cos'è, devi solo installarlo. Vai su [nodejs.org](https://nodejs.org) e scarica la versione **LTS** (sta per Long Term Support, cioè la versione stabile e supportata a lungo). Installa con doppio click come una normale applicazione, avanti-avanti-fine.
+
+### 2. Installa Claude Code
+
+Apri il **Terminale** (Mac: cmd+spazio → "Terminale". Windows: tasto Windows → "PowerShell"). Si apre la famosa finestra. Incolla esattamente questo **comando** (l'istruzione testuale che dai in Terminale):
+
+```bash
+npm install -g @anthropic-ai/claude-code
+```
+
+Premi invio. Aspetta 1-2 minuti, vedrai scorrere righe verdi e bianche, è normale. Quando torna il **prompt** (il simbolo `$` o `>` con il cursore lampeggiante) significa che ha finito.
+
+### 3. Autenticati
+
+```bash
+claude
+```
+
+Si apre il browser per accedere col tuo account Anthropic, lo stesso che usi per la Chat. Confermi, chiudi il browser, torni al Terminale. Fatto. Da questo momento, scrivere `claude` in qualsiasi cartella apre l'assistente in quella cartella.
+
+## I tre comandi che userai il 90% delle volte
+
+### Comando 1, Aprire Code in una cartella di pratica
+
+```bash
+cd ~/Documents/Pratiche/Bianchi-srl
+claude
+```
+
+`cd` significa "change directory", ossia "spostati in questa cartella". La riga sopra dice al computer: "vai nella cartella della pratica Bianchi-srl, poi apri Claude lì". Ora Claude vede tutti i file di quella cartella. Puoi chiedere in italiano qualsiasi cosa che riguardi quei file.
+
+### Comando 2, Chiedere un riassunto del contenuto
+
+> "Leggi tutti i file in questa cartella e fammi un riassunto di 200 parole: stato della pratica, ultimi documenti aggiunti, prossime scadenze visibili."
+
+Claude legge tutto e ti consegna il riassunto in 30 secondi.
+
+### Comando 3, Far fare un'operazione concreta
+
+> "Crea una nuova cartella `/Da-firmare/` e sposta lì tutti i PDF il cui nome contiene 'bozza' o 'da firmare'."
+
+Claude **chiede sempre il permesso** prima di toccare file. Tu approvi o rifiuti, una richiesta per volta, leggendo cosa sta per fare.
+
+## La regola del permesso
+
+Code ha tre modalità di permesso:
+1. **Chiedi sempre** (default, consigliato all'inizio)
+2. **Accetta sempre per questa sessione** (per task ripetitivi noti)
+3. **Plan mode** (Code spiega cosa farebbe ma non lo fa, utile per workflow nuovi)
+
+Imposta sempre **Chiedi sempre** finché non ti senti a tuo agio.
+
+<Nota tipo="attenzione">
+Code può eliminare file. La sua precauzione è eccellente, ma non infallibile. Lavora **sempre su copie**, non sull'archivio originale, finché non hai 20-30 ore di esperienza con Code.
+</Nota>
+
+## Cosa NON fare al primo giorno
+
+- Non aprire Code nella cartella `/Documents` intera (troppi file, si confonde)
+- Non dirgli "riorganizza tutto come vuoi" (sii sempre specifico)
+- Non accettare in massa modifiche senza leggerle
+
+## Cosa fare al primo giorno
+
+- Apri Code in una cartella di pratica con max 50 file
+- Chiedi un riassunto. Verifica.
+- Chiedi un'operazione semplice (es. raggruppa per estensione). Verifica.
+
+In 30 minuti hai il pattern in mente. Da lì, ogni settimana ti vengono in mente tre nuovi usi: il fascicolo da rinominare, l'elenco scadenze da estrarre, le copie di cortesia da preparare per il cliente.
+
+<Quiz
+ modulo="08-code-per-avvocati"
+ lezione="02-installazione-primi-comandi"
+ domande={[
+  {
+   domanda: "Prima di installare Claude Code devi installare:",
+   opzioni: [
+    "Python",
+    "Node.js (versione LTS da nodejs.org)",
+    "Docker",
+    "Microsoft Office"
+   ],
+   corretta: 1,
+   spiega: "Code è un pacchetto npm. Node.js fornisce npm. Versione LTS = quella stabile, etichettata 'Long Term Support'."
+  },
+  {
+   domanda: "Quale modalità di permesso è consigliata al primo utilizzo?",
+   opzioni: [
+    "Accetta sempre tutto",
+    "Chiedi sempre (default)",
+    "Plan mode permanente",
+    "Disattiva i permessi"
+   ],
+   corretta: 1,
+   spiega: "All'inizio, vedere ogni operazione prima che venga eseguita è il modo per costruire fiducia e imparare cosa Code fa davvero."
+  },
+  {
+   domanda: "Per evitare disastri al primo giorno, devi:",
+   opzioni: [
+    "Aprire Code nella cartella Documents intera",
+    "Lavorare su copie dei file, non sugli originali",
+    "Disattivare il backup",
+    "Dare a Code accesso a tutta la rete"
+   ],
+   corretta: 1,
+   spiega: "Anche con i permessi attivi, lavorare su copie protegge da errori tuoi (un prompt mal scritto) o di Claude. È una buona abitudine da mantenere per le prime 20-30 ore di uso."
+  }
+ ]}
+/>
+
+Prossima lezione: trasformare un workflow ricorrente nella tua prima **Skill** personale.

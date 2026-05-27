@@ -1,0 +1,184 @@
+---
+titolo: "Sei progetti pratici per cementare il corso"
+sottotitolo: "Esercizi reali da fare in 30-90 minuti, ognuno produce un artefatto usabile dallo studio"
+durata: 15
+ordine: 3
+aggiornato: "2026-05-26"
+quiz: false
+---
+
+Leggere le lezioni non basta. Quello che sposta davvero le capacità è **applicarle su una pratica reale tua**, non su esempi astratti. La differenza tra "ho fatto il corso" e "ho cambiato come lavoro" sta tutta qui: nelle 6-8 ore che dedichi a costruire le tue prime cose.
+
+Questa lezione propone sei progetti hands-on. Ciascuno copre un modulo specifico, richiede 30-90 minuti, e produce un artefatto concreto che usi nello studio da subito (non una "esercitazione" scolastica, una cosa che entra nel tuo workflow lunedì mattina).
+
+Non devi farli tutti. Sceglili in base a dove vuoi andare per primo: se gestisci tanti clienti ricorrenti parti dal Progetto 1, se invece fai molta corrispondenza standardizzata parti dal Progetto 3.
+
+<Outcomes titolo="Cosa avrai in mano dopo questi sei progetti:">
+  <Outcome>Un Project Claude configurato per il tuo cliente principale, con tutti i documenti rilevanti caricati e Custom Instructions specifiche.</Outcome>
+  <Outcome>Le Custom Instructions globali del tuo studio salvate sul tuo account Claude, applicate automaticamente a ogni nuova conversazione.</Outcome>
+  <Outcome>Una Skill personalizzata per la tua tipologia di messa in mora più frequente.</Outcome>
+  <Outcome>Un fascicolo di pratica riorganizzato con Claude Code: file rinominati, struttura coerente, cronologia ricavata.</Outcome>
+  <Outcome>Un task Schedule attivo che ti produce un riepilogo settimanale automatico.</Outcome>
+  <Outcome>Una STUDIO-AI-POLICY.md di 2 pagine, firmata e archiviata.</Outcome>
+</Outcomes>
+
+## Progetto 1, Il tuo primo Project su un cliente reale
+
+**Modulo di riferimento:** Modulo 2 (Le superfici di Claude) · **Tempo:** 45 minuti · **Livello:** principiante
+
+### Obiettivo
+
+Configurare un Project Claude (uno spazio Claude dove carichi documenti e istruzioni che restano disponibili in tutte le conversazioni) dedicato al tuo cliente più importante, in modo che da domani ogni conversazione su quella pratica abbia automaticamente tutto il contesto necessario.
+
+### Passi
+
+1. Scegli **un solo cliente**, preferibilmente uno su cui torni almeno una volta a settimana.
+2. Su claude.ai apri la sezione **Projects** e crea un nuovo Project.
+3. Scrivi le **Custom Instructions del Project** (massimo 500 parole): chi è il cliente, settore, dimensione, storia con lo studio, stile di comunicazione preferito, strategia complessiva.
+4. Carica **10-20 documenti rilevanti**: contratti chiave, atti, ultime email importanti, eventuali pareri già emessi. Non caricare tutto, solo quello che useresti se dovessi spiegare il caso a un nuovo collega.
+5. Fai **3 domande di prova** al Project: una su un fatto specifico, una su una bozza da scrivere, una sulla strategia.
+
+### Deliverable
+
+Un Project Claude funzionante. Nome convenzionale: `[A/B/C]-[ID]-[Cliente]` (vedi Modulo 6 per la classificazione privacy).
+
+### Criteri di successo
+
+Le tre domande di prova hanno ricevuto risposte che dimostrano comprensione del contesto. Se Claude ha "dimenticato" qualcosa di importante, capisci subito cosa aggiungere nelle Custom Instructions.
+
+## Progetto 2, Le Custom Instructions del tuo studio
+
+**Modulo di riferimento:** Modulo 3 (Setup & stile) · **Tempo:** 30 minuti · **Livello:** principiante
+
+### Obiettivo
+
+Configurare le Custom Instructions (istruzioni che Claude legge a ogni nuova conversazione) globali del tuo account Claude in modo che ogni conversazione (di qualsiasi tipo, in qualsiasi Project) erediti automaticamente lo stile, il tono, la firma del tuo studio.
+
+### Passi
+
+1. Apri su claude.ai: Settings → Personalization → Custom Instructions.
+2. Scrivi il tuo profilo (chi sei, ruolo, materia, città).
+3. Scrivi le regole di stile: lunghezza tipica delle email/lettere, registro (formale/diretto), formule vietate, firma.
+4. Scrivi i divieti: niente formule arcaiche elencate, niente bullet point dove serve prosa, niente preamboli AI.
+5. Salva. Apri una nuova conversazione e chiedi una cosa semplice ("scrivimi un breve sollecito di pagamento") senza dare contesto sullo stile. Verifica che esca nel registro corretto.
+
+### Deliverable
+
+Custom Instructions globali attive sul tuo account Claude. Una copia testuale archiviata in un file `.md` sul desktop come backup.
+
+### Criteri di successo
+
+Senza specificare lo stile nel prompt, Claude produce output coerenti con quello del tuo studio.
+
+## Progetto 3, La tua prima Skill personalizzata
+
+**Modulo di riferimento:** Modulo 5 (Skills & repository) · **Tempo:** 60-90 minuti · **Livello:** intermedio
+
+### Obiettivo
+
+Trasformare il tuo template più ricorrente (suggerimento: messa in mora, oppure email difficile, oppure sintesi sentenza) in una Skill Claude installabile, riutilizzabile, condivisibile con i collaboratori dello studio.
+
+### Passi
+
+1. Scegli **un solo task** che ripeti almeno 2-3 volte alla settimana.
+2. Apri il file `SKILL.md` di esempio dal kit (Modulo 10 lezione 2) e usalo come scheletro.
+3. Personalizza: aggiungi i campi specifici del tuo studio (formula di chiusura, normativa di riferimento se materia specialistica, divieti del tuo stile).
+4. Salva in `~/.claude/skills/<nome-skill>/SKILL.md` (oppure caricalo nel Project pertinente su web).
+5. Provala su tre casi diversi della tua settimana. Aggiusta dove vedi pattern di risposta poco affilati.
+
+### Deliverable
+
+Una Skill `.md` salvata e funzionante, con almeno 3 esempi di uso reale documentati.
+
+### Criteri di successo
+
+Quando attivi la Skill, l'output esce strutturalmente corretto al primo colpo, ti resta da fare solo 1-2 micro-aggiustamenti di tono.
+
+<Esempio>
+L'Avv. Tommaso Greco di Bari, civilista in studio individuale, ha fatto il Progetto 3 un sabato pomeriggio: ha trasformato la sua messa in mora-tipo per crediti commerciali in una Skill personalizzata, aggiungendo la formula di chiusura che usa sempre e il richiamo all'art. 1224 c.c. nei termini esatti che gli piacciono. Da quel sabato, ogni messa in mora la richiama dicendo "applica messa-in-mora-Greco per [cliente], importo [X], fattura [N]". Ne produce 3-5 alla settimana. Tempo per la singola lettera: 40 minuti, 7 minuti adesso. In tre mesi ha ripreso il pomeriggio investito una ventina di volte.
+</Esempio>
+
+## Progetto 4, Riorganizzare un fascicolo con Code
+
+**Modulo di riferimento:** Modulo 8 (Claude Code per avvocati) · **Tempo:** 60 minuti · **Livello:** intermedio
+
+### Obiettivo
+
+Prendere una cartella reale di una pratica (idealmente vecchia, su cui non corri rischi), e usarla per imparare Claude Code (la versione di Claude che vive sul tuo computer e può leggere/scrivere file con il tuo permesso) in modo sicuro: rinomini file, ricostruisci una cronologia, ti rendi conto di quanto cambia il lavoro sul fascicolo.
+
+### Passi
+
+1. Identifica una pratica conclusa o un fascicolo "non vivo" con 50-300 file dentro.
+2. **Lavora su una COPIA** della cartella, non sull'originale.
+3. Apri Claude Code nella copia: `cd ~/path && claude`.
+4. Chiedi prima la **mappa**: "leggi tutti i file e fammi una panoramica di cosa contiene questa cartella".
+5. Chiedi una **riorganizzazione**: cartelle per tipologia, file rinominati con `YYYY-MM-DD_categoria_descrizione`.
+6. Chiedi una **cronologia degli eventi processuali** dai documenti.
+7. Approva ogni operazione manualmente le prime 10-15 volte, poi puoi dare permessi più ampi.
+
+### Deliverable
+
+La cartella copia, ordinata. Una cronologia in Markdown (puoi salvarla nella cartella).
+
+### Criteri di successo
+
+Cosa che a mano ti avrebbe preso 4-6 ore di lavoro, l'hai chiusa in un'ora. La cartella ordinata è effettivamente più navigabile.
+
+## Progetto 5, Il Schedule del lunedì mattina
+
+**Modulo di riferimento:** Modulo 9 (App & Schedule) · **Tempo:** 45 minuti · **Livello:** avanzato
+
+### Obiettivo
+
+Configurare un task automatizzato che ogni lunedì alle 7:30 ti produce un riepilogo della settimana che inizia: scadenze nei prossimi 14 giorni, pratiche senza movimento da 30+ giorni.
+
+### Passi
+
+1. Prerequisito: Claude Code installato + cartella `/pratiche/in-corso/` con i tuoi fascicoli attivi (o un mock).
+2. Crea una Skill `report-lunedi` in `~/.claude/skills/report-lunedi/SKILL.md` che descrive cosa cercare e in che formato presentare.
+3. Configura lo Schedule: `claude schedule add --skill "report-lunedi" --cron "30 7 * * 1"`.
+4. Verifica con `claude schedule list`.
+5. Lascia girare per due settimane. Aggiusta la Skill quando vedi che il report manca informazioni utili o include rumore.
+
+### Deliverable
+
+Un task Schedule attivo. Il primo report consegnato (anche manualmente forzato per testare).
+
+### Criteri di successo
+
+Il lunedì alle 9 apri il computer e trovi il report pronto sul desktop. Non devi più costruirlo a mano.
+
+## Progetto 6, La policy AI del tuo studio in due pagine
+
+**Modulo di riferimento:** Modulo 6 (Privacy & deontologia) · **Tempo:** 90 minuti · **Livello:** importante per studi 2+ persone
+
+### Obiettivo
+
+Redigere il documento `STUDIO-AI-POLICY.md` che regolamenta internamente l'uso di Claude (e altri AI) nel tuo studio: cosa si può fare, cosa no, chi è responsabile.
+
+### Passi
+
+1. Apri un nuovo file `STUDIO-AI-POLICY.md` sul tuo computer.
+2. Struttura in 4 sezioni: strumenti approvati · classificazione dati (A/B/C) · workflow obbligatori (anonimizzazione, verifica output, citazione giurisprudenza) · conseguenze violazioni.
+3. Per ogni sezione: chiarezza > completezza. Frasi corte. Numera tutto.
+4. Massimo 2 pagine. Se sei oltre, stai mettendo dentro filosofia invece di regole.
+5. Stampa, firma, fai firmare a tutti i collaboratori per ricezione.
+6. Conserva le firme. Annota la data nel registro dei trattamenti GDPR.
+
+### Deliverable
+
+Un PDF firmato. Una copia archiviata. Una procedura di revisione annuale fissata in calendario.
+
+### Criteri di successo
+
+Se un collaboratore commette un errore, il documento spiega chiaramente cosa avrebbe dovuto fare. Non serve discussione: si guarda la policy.
+
+<Recap titolo="Tre regole per scegliere quale progetto fare per primo">
+  <Punto>Scegli il progetto sul modulo che usi di più: non quello "ambizioso", quello che produce risparmio già da domani.</Punto>
+  <Punto>Lavora sempre su un caso reale (anche anonimizzato). Esempi inventati non insegnano nulla.</Punto>
+  <Punto>Documenta cosa hai fatto. Un progetto fatto e non scritto è metà valore: lo perdi quando ti ritorna utile fra 6 mesi.</Punto>
+</Recap>
+
+Un'ultima cosa: blocca in agenda 90 minuti questo sabato e ne fai uno. Senza il blocco non succede. Lo so perché è successo a tutti quelli che hanno provato a "trovare il tempo" durante la settimana.
+
+Nella prossima lezione: la **lista curata di risorse esterne** che vale la pena consultare quando vuoi approfondire un punto specifico.

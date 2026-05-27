@@ -1,0 +1,118 @@
+---
+titolo: "Deontologia forense e AI: dove tira la cintura il CNF nel 2026"
+sottotitolo: "Quattro principi che reggono la responsabilità professionale anche con l'AI nel workflow"
+data: "2026-04-14"
+autore: "Alessio Massaro"
+tempo: 9
+tag: ["Deontologia", "Compliance"]
+coverColor: "mint"
+coverIcon: "scales"
+estratto: "La professione forense ha sempre assorbito nuovi strumenti senza perdere la propria responsabilità. Con l'AI vale lo stesso: quattro principi del codice deontologico che restano centrali."
+---
+
+A inizio 2026 il Consiglio Nazionale Forense ha pubblicato un'analisi sulle implicazioni dell'AI generativa per la professione. Non è un regolamento (servirà del tempo perché lo diventi), ma è un'indicazione chiara di come il CNF leggerà la deontologia esistente quando capiterà il primo caso disciplinare AI-related.
+
+Tradotto: i principi del codice deontologico **non cambiano**. Cambia come dimostri di averli rispettati quando usi l'AI nel workflow. Questo articolo ne mappa quattro.
+
+## Principio 1, Diligenza (art. 12 codice deontologico)
+
+> "L'avvocato deve svolgere la propria attività con coscienza e diligenza"
+
+L'AI può aiutarti a essere più efficiente. Non può aiutarti a essere meno diligente. Anzi: usare l'AI **aumenta** lo standard di diligenza atteso, perché ti rimuove l'alibi del "non avevo tempo".
+
+In pratica:
+
+- **Verificare le citazioni giuridiche.** Claude allucina nomi di sentenze. Se citi una pronuncia in un atto perché Claude l'ha menzionata, e quella pronuncia non esiste, sei tu il responsabile davanti al giudice. La diligenza richiede verifica su banca dati per ogni citazione.
+- **Rileggere ogni output.** Un atto firmato e depositato che contenga errori AI (refusi, formule sbagliate, cose non vere) è una responsabilità tua, non di Anthropic.
+- **Documentare i workflow.** Se sei sotto procedimento disciplinare, dimostrare di aver avuto un workflow strutturato (Skills, Custom Instructions, verifica giurisprudenza) ti aiuta a difenderti.
+
+**Standard pratico:** ogni atto AI-touched viene riletto dall'avvocato firmatario per intero, lentamente. Le citazioni vengono verificate su banca dati. Documentato in checklist interna allo studio.
+
+## Principio 2, Segreto professionale (art. 28)
+
+> "L'avvocato è tenuto al segreto professionale rigoroso"
+
+Il segreto si estende a tutto quanto il cliente confida o l'avvocato apprende nell'esercizio del mandato. Per l'AI, vuol dire:
+
+- **NO a Categoria C su account consumer.** Dati di clienti coperti da segreto stretto (penale, dati sanitari, NDA rigorosi) non vanno su un account Pro normale. Vanno solo su Cowork con DPA firmato, o non vanno affatto.
+- **Anonimizzazione robusta per Categoria B.** Non basta togliere il nome. Vedi [GDPR e Claude](/blog/02-gdpr-claude-cosa-puoi-mandare).
+- **Attenzione alle conversazioni precedenti.** Lo storico delle chat e dei Project conserva tutto. Se sposti il tuo Project a un altro avvocato dello studio, gli stai trasferendo tutto il segreto professionale di quel cliente.
+
+**Standard pratico:** policy interna allo studio che dichiari quali categorie di dati possono andare in quale strumento. Tutti i collaboratori firmano. Audit periodico.
+
+## Principio 3, Indipendenza (art. 9)
+
+> "L'avvocato deve agire con autonomia ed indipendenza"
+
+L'AI non è un soggetto autonomo che si interpone tra te e il cliente. È uno strumento. Ma esiste una tentazione sottile: **delegare il giudizio**.
+
+Quando Claude ti dice *"la strategia migliore è X"*, è facile prenderlo come verdetto. Ma:
+- Claude non conosce il cliente come lo conosci tu
+- Claude non sa che il giudice di quel tribunale ha posizioni particolari
+- Claude può essere influenzato dalla formulazione del tuo prompt in modi sottili
+- Claude non si assume responsabilità
+
+L'indipendenza richiede che il giudizio finale sia tuo. **Sempre.** Anche quando l'output di Claude è convincente.
+
+**Standard pratico:** mai prendere una decisione strategica importante (impugnare o no, transigere o no, accettare un mandato o no) basandosi *primariamente* su un output AI. L'AI può informare la decisione, non sostituirla.
+
+## Principio 4, Verità e correttezza (artt. 50, 14)
+
+> "L'avvocato non deve introdurre nel processo prove false (...) né esporre fatti non rispondenti al vero"
+
+Allucinazioni AI nei tuoi atti sono prove false ai sensi della deontologia (anche se non intenzionali).
+
+Casi reali del 2025 (USA, UK, anche un caso italiano arrivato all'Ordine di Milano):
+- Avvocato che cita una sentenza inventata da ChatGPT in un atto depositato
+- Avvocato che presenta un riepilogo di documenti dove l'AI ha invertito due date critiche
+- Avvocato che usa un parere generato senza verifica e il parere contiene un fatto non vero sul cliente
+
+In tutti i casi: **responsabilità dell'avvocato, non dello strumento.**
+
+**Standard pratico:**
+- Citazioni giurisprudenziali: sempre verificate su banca dati prima del deposito
+- Riepiloghi AI di documenti: sempre confrontati con i documenti originali prima dell'uso in atti
+- Fatti rilevanti (date, importi, parti): sempre verificati prima dell'inclusione in atti firmati
+
+## Il "test del giudice"
+
+Quando hai dubbi se un workflow è deontologicamente OK, fai questo esercizio:
+
+> Immagina di essere chiamato a spiegare in un consiglio dell'Ordine come hai prodotto quel particolare atto. Saresti in grado di:
+> - Mostrare il workflow seguito (prompt, Skills, Custom Instructions)?
+> - Dimostrare di aver verificato ogni citazione giuridica?
+> - Dimostrare di aver letto integralmente il risultato finale prima della firma?
+> - Mostrare la policy interna dello studio che disciplina l'uso AI?
+
+Se la risposta a tutte e quattro è sì, sei coperto. Se anche una sola è no, c'è un buco da chiudere.
+
+## Una nota su informativa e consenso del cliente
+
+Domanda ricorrente: **"Devo informare il cliente che uso l'AI?"**
+
+Risposta breve: oggi non c'è obbligo specifico nel codice deontologico, ma:
+- È **buona pratica** informarlo, soprattutto per usi non triviali (Skills personalizzate sul caso, Project con caricamento di documenti, automazioni Code su fascicolo)
+- Per Cliente azienda con DPO interno, **è obbligatorio**: il loro DPO deve sapere
+- Per persone fisiche, è una scelta di trasparenza che rafforza la fiducia
+
+**Standard pratico:** aggiungi al mandato professionale una clausola tipo:
+
+> "Lo studio si riserva di avvalersi di strumenti di AI generativa nella prestazione del servizio, nel rispetto delle norme di legge, deontologia, e della propria policy interna sulla protezione dei dati. L'assunzione di responsabilità professionale resta interamente dell'avvocato titolare del mandato. Il cliente può richiedere, in qualsiasi momento, dettagli sul workflow utilizzato."
+
+È elegante, trasparente, e ti protegge.
+
+## La sintesi in una frase
+
+> L'AI nello studio legale non riduce la responsabilità dell'avvocato. La concentra ancora di più sul giudizio, sulla verifica, e sull'organizzazione dei workflow.
+
+Il [Modulo 6 del corso](/corso/06-privacy-deontologia/01-cosa-puoi-mandare) approfondisce gli aspetti pratici con riferimenti normativi puntuali.
+
+## Cosa aspettarsi nei prossimi 18 mesi
+
+Verosimilmente:
+- Linee guida CNF più strutturate, probabilmente entro 2026-2027
+- Primi casi disciplinari noti (probabilmente legati ad allucinazioni AI in atti)
+- Eventuale obbligo di informativa al cliente per usi sopra una certa soglia
+- Integrazione AI Act + codice deontologico per studi sopra una certa dimensione
+
+Per ora: i quattro principi sopra sono la bussola. Sono nel codice deontologico da decenni. Continuano a funzionare.

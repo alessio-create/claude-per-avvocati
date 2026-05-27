@@ -1,0 +1,128 @@
+---
+titolo: "Claude Code per organizzare un fascicolo da 300 documenti"
+sottotitolo: "Caso studio: tre giorni di lavoro burocratico ridotti a 45 minuti"
+data: "2026-05-12"
+autore: "Alessio Massaro"
+tempo: 12
+tag: ["Code", "Workflow"]
+coverColor: "lavender"
+coverIcon: "folder-stack"
+estratto: "Una causa di lavoro con 14 mesi di documentazione mista. Codice e configurazioni ai limiti dell'archivio. Ecco come Claude Code l'ha ricomposto in meno di un'ora."
+---
+
+Tre mesi fa, uno studio di Bologna ci ha chiesto aiuto su un caso che, sulla carta, era semplice: una causa di lavoro arrivata in appello. Sulla pratica c'erano **284 documenti**: PDF, JPG di scansioni cartacee, .docx, .xlsx, qualche email salvata in .eml. Nomi tipo `IMG_2401.jpg`, `Scansione doc 14.pdf`, `Senza titolo (3).docx`.
+
+Per preparare l'appello servivano due cose:
+1. Una cronologia ordinata dei fatti, ricostruita dai documenti
+2. Una struttura archivistica decente, perché ogni volta che il partner cercava qualcosa ci voleva mezz'ora
+
+Il piano "tradizionale" era: due paralegali, tre giorni di lavoro, costo interno stimato 1.800 euro.
+
+Abbiamo proposto un'alternativa: Claude Code, una mattinata di setup, e vediamo cosa esce.
+
+## Il setup (10 minuti)
+
+Sul portatile dell'avvocato, Mac, già con Node.js installato, abbiamo eseguito:
+
+```bash
+npm install -g @anthropic-ai/claude-code
+```
+
+E poi, posizionati nella cartella del fascicolo:
+
+```bash
+cd ~/Pratiche/Cliente-Z-Appello-2026
+claude
+```
+
+Claude Code apre una sessione interattiva nel terminale. Vede tutti i file della cartella in cui sei. Non è un IDE: è un assistente che può leggere e (con permesso) modificare file.
+
+Prima cosa che abbiamo chiesto:
+
+> Leggi tutti i file in questa cartella e dimmi, in 250 parole, cosa contengono nel complesso. Categorie principali, periodo coperto, gap evidenti. Non aprire file di dimensioni superiori a 10 MB.
+
+In due minuti, Claude ha letto i metadati di tutti i file, aperto i PDF testuali (non le scansioni immagine), e ha restituito una panoramica così:
+
+> La cartella contiene 284 documenti coprendo il periodo marzo 2024, febbraio 2026. Si individuano cinque cluster: (1) corrispondenza con il datore di lavoro (87 file), (2) busta paga e cedolini (51 file), (3) documentazione medica (44 file), (4) atti del primo grado (38 file), (5) materiale vario non chiaramente classificabile (64 file). Periodo coperto: 24 mesi. Gap visibili: mancano cedolini per ottobre 2024 e marzo 2025, e non vedo la sentenza di primo grado in formato testo (forse è solo nei 64 file misti).
+
+Questo è già un risultato. In 2 minuti, una mappa del fascicolo che a mano avrebbe richiesto un'ora.
+
+## La riorganizzazione (25 minuti)
+
+Secondo prompt:
+
+> Crea una struttura di cartelle così:
+> - /00-Atti-Processuali/
+> - /01-Corrispondenza-Datore/
+> - /02-Cedolini-Buste-Paga/
+> - /03-Documentazione-Medica/
+> - /04-Altri/
+>
+> Sposta ogni file nella cartella corretta basandoti sul contenuto (per i PDF testuali e .docx, leggi le prime due pagine). Per i file che non riesci a classificare con certezza, lasciali in /04-Altri/ e fammi una lista al termine.
+>
+> Per i nomi: rinomina ogni file in `YYYY-MM-DD_categoria_descrizione-breve.estensione`. Se non riesci a dedurre la data, lascia il nome originale e aggiungi prefisso `0000-00-00_`.
+
+Claude **chiede sempre il permesso** prima di toccare un file. Tu vedi: "vuoi rinominare `IMG_2401.jpg` in `2024-08-12_corrispondenza_lettera-richiamo-secondo.jpg`?" e approvi o rifiuti.
+
+Per i primi 20 file abbiamo verificato a mano. Tutto corretto. Poi abbiamo dato l'autorizzazione "ok per questa sessione" per accelerare. In 25 minuti il fascicolo era ricomposto:
+
+- 78 file in /01-Corrispondenza-Datore/
+- 49 in /02-Cedolini/
+- 43 in /03-Documentazione-Medica/
+- 36 in /00-Atti-Processuali/
+- 78 in /04-Altri/ (su questi serviva un occhio umano)
+
+E ogni file aveva un nome che diceva, in tre parole, cos'era.
+
+## La cronologia (10 minuti)
+
+Terzo prompt:
+
+> Apri ora i file in /01-Corrispondenza-Datore/ e /00-Atti-Processuali/. Ricostruisci una cronologia ordinata dei fatti dal marzo 2024 a oggi, includendo solo eventi rilevanti per l'impugnazione del licenziamento (esempi: richiami formali, contestazioni, decisione di sospensione cautelare, decisione del primo grado).
+>
+> Output: tabella Markdown con tre colonne, data, evento, riferimento al documento (nome file). Lunghezza: massimo 30 righe; se ci sono più di 30 eventi, selezione i più rilevanti e segnalami quanti hai escluso.
+
+In 9 minuti la cronologia è arrivata. 28 righe. Ogni evento collegato al file di riferimento per il fact-checking. L'abbiamo aperta in Excel, ci abbiamo aggiunto due colonne (rilevanza appello sì/no, note), ed era pronta per il partner.
+
+## I 78 file di "Altri"
+
+Su questi abbiamo lavorato a mano, ma anche qui Claude Code ha aiutato:
+
+> Apri ognuno dei file in /04-Altri/ e per ciascuno dimmi in una riga cosa contiene. Output: lista numerata con nome file e descrizione (max 20 parole).
+
+20 minuti per leggere 78 descrizioni e decidere dove spostare ciascun file. Senza Code, leggere 78 documenti uno per uno = 4-5 ore.
+
+## Il totale
+
+| Fase | Tempo |
+|---|---|
+| Setup Claude Code | 10 min |
+| Mappa iniziale del fascicolo | 2 min |
+| Riorganizzazione cartelle | 25 min |
+| Cronologia | 10 min |
+| Triage dei "vari" | 20 min |
+| Controllo finale | 10 min |
+| **Totale** | **77 min** |
+
+Contro 3 giorni × 2 paralegali = circa 24 ore-uomo. **Una riduzione di 18-19 volte.**
+
+## Cosa serve davvero
+
+Per replicare questo workflow:
+
+1. **Un piano Pro o Max di Claude** (incluso Code, no extra), vedi il [Modulo 8 del corso](/corso/08-code-per-avvocati/01-perche-code-anche-per-te)
+2. **Node.js installato** (15 minuti se non l'hai mai fatto)
+3. **Un po' di pazienza il primo giorno**, il terminale fa paura, ma sono 5 comandi che impari in mezza giornata
+4. **Lavorare su una copia del fascicolo**, sempre, per le prime 20-30 ore d'uso
+
+## Quello che NON puoi fare
+
+- **Documenti scannerizzati come immagini.** Claude legge testo, non immagini di testo. Se hai cartaceo, devi passare prima per un OCR (Adobe Acrobat o ABBYY).
+- **File su sistemi chiusi.** Code lavora sul tuo file system locale. Se il fascicolo è solo nel gestionale, devi prima esportarlo o sincronizzarlo localmente.
+- **Privacy-sensitive senza setup giusto.** Se il fascicolo contiene dati di Categoria C (vedi [GDPR e Claude](/blog/02-gdpr-claude-cosa-puoi-mandare)), serve Cowork con DPA, non Code consumer.
+
+## La lezione operativa
+
+Code non sostituisce il giudizio. Sostituisce **l'operatività ripetitiva su molti file**. La cronologia che ha generato l'avvocato di Bologna l'ha riletta e modificata in dettagli prima di usarla, non l'ha passata al partner così com'era. Ma è partito da una bozza ordinata invece che da 284 file disordinati.
+
+Il delta più importante non è il tempo. È che il partner, davanti a una cronologia pulita e a cartelle ordinate, ha potuto **pensare alla strategia di appello** invece che cercare i documenti. Quello, in un caso complesso, vale molto più dei 1.800 euro risparmiati.

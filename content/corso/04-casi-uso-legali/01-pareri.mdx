@@ -1,0 +1,128 @@
+---
+titolo: "Pareri, struttura, drafting, qualità"
+sottotitolo: "Il caso d'uso #1 di Claude per uno studio civilista"
+durata: 10
+ordine: 1
+aggiornato: "2026-05-23"
+quiz: false
+---
+
+Pensa al lunedì mattina: tre clienti in attesa di un parere, la segretaria che ti mette davanti i fascicoli e tu che sai già che ci passerai sopra il resto della giornata. È il task per cui userai Claude più spesso, ed è anche dove la differenza tra usarlo bene e male è più visibile. Un parere fatto col prompt (l'istruzione che dai a Claude, dal singolo messaggio al template strutturato) giusto è una bozza da rivedere in 15 minuti. Fatto col prompt sbagliato è materiale da buttare.
+
+Questa lezione è la guida pratica completa.
+
+## La struttura standard di un parere
+
+La struttura che funziona meglio con Claude (e che è quella che la maggior parte dei clienti si aspetta):
+
+1. **Esposizione dei fatti** (150-300 parole)
+2. **Quesito** (1-2 frasi precise)
+3. **Inquadramento normativo** (riferimenti chiave, 100-200 parole)
+4. **Analisi** (il cuore, 400-800 parole)
+5. **Conclusione** (risposta diretta + raccomandazioni operative, 100-200 parole)
+
+Totale tipico: 900-1700 parole.
+
+## Il prompt-base per un parere
+
+<Prompt>
+Sei l'assistente dell'Avv. [NOME], [SPECIALIZZAZIONE] a [CITTÀ].
+
+Redigi un parere legale strutturato secondo questa struttura:
+
+1. **Esposizione dei fatti** (150-300 parole, cronologica, anonimizza se non specificato)
+2. **Quesito** (1-2 frasi precise)
+3. **Inquadramento normativo** (cita articoli rilevanti, max 3-4)
+4. **Analisi** (400-800 parole, pro e contro, citando giurisprudenza recente se la conosci con certezza)
+5. **Conclusione** (risposta diretta al quesito + raccomandazioni operative)
+
+**Fatti del caso:**
+[INCOLLA / DESCRIVI]
+
+**Quesito specifico:**
+[QUESITO]
+
+**Vincoli:**
+- Lunghezza totale: [800-1500] parole
+- Stile: paragrafi corti, niente formule arcaiche
+- Se NON sei certo di un riferimento giurisprudenziale, scrivi "verificare" anziché citare
+- Firma di chiusura: "Studio Legale [NOME], [CITTÀ]"
+</Prompt>
+
+<Esempio>
+Lo Studio Marchesi di Verona riceveva richieste di parere sulla validità delle clausole risolutive espresse (art. 1456 c.c.) praticamente ogni due settimane: stesso scenario, fornitori diversi, importi diversi. Hanno costruito un Project (uno spazio dentro Claude dove carichi documenti e istruzioni che restano disponibili in tutte le conversazioni) con i quattro leading cases citati di solito, due loro pareri storici già rifiniti come modello di stile, e un template di struttura su cinque sezioni. Ora il primo draft di parere esce in 25 minuti invece di 3 ore. Il valore aggiunto del professionista, le 30 righe finali di valutazione del caso concreto e le raccomandazioni operative, resta tutto sul tavolo dell'avvocato.
+</Esempio>
+
+## Esempio completo (caso societario)
+
+**Quesito del cliente:** "Possiamo recedere dal contratto di somministrazione 24 mesi al 12° mese senza penale, sostenendo l'inadempimento qualitativo della controparte?"
+
+**Prompt:**
+
+> Assistente Avv. Rossi, diritto societario Milano. Redigi parere strutturato (struttura standard 5 sezioni, 1200 parole, paragrafi corti).
+>
+> **Fatti:** Bianchi srl (cliente) ha firmato contratto somministrazione filato con Verdi spa il 12/03/2024, durata 24 mesi, penale 10% sul residuo in caso recesso anticipato. Da gennaio 2025 il filato ha qualità sotto specifiche art. 4.2 contratto. Bianchi ha contestato per email il 03 e 28/03/2025. Verdi ha risposto vagamente. Bianchi vuole recedere ora (mese 12/24).
+>
+> **Quesito:** Esiste una via di recesso senza penale fondata su inadempimento qualitativo?
+>
+> Stile: paragrafi corti, no formule arcaiche, se non certo di una sentenza scrivi "verificare", firma "Studio Legale Rossi, Milano".
+
+**Cosa ti aspetti dall'output:**
+
+- Esposizione fatti pulita, già anonimizzata se non hai dato i nomi reali
+- Quesito chiaro
+- Citazione di art. 1453, 1455, 1460 c.c. + eventualmente art. 1455 sul valore non scarsa importanza
+- Analisi pro/contro: pro = inadempimento documentato per iscritto, soglia non scarsa importanza, art. 1453 + art. 1455; contro = mancata diffida ad adempiere ex 1454, mancato esercizio formale del diritto di recesso, possibile rilettura come tolleranza
+- Conclusione: percorribilità sì ma con preparazione (diffida formale ex 1454, raccolta evidenze qualità, eventuali perizie tecniche)
+- Raccomandazioni operative concrete
+
+## Errori da evitare
+
+### 1. Chiedere "scrivimi un parere" senza specificare il quesito
+
+Output: un parere generico su tutto e niente. Sempre dai il quesito specifico.
+
+### 2. Non dare i fatti
+
+Output: parere astratto, applicabile a qualsiasi caso. Sempre dai i fatti del caso.
+
+### 3. Lasciare Claude libero di citare giurisprudenza
+
+A volte Claude inventa sentenze (non perché vuole ingannarti, perché statisticamente "qualcosa di simile" esisterebbe). Sempre nelle Custom Instructions (istruzioni che Claude legge automaticamente a ogni nuova conversazione, senza che tu le ripeta) o nel prompt: "Se non sei certo, scrivi 'verificare' anziché citare".
+
+### 4. Accettare la prima versione
+
+Il primo output è una bozza. Sempre fai 1-2 cicli di affinamento:
+- "L'analisi della sezione 4 è troppo generica. Approfondisci il punto sull'inadempimento qualitativo con riferimento alla giurisprudenza Cass. 2024."
+- "Rendi la conclusione più operativa: 3 azioni concrete da fare nei prossimi 15 giorni."
+
+## Il workflow completo (parere in 45 minuti totali)
+
+| Step | Tempo | Cosa fai |
+|---|---|---|
+| 1 | 5 min | Scrivi il prompt completo con fatti + quesito + vincoli |
+| 2 | 1 min | Invii a Claude in Project del cliente |
+| 3 | 2 min | Leggi prima bozza |
+| 4 | 5 min | Chiedi 2-3 affinamenti specifici |
+| 5 | 15 min | Rileggi finale, correggi tono in 3-4 punti |
+| 6 | 5 min | Verifica i riferimenti giurisprudenziali su banca dati |
+| 7 | 10 min | Personalizza con dati reali del cliente (se hai lavorato anonimizzato) |
+| 8 | 2 min | Salva nel dossier |
+
+Totale: ~45 minuti per un parere di 1200 parole. Senza Claude: 2-3 ore. Risparmio: 60-70%.
+
+Un dettaglio che molti sottovalutano: i 5 minuti del primo step (scrivere il prompt completo) non sono tempo perso, sono il momento in cui tu strutturi mentalmente il caso. Quella struttura ti serve comunque, anche se poi scrivessi il parere a mano.
+
+## Quando NON usare Claude per pareri
+
+- **Materie ultra-specialistiche** (es. diritto della navigazione, diritto canonico) dove Claude ha meno conoscenze
+- **Pareri orali al cliente** dove il valore è nella tua presenza e expertise, non nel testo
+- **Pareri con elemento etico/discrezionale forte**, Claude può aiutare con la struttura ma il giudizio finale è solo tuo
+
+<Nota tipo="attenzione">
+**Mai** firmare un parere che non hai riletto integralmente. Anche con la migliore Custom Instructions, Claude può commettere errori sostanziali. Il parere ha la TUA firma, la responsabilità è tua. Trattalo come una bozza di un praticante: ottima, ma da riguardare sempre.
+</Nota>
+
+<RiferimentoCorso lezione="02-contratti-revisione" />
+
+Nella prossima lezione: revisione contrattuale, dove Claude brilla davvero.

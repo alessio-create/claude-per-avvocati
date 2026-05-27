@@ -1,0 +1,81 @@
+---
+titolo: "Esame del Modulo 2"
+sottotitolo: "Verifica le superfici di Claude prima di passare al Modulo 3"
+durata: 5
+ordine: 99
+aggiornato: "2026-05-26"
+quiz: true
+tipo: "esame"
+---
+
+<div className="border border-terracotta/30 bg-terracotta/5 rounded-md p-5 mb-8">
+ <div className="text-[11px] uppercase tracking-widest text-terracotta font-bold mb-1">Esame del modulo</div>
+ <div className="text-sm text-body leading-snug">
+  Rispondi alle 5 domande qui sotto per consolidare quando usare Chat, Projects, Code, Skills, MCP e API. Devi rispondere correttamente ad almeno l'80% per sbloccare il <strong>Modulo 3, Setup &amp; stile</strong> e guadagnare <strong>+3 ✦</strong>.
+ </div>
+</div>
+
+<Quiz
+ modulo="02-superfici"
+ lezione="99-esame-modulo"
+ etichetta="Esame"
+ titolo="5 domande per chiudere il modulo."
+ passaCon={4}
+ domande={[
+  {
+   domanda: "Quando hai un cliente che ti darà 10 task nei prossimi 3 mesi, qual è la superficie giusta da usare?",
+   opzioni: [
+    "Una nuova Chat ogni volta, incollando il dossier",
+    "Le Custom Instructions globali dell'account",
+    "Un Project dedicato al cliente, con documenti e istruzioni caricati una volta",
+    "L'API, perché serve persistenza"
+   ],
+   corretta: 2,
+   spiega: "Un cliente ricorrente = un Project. Carichi dossier e istruzioni una volta, ogni conversazione successiva parte già conoscendo tutto."
+  },
+  {
+   domanda: "Qual è la differenza chiave fra Projects e Claude Code?",
+   opzioni: [
+    "Claude Code legge e modifica direttamente i file sul tuo disco, senza upload o copy-paste",
+    "Projects costa di più",
+    "Claude Code funziona solo su Mac",
+    "Projects non supporta i PDF"
+   ],
+   corretta: 0,
+   spiega: "Code lavora sui file del tuo computer (con permesso). Projects lavora su quello che carichi tu. È la differenza che conta quando hai 30+ documenti in una cartella."
+  },
+  {
+   domanda: "Una Skill, in pratica, è:",
+   opzioni: [
+    "Un piano di abbonamento avanzato di Claude",
+    "Un plugin a pagamento dello store Anthropic",
+    "Un nuovo modello con più conoscenza giuridica",
+    "Una procedura riutilizzabile (checklist in formato Markdown) che insegni a Claude una volta sola e poi richiami con una frase"
+   ],
+   corretta: 3,
+   spiega: "Skill = checklist scritta una volta, applicata automaticamente ogni volta che richiami quel tipo di task. È il moltiplicatore di produttività più alto dopo Projects."
+  },
+  {
+   domanda: "Quando un MCP server accede ai dati dei tuoi clienti, ai sensi del GDPR tu sei:",
+   opzioni: [
+    "Un soggetto neutro, la responsabilità è di Anthropic",
+    "Il titolare del trattamento, e devi includere il fornitore MCP nei registri dei trattamenti",
+    "Esonerato, perché MCP è un protocollo tecnico",
+    "Responsabile solo se l'MCP è custom"
+   ],
+   corretta: 1,
+   spiega: "Resti titolare del trattamento. Devi verificare dove vanno i dati, se vengono memorizzati, e censire il fornitore. Il Modulo 6 entra nel dettaglio."
+  },
+  {
+   domanda: "Quando ha davvero senso, per uno studio, valutare l'API anziché Chat/Projects/Skills?",
+   opzioni: [
+    "Sempre, perché l'API è più precisa di Chat",
+    "Mai, l'API è solo per programmatori esperti",
+    "Quando hai un workflow molto ripetitivo e strutturato che gira da solo (es. triage di 50 contratti a settimana), e Skills non bastano più",
+    "Appena apri lo studio, per risparmiare sull'abbonamento Pro"
+   ],
+   corretta: 2,
+   spiega: "L'API serve per automazioni che girano da sole su volumi alti. Non sostituisce il piano Pro: parti da Chat, Projects e Skills, e sali all'API solo quando il workflow lo giustifica."
+  }
+ ]}
+/>

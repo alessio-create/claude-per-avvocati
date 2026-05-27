@@ -1,0 +1,81 @@
+---
+titolo: "Esame del Modulo 1"
+sottotitolo: "Verifica le fondamenta prima di passare al Modulo 2"
+durata: 5
+ordine: 99
+aggiornato: "2026-05-24"
+quiz: true
+tipo: "esame"
+---
+
+<div className="border border-terracotta/30 bg-terracotta/5 rounded-md p-5 mb-8">
+ <div className="text-[11px] uppercase tracking-widest text-terracotta font-bold mb-1">Esame del modulo</div>
+ <div className="text-sm text-body leading-snug">
+  Rispondi alle 5 domande qui sotto per consolidare le fondamenta. Devi rispondere correttamente ad almeno il 70% per sbloccare il <strong>Modulo 2, Le superfici di Claude</strong> e guadagnare <strong>+3 ✦</strong>.
+ </div>
+</div>
+
+<Quiz
+ modulo="01-fondamenta"
+ lezione="99-esame-modulo"
+ etichetta="Esame"
+ titolo="Cinque domande per chiudere il modulo."
+ passaCon={4}
+ domande={[
+  {
+   domanda: "Qual è il singolo concetto che spiega meglio la differenza tra Chat e Code?",
+   opzioni: [
+    "Il prezzo dell'abbonamento",
+    "L'accesso o meno al file system del tuo computer",
+    "Il colore dell'interfaccia",
+    "La velocità di risposta"
+   ],
+   corretta: 1,
+   spiega: "Code può leggere, modificare e creare file sul tuo computer (con il tuo permesso). La Chat no."
+  },
+  {
+   domanda: "I tre elementi che ogni prompt utile dovrebbe contenere sono:",
+   opzioni: [
+    "Saluto, richiesta, ringraziamento",
+    "Ruolo, task specifico, vincoli",
+    "Citazione, articolo, comma",
+    "Cliente, importo, scadenza"
+   ],
+   corretta: 1,
+   spiega: "Ruolo + Task + Vincoli = template universale. È il singolo concetto più alto-leva del Modulo 1."
+  },
+  {
+   domanda: "Le quattro categorie di contesto da portare nel prompt sono:",
+   opzioni: [
+    "Tempo, luogo, modo, mezzi",
+    "Cliente, caso, stile dello studio, vincolo del deliverable",
+    "Saluto, oggetto, corpo, firma",
+    "Date, importi, parti, fogli"
+   ],
+   corretta: 1,
+   spiega: "Mancare anche una sola delle quattro rende l'output generico, e ti fa abbandonare lo strumento dopo due settimane."
+  },
+  {
+   domanda: "Dove conviene mettere lo \"stile dello studio\" (formule, registro, firma)?",
+   opzioni: [
+    "Nel singolo prompt, ogni volta",
+    "Nelle Custom Instructions globali dell'account Claude",
+    "In una nota cartacea sul tavolo",
+    "Solo nei Project, mai nelle Chat"
+   ],
+   corretta: 1,
+   spiega: "Lo stile è informazione che si applica sempre. Una volta in Custom Instructions, ogni conversazione lo eredita automaticamente."
+  },
+  {
+   domanda: "Il \"test del praticante\" prima di mandare un prompt è:",
+   opzioni: [
+    "Chiedere al praticante di scrivere il prompt al posto tuo",
+    "Chiedersi: un praticante al primo giorno saprebbe cosa fare leggendo questo prompt?",
+    "Verificare che il praticante abbia tempo libero",
+    "Far rivedere il prompt al partner"
+   ],
+   corretta: 1,
+   spiega: "Se la risposta è no, manca contesto. Vale per Claude come per ogni junior."
+  }
+ ]}
+/>

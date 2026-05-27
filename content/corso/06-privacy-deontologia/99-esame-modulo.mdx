@@ -1,0 +1,70 @@
+---
+titolo: "Esame del Modulo 6"
+sottotitolo: "Verifica privacy e deontologia, hai finito il percorso core"
+durata: 5
+ordine: 99
+aggiornato: "2026-05-26"
+quiz: true
+tipo: "esame"
+---
+
+<div className="border border-terracotta/30 bg-terracotta/5 rounded-md p-5 mb-8">
+ <div className="text-[11px] uppercase tracking-widest text-terracotta font-bold mb-1">Esame del modulo</div>
+ <div className="text-sm text-body leading-snug">
+  Rispondi alle 4 domande qui sotto per consolidare le regole su cosa puoi mandare a Claude e come configurare lo studio a norma. È l'ultimo esame del percorso core. Devi rispondere correttamente ad almeno il 75% per chiudere i 6 moduli principali e guadagnare <strong>+3 ✦</strong>. Da qui puoi affrontare la <strong>certificazione finale</strong>.
+ </div>
+</div>
+
+<Quiz
+ modulo="06-privacy-deontologia"
+ lezione="99-esame-modulo"
+ etichetta="Esame"
+ titolo="4 domande per chiudere il percorso core."
+ passaCon={3}
+ domande={[
+  {
+   domanda: "Un fascicolo di separazione conflittuale con nomi, indirizzi e importi reali in che categoria rientra prima di essere toccato?",
+   opzioni: [
+    "Categoria A, mandabile liberamente perché è materia civile",
+    "Categoria B, mandabile solo dopo anonimizzazione di nomi, indirizzi e importi",
+    "Categoria C, mai mandabile in nessuna forma",
+    "Categoria A, basta togliere il cognome e procedere"
+   ],
+   corretta: 1,
+   spiega: "I dati identificativi di clienti e controparti sono Categoria B: puoi usarli con Claude solo dopo aver anonimizzato nomi, P.IVA, importi e indirizzi mantenendo la sostanza."
+  },
+  {
+   domanda: "Quale di questi documenti NON va mai caricato su Claude, neanche anonimizzato?",
+   opzioni: [
+    "Un contratto di locazione standard del cliente",
+    "Una sentenza già pubblicata sul sito del tribunale",
+    "Un verbale di interrogatorio in un procedimento penale in corso",
+    "Una bozza di parere su un tema di diritto societario"
+   ],
+   corretta: 2,
+   spiega: "I dati relativi a procedimenti penali in corso sono Categoria C e restano coperti da segreto professionale stretto (art. 622 c.p. e art. 13 CDF), anche se anonimizzati restano troppo identificativi."
+  },
+  {
+   domanda: "Prima di caricare il primo dato di cliente su Claude, il passaggio tecnicamente non rinunciabile è:",
+   opzioni: [
+    "Chiedere consenso scritto al cliente per ogni singola pratica",
+    "Firmare il DPA (Data Processing Agreement) con Anthropic dal pannello Settings → Compliance",
+    "Aprire un ticket al Garante Privacy",
+    "Far approvare il prompt dal consulente privacy dello studio"
+   ],
+   corretta: 1,
+   spiega: "Senza DPA firmato, lo studio (titolare del trattamento) e Anthropic (responsabile esterno) non hanno l'accordo che il GDPR richiede: qualsiasi caricamento di dati cliente sarebbe non conforme."
+  },
+  {
+   domanda: "Nel registro dei trattamenti ex art. 30 GDPR, come va qualificata Anthropic rispetto allo studio che usa Claude?",
+   opzioni: [
+    "Contitolare del trattamento insieme allo studio",
+    "Titolare autonomo del trattamento",
+    "Responsabile esterno del trattamento, con trasferimento extra-UE coperto da clausole contrattuali standard",
+    "Soggetto terzo non rilevante ai fini del registro"
+   ],
+   corretta: 2,
+   spiega: "Lo studio è titolare, Anthropic è responsabile esterno: nel registro va indicata come destinatario con trasferimento extra-UE (USA) coperto da clausole contrattuali standard."
+  }
+ ]}
+/>

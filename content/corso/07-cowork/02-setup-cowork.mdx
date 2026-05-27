@@ -1,0 +1,123 @@
+---
+titolo: "Setup pratico di Cowork"
+sottotitolo: "Dal piano Pro a uno studio attivamente collaborativo in 1 giornata"
+durata: 7
+ordine: 2
+aggiornato: "2026-05-24"
+quiz: false
+---
+
+Il partner ti dice "lunedì attiviamo Cowork", e a te suona come quel momento in cui hai cambiato gestionale di studio: una mattina di click, e poi tre mesi a sistemare.
+
+Migrare da Pro individuali a Cowork (Team workspace, cioè il workspace di Anthropic, l'azienda che fa Claude, pensato per più persone) sembra un upgrade tecnico semplice: clicchi un bottone, pagamento, fine. In realtà richiede un mezzo giorno per essere fatto bene. Senza questi passi, paghi di più senza guadagnare nulla.
+
+## Step 1: Decidi chi è admin (15 min)
+
+Cowork distingue due ruoli (admin e member, ruoli in Cowork; admin configura e vede tutto, member usa e basta). L'**admin** del workspace controlla:
+- Inviti e revoche utenti
+- Workspace Custom Instructions
+- Skills condivise
+- Fatturazione
+
+Idealmente: 1 partner senior + 1 backup (altro partner o IT manager se esiste). Per studi piccoli, basta 1 partner.
+
+NON dare admin a tutti gli associati per default, semplifica la sicurezza. È la stessa logica della cassaforte dello studio: ce l'hanno in pochi, e ognuno sa chi sono.
+
+## Step 2: Inviti graduali (1 ora)
+
+Tentazione: invitare tutti il giorno 1. **Errore**.
+
+Strategia migliore:
+- **Giorno 1:** partner senior + 1 associato pilota (volenteroso)
+- **Settimana 1-2:** sperimentano insieme, scrivono prime Skills condivise
+- **Settimana 3:** estendi a tutti gli associati
+- **Settimana 4:** estendi a praticanti
+
+Questo evita il caos di 10 persone che usano Cowork senza convenzioni.
+
+<Esempio>
+Lo Studio Marrone & Partners di Bologna, 11 persone, ha attivato Cowork un venerdì pomeriggio e invitato tutti contestualmente. Lunedì mattina c'erano 14 Project con nomi tipo "prova", "test Claude", "cliente X" e una Skill chiamata "boh" creata dal praticante. Hanno dovuto cancellare tutto e ripartire con un rollout graduale: partner + un associato pilota la prima settimana, poi gli altri uno alla volta. La seconda volta è filata liscia.
+</Esempio>
+
+
+## Step 3: Definisci convenzioni di sharing (mezza giornata)
+
+Prima di condividere, decidete in studio:
+
+### Cosa va condiviso
+
+- **Project con dati Categoria A** (modelli, formule, prompt-template) → sempre condivisi
+- **Project con dati Categoria B anonimizzati** (casi clienti normali) → condivisi col team di lavoro
+- **Skills standard dello studio** → workspace level
+
+### Cosa NON va condiviso
+
+- **Project con dati Categoria C** (vedi Modulo 6) → non vanno mai in Cowork
+- **Pratiche con NDA verso terzi che vietano disclosure interna** → account dedicato
+- **Pratiche personali del partner** (divorzio del partner stesso, etc.) → ovviamente no
+
+## Step 4: Setup Workspace Custom Instructions
+
+Definite **una sola volta** lo stile dello studio:
+
+<Prompt>
+Tutti gli utenti di questo workspace lavorano per Studio Legale Rossi & Associati, Milano.
+
+**Stile dello studio:**
+- Diretto, niente formule arcaiche
+- Paragrafi corti (max 4-5 righe)
+- Citazioni giurisprudenziali solo se l'autore è certo; altrimenti "verificare"
+
+**Firma di default:** nessuna (ogni utente firma col proprio nome, sovrascrive nelle proprie Custom Instructions personali).
+
+**Quando in Project di causa:** usa il contesto delle Project Instructions, non chiedere conferma su dati già caricati.
+
+**Cosa NON fare mai:**
+- Inventare giurisprudenza
+- Suggerire azioni che violano il segreto professionale
+- Fare commenti su singole persone identificate nei documenti
+</Prompt>
+
+Da quel momento, ogni associato che entra in Cowork eredita questo contesto. Ognuno può ancora sovrascrivere a livello personale per il proprio stile, ma la base comune resta.
+
+## Step 5: Prime 3 Skills condivise
+
+Non aspettare. Il giorno 1 con Cowork, condividete almeno queste 3 Skills (vedi Modulo 5 per la sintassi):
+
+1. `redazione-parere-stile-studio`
+2. `revisione-nda-lato-nostro-cliente`
+3. `sollecito-pagamento`
+
+Sono le 3 con ROI più alto e fanno capire subito il valore di Cowork.
+
+## Step 6: Onboarding nuovi membri (10 min ciascuno)
+
+Per ogni nuovo invitato, sessione di 10 minuti con un partner:
+
+- Mostra come creare un nuovo Project condiviso
+- Mostra come usare una Skill esistente
+- Mostra dove trovare le Workspace Custom Instructions
+- Mostra la policy interna (Modulo 6 lezione 2)
+
+Senza onboarding, gli associati usano Cowork come Pro, peccato. Dieci minuti spesi adesso valgono settimane risparmiate dopo.
+
+## Errori comuni nel passaggio
+
+| Errore | Conseguenza | Fix |
+|---|---|---|
+| Invito tutti il giorno 1 | Caos, nessuno sa come usarlo | Rollout graduale (Step 2) |
+| Nessuna convenzione sharing | Project sparpagliati, duplicazioni | Step 3 |
+| Workspace Custom Instructions vuote | Ogni associato re-impara lo stile | Step 4 |
+| Niente Skills condivise | Cowork = Pro più costoso | Step 5 |
+| Niente onboarding | Praticanti non sanno di poter usare le Skills | Step 6 |
+
+## Cosa fai questa settimana
+
+Se stai pensando a Cowork:
+1. Decidi se siete pronti (3+ persone, condivisione attiva, almeno qualche workflow standard)
+2. Se sì, applica gli Step 1-2 questa settimana
+3. Step 3-6 nelle prossime 3 settimane
+
+In un mese sei operativo, non solo "iscritto".
+
+<RiferimentoCorso lezione="03-workflow-cowork" />

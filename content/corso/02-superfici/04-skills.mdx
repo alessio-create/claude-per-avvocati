@@ -1,0 +1,156 @@
+---
+titolo: "Skills, l'automazione che non programmi"
+sottotitolo: "Trasforma un task ricorrente in un comando di una riga"
+durata: 8
+ordine: 4
+aggiornato: "2026-05-23"
+quiz: false
+---
+
+Ti racconto la differenza fra un avvocato che usa Claude da sei mesi e uno che lo usa da due anni. Quello da sei mesi riscrive ogni volta lo stesso prompt di 30 righe (l'istruzione che dai a Claude, dal singolo messaggio al template strutturato). Quello da due anni scrive una riga, perché ha le Skills.
+
+Una Skill è una **procedura riutilizzabile** che insegni a Claude una volta sola e poi la richiami con una frase. Funziona in Chat, Projects, Claude Code. È il moltiplicatore di produttività più importante dopo i Projects.
+
+## Cos'è una Skill (semplificato)
+
+Pensa a una Skill come a una **checklist scritta una volta**. Tu vorresti dire al praticante "scrivimi un parere", ma vorresti anche che lui sapesse già:
+
+- la struttura del parere come la vuoi tu (Esposizione fatti → Inquadramento normativo → Analisi → Conclusione)
+- lo stile dello studio (paragrafi corti, niente formule arcaiche)
+- le citazioni preferite (giurisprudenza recente, mai sentenze di merito sotto i 5 anni se non note)
+- la firma di chiusura
+
+Una Skill è questa checklist trasformata in istruzioni machine-readable che Claude rispetta automaticamente quando la richiami.
+
+## Esempio: la Skill "redazione-parere"
+
+Nel filesystem (in una cartella `.claude/skills/redazione-parere/SKILL.md`):
+
+```markdown
+---
+name: redazione-parere
+description: Use when the user asks to draft a legal opinion for an Italian client. Produces a parere in the studio's locked format and style.
+---
+
+# Redazione Parere
+
+Quando l'utente chiede di redigere un parere, segui SEMPRE questa struttura:
+
+## 1. Esposizione dei fatti
+- Massimo 200 parole
+- Cronologica
+- Anonimizzare nomi reali se non esplicitamente forniti
+
+## 2. Inquadramento normativo
+- Cita gli articoli rilevanti (codice civile, leggi speciali)
+- Massimo 3 articoli, sceglili tu se sono di più
+
+## 3. Analisi
+- Punti pro e contro
+- Per ogni argomento, una giurisprudenza di Cassazione recente (≤2 anni) se possibile
+
+## 4. Conclusione
+- Risposta diretta al quesito
+- Stima del rischio (basso / medio / alto) se applicabile
+- Eventuali raccomandazioni operative
+
+## Stile
+- Paragrafi corti (max 4-5 righe)
+- Niente "spettabile", "in indirizzo", "ai sensi e per gli effetti"
+- Lunghezza totale: 800-1500 parole
+
+## Firma
+"Cordiali saluti, Studio Legale Rossi & Associati"
+```
+
+Una volta installata, ogni volta che scrivi un prompt tipo "redigi un parere su [X]", Claude **automaticamente** applica questa skill. Non devi richiamarla esplicitamente, non devi ricordarti di scriverla, Claude la pesca dalla descrizione.
+
+<Esempio>
+L'Avv. Chiara Bellini, penalista a Firenze, riceve almeno tre richieste a settimana di "parere sulla denuncia che dovrei sporgere" da clienti privati. Ognuna richiedeva 45 minuti di drafting da zero, sempre la stessa struttura (fatti, qualificazione giuridica, opportunità del deposito, costi, tempi). Ha scritto una Skill `parere-denuncia` di 50 righe con la sua struttura, le sue note di stile, e una clausola fissa sulle aspettative realistiche del cliente. Ora scrive "fammi un parere-denuncia su questo caso" e incolla il racconto. La bozza arriva in 20 secondi, lei la rifinisce in 10 minuti. Da 45 minuti a 12. Su tre pareri a settimana sono quasi due ore recuperate.
+</Esempio>
+
+## Come si usa una Skill (per chi non è developer)
+
+### Su claude.ai (interfaccia web)
+
+Claude.ai supporta le Skills nelle interfacce avanzate (Projects, in particolare). Le configuri nelle impostazioni del Project o del tuo account.
+
+### Su Claude Code (terminale)
+
+Le Skills vivono in due posti:
+
+- **Globali per te:** `~/.claude/skills/`, disponibili in ogni progetto sul tuo PC
+- **Per progetto:** `.claude/skills/` nella cartella del progetto, disponibili solo lì
+
+Le crei una volta, le richiami sempre.
+
+### Sull'API (avanzato)
+
+Le passi come parte della configurazione del modello (l'API è l'accesso programmatico a Claude, ti serve solo se vuoi farti scrivere uno script o un'automazione). Non riguarda l'uso quotidiano, è per chi costruisce tool custom.
+
+## Cinque Skills che ogni studio dovrebbe avere
+
+### 1. `redazione-parere`
+
+Come sopra. La singola Skill con il ROI più alto: copre forse il 30% del lavoro di drafting di uno studio civilista.
+
+### 2. `revisione-contratto`
+
+Quando l'utente carica un contratto, lo legge in ottica difensiva e produce: 1) sommario delle clausole, 2) clausole problematiche per il nostro cliente, 3) proposte di modifica concrete.
+
+### 3. `email-cliente-tipo`
+
+Bozza di email seguendo lo stile dello studio. Si attiva ogni volta che chiedi "bozza email a [cliente] per [argomento]".
+
+### 4. `sintesi-sentenza`
+
+Apre un PDF o testo di sentenza, produce: numero/data/organo/parti, massima in 2 righe, ratio decidendi, rilevanza per casi simili.
+
+### 5. `domande-primo-colloquio`
+
+Quando l'utente descrive un nuovo caso, genera 10-15 domande chiave per il primo colloquio col cliente, organizzate per tema.
+
+## Dove trovi Skills già pronte
+
+Ci sono **repository pubblici** di Skills già scritte. Il Modulo 5 entra nel dettaglio. Per ora basta sapere che esistono, non devi necessariamente scriverle da zero.
+
+Esempi (community-mantained):
+
+- `superpowers`, collezione di Skills generaliste molto curate
+- `awesome-claude-skills`, directory di Skills divise per categoria
+- Brand-design.md per il branding
+
+Quando trovi una Skill che funziona per te, la installi in 30 secondi.
+
+## Quanto è difficile scriverne una?
+
+Una Skill semplice = un file Markdown di 30-60 righe. Difficoltà: scrivere bene istruzioni per un collega umano. Se sai farlo, sai scrivere una Skill.
+
+Una Skill avanzata può includere:
+
+- Istruzioni per Claude
+- Esempi di input e output desiderati
+- Riferimenti a file di template
+- Sub-routine (es. "se il caso è penale, usa questa variante; se civile, usa quest'altra")
+
+Il Modulo 5 ti guida nello scrivere la tua prima Skill su misura per il tuo studio.
+
+<Nota tipo="suggerimento">
+La regola del 3: se hai fatto 3 volte lo stesso tipo di task scrivendo prompt simili, è arrivato il momento di farne una Skill. Sopra le 3 volte, l'investimento iniziale di 30-60 minuti per scrivere la Skill si ripaga in poche settimane.
+</Nota>
+
+## Limite delle Skills
+
+Le Skills sono **istruzioni**, non magia. Non aggiungono conoscenza che Claude non ha. Se la tua Skill dice "cita sempre giurisprudenza recente", Claude prova, ma se non ha accesso a una banca dati, può inventare riferimenti sbagliati (allucinare).
+
+Soluzione: per task che richiedono dati esterni (giurisprudenza fresca, dati di un gestionale), abbina la Skill a un MCP, il protocollo che permette a Claude di parlare con i tuoi software, gestionale, drive, calendar (lezione successiva).
+
+<Risorse items={[
+ { titolo: "Introduction to Agent Skills", url: "https://anthropic.skilljar.com", fonte: "Anthropic Academy", durata: "30 min · 6 lezioni" },
+ { titolo: "Agent Skills documentation", url: "https://docs.claude.com/skills", fonte: "Anthropic Docs" },
+ { titolo: "Repository pubblico superpowers", url: "https://github.com/obra/superpowers", fonte: "Community open source" },
+]} />
+
+<RiferimentoCorso lezione="05-mcp" />
+
+Nella prossima lezione: MCP, come collegare Claude al gestionale, a Outlook, alla banca dati. Quando inizia a parlare con i tuoi tool, cambia di nuovo tutto.

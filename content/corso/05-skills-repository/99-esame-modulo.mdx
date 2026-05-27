@@ -1,0 +1,81 @@
+---
+titolo: "Esame del Modulo 5"
+sottotitolo: "Verifica Skills &amp; repository prima di passare al Modulo 6"
+durata: 5
+ordine: 99
+aggiornato: "2026-05-26"
+quiz: true
+tipo: "esame"
+---
+
+<div className="border border-terracotta/30 bg-terracotta/5 rounded-md p-5 mb-8">
+ <div className="text-[11px] uppercase tracking-widest text-terracotta font-bold mb-1">Esame del modulo</div>
+ <div className="text-sm text-body leading-snug">
+  Rispondi alle 5 domande qui sotto per consolidare l'anatomia delle Skill, i repository pubblici, la Skill di studio, la condivisione e la meta-skill. Devi rispondere correttamente ad almeno l'80% per sbloccare il <strong>Modulo 6, Privacy &amp; deontologia</strong> e guadagnare <strong>+3 ✦</strong>.
+ </div>
+</div>
+
+<Quiz
+ modulo="05-skills-repository"
+ lezione="99-esame-modulo"
+ etichetta="Esame"
+ titolo="5 domande per chiudere il modulo."
+ passaCon={4}
+ domande={[
+  {
+   domanda: "Nel frontmatter di un SKILL.md, a cosa serve il campo `description` e in che lingua va scritto?",
+   opzioni: [
+    "Descrive la Skill al cliente finale e va scritto in italiano formale",
+    "Dice a Claude quando attivare la Skill e per convenzione va scritto in inglese",
+    "È un commento opzionale per il manutentore, lingua libera",
+    "Definisce il prezzo della Skill sul marketplace, va scritto in inglese"
+   ],
+   corretta: 1,
+   spiega: "La description è il criterio di attivazione: Claude la matcha contro il task corrente, quindi va resa chirurgica e scritta in inglese per convenzione tecnica."
+  },
+  {
+   domanda: "Quale mix tra Skills della community e Skills custom dello studio è una regola pratica sensata?",
+   opzioni: [
+    "100% community, scriverne di proprie è spreco di tempo",
+    "100% custom, le Skills pubbliche non sono mai affidabili",
+    "Circa 70% custom dello studio e 30% installate dalla community",
+    "50% e 50%, sempre, indipendentemente dal task"
+   ],
+   corretta: 2,
+   spiega: "Le Skills generaliste (sintesi, brainstorming) conviene installarle; lo stile e i task ricorrenti del tuo studio meritano Skills custom, che valgono per anni."
+  },
+  {
+   domanda: "Quando costruisci una Skill che codifica lo \"stile studio\", qual è il passaggio iniziale più importante?",
+   opzioni: [
+    "Raccogliere 5-10 esempi reali (anonimizzati) del tuo lavoro e distillare i pattern in regole",
+    "Cercare su GitHub una Skill simile e copiarla cambiando solo il nome",
+    "Scrivere subito 200 righe di istruzioni teoriche prima di vedere casi reali",
+    "Chiedere al praticante più giovane di descrivere lo stile dello studio a memoria"
+   ],
+   corretta: 0,
+   spiega: "Lo stile vive negli esempi reali: partire da 5-10 casi anonimizzati ti permette di trasformare pattern impliciti in regole esplicite, e poi includere un esempio gold nel SKILL.md."
+  },
+  {
+   domanda: "Uno studio di 7 associati vuole condividere le Skills mantenendo versioning e storia delle modifiche. Quale modalità è più adatta?",
+   opzioni: [
+    "Mandare il file SKILL.md via email ogni volta che cambia",
+    "Cartella OneDrive condivisa senza altro",
+    "Repository git privato (es. GitHub) che ogni associato clona in `~/.claude/skills/`",
+    "Stampare le Skills e tenerle in un raccoglitore in segreteria"
+   ],
+   corretta: 2,
+   spiega: "Un repo git privato dà versioning, storia delle modifiche e propagazione disciplinata via `git pull`: il setup costa 1 ora ma scala bene oltre i 3-5 associati."
+  },
+  {
+   domanda: "A cosa serve una meta-skill come `skill-builder`?",
+   opzioni: [
+    "A vendere le tue Skills sui marketplace esterni",
+    "A cancellare automaticamente le Skills che usi poco",
+    "A intervistarti su un task ricorrente e generare per te un SKILL.md ben strutturato",
+    "A tradurre le Skills dall'italiano all'inglese e viceversa"
+   ],
+   corretta: 2,
+   spiega: "`skill-builder` ti fa 3-6 domande mirate (quando attivare, cosa non fare, esempio gold) e produce un SKILL.md coerente con le best-practice in 10-15 minuti."
+  }
+ ]}
+/>

@@ -1,0 +1,102 @@
+---
+titolo: "Chat, la porta d'ingresso"
+sottotitolo: "Quando usarla, quando NON usarla"
+durata: 7
+ordine: 1
+aggiornato: "2026-05-23"
+quiz: false
+---
+
+Hai aperto Claude, hai scritto qualcosa, hai avuto la tua risposta, hai chiuso la finestra. Fine. Quella è la Chat: la porta d'ingresso, dove la maggior parte degli avvocati passa il 90% del tempo, spesso sbagliando.
+
+Questa lezione spiega cosa Chat fa bene, cosa fa male, e perché in certi casi devi smettere di usarla e passare a Projects.
+
+## Cos'è esattamente una Chat
+
+Una conversazione isolata. Quando la apri, Claude non ricorda nessuna conversazione precedente. Quando la chiudi (o passi il limite di token, le unità in cui Claude conta il testo, circa 0,75 parole italiane per token), la memoria si azzera. Ogni chat è un'isola.
+
+L'unico contesto persistente sono le **Custom Instructions** dell'account, istruzioni che Claude legge automaticamente a ogni nuova conversazione senza che tu le ripeta (vedi Modulo 3). Quelle si applicano a ogni chat.
+
+## Quando Chat è perfetta
+
+### 1. Task isolati e veloci
+
+Una bozza di email. Una riformulazione di una clausola. Una sintesi di una sentenza in 3 paragrafi. Tutto ciò che non ha "seguito", fai, finisci, chiudi.
+
+### 2. Brainstorming
+
+"Dammi 10 angoli di attacco per una difesa in un caso di responsabilità professionale dove il cliente sostiene di non aver ricevuto un'informazione." Output: 10 spunti, scegli i 3 che ti convincono, passi a fare altro.
+
+### 3. Riformulazione e variazione
+
+"Riformula questo paragrafo in tre versioni: più formale, più diretta, più empatica." Output: tre versioni, scegli la migliore.
+
+### 4. Spiegazioni rapide
+
+"Spiegami in 200 parole la differenza tra clausola penale e caparra confirmatoria, con un esempio pratico." Output: spiegazione, copia/incolla nel parere o nella mail al cliente.
+
+<Esempio>
+L'Avv. Giulia Marchetti, civilista a Padova, ha smesso di scrivere a mano la prima bozza delle email di risposta ai clienti che chiedono "ma quanto tempo ci vuole?". Apre una Chat nuova, incolla la domanda del cliente, scrive "rispondi in tono cordiale, max 8 righe, ricorda che dipende dai tempi del Tribunale". In 20 secondi ha la bozza. La rilegge, sistema una virgola, manda. Sostiene di aver recuperato circa 40 minuti al giorno solo su questa categoria di email, senza creare alcun Project: tanto sono domande che non hanno seguito.
+</Esempio>
+
+## Quando Chat NON va bene
+
+### 1. Una pratica con tanti documenti
+
+Se devi caricare 5+ documenti per fare un task, NON usare Chat. Crea un Project, carica tutto lì, lavora nel Project. In Chat dovresti reincollare i documenti ad ogni nuova conversazione, perdita di tempo enorme.
+
+### 2. Un cliente di lungo termine
+
+Se è un cliente che ti darà 10 task nei prossimi 3 mesi, NON usare Chat. Crea un Project per quel cliente, carica il dossier, e da quel momento ogni conversazione "sa già" chi è il cliente, cos'è la pratica, qual è lo stile.
+
+### 3. Quando vuoi che Claude "ricordi" qualcosa
+
+Chat non ricorda. Vuoi che ricordi → Custom Instructions (cross-account) o Project Instructions (per progetto).
+
+## La gerarchia del contesto in Chat
+
+Cosa "sa" Claude in una nuova Chat:
+
+1. **Quello che scrivi nel messaggio attuale**, sempre, ad ogni messaggio
+2. **Quello che è stato detto nella stessa Chat** sopra, fino al limite del contesto (~200k token per Claude Opus, parecchio)
+3. **Le tue Custom Instructions**, se le hai configurate
+
+Cosa NON sa:
+
+- Niente di altre Chat
+- Niente di Projects (uno spazio dentro Claude dove carichi documenti e istruzioni che restano disponibili in tutte le conversazioni di quel progetto, vedi lezione successiva)
+- Niente del tuo gestionale, calendar, drive (a meno di MCP, il protocollo che permette a Claude di parlare con i tuoi software, gestionale, drive, calendar)
+
+<Nota tipo="attenzione">
+Quando vuoi che una vecchia Chat "torni utile" per un task nuovo, NON aprire una nuova Chat, riapri quella vecchia. Tutta la memoria è preservata. Se invece apri una nuova Chat e ricominci da capo, perdi tutto il contesto precedente.
+</Nota>
+
+## Tre trucchi pratici
+
+### Pin delle Chat importanti
+
+Claude.ai permette di "pinnare" le Chat in alto nella sidebar. Pinna le 5-10 Chat ricorrenti che usi di più (es. "Drafting standard email", "Bozza pareri tipo", "Trucchi prompt").
+
+### Rinomina le Chat
+
+Per default Claude dà alle Chat titoli automatici tipo "Conversazione del 23 maggio". Inutile. Rinomina subito: "Cliente Bianchi - sollecito", "Parere art. 1341", "Email Studio Verdi".
+
+### Continua la chat ieri lasciata aperta
+
+Se ieri stavi facendo un drafting di un parere e l'hai lasciato a metà, oggi NON aprire una nuova Chat per rifinirlo: torna alla Chat di ieri e scrivi "continuiamo da dove abbiamo lasciato". Claude rilegge tutto il contesto, riparte dal punto giusto.
+
+## Il limite della Chat: il contesto
+
+C'è una conseguenza pratica importante di tutto questo, e riguarda quanto puoi caricare in una sola conversazione. Anche se Chat ha una "memoria lunga" (il context window, la quantità di testo che Claude può tenere in mente in una sola conversazione, circa 200 mila token con Opus, ovvero 150.000 parole, circa 300-400 pagine A4, quanto un romanzo medio), se la riempi troppo Claude inizia a perdere precisione sui dettagli sparsi all'inizio.
+
+Regola pratica: se una Chat supera le 50-60 risposte, valuta di sintetizzare il contesto chiave e ripartire in una nuova. Esempio:
+
+<Prompt>
+Riassumi tutto quello che abbiamo discusso in questa chat in 500 parole, focalizzandoti su: 1) il caso, 2) le decisioni prese, 3) i task ancora aperti. Genera un prompt che posso usare per ripartire da zero in una nuova chat mantenendo tutto questo contesto.
+</Prompt>
+
+Output: un riassunto + un prompt-ricomincia che incolli nella nuova Chat.
+
+<RiferimentoCorso lezione="02-projects" />
+
+Nella prossima lezione: Projects, l'upgrade naturale di Chat quando hai un caso vero.

@@ -1,0 +1,160 @@
+---
+titolo: "Cosa puoi (e non puoi) mandare a Claude"
+sottotitolo: "GDPR, segreto professionale, deontologia in pratica"
+durata: 12
+ordine: 1
+aggiornato: "2026-05-23"
+quiz: false
+---
+
+Lo so, il primo riflesso è di paura: posso davvero mettere i dati del mio cliente in mano a un'AI? È la domanda giusta, e la risposta non è "sì tranquillo" né "no mai". È: dipende da cosa mandi, come lo prepari, e cosa hai firmato prima.
+
+Questo modulo è quello che lo studio che usa Claude **deve** padroneggiare. Le regole non sono opinabili, sono fissate dal GDPR, dal codice deontologico forense, e dal Codice Civile (segreto professionale, art. 622 c.p.).
+
+Questa lezione è la mappa pratica: cosa puoi mandare a Claude, cosa devi anonimizzare, cosa non deve mai uscire dallo studio.
+
+## I tre pilastri della conformità
+
+<Pillari items={[
+ { numero: "1", titolo: "Titolarità del trattamento", descrizione: "Tu (lo studio) sei titolare. Anthropic è responsabile esterno. Devi avere DPA firmato e informativa aggiornata che menzioni l'uso di AI." },
+ { numero: "2", titolo: "Anonimizzazione preventiva", descrizione: "Per dati di Categoria B (vedi tabella sotto), sempre anonimizza nomi, P.IVA, importi specifici PRIMA di caricare. Mantieni la sostanza, perdi l'identificabilità." },
+ { numero: "3", titolo: "Categoria C off-limits", descrizione: "Dati sanitari, procedimenti penali in corso, segreto stretto: NON vanno mai in Claude. Lavoro solo interno o aspetta versioni self-hosted." },
+]} />
+
+Tre pilastri, e tutto il resto della lezione è il "come" applicarli senza paralizzare lo studio.
+
+## Il framework: tre categorie di dati
+
+Ogni informazione che potresti mandare a Claude rientra in una di tre categorie:
+
+### Categoria A, Mandabile liberamente
+
+Dati che NON identificano persone fisiche identificabili, NON sono coperti da segreto professionale, NON sono sensibili.
+
+Esempi:
+- Testi normativi (codice civile, leggi)
+- Sentenze già pubblicate (con parti già anonimizzate dalla pubblicazione)
+- Formule standard, modelli generici
+- Tue note interne su temi giuridici (es. "appunti su art. 1341")
+- Tuoi prompt-template
+
+Questi vanno tranquillamente a Claude. Nessun problema GDPR o deontologico.
+
+### Categoria B, Mandabile dopo anonimizzazione
+
+Dati che identificano persone/aziende ma di cui ti serve la sostanza non l'identità.
+
+Esempi:
+- Contratti reali del cliente (anonimizza nomi parti, P.IVA, importi specifici)
+- Email reali (anonimizza mittenti, destinatari, importi)
+- Comunicazioni con controparti
+- Sintesi di pratiche per ragionamento
+
+**Tecnica di anonimizzazione standard:**
+
+| Originale | Anonimizzato |
+|---|---|
+| Studio Bianchi srl | Studio "Alfa" srl |
+| Cliente Mario Verdi | Cliente "M.V." |
+| Via Roma 12, Milano | Via [omessa], Milano |
+| €145.000 | €XXX.XXX |
+| Fattura n. 234 del 15/12/2025 | Fattura n. [numero] del [data] |
+| C.F. RSSMRA60... | C.F. [omesso] |
+
+**Regola d'oro:** mantieni il senso e le proporzioni (es. se l'importo è significativo lascia indicato che è "alto"), perdi l'identificabilità.
+
+<Esempio>
+Lo Studio Costa di Bari era tentato di caricare un fascicolo di separazione conflittuale come PDF intero. Prima di farlo hanno fatto la passata di anonimizzazione: nomi sostituiti con "M.R." e "L.S.", importi convertiti in "X.XXX", indirizzi diventati "[omesso]". Il PDF di 60 pagine è diventato un PDF anonimo che potevano caricare senza problemi. Tempo di anonimizzazione: 12 minuti, contro le 4 ore di analisi che Claude poi ha fatto in 8. Il rapporto rischio/beneficio è chiaro.
+</Esempio>
+
+### Categoria C, NON mandare mai
+
+Dati che sono coperti da segreto professionale stretto, dati sanitari, dati relativi a procedimenti penali in corso, dati di clienti che hanno espressamente vietato l'uso di AI.
+
+Esempi:
+- Verbali di interrogatorio in penale (anche anonimizzati = troppo identificativi)
+- Documentazione medica
+- Comunicazioni col cliente in materia che lui ha vietato di esternalizzare
+- Dati relativi a procedimenti penali in corso del cliente (es. capi di imputazione specifici)
+- Documenti coperti da NDA stretto verso terzi
+
+Per questi, lavori sempre **internamente** senza Claude. O se vuoi proprio usare Claude, valuta self-hosting dell'API (avanzato, costoso) o aspetta versioni private di Claude (in arrivo per studi enterprise).
+
+## GDPR: i tre punti chiave
+
+### 1. Tu sei il titolare del trattamento
+
+Quando carichi dati di clienti su Claude, **lo studio è titolare del trattamento** (in pratica: chi decide come e perché trattare quei dati, sei tu, lo studio) ai sensi del GDPR. Anthropic, l'azienda che fa Claude, è **responsabile del trattamento** (chi tratta i dati per conto del titolare, in questo caso Anthropic).
+
+Implicazioni:
+- Devi avere base giuridica per il trattamento (di solito: legittimo interesse + contratto di mandato professionale)
+- Devi informare il cliente nell'informativa privacy che usi strumenti AI
+- Devi avere un **DPA** (Data Processing Agreement), l'accordo tra te e il fornitore del servizio (qui Anthropic) che fissa cosa può e non può fare con i tuoi dati, firmato con Anthropic
+
+### 2. Il DPA con Anthropic
+
+Detto questo, scarichiamolo davvero. Anthropic offre un DPA standard, scaricabile da:
+
+> Account → Settings → Compliance → Data Processing Agreement
+
+Su piano Pro: lo trovi e firmi digitalmente. Su piano Team: stesso percorso, firma a livello workspace.
+
+Va firmato **prima** di caricare il primo dato di cliente.
+
+### 3. Dove vengono processati i dati
+
+Claude processa dati su data center Anthropic (USA per default, EU per account che lo richiedono). Per studi italiani con clienti europei:
+
+- Su Pro/Max: regione USA con clausole standard di trasferimento dati extra-EU
+- Su Team: regione EU disponibile (a richiesta)
+
+Per pratiche dove il cliente ha esplicitamente richiesto **data residency** (il paese in cui vengono fisicamente archiviati e processati i dati) EU, valuta upgrade a Team con regione EU configurata.
+
+## Segreto professionale (art. 622 c.p. + art. 13 CDF)
+
+Il segreto professionale è **assoluto**: tutto quanto appreso nell'esercizio dell'attività è coperto, indipendentemente dalla fonte.
+
+Caricare un documento di un cliente su Claude è una **forma di esternalizzazione**. Per essere conforme:
+
+1. Il fornitore (Anthropic) deve garantire confidenzialità → il DPA standard la garantisce
+2. Devi limitare l'accesso ai dati a chi ne ha effettivo bisogno → workspace Team con accessi profilati
+3. Non devi divulgare il contenuto a terzi non autorizzati → DPA lo garantisce
+
+**Importante:** Anthropic **non** usa i tuoi dati per training del modello (è esplicito nel DPA). I tuoi dati non finiscono in versioni future di Claude.
+
+## Deontologia (CDF), punti specifici
+
+### Art. 13, Segreto professionale
+
+Come sopra. Conformità garantita se DPA firmato + workflow di anonimizzazione applicato.
+
+### Art. 9, Doveri di diligenza
+
+Usare AI non ti esime dal dovere di diligenza. Tu sei responsabile dei contenuti finali, anche se generati da Claude. Verifica sempre.
+
+### Art. 17, Informazione del cliente
+
+Non c'è obbligo esplicito di informare il cliente che usi AI per il suo caso. Ma è **buona prassi** menzionarlo nell'informativa privacy generale dello studio.
+
+Esempio di clausola:
+> "Lo studio utilizza strumenti di intelligenza artificiale (in particolare Claude di Anthropic) per supportare attività di drafting, ricerca e analisi documentale. I dati personali sono trattati nel rispetto della normativa privacy. È stato firmato un Data Processing Agreement con il fornitore. I dati non vengono usati per addestrare modelli."
+
+## Checklist "prima di mandare a Claude"
+
+Prima di copiare/caricare qualcosa, 3 domande:
+
+1. **C'è un nome/identificativo specifico?** Se sì → anonimizza.
+2. **È un caso penale in corso?** Se sì → lavora internamente.
+3. **Il cliente ha vietato esternalizzazione?** Se sì → non usare Claude per questo caso.
+
+Se tutte le risposte sono "no/già anonimizzato/già consenso", procedi.
+
+<Nota tipo="attenzione">
+Per pratiche di **diritto di famiglia** (specie separazioni / divorzi conflittuali) e **diritto del lavoro** (specie licenziamenti contestati), l'anonimizzazione è particolarmente importante. Anche se i dati sono "generici", in contesti piccoli (es. una piccola comunità) bastano dettagli laterali per identificare le persone.
+</Nota>
+
+Se ti rimane un dubbio binario sul "mando o non mando", la risposta onesta è quasi sempre: anonimizza e mandi. I dieci minuti in più che spendi sulla passata di anonimizzazione sono il prezzo della tranquillità.
+
+<RiferimentoCorso lezione="02-configurazione-a-norma" />
+
+Nella prossima e ultima lezione: come configurare lo studio per essere "a norma by design", privacy + deontologia + governance in 1 ora di setup.

@@ -1,0 +1,160 @@
+---
+titolo: "La tua prima Skill personale (in 30 minuti)"
+sottotitolo: "Trasforma il task che fai ogni settimana in una scorciatoia"
+durata: 8
+ordine: 5
+aggiornato: "2026-05-23"
+quiz: false
+---
+
+Le Skills nel Modulo 2 erano teoria. Ora si scrive. Trenta minuti, una **Skill** (una procedura riutilizzabile che insegni a Claude una volta sola e poi la richiami con una frase) sul disco, e da domani in poi un task che oggi ti porta via mezz'ora torna in trenta secondi. L'esempio che useremo è la lettera di sollecito, perché è il candidato perfetto: ricorrente, breve, sempre uguale nella struttura ma diverso nei dati.
+
+Alla fine avrai un asset riusabile per anni.
+
+## Step 1: Scegli il task giusto
+
+La regola del 3: se hai fatto 3+ volte lo stesso tipo di task scrivendo prompt simili, è candidato per una Skill.
+
+Buoni candidati:
+
+- Lettere di sollecito pagamento
+- Bozza di risposta a contestazioni standard di parcella
+- Riformulazione di clausole NDA in versione "nostra preferita"
+- Sintesi sentenze in formato per scheda
+- Email tipo per accettazione/declino di mandato
+
+Per questa lezione: lettera di sollecito.
+
+## Step 2: Scrivi il prompt "perfetto" come sarebbe oggi
+
+Prima di scriverlo come Skill, scrivilo come prompt singolo. Pensaci 5 minuti, scrivi il prompt più completo che useresti per ottenere il risultato che vuoi:
+
+<Prompt>
+Sei l'assistente dell'Avv. Mario Rossi, civilista a Milano.
+
+Redigi una lettera di sollecito pagamento (NON di messa in mora, quello è step successivo, una lettera "amichevole" prima della messa in mora).
+
+Dati che ti darò ogni volta:
+- Cliente debitore
+- Importo
+- Numero fattura e data
+- Numero giorni di ritardo
+- Se è il primo sollecito o successivo
+
+Stile fisso:
+- Tono fermo ma non aggressivo (è prima della messa in mora, non vogliamo bruciare il rapporto)
+- Lunghezza 200-250 parole
+- Niente "spettabile", niente "in indirizzo"
+- Cita esplicitamente il numero fattura, importo, data scadenza
+- Richiedi pagamento entro 7 giorni
+- Lasci aperta la porta a chiamata di chiarimento per eventuali contestazioni
+- Firma: "Cordiali saluti, Avv. Mario Rossi"
+
+Output: solo il testo della lettera, pronto per invio via PEC.
+</Prompt>
+
+## Step 3: Trasformalo in Skill
+
+Una Skill è quel prompt + un metadato che dice a Claude **quando** usarlo automaticamente. Vai (o chiedi al tuo IT) di creare un file:
+
+`~/.claude/skills/lettera-sollecito/SKILL.md`
+
+Contenuto:
+
+```markdown
+---
+name: lettera-sollecito
+description: Use when the user asks to draft a payment reminder letter (sollecito di pagamento), distinct from a formal demand letter (messa in mora). Tone is firm but relationship-preserving.
+---
+
+# Lettera di Sollecito Pagamento
+
+Quando l'utente chiede di redigere un sollecito (NON messa in mora), produci una lettera con queste caratteristiche fisse.
+
+## Dati che l'utente fornirà
+
+- Cliente debitore (nome/ragione sociale)
+- Importo
+- Numero fattura e data
+- Giorni di ritardo
+- Numero del sollecito (primo / secondo / terzo)
+
+Se manca uno di questi dati, chiedimelo PRIMA di rispondere, non inventarlo.
+
+## Struttura fissa della lettera
+
+1. **Apertura** (1 paragrafo, 2-3 righe)
+  - Ricorda l'importo e la fattura
+  - Tono cordiale ma fermo
+
+2. **Corpo** (2 paragrafi)
+  - Chiedi pagamento entro 7 giorni
+  - Lascia aperta la porta a chiarimento per eventuali contestazioni
+  - Se è secondo o terzo sollecito, accenna alla possibile escalation senza minacciare
+
+3. **Chiusura** (1 paragrafo, 2 righe)
+  - "Cordiali saluti, Avv. Mario Rossi"
+
+## Stile
+
+- 200-250 parole totali
+- NO: "spettabile", "in indirizzo", "ai sensi", "restando in attesa"
+- SI: paragrafi corti, linguaggio diretto, italiano corretto
+- Mai aggressivo (non è messa in mora)
+
+## Output
+
+Solo il testo della lettera, già formattato, pronto per copia-incolla in PEC. Niente preamboli "Ecco la bozza:".
+```
+
+Salvata.
+
+## Step 4: Usala
+
+D'ora in poi, in qualsiasi conversazione Claude su un Project del tuo studio (o in Code se hai installato la Skill globalmente):
+
+> "Sollecito pagamento: cliente Bianchi srl, €14.500, fattura 234 del 15/12/2025, 90 giorni di ritardo, secondo sollecito."
+
+Claude **riconosce il pattern** della tua Skill, applica le istruzioni, produce la lettera nel tuo stile esatto.
+
+Tempo: 30 secondi a **prompt** (l'istruzione che dai a Claude, dal singolo messaggio al template strutturato). Risparmio rispetto a scrivere il prompt completo ogni volta: 2-3 minuti × tot volte all'anno = giornate.
+
+<Esempio>
+L'Avv. Francesca Greco, recuperi crediti in uno studio di Bari, mandava in media 12 lettere di sollecito alla settimana. Tra cercare il modello vecchio, modificare i dati, riadattare il tono al cliente, ci impiegava circa 15 minuti a lettera. Ha scritto la sua prima Skill "lettera-sollecito" in un pomeriggio (template + variazioni primo/secondo/terzo sollecito). Dalla settimana dopo: 30 secondi a richiesta, output già pronto per la PEC. Sono circa 3 ore alla settimana che le sono tornate in mano. Le ha investite a chiamare di persona i clienti grossi prima della messa in mora, e tre di loro hanno pagato senza arrivare al contenzioso.
+</Esempio>
+
+## Tre Skills da scrivere nel primo mese
+
+1. **lettera-sollecito** (come sopra)
+2. **revisione-NDA**, incolli un NDA, output: clausole problematiche per il nostro cliente + proposte modifiche
+3. **sintesi-sentenza**, incolli sentenza, output: numero/data/parti/massima/ratio/rilevanza
+
+## Errori comuni nella scrittura di Skills
+
+### 1. Skill troppo generica
+
+"Una Skill per scrivere lettere" → non funziona, è troppo vago. Meglio "una Skill per lettere di sollecito" + "una Skill per messa in mora" + "una Skill per accettazione mandato".
+
+### 2. Description vaga
+
+La `description` nel frontmatter è ciò che fa "attivare" la Skill. "Use for legal stuff" → mai attivata. "Use when user asks to draft a payment reminder letter (sollecito)" → attivata al momento giusto.
+
+### 3. Troppe istruzioni
+
+Una Skill di 5 pagine è ingestibile. Mantienila sotto le 100 righe. Se hai bisogno di varianti, fai 2 Skills separate.
+
+<Nota tipo="suggerimento">
+Esiste una **Skill che scrive Skills**, si chiama `skill-builder` in alcuni repository pubblici. Le prossime lezioni (Modulo 5) entrano nel dettaglio. Per ora, scrivere la prima a mano è il modo migliore per imparare.
+</Nota>
+
+## Fine Modulo 3
+
+Hai il setup completo:
+
+- Piano giusto
+- Custom Instructions
+- Output Styles (se Pro+)
+- Configurazione studio (se Team)
+- Prima Skill
+
+Nel Modulo 4 entriamo nel cuore del corso: i sette casi d'uso legali con prompt pronti per ognuno.

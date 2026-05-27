@@ -1,0 +1,151 @@
+---
+titolo: "Custom Instructions: il setup da 30 minuti con il ROI più alto"
+sottotitolo: "Una sola configurazione che agisce su ogni conversazione futura"
+data: "2026-05-09"
+autore: "Alessio Massaro"
+tempo: 7
+tag: ["Setup", "Custom Instructions"]
+coverColor: "terracotta"
+coverIcon: "gear"
+estratto: "Le Custom Instructions sono il singolo investimento di tempo con il ROI più alto in tutto Claude. Trenta minuti spesi una volta, beneficio su ogni conversazione futura. Il template che usiamo nel nostro studio."
+---
+
+Tra tutte le cose che insegniamo nel corso, le Custom Instructions sono quella con il ROI più sproporzionato. Spendi 30 minuti una volta. Beneficio su **ogni** conversazione futura, per anni. Letteralmente: tre minuti risparmiati per 3.000 conversazioni = 150 ore.
+
+Eppure: il 90% degli avvocati che usano Claude non le ha mai configurate. Questo articolo spiega come farlo bene in mezz'ora.
+
+## Cosa sono
+
+Le Custom Instructions sono un campo di testo (max ~3.000 caratteri) nelle impostazioni del tuo account Claude. Quel testo viene **letto da Claude prima di ogni nuova conversazione**, in ogni Project, in ogni Chat. Funziona come se tu, all'inizio di ogni nuova chat, copiassi e incollassi quel testo.
+
+Quindi: tutto quello che ripeteresti **all'inizio di ogni conversazione** sul tuo studio, va lì.
+
+## Dove le trovi
+
+In Claude:
+1. Click sul tuo nome in alto a destra
+2. Settings
+3. Profile → "Custom Instructions"
+
+(Su Claude.ai web, nel 2026, il percorso può variare leggermente. Cerca "instructions" nel menu impostazioni.)
+
+## Cosa metterci (il template del nostro studio)
+
+Ecco la struttura che usiamo, adattabile al tuo studio in 30 minuti:
+
+```
+# Chi sono
+
+Sono Alessio Massaro, avvocato civilista a Milano, studio di 4 persone,
+specializzato in diritto societario e contrattualistica B2B.
+
+# Come scrivo (e come voglio che tu scriva)
+
+- Italiano professionale ma diretto. Niente "Spettabile", "Egregio",
+ "In riferimento a", "Distintamente".
+- Frasi corte. Paragrafi corti (max 4 righe).
+- Niente formule arcaiche.
+- Quando citi articoli del codice, scrivi "art. 1219 c.c.", non
+ "articolo milleduecentodiciannove del codice civile".
+- Se devi citare giurisprudenza, usa formule tipo "secondo
+ l'orientamento prevalente" o "in linea con la giurisprudenza di
+ legittimità più recente" SENZA inventare nomi specifici. Li verifico io.
+
+# Cosa firmare
+
+Quando produci una lettera o un'email, chiudi sempre con:
+"Cordiali saluti,
+Avv. Alessio Massaro
+Studio Legale Massaro"
+
+# Cosa NON fare mai
+
+- Non aprire con preamboli AI tipo "Ecco la bozza..."
+- Non chiudere con disclaimers AI tipo "Spero che questo sia utile"
+- Non usare emoji
+- Non usare elenchi puntati per cose che dovrebbero essere prosa
+- Non includere dati che non ti ho dato (no allucinazioni di fatti)
+
+# Output di default
+
+A meno che non chieda diversamente:
+- Lunghezza ≤ 500 parole per email/lettere
+- Lunghezza ≤ 1.000 parole per pareri brevi
+- Tono: professionale e fermo
+- Formato: testo pronto per essere stampato/inviato, niente meta-commenti
+
+# Per drafting di parere o atti
+
+Quando ti chiedo un parere o una bozza di atto:
+1. Inquadra brevemente la questione (max 100 parole)
+2. Identifica 2-3 profili giuridici rilevanti
+3. Proponi raccomandazioni operative concrete
+4. Segnala esplicitamente cosa devo verificare io (giurisprudenza specifica, atti che non ho condiviso)
+```
+
+Adattalo. Aggiungici:
+- Materie in cui lavori (per orientare le risposte)
+- Clienti tipo (PMI, persone fisiche, enti pubblici?)
+- Formati che usi spesso (memorie, pareri, contratti standard?)
+
+## I tre errori più comuni
+
+### 1. Le metti, ma poi le scordi
+
+Il problema più frequente: le Custom Instructions ci sono, ma sono di tre mesi fa, prima che tu cambiassi nome di firma o assumessi un nuovo associato. Una volta al mese, riaprile e aggiornale. Ci metti 2 minuti.
+
+### 2. Le riempi di tutto
+
+Non sono il posto dove mettere informazioni su un singolo cliente. Per quello, usa i Project (vedi [Modulo 2 del corso](/corso/02-superfici/02-projects)).
+
+Le Custom Instructions servono per ciò che vale **sempre, su ogni conversazione**: stile, formato, divieti, identità. Non per ciò che vale solo su una pratica specifica.
+
+### 3. Le rendi troppo restrittive
+
+Se scrivi "rispondi sempre in massimo 100 parole", Claude lo farà, anche quando ti serve un parere lungo. Usa "a meno che io non chieda diversamente" per i vincoli di lunghezza. Lascia spazio alle eccezioni.
+
+## Test: stanno funzionando?
+
+Apri una nuova conversazione e chiedi una cosa molto semplice:
+
+> Scrivimi un breve sollecito di pagamento.
+
+Se Claude risponde con "Spettabile" o "In riferimento a", le tue Custom Instructions non sono attive o non sono ben scritte. Se risponde con "Buongiorno [nome cliente], ti scriviamo in merito al pagamento di..." direttamente, **funzionano**.
+
+## Custom Instructions di Project vs globali
+
+C'è anche un livello sotto: ogni Project ha le sue Custom Instructions. Si **aggiungono** a quelle globali, non le sostituiscono.
+
+Logica:
+- **Globali:** chi sei, come scrivi, divieti generali (sempre validi)
+- **Project:** chi è il cliente, qual è la pratica, cosa cerchiamo (specifico di quel caso)
+
+Tenere le due cose separate ti permette di non riscrivere lo stile dello studio in ogni Project nuovo.
+
+## Lo sforzo extra: il "kit dei prompt"
+
+Una volta sistemate le Custom Instructions, fai questo: apri un .txt sul desktop, chiamalo `prompt-quotidiani.txt`, e scrivici i 5-6 prompt-template che usi più spesso. Esempio:
+
+```
+[MESSA IN MORA]
+Redigi messa in mora ex art. 1219 c.c. per [CLIENTE/DEBITORE],
+importo €[X], fattura n. [Y] del [DATA], già sollecitata [DATA-1]
+e [DATA-2]. 280 parole max. Tono fermo non emotivo.
+
+[SINTESI SENTENZA]
+Sintetizzami in 250 parole, strutturate: imputazione, decisione,
+motivazione, rilevanza per [CASO MIO].
+[INCOLLA SENTENZA]
+```
+
+Bastano 5-6 di questi. Li copi nel tuo prompt al volo, sostituisci le `[X]`, mandi. Le Custom Instructions sistemano lo stile, il prompt-template velocizza la struttura.
+
+## Il ROI in numeri
+
+Tre minuti risparmiati per ogni nuova conversazione, dal momento in cui non devi più spiegare a Claude come scrivere (firma, tono, formato).
+
+- 8 conversazioni al giorno × 3 min × 200 giorni lavorativi = **80 ore l'anno**.
+- 80 ore × tariffa interna conservativa (€60/h) = **€4.800 di valore recuperato**.
+- Investimento iniziale: 30 minuti.
+
+L'unica difficoltà è ricordarsi che esistono. Ora lo sai.

@@ -1,0 +1,12 @@
+{
+  "titolo": "Claude App e Schedule",
+  "sottotitolo": "Mobile, desktop, e attività programmate per il tuo studio",
+  "ordine": 9,
+  "categoria": "Bonus · Operatività",
+  "icona": "app-schedule",
+  "coloreCover": "peach",
+  "lezioniPianificate": 3,
+  "durataMinutiPianificati": 30,
+  "bonus": true,
+  "costoGemme": 30
+}

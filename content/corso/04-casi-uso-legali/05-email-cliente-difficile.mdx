@@ -1,0 +1,133 @@
+---
+titolo: "Email cliente difficile"
+sottotitolo: "Contestazione parcelle, brutte notizie, comunicazione conflittuale"
+durata: 7
+ordine: 5
+aggiornato: "2026-05-23"
+quiz: false
+---
+
+Apri Outlook alle 22:00, vedi la mail del cliente che ti contesta la parcella o quella dell'avvocato di controparte che ti accusa di mala fede, e senti la pressione di rispondere subito di pancia. Qui Claude è più sottovalutato di quanto sembri: una bozza scritta a freddo da lui è spesso migliore di quella che scriveresti tu di getto, perché non porta il bias emotivo del momento.
+
+Vediamo i tre scenari più frequenti.
+
+## Scenario 1: Cliente contesta la parcella
+
+Situazione: hai mandato parcella €8.000. Cliente risponde "è eccessiva, non ho mai visto questi costi prima, ti chiediamo riduzione".
+
+### Cosa NON fare
+
+Rispondere di getto, magari in modo difensivo o sarcastico. Bruci il rapporto in 30 secondi.
+
+### Prompt giusto
+
+<Prompt>
+Sei l'assistente dell'Avv. Rossi.
+
+**Situazione:** ho mandato parcella €8.000 al cliente Studio Bianchi (mio cliente da 3 anni) per consulenza di 25 ore + 2 atti procedurali nel mese scorso. Cliente risponde "parcella eccessiva, mai visto questi costi, ti chiediamo riduzione".
+
+**Realtà:** parcella è giustificata e ben sotto i parametri ministeriali. Cliente non ha mai contestato parcelle precedenti (3 anni di rapporto).
+
+**Mia posizione:** voglio difendere la parcella ma SENZA bruciare il rapporto. Disponibile a riunione di chiarimento.
+
+**Output:** bozza email di risposta, 200-250 parole, tono fermo e professionale ma non difensivo. Struttura:
+1. Apri ringraziando per la chiarezza
+2. Esponi sinteticamente cosa include la parcella (25 ore di consulenza + 2 atti)
+3. Confronta brevemente coi parametri ministeriali (siamo in linea/sotto)
+4. Proponi incontro/call di 30 minuti per chiarimento
+5. Chiusura aperta
+
+Niente preamboli "Ecco la bozza:". Solo testo email.
+</Prompt>
+
+### Cosa ti aspetti
+
+Una email come questa:
+
+> Gentile Signor Bianchi,
+>
+> grazie per la chiarezza nella sua comunicazione. Le rispondo con altrettanta chiarezza.
+>
+> La parcella di €8.000 copre 25 ore di consulenza professionale (riunioni, analisi documentale, ricerche giurisprudenziali) e la redazione di due atti procedurali (comparsa di costituzione del 12/04 e memoria difensiva del 28/04). Il dettaglio analitico le è stato inviato in allegato alla fattura.
+>
+> Le confermo che l'importo è in linea, anzi, leggermente sotto, i parametri ministeriali per attività di pari complessità (D.M. 55/2014, scaglione di riferimento €100.000-250.000).
+>
+> Detto questo, comprendo che ogni costo richiede di essere giustificato. Le propongo un breve incontro (anche in call, 30 minuti) dove ripercorriamo insieme il dettaglio delle attività svolte e valutiamo se ci sono aspetti che meritano un chiarimento.
+>
+> Resto a disposizione, mi indichi i suoi orari preferenziali per la settimana prossima.
+>
+> Cordiali saluti, Avv. Mario Rossi
+
+Tono giusto: fermo, non difensivo, apre al dialogo, non concede sconti che non vuoi fare.
+
+<Esempio>
+L'Avv. Elisa Bertolini, giuslavorista a Padova, l'anno scorso ha avuto due settimane molto pesanti: tre clienti diversi hanno contestato parcelle a stretto giro, mentre stava chiudendo una causa di reintegrazione. La prima volta ha risposto di getto alle 23:00 e ha bruciato un rapporto da 12 anni: il cliente ha cambiato studio. Dopo quell'episodio ha costruito una Skill (una procedura riutilizzabile che insegni a Claude una volta sola e poi la richiami con una frase) chiamata "risposta-contestazione-parcella" che applica una struttura fissa: apertura ringraziando per la chiarezza, dettaglio analitico delle ore, riferimento al D.M. 55/2014, proposta di call di 30 minuti, chiusura aperta. Le altre due contestazioni le ha gestite con bozza Claude pronta in 2 minuti, rilettura di 10, invio alla mattina dopo. Entrambi i clienti sono ancora suoi e una ha aumentato il fatturato a lei affidato.
+</Esempio>
+
+## Scenario 2: Comunicare brutte notizie
+
+Situazione: hai perso in primo grado per il tuo cliente. Devi dirglielo.
+
+<Prompt>
+**Situazione:** Tribunale di Milano ci ha respinto il ricorso del cliente Verdi srl (causa lavoro, contestava licenziamento per giustificato motivo soggettivo, chiedevamo reintegrazione). Sentenza depositata oggi.
+
+**Cliente:** persona fisica, dirigente di 52 anni, molto coinvolto emotivamente. Aveva grandi aspettative.
+
+**Posizione tecnica:** sentenza non sorprendente, il caso era 50/50 da inizio. Avevamo già spiegato al cliente che esisteva rischio significativo di rigetto. Esiste possibilità di appello, costi e tempi da valutare.
+
+**Task:** bozza email comunicazione esito, 250-300 parole, tono **empatico ma non paternalistico**. Struttura:
+1. Comunicazione diretta dell'esito (subito, no preamboli evasivi)
+2. Spiega in 2-3 righe il motivo (non per smontare, ma per orientare)
+3. Ricorda che il rischio era stato valutato insieme
+4. Apri l'opzione appello (senza spingere)
+5. Proponi incontro/call entro 7 giorni per decidere insieme
+
+Tono: empatico, professionale, MAI giudicante sul giudice ("non si è capito niente"), MAI scuse fuori luogo ("mi dispiace molto"). Tono di un professionista che condivide una notizia difficile con un altro adulto.
+</Prompt>
+
+Output: una email che il cliente può leggere senza sentirsi né solo né manipolato.
+
+## Scenario 3: Risposta a controparte aggressiva
+
+Situazione: l'avvocato di controparte ti scrive una mail sgarbata, piena di insinuazioni sul tuo operato.
+
+<Prompt>
+**Situazione:** avvocato di controparte (Avv. Verdi) mi ha mandato email molto sgarbata, sostenendo che la nostra strategia processuale è "dilatoria e in mala fede", citando con tono polemico due episodi (rinvio richiesto e mancata risposta a una sua mail di 5 giorni fa).
+
+**Realtà:** rinvio era giustificato (assenza per malattia), mancata risposta a mail era perché ero in udienza in altra causa. Nessuna mala fede.
+
+**Mia posizione:** difendere onorabilità, MAI scendere allo stesso livello di tono. Restare professionale = vincere lo scambio.
+
+**Task:** bozza risposta email, 150-200 parole, tono **rigorosamente professionale e neutrale**. Struttura:
+1. Apertura formale, niente "Caro collega" se la sua era già fredda
+2. Rispondi punto per punto ai due episodi citati, in modo asciutto e fattuale
+3. Riporta lo scambio al merito della causa (qual è la prossima azione/scadenza)
+4. NON insinuazioni sul suo tono, NON difesa lunga (significa "non c'è bisogno di difendersi")
+5. Chiusura formale standard
+
+Tono: glaciale ma cortese. L'effetto deve essere: "ho letto, ho risposto come si conviene, andiamo avanti". MAI sarcasmo, MAI doppi sensi.
+</Prompt>
+
+Output: una risposta che disarma senza scendere al suo livello.
+
+## Le tre regole
+
+### 1. Aspetta sempre 10 minuti
+
+Una mail difficile, ricevuta a freddo, scatena la reazione peggiore. Usa Claude per la bozza dopo aver respirato 10 minuti. Tu rileggi a freddo.
+
+### 2. Mai usare il primo output
+
+La prima bozza di Claude è il punto di partenza. Sempre due cicli di affinamento: tono, lunghezza, eliminazione di frasi superflue.
+
+### 3. La rilettura è non negoziabile
+
+Email difficili al cliente o alla controparte vanno rilette ad alta voce. Se ti senti suonare troppo formale o troppo emotivo, modifica. Tu sei il filtro finale, Claude è il braccio.
+
+<Nota tipo="suggerimento">
+Crea una **Skill** (una procedura riutilizzabile che insegni a Claude una volta sola e poi la richiami con una frase) chiamata "email-difficile" che codifichi il tuo approccio a queste situazioni. D'ora in poi, "email difficile: il cliente Bianchi contesta la parcella" attiva subito la Skill e produce una bozza nel tuo stile codificato.
+</Nota>
+
+<RiferimentoCorso lezione="06-comparse-memorie" />
+
+Nella prossima lezione: drafting di comparse di risposta e memorie difensive (entriamo nel dettaglio di Modulo 4 lezione 3).

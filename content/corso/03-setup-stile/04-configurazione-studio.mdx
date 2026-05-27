@@ -1,0 +1,106 @@
+---
+titolo: "Configurare Claude per uno studio multi-utente"
+sottotitolo: "Account Team, sharing, governance"
+durata: 7
+ordine: 4
+aggiornato: "2026-05-23"
+quiz: false
+---
+
+Da avvocato singolo a studio di tre o quattro persone, la gestione di Claude cambia faccia. Non è più "io e Claude", diventa "lo studio e Claude", con tutto quello che si porta dietro: chi vede cosa, chi paga cosa, chi è responsabile dei dati dei clienti quando arriva un controllo.
+
+Questa lezione è il manuale di set-up per chi gestisce un team, senza giri di parole.
+
+## Da Pro a Team: cosa cambia davvero
+
+Su Pro hai un account personale. Su Team:
+
+1. **Workspace centralizzato**, tutti gli utenti dello studio sono dentro un unico spazio
+2. **Sharing nativo**, Projects, Skills, conversazioni si condividono con un click
+3. **Admin role**, un partner (o l'IT manager) gestisce utenti, vede consumi, revoca accessi
+4. **Fatturazione aziendale**, un'unica fattura mensile a P.IVA dello studio (deducibile come spesa di studio)
+5. **Dati a Anthropic**, gli account Team hanno garanzie più forti su trattamento dati (vedi Modulo 6)
+
+Costo: €25/utente/mese, minimo 5 utenti = €125/mese minimo.
+
+## Setup iniziale: i primi 30 minuti
+
+### Step 1: Crea il workspace
+
+Vai su `claude.ai`, sezione "Plans", scegli Team. Inserisci P.IVA dello studio, indirizzo di fatturazione. Pagamento con carta o SEPA.
+
+### Step 2: Invita utenti
+
+Dal pannello admin, "Invite users". Inserisci email professionali (no Gmail personali, usa `mario.rossi@studiolegalerossi.it`).
+
+Ogni utente riceve un'email, crea password, entra nel workspace.
+
+### Step 3: Imposta i ruoli
+
+- **Admin**, gestisce utenti, fatture, impostazioni globali. Tipicamente 1-2 partner.
+- **Member**, uso normale di Claude. Tutti gli altri.
+
+Per studi piccoli (3-5 persone), spesso il partner senior è l'unico Admin.
+
+### Step 4: Configura le Custom Instructions a livello workspace
+
+Su Team puoi impostare Custom Instructions a livello dello studio che si applicano a tutti gli utenti. Esempio:
+
+> "Tutti gli utenti di questo workspace lavorano per Studio Legale Rossi & Associati, Milano. Stile dello studio: diretto, no formule arcaiche, paragrafi corti. Firma di default da non includere, ogni utente firmerà col proprio nome."
+
+Ogni utente può poi sovrascrivere con le proprie **Custom Instructions** (istruzioni che Claude legge automaticamente a ogni nuova conversazione, senza che tu le ripeta) personali.
+
+<Esempio>
+Lo Studio Bertelli di Torino, sei persone tra partner e associati, è passato da sei account Pro separati a un unico workspace Team. Prima ogni associato aveva la sua Custom Instructions, il suo modo di chiedere a Claude le sintesi delle sentenze, e i pareri uscivano in sei stili diversi. In una settimana hanno definito una **Skill** condivisa "sintesi-sentenza-Bertelli" e un Output Style unico per lo studio. Risultato: i praticanti non perdono più il primo giorno a "indovinare lo stile del partner", e la fattura mensile arriva direttamente alla P.IVA dello studio (deducibile, archiviata dal commercialista come tutte le altre).
+</Esempio>
+
+## Sharing: cosa condividere, cosa no
+
+### Da condividere (Workspace level)
+
+- **Project di causa importanti**, più associati lavorano sullo stesso dossier
+- **Skills standard dello studio**, "redazione-parere", "revisione-NDA" definite una volta per tutti
+- **Output Styles ufficiali**, lo stile che vuoi che ogni associato usi
+
+### Da NON condividere
+
+- **Project con dati di clienti sensibili** dove non c'è bisogno cross-team (es. divorzio del partner di un cliente non lo condividi con tutto lo studio)
+- **Chat personali**, restano private del singolo utente per default
+- **Custom Instructions con dati personali**, restano personali
+
+## Governance: chi è responsabile
+
+Per ogni dato che entra in Claude tramite il workspace dello studio, **lo studio è il titolare del trattamento** ai sensi del GDPR (vedi Modulo 6).
+
+Implicazioni pratiche:
+
+1. **Informativa privacy aggiornata**, devi menzionare Anthropic come "fornitore" / "responsabile esterno"
+2. **DPA con Anthropic**, Anthropic offre un Data Processing Agreement standard per account Team. Va firmato (di solito digitalmente, dal pannello admin)
+3. **Registri dei trattamenti**, aggiungi Claude come strumento di trattamento per ogni categoria di dati (clienti, controparti, etc.)
+
+## Cosa NON aspettarti dallo studio Team
+
+- **Compartmentazione assoluta dei dati**, gli admin (tecnicamente) possono vedere chi ha fatto cosa. Se hai bisogno di rigida separazione tra associati (es. casi che riguardano direttamente partner dello studio), valuta account Pro separati per quei casi.
+- **Sostituzione di una policy interna**, il workspace Team non sostituisce le tue policy di compliance. Aggiungi una sezione "uso di AI" alla tua policy IT dello studio.
+
+## Cosa fai oggi
+
+Se siete già 3+ persone su Pro separati, fai il calcolo:
+
+- 3 × €18 = €54/mese su Pro = €648/anno
+- 5 × €25 = €125/mese su Team = €1.500/anno
+
+Team costa di più ma:
+- Sharing nativo che ti farà recuperare ore al mese
+- Fatturazione aziendale (deduzione + meno fastidi)
+- Compliance GDPR più semplice
+
+Per studi 3-4 persone con uso intensivo, Team conviene già. Per studi 1-2 persone, Pro per persona è sufficiente.
+
+<Nota tipo="attenzione">
+Se hai praticanti che entrano e escono dallo studio frequentemente, su Team è facile revocare accessi quando vanno via. Su Pro individuali, devi cambiare password di account condivisi (sconsigliato).
+</Nota>
+
+<RiferimentoCorso lezione="05-prima-skill-personale" />
+
+Nella prossima lezione: come scrivere la tua prima Skill personale, usando un task ricorrente del tuo studio come esempio.

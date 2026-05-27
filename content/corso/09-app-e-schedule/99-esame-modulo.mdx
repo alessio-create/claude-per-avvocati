@@ -1,0 +1,70 @@
+---
+titolo: "Esame del Modulo 9"
+sottotitolo: "Verifica App e Schedule, hai finito tutti i moduli"
+durata: 5
+ordine: 99
+aggiornato: "2026-05-26"
+quiz: true
+tipo: "esame"
+---
+
+<div className="border border-terracotta/30 bg-terracotta/5 rounded-md p-5 mb-8">
+ <div className="text-[11px] uppercase tracking-widest text-terracotta font-bold mb-1">Esame del modulo</div>
+ <div className="text-sm text-body leading-snug">
+  Rispondi alle 4 domande qui sotto per consolidare le app desktop/mobile e Schedule. È l'ultimo esame del corso. Devi rispondere correttamente ad almeno il 75% per chiudere il percorso e guadagnare <strong>+3 ✦</strong>. Da qui sei pronto per la <strong>certificazione finale</strong>.
+ </div>
+</div>
+
+<Quiz
+ modulo="09-app-e-schedule"
+ lezione="99-esame-modulo"
+ etichetta="Esame"
+ titolo="4 domande per chiudere il modulo."
+ passaCon={3}
+ domande={[
+  {
+   domanda: "Quale workflow rende l'app mobile davvero utile in udienza?",
+   opzioni: [
+    "Scattare la foto di un'ordinanza e ricevere una spiegazione sintetica per il cliente",
+    "Collegarsi al wi-fi del tribunale per scaricare file riservati",
+    "Scrivere a mano una memoria di trenta pagine sullo schermo del telefono",
+    "Trasmettere in diretta video l'udienza allo studio"
+   ],
+   corretta: 0,
+   spiega: "Foto più analisi è il singolo flusso più rilevante in aula, combinato con voicenote post-udienza che Claude trascrive e struttura."
+  },
+  {
+   domanda: "Cosa offre l'app desktop che il browser non ha?",
+   opzioni: [
+    "Un prezzo inferiore rispetto a claude.ai",
+    "Voce attiva e capacità di vedere lo schermo con permesso, più scorciatoia globale da tastiera",
+    "L'accesso a modelli esclusivi non disponibili sul web",
+    "La possibilità di lavorare completamente offline senza account"
+   ],
+   corretta: 1,
+   spiega: "Voce, screen context e shortcut globale (Cmd/Ctrl+Shift+L) sono le funzioni esclusive che giustificano installare l'app desktop accanto al browser."
+  },
+  {
+   domanda: "Nella sintassi cron di Schedule, cosa significa `30 7 * * 1`?",
+   opzioni: [
+    "Ogni 30 minuti per 7 ore consecutive",
+    "Il 30 luglio di ogni anno alle ore 1:00",
+    "Ogni lunedì alle 7:30 del mattino",
+    "Ogni 7 giorni con timeout di 30 secondi"
+   ],
+   corretta: 2,
+   spiega: "Cron standard è minuto, ora, giorno, mese, giorno della settimana. L'ultimo `1` indica lunedì, quindi `30 7 * * 1` = ogni lunedì alle 7:30."
+  },
+  {
+   domanda: "Quale tipo di task NON dovresti mai mettere in Schedule?",
+   opzioni: [
+    "L'estrazione settimanale delle scadenze dalle pratiche in corso",
+    "Il monitoraggio della Gazzetta Ufficiale ogni martedì sera",
+    "La generazione mensile delle bozze di fattura per cliente",
+    "Le decisioni che richiedono il tuo giudizio professionale, etico o commerciale"
+   ],
+   corretta: 3,
+   spiega: "Schedule serve a estrazione, monitoraggio e reporting. Le decisioni di giudizio restano sempre nelle tue mani: la macchina osserva, l'avvocato decide."
+  }
+ ]}
+/>

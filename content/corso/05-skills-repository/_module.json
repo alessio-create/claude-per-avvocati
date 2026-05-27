@@ -1,0 +1,10 @@
+{
+  "titolo": "Skills & repository",
+  "sottotitolo": "Cosa sono le skills, repository pubblici, custom per lo studio",
+  "ordine": 5,
+  "categoria": "Automazione",
+  "icona": "skills",
+  "coloreCover": "terracotta",
+  "lezioniPianificate": 5,
+  "durataMinutiPianificati": 50
+}

@@ -1,0 +1,124 @@
+---
+titolo: "Schedule, far lavorare Claude mentre dormi"
+sottotitolo: "Task programmati per uno studio sempre operativo"
+durata: 10
+ordine: 2
+aggiornato: "2026-05-24"
+quiz: true
+---
+
+Pensa al lunedì mattina. Apri il computer, hai 47 mail, tre scadenze che non ricordavi, e già senti che la settimana ti sta scappando. Adesso immagina di trovare, sul desktop, un PDF di una pagina che ti dice esattamente cosa succede questa settimana. Preparato da Claude, mentre dormivi.
+
+**Schedule** (la funzione di Claude che esegue task ricorrenti su un calendario, tipo cron ma in linguaggio naturale) ti permette di dire: "ogni lunedì alle 7:00, fai X". Claude apre la propria sessione, esegue il task, e ti consegna il risultato, anche se sei in vacanza, in udienza, o stai dormendo.
+
+Per uno studio significa **delegare in modo strutturato i task ricorrenti**. Vediamo i tre più alto-leva.
+
+## Schedule #1, Riepilogo lunedì mattina
+
+Ogni lunedì 7:30, Claude:
+1. Legge la cartella `/pratiche/in-corso/`
+2. Identifica le scadenze nei prossimi 14 giorni
+3. Identifica le pratiche senza movimento da oltre 30 giorni
+4. Ti consegna un PDF di una pagina sul desktop
+
+Apri il computer alle 9, hai la settimana già impostata.
+
+## Schedule #2, Monitoraggio Gazzetta Ufficiale
+
+Ogni martedì sera, Claude:
+1. Legge le pubblicazioni della Gazzetta dei 7 giorni
+2. Filtra per le materie del tuo studio (es. lavoro, societario, immobiliare)
+3. Estrae le 5 novità più rilevanti
+4. Te le invia per email con sintesi di 100 parole ciascuna
+
+<Esempio>
+Lo Studio Marini-Conte di Verona ha messo in Schedule un task ricorrente: ogni venerdì alle 17, Claude estrae dalla mailbox dello studio tutte le scadenze processuali della settimana successiva e manda un riepilogo. Prima qualcuno doveva farlo a mano ogni venerdì, 45 minuti; ora è automatico e finisce in chat di studio in 90 secondi.
+</Esempio>
+
+## Schedule #3, Report mensile clienti
+
+Il primo del mese, Claude:
+1. Apre il file delle ore lavorate
+2. Genera per ogni cliente: ore del mese, attività svolte, importo da fatturare
+3. Prepara le bozze di fattura in formato editabile
+4. Ti notifica via mobile quando è pronto
+
+Tu apri il telefono al bar, rivedi, approvi. 15 minuti per quello che ne richiederebbe 3 ore.
+
+Il pattern è sempre lo stesso: identifichi un'attività ripetitiva, la trasformi in procedura scritta, la metti in calendario. Una volta sola.
+
+## Come si configura (passo passo)
+
+Schedule richiede **Claude Code** installato (vedi Modulo 8). Una volta installato, ti basta una **Skill** (una procedura riutilizzabile che insegni a Claude una volta sola) e una riga di configurazione:
+
+1. Apri Code
+2. Scrivi la Skill che descrive il task (vedi Modulo 5)
+3. Imposta lo schedule:
+
+```bash
+claude schedule add --skill "report-lunedi" --cron "30 7 * * 1"
+```
+
+Il `cron` è la sintassi standard: `minuto ora giorno mese giorno-settimana`. `30 7 * * 1` = ogni lunedì alle 7:30.
+
+4. Verifica con:
+
+```bash
+claude schedule list
+```
+
+## La regola dello scheduling intelligente
+
+Non fare scheduling di task che richiedono il tuo giudizio. Fai scheduling di **estrazione**, **monitoraggio**, **reporting**.
+
+- ✅ "Estrai le scadenze da questi file ogni lunedì"
+- ✅ "Monitorala Gazzetta ogni settimana"
+- ❌ "Decidi se accettare il nuovo cliente Bianchi srl ogni lunedì"
+
+Schedule è la macchina dell'osservatorio. Il giudizio resta tuo. La regola pratica: se per farlo a mano basta leggere e ricopiare, va in Schedule. Se serve decidere, no.
+
+<Nota tipo="attenzione">
+I task programmati che toccano dati di clienti devono essere configurati con i permessi giusti (vedi Modulo 6) e in conformità GDPR. Documenta nel registro dei trattamenti che hai un sistema automatizzato che processa dati personali in modo programmatico.
+</Nota>
+
+<Quiz
+ modulo="09-app-e-schedule"
+ lezione="02-schedule-task-programmati"
+ domande={[
+  {
+   domanda: "Cosa richiede Schedule per funzionare?",
+   opzioni: [
+    "Un piano Enterprise",
+    "Claude Code installato (vedi Modulo 8)",
+    "Un secondo account Claude",
+    "Un server dedicato"
+   ],
+   corretta: 1,
+   spiega: "Schedule si appoggia a Code, che già usi per i task one-off. Una volta abituato a Code, lo scheduling è un'evoluzione naturale."
+  },
+  {
+   domanda: "La sintassi `30 7 * * 1` significa:",
+   opzioni: [
+    "Ogni 30 minuti per 7 ore",
+    "Ogni lunedì alle 7:30",
+    "Il 30 luglio alle 1:00",
+    "Ogni 7 giorni per 30 secondi"
+   ],
+   corretta: 1,
+   spiega: "Sintassi cron standard: minuto ora giorno mese giorno-settimana. `1` come ultimo campo = lunedì."
+  },
+  {
+   domanda: "Quale task NON dovresti mai mettere in Schedule?",
+   opzioni: [
+    "Estrazione di scadenze settimanali",
+    "Monitoraggio Gazzetta Ufficiale",
+    "Decisioni che richiedono il tuo giudizio professionale (es. accettare un nuovo cliente)",
+    "Generazione bozze di fattura mensili"
+   ],
+   corretta: 2,
+   spiega: "Schedule è per estrazione, monitoraggio, reporting. Le decisioni di giudizio (etico, legale, commerciale) restano sempre nelle tue mani."
+  }
+ ]}
+/>
+
+Nella prossima lezione: tre schedule pronti all'uso da copiare-adattare per il tuo studio.

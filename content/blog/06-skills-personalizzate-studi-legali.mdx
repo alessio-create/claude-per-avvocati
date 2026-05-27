@@ -1,0 +1,218 @@
+---
+titolo: "Skills personalizzate per studi legali: il manuale"
+sottotitolo: "Da prompt riusato a procedura formale: anatomia di una Skill ben fatta"
+data: "2026-05-06"
+autore: "Alessio Massaro"
+tempo: 11
+tag: ["Skills", "Workflow"]
+coverColor: "mint"
+coverIcon: "kit"
+estratto: "Una Skill è la versione formalizzata di un prompt che usi spesso. Cosa contiene, come si scrive, e tre esempi pronti per uno studio civilista."
+---
+
+Se le Custom Instructions sono il setup-base di Claude, le Skills sono il livello successivo. Una Skill è una **procedura riusabile**, scritta una volta, richiamata con una frase. Per un avvocato, è la differenza tra *"redigi una messa in mora..."* battuto a mano ogni volta, e un comando *"applica la skill messa-in-mora"* che ti chiede solo i parametri specifici.
+
+Questo articolo è il manuale operativo: anatomia, esempi, errori.
+
+## Cos'è una Skill, tecnicamente
+
+Una Skill è una cartella di file con:
+
+- **Un file `SKILL.md`** con istruzioni in linguaggio naturale (come usare la skill, quando attivarla, cosa fa)
+- **Opzionalmente file di supporto:** template, esempi, dataset, script
+
+Vive nella tua cartella `~/.claude/skills/` (con Claude Code) o nei Project (con Claude.ai web). Quando attivi una Skill, Claude **legge le istruzioni** e si comporta seguendole.
+
+La differenza con un buon prompt: una Skill è **persistente, condivisibile, versionabile**. La passi a un collega via cartella zip, la metti in un repository dello studio, la aggiorni nel tempo.
+
+## Le tre Skills da costruire prima
+
+In uno studio civilista medio, queste tre coprono il 60% del valore:
+
+### Skill 1, `messa-in-mora`
+
+File `SKILL.md`:
+
+```markdown
+---
+name: messa-in-mora
+description: Redige una messa in mora ex art. 1219 c.c. seguendo
+ lo stile dello studio. Attivala quando l'utente chiede una
+ messa in mora, una diffida ad adempiere, o un sollecito formale
+ pre-causa.
+---
+
+# Quando attivare
+
+Attiva questa Skill quando il prompt utente contiene una richiesta
+di redigere una messa in mora, una diffida ad adempiere ex art.
+1454 c.c., o un sollecito formale di pagamento da inviare via PEC.
+
+# Cosa chiedere all'utente
+
+Se mancano questi dati nel prompt, chiedili prima di iniziare:
+- Nome del debitore (società o persona fisica)
+- Importo dovuto
+- Numero e data della fattura/contratto
+- Solleciti precedenti (date, max 3 menzionati)
+- Eventuali ulteriori vincoli (tono, lunghezza)
+
+# Struttura della lettera
+
+1. Riferimenti (luogo, data, mittente, destinatario)
+2. Oggetto: "Messa in mora ex art. 1219 c.c., Cred. €X"
+3. Riepilogo crediti (importo, titolo, data scadenza)
+4. Menzione solleciti precedenti
+5. Intimazione formale al pagamento entro 15 giorni
+6. Conseguenze (decreto ingiuntivo)
+7. Riserva di azione
+8. Firma: "Cordiali saluti, Avv. [NOME]"
+
+# Vincoli di stile
+
+- Lunghezza: 250-300 parole MAX
+- Tono: fermo, professionale, non emotivo
+- NO: "Spettabile", "Egregio", "Distintamente"
+- SI: linguaggio diretto, frasi corte
+
+# Output
+
+Solo il testo della lettera, pronto per essere stampato/inviato
+via PEC. Niente preamboli AI. Niente disclaimer alla fine.
+```
+
+Una volta installata, basta:
+
+> Applica la skill messa-in-mora. Cliente: Studio Bianchi srl, €14.500, fattura 234 del 15/11/2025, solleciti il 10/02 e 25/03/2026.
+
+Claude legge la Skill, applica la struttura, produce la lettera.
+
+### Skill 2, `sintesi-sentenza`
+
+```markdown
+---
+name: sintesi-sentenza
+description: Sintetizza una sentenza in 250 parole strutturate.
+ Attivala quando l'utente incolla una sentenza e chiede di
+ riassumerla, capirla, o valutarne la rilevanza.
+---
+
+# Output
+
+Una sintesi di 250 parole massimo, strutturata in 4 sezioni:
+
+1. **Imputazione/questione di diritto** (60 parole)
+  - Chi contro chi, su cosa
+  - La specifica questione di diritto sollevata
+
+2. **Decisione** (40 parole)
+  - Accolta/rigettata/parzialmente accolta
+  - Disposizioni dispositive principali
+
+3. **Motivazione principale** (100 parole)
+  - Il ragionamento giuridico-fattuale chiave
+  - Eventuali riferimenti a orientamenti consolidati
+
+4. **Rilevanza** (50 parole)
+  - In quali tipologie di casi futuri questa sentenza è rilevante
+  - Eventuali cautele (sentenza isolata? in linea con orientamento?)
+
+# Cosa NON fare
+
+- NON inventare numeri di sentenze citate al suo interno
+- NON estendere oltre le 250 parole
+- Se la sentenza è poco rilevante per il diritto italiano (es. sentenza
+ straniera) o se è una pronuncia molto vecchia, segnalalo all'inizio.
+```
+
+### Skill 3, `confronto-bozze`
+
+```markdown
+---
+name: confronto-bozze
+description: Confronta due bozze (contratti, NDA, atti) ed evidenzia
+ le differenze rilevanti in tabella. Attivala quando l'utente fornisce
+ due versioni dello stesso documento.
+---
+
+# Output
+
+Una tabella Markdown con 4 colonne:
+
+| Clausola | Versione A | Versione B | Quale preferire |
+
+Concentrati su:
+- Durata
+- Ambito (oggetto, parti)
+- Conseguenze della violazione
+- Foro competente, legge applicabile
+- Clausole vessatorie
+- Limitazioni di responsabilità
+- Clausole di confidenzialità
+
+# Comportamento
+
+- Salta le differenze puramente formali (numerazione, font, formattazione)
+- Per ogni differenza, motiva in max 30 parole quale preferire e perché
+- Se non c'è una preferenza chiara, scrivi "dipende dall'obiettivo del cliente"
+- Alla fine, breve riassunto (max 80 parole) delle 2-3 differenze più importanti
+```
+
+## Come installarle
+
+Su Claude Code:
+
+```bash
+mkdir -p ~/.claude/skills/messa-in-mora
+# crea il file SKILL.md dentro la cartella
+```
+
+Su Claude.ai web (Project):
+1. Vai nel Project
+2. Sezione "Skills" o "Knowledge"
+3. Carica il file SKILL.md
+
+In entrambi i casi, una volta installata, la Skill è disponibile in **ogni nuova conversazione** all'interno di quel contesto.
+
+## La regola d'oro nel naming
+
+Il nome della Skill deve descrivere il task, non lo strumento. **Buono:** `messa-in-mora`, `sintesi-sentenza`, `confronto-bozze`. **Cattivo:** `mia-skill-utile`, `pdf-tool`, `helper-1`.
+
+Perché: Claude decide se attivare una Skill leggendo il suo `description`. Se è generico, attiva la Skill sbagliata. Se è specifico, attiva quella giusta.
+
+## Skills condivise nello studio
+
+Quando lo studio ha 3+ persone, vale la pena costruire un **repository dello studio**:
+
+```
+~/Studio-Skills/
+├── messa-in-mora/SKILL.md
+├── sintesi-sentenza/SKILL.md
+├── confronto-bozze/SKILL.md
+├── parere-societario/SKILL.md
+└── README.md ← chi mantiene cosa, ultima revisione, esempi
+```
+
+Sincronizzato con un repository Git privato (anche gratis su GitHub o GitLab), versionato, accessibile da tutti.
+
+Il [Modulo 5 del corso](/corso/05-skills-repository/03-skill-studio) ha la guida passo-passo per fare questo setup, incluso il file `README.md` template.
+
+## L'errore che vediamo più spesso
+
+Costruire 15 Skills nei primi 3 giorni. **Non farlo.**
+
+Inizia con UNA Skill. La più frequente nel tuo workflow (per la maggior parte degli avvocati, è la messa in mora). Usala per 2 settimane. Aggiustala col tempo.
+
+Quando ti ritrovi a riscrivere lo stesso prompt 3 volte, **quella** è la candidata per diventare la prossima Skill. Costruire Skills "in anticipo" (per task che potrebbero servirti in futuro) è quasi sempre uno spreco di tempo.
+
+## Quando NON serve una Skill
+
+- Per un task **una-tantum** (lo fai una volta, mai più)
+- Per un task **molto creativo** (ogni volta diverso, una struttura sarebbe gabbia)
+- Per un task **molto semplice** (un buon prompt-template è sufficiente)
+
+Le Skills brillano quando: ripetitivo + struttura comune + 5+ usi previsti.
+
+## Una Skill ben fatta vale 100 prompt buoni
+
+Perché ti scarica dal carico cognitivo di **ricordarti** la struttura corretta ogni volta. Tu pensi al contenuto, la Skill pensa alla forma. È quello che separa un workflow stanco da uno scalabile.

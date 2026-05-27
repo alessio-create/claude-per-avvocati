@@ -1,0 +1,12 @@
+{
+  "titolo": "Cowork Claude come collega dello studio",
+  "sottotitolo": "Lavoro collaborativo, condivisione, presenza distribuita",
+  "ordine": 7,
+  "categoria": "Bonus · Lavoro condiviso",
+  "icona": "cowork",
+  "coloreCover": "sage",
+  "lezioniPianificate": 4,
+  "durataMinutiPianificati": 30,
+  "bonus": true,
+  "costoGemme": 30
+}

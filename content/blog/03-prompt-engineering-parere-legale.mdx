@@ -1,0 +1,122 @@
+---
+titolo: "Prompt engineering per un parere legale: la struttura che funziona"
+sottotitolo: "Sette campi obbligatori e un template che usa il nostro studio"
+data: "2026-05-15"
+autore: "Alessio Massaro"
+tempo: 10
+tag: ["Prompt", "Pareri"]
+coverColor: "peach"
+coverIcon: "parere"
+estratto: "Un parere richiesto a Claude senza struttura produce un testo generico. Con sette campi specifici, produce qualcosa che si avvicina a una prima bozza utilizzabile."
+---
+
+Chiedere a Claude *"scrivimi un parere su questa questione"* è come chiedere a un praticante al primo giorno *"scrivimi un parere"*: ottieni qualcosa di generico, prolisso, e che dimentica metà del contesto rilevante.
+
+La differenza non sta nel modello, sta nella struttura del prompt. Negli ultimi due anni abbiamo testato decine di varianti su pareri di vario tipo (civile, lavoro, societario). La struttura che converge è sempre la stessa: sette campi, in quest'ordine. Questo articolo li spiega uno per uno.
+
+## I sette campi
+
+### 1. Ruolo + specializzazione
+
+Apri sempre dicendo a Claude chi sta scrivendo. Non basta "sei un avvocato": specifica la materia e idealmente il contesto.
+
+> Sei l'assistente di un avvocato del lavoro a Milano, con 15 anni di esperienza, particolarmente esperto in licenziamenti per giustificato motivo oggettivo.
+
+Perché funziona: orienta il registro, il livello di profondità tecnica, e la giurisprudenza a cui fare riferimento (Cassazione lavoro vs Cassazione civile generale, ad esempio).
+
+### 2. Cliente, chi è, da quanto, livello di sofisticazione
+
+> Il cliente è "BetaSrl", azienda manifatturiera di 80 dipendenti, ci segue da 4 anni. L'AD ha studi giuridici ma non è avvocato, capisce il linguaggio tecnico ma odia le formule arcaiche.
+
+Perché funziona: il parere a un AD con studi giuridici è diverso dal parere a un imprenditore senza basi. Stessa questione, registro diverso.
+
+### 3. Fatti, date, importi, parti, posizioni
+
+Questo è il campo più lungo, ed è il singolo elemento che fa più differenza. Includi tutto quello che diresti a voce al praticante prima di chiedergli di abbozzare il parere.
+
+> - Il dipendente è stato assunto il 04/03/2018, mansione operaio specializzato, livello 5° CCNL Metalmeccanici.
+> - Il 12/02/2026 l'azienda ha comunicato il licenziamento per GMO motivato da chiusura del reparto pressofusione.
+> - Il dipendente ha impugnato il 22/02/2026, sostenendo che (a) la riorganizzazione non c'è stata realmente e (b) c'erano altre mansioni equivalenti disponibili.
+> - Documentazione disponibile: organigrammi pre e post riorganizzazione, lettera di licenziamento, impugnativa, risposta azienda.
+
+Niente più, niente meno.
+
+### 4. Domanda specifica
+
+Non "fammi il parere". Domanda **puntuale**:
+
+> Domanda: il licenziamento ha buone probabilità di reggere in tribunale? Quali sono i due o tre profili di rischio principali? Quali documenti o testimonianze andrebbero raccolti per rafforzare la posizione dell'azienda?
+
+Tre sotto-domande chiare battono una domanda generica.
+
+### 5. Vincoli, lunghezza, tono, struttura
+
+> Lunghezza: massimo 800 parole. Tono: tecnico ma chiaro, niente formule arcaiche. Struttura: (1) inquadramento normativo, (2) analisi dei tre profili di rischio, (3) raccomandazioni operative. Non citare nomi specifici di sentenze (le verifico io su banca dati), usa formule tipo "secondo l'orientamento prevalente della Cassazione lavoro" e simili.
+
+L'ultimo punto è critico per evitare allucinazioni di giurisprudenza.
+
+### 6. Cosa NON fare
+
+Questo campo è meno intuitivo ma molto utile:
+
+> NON inserire la formula "Spettabile Studio". NON usare "Egregio" o "Distintamente". NON aprire con "In riferimento alla questione in oggetto". Inizia direttamente con "L'analisi della fattispecie evidenzia tre profili...".
+
+Tagli tutto il rumore che dovresti togliere a mano.
+
+### 7. Output desiderato
+
+> Output: solo il testo del parere, in formato pronto per essere stampato. Niente preamboli del tipo "Ecco il parere che hai richiesto". Niente disclaimers AI alla fine.
+
+Senza questo, riceverai sempre 2-3 righe di metacommento prima e dopo il parere vero.
+
+## Il template completo
+
+Mettendo tutto insieme:
+
+```
+[RUOLO]
+Sei l'assistente di un avvocato [MATERIA] a [CITTÀ], con [N] anni di esperienza, particolarmente esperto in [SOTTO-MATERIA].
+
+[CLIENTE]
+Il cliente è [NOME/DESCRIZIONE], [SETTORE], [DIMENSIONE], ci segue da [TEMPO]. [DETTAGLI SULL'INTERLOCUTORE].
+
+[FATTI]
+- [Data 1: fatto 1]
+- [Data 2: fatto 2]
+- [Posizione di controparte]
+- [Documentazione disponibile]
+
+[DOMANDA]
+Domanda specifica: [DOMANDA 1]. [DOMANDA 2]. [DOMANDA 3].
+
+[VINCOLI]
+Lunghezza: [N parole]. Tono: [TONO]. Struttura: (1) [PARTE 1], (2) [PARTE 2], (3) [PARTE 3]. Per la giurisprudenza: usa formule tipo "orientamento prevalente" senza citare nomi specifici (verifico io).
+
+[NO]
+NON usare: "Spettabile", "Egregio", "In riferimento", "Distintamente", formule arcaiche.
+
+[OUTPUT]
+Solo il testo del parere, pronto per essere stampato. Niente meta-commenti AI.
+```
+
+Salvalo come Custom Instruction o come Skill (vedi [Modulo 5 del corso](/corso/05-skills-repository/01-anatomia-skill)) e lo userai in formato compilato ogni volta.
+
+## Tre errori che vediamo spesso
+
+### "Faccio prima senza prompt"
+
+Falso. Avere una struttura ti obbliga a chiarire i fatti **a te stesso** prima di chiederli a Claude. Quel chiarimento è metà del lavoro del parere. Risparmi tempo anche perché ti riconcili con i fatti.
+
+### "Più lungo il prompt, peggio l'output"
+
+Il contrario, per i pareri. Output debole quasi sempre = contesto debole nel prompt. Se il primo tentativo è generico, prima di lamentarti del modello aggiungi 100 parole di fatti rilevanti.
+
+### "Lo metto subito in fattura"
+
+Mai. Claude scrive una **prima bozza**. Tu fai (a) verifica delle citazioni, (b) personalizzazione tonale, (c) controllo logico-giuridico, (d) lettura finale. La bozza ti dà 30-40 minuti di tempo recuperato su un parere standard. Quel tempo lo investi nei quattro controlli, non in altro lavoro.
+
+## La regola finale
+
+> Un parere generato da un buon prompt è una bozza che renderesti a un junior per la finalizzazione. Un parere generato da un prompt generico è qualcosa che butteresti.
+
+La differenza la fa il prompt. La differenza non la fa il modello.

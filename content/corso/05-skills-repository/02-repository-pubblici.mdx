@@ -1,0 +1,130 @@
+---
+titolo: "Repository pubblici di Skills"
+sottotitolo: "Quello che la community ha già scritto per te"
+durata: 7
+ordine: 2
+aggiornato: "2026-05-23"
+quiz: false
+---
+
+Prima di metterti a scrivere una Skill, vale la pena chiederti: qualcuno l'ha già scritta? Per molte cose che vuoi fare con Claude la risposta è sì, e la trovi pubblicata da qualche parte. Conoscere i repository pubblici è la differenza tra "riscrivo tutto da zero" e "installo qualcosa che già funziona in 30 secondi".
+
+Questa lezione è una mappa orientativa.
+
+## Cosa sono i repository di Skills
+
+Un **repository** è un raccoglitore di Skills, può essere pubblico (chiunque scarica) o privato (solo il tuo studio). Stiamo parlando di quelli pubblici, di solito ospitati su **GitHub**, una piattaforma dove si depositano file di codice e Skills, usata anche per condividere lavoro tra avvocati o studi. Le scarichi, le installi nella tua cartella Skills locale (`~/.claude/skills/`), e Claude le usa.
+
+Sono **gratuite**, **open source**, e mantenute dalla community.
+
+## I tre più rilevanti per uno studio legale
+
+### 1. `superpowers`
+
+URL: `github.com/obra/superpowers` (riferimento, verifica versione attuale)
+
+Cosa contiene: ~40-60 Skills generaliste, molto curate, su task come:
+- `brainstorming`, facilita brainstorming strutturato
+- `writing-clearly-and-concisely`, riscrive testi in modo essenziale
+- `systematic-debugging`, utile per "debug" di documenti contraddittori
+- `requesting-code-review`, quando devi chiedere review di documenti
+- `writing-plans`, pianificazione strutturata di workflow
+
+Non è specifico per legale, ma molte Skills sono trasversali e utili.
+
+**Installazione (orientativa):**
+
+```bash
+cd ~/.claude/skills
+git clone https://github.com/obra/superpowers
+```
+
+Da quel momento le Skills sono attivabili in qualsiasi Project Claude su quel PC.
+
+### 2. `awesome-claude-skills`
+
+URL: `github.com/[various]/awesome-claude-skills` (directory)
+
+Cosa contiene: una **directory** (lista curata) di altri repository di Skills, divisi per categoria. Non Skills dirette, ma rimandi:
+
+- Skills per scrittura
+- Skills per ricerca
+- Skills per gestione progetti
+- Skills per analisi dati
+- ...e altre categorie
+
+Vai lì quando cerchi Skills su un tema specifico (es. "Skills per gestione contratti").
+
+### 3. Repository commerciali / di nicchia
+
+Alcune aziende e singoli professionisti pubblicano Skills curate per dominio specifico:
+
+- Skills per consulenza fiscale
+- Skills per redazione contratti standard
+- Skills per analisi finanziaria
+
+Per il dominio legale italiano specifico, attualmente i repository pubblici sono pochi. Aspettativa: nei prossimi 12-24 mesi appariranno collezioni curate per studi italiani.
+
+## Quando installare una Skill esterna vs scriverla tu
+
+### Installa quella esistente quando:
+
+- È un task generale (sintesi, brainstorming, debugging logico)
+- Lo standard di output proposto va bene per te
+- Il maintainer è affidabile (repo attivo, ultimi commit recenti, stars > 50)
+
+### Scrivi tu quando:
+
+- Il task è specifico per il tuo studio (stile, formule, clienti)
+- Vuoi controllo totale sull'output
+- È una Skill che riusi 10+ volte alla settimana (vale l'investimento)
+
+Regola pratica: **70% di Skills custom dello studio, 30% installate dalla community**.
+
+<Esempio>
+L'Avv. Chiara Vitale di Bologna, che si occupa di diritto del lavoro, voleva una Skill per riscrivere in modo più asciutto i pareri che mandava ai clienti aziendali. Invece di scriverla, ha installato `writing-clearly-and-concisely` dal repo `superpowers`. Tempo dall'apertura GitHub al primo parere riscritto: 12 minuti. Da lì ha mantenuto questa Skill installata e ne ha scritte 4 sue per le parti specifiche del suo lavoro (calcolo TFR, lettere di contestazione, transazioni). Mix finale: 30% community, 70% studio. Le ore risparmiate dalla Skill installata sono state usate per scrivere quelle custom.
+</Esempio>
+
+## Installazione sicura: checklist
+
+Prima di installare una Skill esterna, verifica:
+
+1. **Author e provenienza:** chi l'ha scritta? Account con storia, o anonimo creato la settimana scorsa?
+2. **Permessi richiesti:** la Skill chiede accesso a file/network/altri tool? Leggi cosa fa prima di installare
+3. **Stars e attività:** repo con 200+ stars e commit ultimi mesi = sicuro. Repo con 3 stars e ultimo commit 18 mesi fa = valuta meglio
+4. **Lingua delle istruzioni:** se è in inglese, va bene. Se è in lingue rare, attenzione (potrebbe non funzionare bene per output in italiano)
+
+## Caso pratico: installare "writing-clearly-and-concisely"
+
+Vuoi che Claude riscriva i tuoi pareri in modo più essenziale.
+
+1. Vai su `github.com/obra/superpowers`
+2. Trovi la Skill `writing-clearly-and-concisely`
+3. Leggi il SKILL.md: cosa fa, cosa NON fa
+4. Cloni o copi nel tuo `~/.claude/skills/`
+5. In una Chat: "Riscrivi questo parere applicando la skill `writing-clearly-and-concisely`"
+6. Confronti output: ti piace lo stile? Se sì, tienila. Se no, rimuovi.
+
+Tempo: 10 minuti dall'apertura GitHub alla decisione finale.
+
+## Dove NON andare a cercare Skills
+
+- **ChatGPT plugins**, sono per OpenAI, non Claude
+- **HuggingFace models**, sono modelli, non Skills (cosa diversa)
+- **"AI prompt libraries" generaliste**, sono raccolte di prompt singoli, non Skills riutilizzabili
+
+Le Skills nel senso del Modulo 2 sono una funzionalità specifica dell'ecosistema Claude, l'ambiente costruito da Anthropic, l'azienda che fa Claude. Sono file `.md` con `description:` nel frontmatter, non altro.
+
+## La community italiana: ancora da costruire
+
+Al momento della scrittura di questo corso (maggio 2026), una collezione curata di Skills per studi legali italiani **non esiste ancora**. È un'opportunità sia per chi vuole contribuire (pubblicando le proprie Skills) sia per chi vuole anticipare.
+
+**Piano semplice:** quando avrai 5-10 Skills tue funzionanti, considera di pubblicarle. Anche solo per il tuo network di colleghi, basta un repo privato condiviso. Lo vediamo nella lezione 4 del modulo.
+
+<Nota tipo="suggerimento">
+Mantieni un file locale `~/.claude/skills/INDEX.md` dove annoti: Skill installate, fonte, data di installazione, valutazione (utile / da rivedere / da rimuovere). Aiuta a mantenere ordine quando le Skills crescono oltre la decina.
+</Nota>
+
+<RiferimentoCorso lezione="03-skill-studio" />
+
+Nella prossima lezione: come costruire una libreria di Skills specifica per il tuo studio.

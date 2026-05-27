@@ -1,0 +1,103 @@
+---
+titolo: "Spiegare al cliente non-giurista"
+sottotitolo: "Da gergo legale a italiano comprensibile, in 60 secondi"
+durata: 6
+ordine: 6
+aggiornato: "2026-05-23"
+quiz: false
+---
+
+Il cliente entra in studio dopo aver letto il parere che gli hai mandato via mail. Sorride imbarazzato e ti dice "scusa, ma cosa significa concretamente?". È una scena familiare: una delle competenze più sottostimate dell'avvocato è la capacità di tradurre il diritto in linguaggio comprensibile a chi non è giurista. Per molti clienti, soprattutto persone fisiche o imprenditori di PMI, la differenza tra "ho capito" e "non ho capito niente" determina la fiducia nel professionista.
+
+Claude è bravissimo in questa traduzione. Vediamo come usarlo.
+
+## Il principio: parlare il linguaggio del cliente, non il tuo
+
+Quando spieghi un parere o un atto al cliente, hai due alternative:
+
+**Sbagliata:** copi-incolli passaggi del parere, magari sintetizzandoli un po'. Il cliente legge "considerato che, ai sensi dell'art. 1453 c.c., l'inadempimento può legittimare la risoluzione...". Si perde a riga 3.
+
+**Giusta:** racconti la stessa cosa come la racconteresti al tuo barista o a tua madre. Frasi brevi. Esempi concreti. Niente latinismi. Il cliente capisce e si fida.
+
+## Il prompt traduttore
+
+<Prompt>
+Sei l'assistente dell'Avv. Rossi.
+
+**Task:** prendi il testo legale qui sotto (parere/atto/spiegazione tecnica) e riscrivilo in italiano comprensibile a una **persona non giurista**.
+
+**Profilo del lettore:** [DESCRIVI: es. "imprenditore PMI manifatturiera, 55 anni, no laurea, intelligente ma zero giuridica" / "persona fisica, casalinga, ansiosa rispetto al processo" / "manager con MBA, abituata a linguaggio tecnico ma non legale"].
+
+**Regole di traduzione:**
+1. Frasi corte. Una frase = un'idea.
+2. Niente "ai sensi", "in ottemperanza", "ex art.", "altresì", "qualora".
+3. Quando un termine tecnico è inevitabile (es. "prescrizione"), definiscilo subito in parentesi ("prescrizione = scadenza per agire legalmente").
+4. Usa esempi concreti dove possibile.
+5. Risposta in 2 livelli: prima un sommario di 3-4 righe ("in breve, succederà X"), poi i dettagli per chi vuole approfondire.
+
+**Tono:** [empatico / pragmatico / rassicurante senza essere paternalistico].
+
+**Lunghezza:** [massimo N parole].
+
+**Testo da tradurre:**
+[INCOLLA]
+</Prompt>
+
+## Esempio prima/dopo
+
+### Testo originale (parere tecnico)
+
+> "Ai sensi dell'art. 1453 c.c., l'inadempimento della controparte, ove non scarsa importanza ex art. 1455 c.c., legittima il creditore a richiedere la risoluzione del contratto, con conseguente diritto al risarcimento del danno ex art. 1218 c.c., salvo che l'inadempiente provi che l'inadempimento è dipeso da causa non imputabile."
+
+### Stesso contenuto, tradotto
+
+> Il fornitore non ha rispettato il contratto. Per la legge italiana, in questi casi possiamo chiedere due cose:
+>
+> 1. **Sciogliere il contratto**, non siamo più obbligati a quello che avevamo promesso.
+> 2. **Soldi di risarcimento**, per il danno che ci ha causato non rispettando l'accordo.
+>
+> Una sola eccezione: se il fornitore riesce a dimostrare che è successo qualcosa fuori dal suo controllo (es. evento di forza maggiore), può evitare il risarcimento. Ma deve dimostrarlo lui, non noi.
+
+Stesso contenuto. Diverso lettore.
+
+<Esempio>
+L'Avv. Stefano Romano, civilista a Genova, segue molte cause di successione con eredi spesso anziani, talvolta in lite tra loro. Aveva un problema ricorrente: ogni settimana 4-5 telefonate "avvocato, ma scusi cosa significa esattamente la riserva di legittima?". Si è accorto che le spiegazioni di pancia al telefono non funzionavano (cliente confuso, riapre il dubbio tre giorni dopo). Ha creato una Skill chiamata "spiegazione-cliente-anziano" con queste regole: frasi corte, una metafora concreta per ogni concetto tecnico, sommario di 4 righe in apertura, riferimento al "il giudice deciderà entro X mesi" per dare prevedibilità. Ora dopo ogni telefonata complessa manda al cliente un foglio A4 con la spiegazione tradotta da Claude in 3 minuti. Le telefonate di follow-up sullo stesso punto sono scese del 70%. Lui dice che è il singolo cambiamento che gli ha cambiato di più la gestione del cliente, non il tempo.
+</Esempio>
+
+## Casi d'uso pratici
+
+### 1. Spiegare cosa succede dopo un atto
+
+> "Cliente, persona fisica, abbiamo appena depositato un atto di citazione contro la sua ex-azienda per mancato pagamento TFR. Spiegale in 250 parole: cosa succede ora, quanto tempo prima della prima udienza, cosa le verrà chiesto, perché potrebbe esserci una conciliazione e cosa significa accettarla o rifiutarla."
+
+### 2. Tradurre una sentenza al cliente
+
+> "Cliente ha vinto in primo grado. Sentenza di 35 pagine. Lui vuole sapere in 5 minuti: cosa abbiamo vinto, quanto, quando arriva, controparte può fare appello. Riassumi tutto in massimo 300 parole, italiano semplice."
+
+### 3. Spiegare costi futuri
+
+> "Cliente vuole sapere quanto costa l'intera causa fino al terzo grado. Spiegagli con linguaggio chiaro: cosa costa primo grado, cosa appello, cosa Cassazione, quali sono i 'rischi' di costo (es. controparte ottiene rimborso spese), totale orientativo, quando si pagano le varie tranche."
+
+### 4. Comunicare opzioni strategiche
+
+> "Cliente ha 3 opzioni: A) accordo a 60K€, B) andare in giudizio puntando a 120K€ con 50% rischio di perdere tutto, C) attendere e vedere se controparte fa la prima mossa. Spiegagli pro e contro di ognuna in linguaggio comprensibile, con metafora se aiuta, max 400 parole."
+
+## La regola d'oro
+
+**Mai usare un parere/atto come email al cliente.** I documenti tecnici hanno destinatari tecnici (giudice, avvocato di controparte, ufficio). Per il cliente serve una traduzione. Il fatto che tu abbia capito non basta, deve capire lui.
+
+Workflow ideale:
+1. Scrivi il parere tecnico (per il dossier, per la difesa)
+2. Chiedi a Claude di tradurlo per il cliente
+3. Rileggi, personalizzi i toni
+4. Mandi al cliente
+
+Tempo della traduzione: 5 minuti. Differenza nella relazione col cliente: enorme.
+
+<Nota tipo="suggerimento">
+Per i clienti più ansiosi (es. cause di famiglia, penali, lavoro), aggiungi sempre al prompt: "Tono rassicurante senza essere paternalistico. Mai usare frasi tipo 'non si preoccupi', che hanno effetto opposto. Invece informa, spiega cosa farai, rendi il processo prevedibile."
+</Nota>
+
+<RiferimentoCorso lezione="07-workflow-giornaliero" />
+
+Nella prossima lezione (l'ultima del modulo): come costruire un workflow giornaliero che integra Claude in modo sistematico, non occasionale.

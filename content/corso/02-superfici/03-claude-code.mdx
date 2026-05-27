@@ -1,0 +1,140 @@
+---
+titolo: "Claude Code, l'avvocato che ha un terminale"
+sottotitolo: "Quando i task superano la singola chat"
+durata: 9
+ordine: 3
+aggiornato: "2026-05-23"
+quiz: false
+---
+
+Lo so, "Claude Code" suona come una cosa per programmatori, e il primo istinto è chiudere la pagina. Non chiuderla. Claude Code (la versione di Claude che lavora direttamente sui file del tuo computer, con il tuo permesso) è lo strumento che ti permette di processare **decine o centinaia di documenti** in pochi minuti, senza scrivere una sola riga di codice.
+
+Non serve saper programmare. Serve solo saper installare un'app sul tuo computer e aprire il terminale. Vediamo come.
+
+## Cos'è Claude Code
+
+Una versione di Claude che gira sul **tuo computer** anziché su claude.ai. Sa leggere, scrivere e modificare i file del tuo disco. Lo apri nel terminale (Mac, Windows, Linux), gli dici cosa fare, lui lo fa.
+
+La differenza chiave rispetto a Chat e Projects:
+
+- **Chat / Projects:** Claude lavora su quello che gli copi/carichi tu.
+- **Claude Code:** Claude lavora direttamente sui file sul tuo disco. Niente upload, niente copy-paste.
+
+Per un avvocato, questo cambia tutto quando hai un task del tipo "leggi tutti i 47 contratti in questa cartella e fammi una tabella riassuntiva".
+
+## Quando ti serve davvero
+
+### 1. Task su molti documenti
+
+> "Leggi tutti i 30 contratti di affitto nella cartella `clienti/affitti-2026/`, estrai per ognuno: parte locatrice, parte conduttrice, importo mensile, durata, data inizio, presenza/assenza di clausola di indicizzazione. Output: un foglio Excel."
+
+In Chat dovresti incollarne uno alla volta. In Claude Code: una riga, 5 minuti, fatto.
+
+### 2. Riformattazione massiva
+
+> "Prendi tutte le lettere in formato Word nella cartella `corrispondenza/`, sostituisci la vecchia firma "Avv. Mario Rossi - via Manzoni 12" con la nuova "Avv. Mario Rossi - Studio Legale Rossi & Associati, via Manzoni 12, 20121 Milano". Salva ogni file."
+
+### 3. Estrazione strutturata
+
+> "Per ogni PDF di sentenza nella cartella `giurisprudenza-2026/`, crea un file Markdown con: numero, data, organo, parti, massima, riferimenti normativi citati."
+
+### 4. Confronto multi-file
+
+> "Confronta tutti i NDA che abbiamo firmato negli ultimi 6 mesi nella cartella `nda-firmati/` e dimmi: 1) quali clausole sono ricorrenti, 2) quali sono state oggetto di trattativa più spesso, 3) quali tipi di controparte tendono a richiedere modifiche."
+
+## Come si installa (5 minuti)
+
+Su Mac/Linux:
+
+```bash
+npm install -g @anthropic-ai/claude-code
+```
+
+Su Windows: stessa cosa, dopo aver installato Node.js da nodejs.org.
+
+Poi apri il terminale nella cartella dove vuoi lavorare:
+
+```bash
+cd /Users/alessio/Documenti/clienti/Bianchi
+claude
+```
+
+Si apre Claude, pronto a ricevere istruzioni. Sa già che la cartella di lavoro è `Bianchi`.
+
+## La prima sessione: esempio guidato
+
+Hai 20 PDF di sentenze in una cartella. Vuoi una tabella riassuntiva.
+
+```bash
+cd /Users/alessio/giurisprudenza/2026
+claude
+```
+
+Poi nel prompt:
+
+<Prompt>
+In questa cartella ci sono ~20 PDF di sentenze italiane (Cassazione, tribunali di merito).
+
+Per ognuna, estrai:
+- Organo giudicante
+- Numero e data
+- Parti (in forma anonimizzata: "ricorrente", "resistente")
+- Massima in 2-3 righe
+- Articoli normativi principalmente citati
+- Esito (accolto / rigettato / parzialmente)
+
+Output: un file `riepilogo.csv` nella stessa cartella, con header sulla prima riga.
+
+Procedi.
+</Prompt>
+
+Claude:
+1. Lista i PDF
+2. Apre il primo, legge, estrae
+3. Apre il secondo, legge, estrae
+4. Continua per tutti i 20
+5. Genera `riepilogo.csv`
+
+Tempo totale: 3-7 minuti, dipende dalla lunghezza delle sentenze. Tu nel frattempo prendi un caffè.
+
+<Esempio>
+L'Avv. Marco Tossi, civilista a Bologna, segue un fondo immobiliare che ogni anno gli passa 80-90 contratti di locazione commerciale da censire prima dell'assemblea. Prima la praticante apriva uno per uno i PDF, ricopiava parte locatrice, parte conduttrice, canone, scadenza, indicizzazione in un Excel. Due settimane piene di lavoro, ogni anno, con errori di trascrizione inevitabili. L'anno scorso ha provato Claude Code: ha messo gli 87 contratti in una cartella, ha scritto un prompt di sei righe, ha lasciato girare 22 minuti. L'Excel finito era pronto, con un margine di errore di tre celle su 87 contratti, tutte legate a scansioni storte che lui avrebbe sbagliato comunque a leggere. Due settimane diventano mezza mattinata di verifica.
+</Esempio>
+
+## Sicurezza: cosa può/non può fare
+
+Claude Code chiede sempre permesso prima di:
+
+- Modificare file (`Sì/No/Sempre per questa sessione`)
+- Eliminare file (sempre conferma)
+- Eseguire comandi sul sistema
+- Connettersi a servizi esterni
+
+Non c'è rischio di "Claude che cancella tutto da solo". Ogni operazione potenzialmente distruttiva richiede conferma.
+
+<Nota tipo="attenzione">
+Per dossier contenenti dati di clienti reali, valuta sempre il Modulo 6 (Privacy & deontologia). Claude Code, come Chat, manda i dati ai server Anthropic (l'azienda che fa Claude) per il processing. Per documenti sensibili, valuta l'anonimizzazione preventiva o l'uso dell'API (l'accesso programmatico a Claude, ti serve solo se vuoi farti scrivere uno script o un'automazione) in modalità self-hosted (advanced, per ora pensa a Claude Code come a un servizio cloud).
+</Nota>
+
+## Limiti e quando NON usarlo
+
+- **Documenti scannerizzati di bassa qualità.** Se il PDF è una scansione sgranata, Claude fa fatica a leggere. Soluzione: passa prima per un OCR (Adobe Acrobat, Tesseract).
+- **Volumi enormi.** Per 500+ documenti, Claude Code rallenta. Soluzione: lavora a batch (50 alla volta).
+- **Task interattivi che richiedono giudizio costante.** Se ad ogni documento devi decidere "tieni / scarta / modifica", Claude Code non ti fa risparmiare tempo, fallo in Chat o Project.
+
+## Cosa fai questa settimana
+
+1. Installa Claude Code (5 minuti).
+2. Apri una cartella con almeno 5-10 documenti simili (es. una cartella di contratti, di lettere, di sentenze).
+3. Prova un task di estrazione strutturata.
+4. Confronta il tempo con quello che ci avresti messo a farlo a mano.
+
+<Risorse items={[
+ { titolo: "Claude Code in Action (corso ufficiale)", url: "https://anthropic.skilljar.com/claude-code-in-action", fonte: "Anthropic Academy", durata: "1 hr · 15 lezioni · 1 quiz" },
+ { titolo: "Claude Code 101, Introduzione tecnica", url: "https://anthropic.skilljar.com", fonte: "Anthropic Academy", durata: "1 hr · 12 lezioni" },
+ { titolo: "Claude Code docs ufficiali", url: "https://docs.claude.com/claude-code", fonte: "Anthropic Docs" },
+]} />
+
+<RiferimentoCorso lezione="04-skills" />
+
+Nella prossima lezione: Skills, come trasformare un task ricorrente in un comando di una riga.

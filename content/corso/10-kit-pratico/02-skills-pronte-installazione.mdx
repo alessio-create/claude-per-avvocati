@@ -1,0 +1,335 @@
+---
+titolo: "Tre Skills pronte all'installazione per civilisti italiani"
+sottotitolo: "Production-ready: salvi il file, riavvii Claude, lo usi sulla prossima pratica"
+durata: 12
+ordine: 2
+aggiornato: "2026-05-25"
+quiz: false
+---
+
+Questa lezione non spiega Claude, te lo consegna pronto al lavoro. Sono tre Skills (una Skill è una procedura riutilizzabile che insegni a Claude una volta sola e poi la richiami con una frase) complete, scritte e testate per la pratica civilista italiana. Salvi il file, riavvii Claude, e da lunedì la usi sulla prossima causa.
+
+Le tre coprono il 60% del drafting quotidiano di uno studio civilista medio: **messa in mora**, **sintesi di sentenza di legittimità**, **revisione preventiva di un contratto presentato dal cliente**. Sono scritte per Claude Code (la versione di Claude che vive sul tuo computer e può leggere/scrivere file con il tuo permesso): i file vanno in `~/.claude/skills/<nome>/SKILL.md`, ovvero il file di testo dove descrivi la procedura, in formato Markdown. Il contenuto è identico per quello che caricheresti dentro un Project su claude.ai, cioè uno spazio Claude dove carichi documenti e istruzioni che restano disponibili in tutte le conversazioni.
+
+## Installazione (30 secondi)
+
+```bash
+mkdir -p ~/.claude/skills/messa-in-mora
+mkdir -p ~/.claude/skills/sintesi-sentenza
+mkdir -p ~/.claude/skills/revisione-contratto
+# poi copi il contenuto di ogni Skill nel rispettivo SKILL.md
+```
+
+Da Claude Code, riavvii la sessione e le Skills sono attive. Le richiami con frasi tipo:
+
+> "Applica la skill messa-in-mora per Bianchi srl, €14.500, fattura 234..."
+
+## Skill 1, Messa in mora ex art. 1219 c.c.
+
+Pensata per le messe in mora pre-decreto ingiuntivo: tono fermo, registro tecnico ma diretto, struttura conforme alla prassi della giurisprudenza di merito italiana. Cita gli articoli giusti (1219 c.c. per la mora, 1224 per gli interessi, 633 c.p.c. per il decreto ingiuntivo come deterrente).
+
+**Perché non è una lettera generica**: chiede tutti i dati necessari **prima** di iniziare a scrivere, evita le formule arcaiche ("Spettabile", "in indirizzo", "Distintamente"), include sempre il riferimento alla decorrenza degli interessi moratori (D.lgs. 231/2002 se B2B), e si ferma esattamente sotto le 300 parole, che è la lunghezza che tribunalmente "regge" senza sembrare ridondante.
+
+```markdown
+---
+name: messa-in-mora
+description: Redige una lettera di messa in mora ex art. 1219 c.c. per
+  uno studio civilista italiano. Attiva quando l'utente chiede una messa
+  in mora, una diffida ad adempiere, o un sollecito formale pre-causa
+  per crediti commerciali.
+---
+
+# Quando attivare
+
+Attiva questa Skill quando il prompt utente contiene una richiesta esplicita
+di redigere una messa in mora (ex art. 1219 c.c.), una diffida ad adempiere
+(ex art. 1454 c.c.), o un sollecito formale di pagamento da inviare via PEC.
+
+NON attivare per:
+- Solleciti informali via email semplice (è troppo formale)
+- Lettere di costituzione in mora del debitore in materia penale o tributaria
+- Comunicazioni a controparte già rappresentata da legale (usa skill diversa)
+
+# Cosa chiedere PRIMA di iniziare
+
+Se uno di questi dati manca nel prompt, chiedili tutti insieme in un
+elenco numerato:
+1. Nome/ragione sociale del creditore (cliente)
+2. Nome/ragione sociale del debitore
+3. Importo dovuto (in euro)
+4. Numero e data della fattura/contratto da cui nasce il credito
+5. Eventuali solleciti precedenti (date, max 3 menzionati)
+6. Termine intimato per il pagamento (default: 15 giorni)
+7. Foro competente per eventuale azione giudiziale
+
+# Struttura della lettera
+
+1. Intestazione: città, data; mittente (intestazione studio); destinatario
+   in alto a destra
+2. Oggetto: "Messa in mora ex art. 1219 c.c., credito di €[X]"
+3. Premesse (max 3 capoversi): identificazione del credito (importo,
+   titolo, data scadenza originaria)
+4. Menzione dei solleciti precedenti (se ci sono): "Nonostante i solleciti
+   inviati in data..."
+5. Intimazione formale: "Con la presente, ai sensi e per gli effetti
+   dell'art. 1219 c.c., si intima formalmente a codesta Spett.le... il
+   pagamento dell'importo di €[X] entro e non oltre [N] giorni dalla
+   ricezione della presente"
+6. Decorrenza interessi: "Decorso inutilmente tale termine, sull'importo
+   maturano gli interessi moratori ai sensi dell'art. 1224 c.c. (o
+   D.lgs. 231/2002 se B2B)"
+7. Avvertimento: "In difetto, si procederà senza ulteriore comunicazione
+   per il recupero coattivo del credito, anche mediante ricorso per
+   decreto ingiuntivo ex art. 633 c.p.c., con aggravio di spese,
+   competenze e onorari di lite a carico di codesta parte"
+8. Riserva: "Resta sin d'ora riservata ogni ulteriore azione a tutela
+   del credito"
+9. Saluti: "Cordiali saluti,"
+10. Firma: "Avv. [NOME], Studio Legale [NOME]"
+
+# Vincoli di stile NON negoziabili
+
+- Lunghezza: 250-300 parole MAX (escluse intestazione e firma)
+- Tono: fermo, professionale, non emotivo. Mai accusatorio
+- VIETATE le formule: "Spettabile", "Egregio", "in indirizzo",
+  "Distintamente", "In riferimento a quanto in oggetto"
+- USA: "codesta società", "la presente", "ai sensi e per gli effetti",
+  "decorso inutilmente tale termine"
+- Niente elenchi puntati nel corpo della lettera (è un atto, non una
+  email aziendale)
+- Frasi corte (max 25 parole)
+
+# Output
+
+Solo il testo della lettera, formattato come segue:
+- Intestazione luogo/data in alto a destra
+- Mittente e destinatario incolonnati
+- Oggetto in grassetto
+- Corpo della lettera in paragrafi separati da linea vuota
+- Firma in basso a destra
+
+NIENTE preamboli ("Ecco la lettera che hai richiesto..."), NIENTE
+disclaimer AI alla fine, NIENTE commenti sul processo.
+
+# Casi limite
+
+- Se il credito è prescritto (>10 anni B2C, >5 B2B in alcuni casi),
+  segnalalo PRIMA di scrivere la lettera. Non scriverla se l'utente
+  non conferma esplicitamente di voler procedere comunque.
+- Se manca la fattura/titolo del credito, richiedilo. Non inventare
+  numeri o date.
+- Se il debitore è già rappresentato da legale, suggerisci di
+  inviare alla casella PEC del legale e di adattare il tono.
+```
+
+## Skill 2, Sintesi di sentenza di legittimità
+
+Pensata per quando ti arriva una sentenza di Cassazione di 18-25 pagine e devi capire in 5 minuti se è rilevante per la tua causa simile. Struttura la sintesi nelle 4 sezioni che servono davvero (massima, decisione, motivazione, rilevanza), e tassativamente **non inventa numeri di sentenze citate** (l'allucinazione più pericolosa per un avvocato).
+
+**Perché è specifica per la legittimità**: la struttura argomentativa di una sentenza di Cassazione è diversa da una di merito (massima esposta, principio di diritto, rinvio alla sezione di rinvio se cassazione con rinvio). Questa Skill conosce il pattern.
+
+```markdown
+---
+name: sintesi-sentenza
+description: Sintetizza una sentenza di legittimità (Cassazione civile o
+  penale) o una sentenza di merito in 250 parole strutturate. Attiva
+  quando l'utente incolla una sentenza e chiede una sintesi, una
+  valutazione di rilevanza, o un'estrazione del principio di diritto.
+---
+
+# Quando attivare
+
+Attiva quando il prompt contiene il testo (o un riferimento a un file
+caricato) di una sentenza giurisdizionale italiana, e l'utente chiede:
+- Una sintesi
+- Il principio di diritto
+- Una valutazione di applicabilità a un caso suo
+- Le motivazioni in forma compatta
+
+# Output strutturato (250 parole MAX, suddivise come segue)
+
+## 1. Inquadramento (50 parole)
+
+- Tipo di sentenza: Cassazione civile/penale, sezione (Sez. III, Sez. Lavoro,
+  Sezioni Unite), data e numero SE PRESENTE nel testo originale (non
+  inventarla)
+- Materia: tipologia di rapporto/illecito
+- Domanda di parte: cosa chiedeva chi ricorre
+
+## 2. Decisione (40 parole)
+
+- Accolto/rigettato/cassato con rinvio/cassato senza rinvio
+- Disposizioni dispositive principali
+- Eventuali statuizioni sulle spese se rilevanti per la prassi
+
+## 3. Principio di diritto / motivazione (110 parole)
+
+Il ragionamento giuridico chiave. Per Cassazione: il principio di diritto
+enunciato (se esplicito), oppure la ratio decidendi ricostruita dalla
+motivazione. Indicare:
+- Norme richiamate (articoli con numerazione corretta del codice)
+- Orientamento: consolidato / minoritario / mutamento di indirizzo
+- Eventuali pronunce delle Sezioni Unite citate
+
+VIETATO inventare numeri o estremi di sentenze richiamate al suo interno.
+Se la sentenza ne cita altre, scrivi "(richiama precedenti conformi)"
+senza specifiche numeriche, oppure cita la sigla SOLO se compare
+testualmente nella sentenza originale.
+
+## 4. Rilevanza pratica (50 parole)
+
+In quali tipologie di casi futuri questa pronuncia è rilevante. Eventuali
+cautele: sentenza isolata? Pronuncia su questione specifica difficilmente
+estensibile? Mutamento di orientamento che potrebbe non reggere?
+
+# Stile
+
+- Tecnico-giuridico, ma frasi corte
+- Niente avverbi superflui ("notevolmente", "particolarmente")
+- Non usare la forma passiva quando l'attivo funziona
+- Citazioni di articoli sempre nella forma "art. 1219 c.c.", non
+  "articolo milleduecentodiciannove del codice civile"
+
+# Cosa NON fare
+
+- NON inventare il numero della sentenza se non è nel testo originale
+- NON inventare nomi di sentenze richiamate
+- NON estendere oltre le 250 parole (verifica il conteggio prima
+  di restituire)
+- Se la sentenza è in lingua straniera o se l'utente carica testo
+  incompleto, segnalalo all'inizio invece di tentare la sintesi
+
+# Caso limite: sentenza poco rilevante
+
+Se valuti che la sentenza è poco rilevante per il diritto italiano vivente
+(es. sentenza di merito molto vecchia, isolata, su questione tangenziale),
+segnalalo nella prima riga prima di iniziare:
+
+> "Nota: questa pronuncia è di rilevanza limitata perché [motivo].
+> Sintesi sotto, ma considera di non basarci argomentazioni principali."
+```
+
+<Esempio>
+Lo Studio Bernasconi di Lecco ha installato la Skill "sintesi-sentenza" all'inizio del mese. La prima settimana ognuno dei 4 associati l'ha usata 3-4 volte, prendendo i pezzi che gli interessavano. Il senior si è accorto che producevano sintesi finalmente in formato omogeneo, e ha chiesto a un junior di personalizzare il SKILL.md aggiungendo una regola interna: "rifletti sempre se la massima è applicabile al nostro mainstream civilistico in materia di responsabilità professionale". Sintesi che prima erano ognuna diversa, ora hanno tutte la stessa struttura e lo stesso campo "rilevanza per il nostro studio" in fondo. Tempo per leggere una Cassazione di 22 pagine e decidere se serve al fascicolo: 45 minuti, 10 minuti adesso.
+</Esempio>
+
+## Skill 3, Revisione preventiva di un contratto presentato dal cliente
+
+Pensata per il momento in cui il cliente ti porta un contratto già firmato dalla controparte e ti chiede di verificarlo prima di firmare. La Skill produce 5 categorie di rischio strutturate, **non riscrive il contratto**, e si ferma sempre prima di dare consigli operativi senza esplicita verifica della deontologia (es. clausole che richiedono trattativa con la controparte).
+
+**Perché conta lo stile**: il cliente legge questa nota. Deve essere comprensibile a un non-giurista, ma non banalizzante. La Skill traduce ogni rischio in linguaggio chiaro e quantifica la severità (alta/media/bassa).
+
+```markdown
+---
+name: revisione-contratto
+description: Effettua una revisione preventiva di un contratto presentato
+  al cliente prima della firma, evidenziando le 5 categorie di rischio
+  più rilevanti. Attiva quando l'utente carica o incolla il testo di un
+  contratto e chiede una review per il cliente, una nota di rischio, o
+  una valutazione delle clausole critiche.
+---
+
+# Quando attivare
+
+Attiva quando l'utente:
+- Carica un contratto (PDF, .docx, testo incollato)
+- Chiede una review, una valutazione, una nota di rischio
+- Chiede di verificare se "si può firmare"
+
+NON attivare se l'utente chiede di RISCRIVERE o NEGOZIARE il contratto.
+Per quei casi serve una Skill diversa.
+
+# Output: nota di rischio in 5 sezioni
+
+Per ogni categoria, valutare severità (Alta / Media / Bassa) e indicare
+la clausola specifica del contratto (numero o citazione testuale corta).
+
+## 1. Durata, recesso e rinnovi (50-80 parole)
+
+- Durata complessiva: ragionevole rispetto all'oggetto?
+- Modalità di recesso: a quali condizioni? Con quanto preavviso?
+- Rinnovo automatico: presente? Con quale preavviso per evitarlo?
+
+## 2. Penali e clausole risolutive espresse (50-80 parole)
+
+- Importi delle penali: proporzionati rispetto alle obbligazioni?
+- Clausola risolutiva espressa (art. 1456 c.c.): attiva per
+  inadempimenti del cliente? Quanto è ampia?
+- Eventuali clausole vessatorie (art. 1341 c.c., art. 33 cod. cons.
+  se applicabile): sottoscrizione separata presente?
+
+## 3. Limitazioni di responsabilità della controparte (50-80 parole)
+
+- Cap di responsabilità: presente? Importo? Esclude colpa grave/
+  dolo (limite ex art. 1229 c.c. che le rende inefficaci)?
+- Esclusioni di garanzia: ampie? Comprendono casi rilevanti?
+
+## 4. Foro competente, legge applicabile, arbitrato (40-60 parole)
+
+- Foro convenzionale: dove? Lontano per il cliente?
+- Clausola arbitrale: presente? In sostituzione del giudice ordinario?
+  Spese stimabili?
+- Legge applicabile: italiana? Straniera?
+
+## 5. Riservatezza e dati personali (40-60 parole)
+
+- Clausole NDA: durata, ambito, sanzioni
+- Trattamento dati: indicazione del titolare? Riferimento al GDPR?
+- Diritti di proprietà intellettuale: chi le mantiene su lavori derivati?
+
+# Stile
+
+- Scritto per il CLIENTE, non per un altro avvocato
+- Linguaggio chiaro ma non banale ("la clausola 7 ti espone a..." invece
+  di "la clausola in parola appare suscettibile di...")
+- Frasi corte
+- Sempre tradurre l'articolo di legge in conseguenza pratica
+
+# Cosa NON fare
+
+- NON proporre testo di sostituzione delle clausole (è un'altra Skill)
+- NON consigliare di firmare o non firmare in modo definitivo. La
+  Skill produce una nota di rischio; la decisione la prendi tu con
+  il cliente al tavolo
+- NON inventare riferimenti normativi. Se non sei sicura/o di un
+  articolo, scrivi "verificare riferimento normativo"
+- NON estendere oltre le 600 parole totali (è una nota di rischio,
+  non un parere)
+
+# Chiusura standard
+
+Finisci sempre con un paragrafo conclusivo (max 60 parole):
+
+> "Sintesi: presenza di [N] rischi alti, [N] medi. Raccomandazione:
+> [discutere col cliente / negoziare le clausole X e Y / firmare con
+> riserva di rinegoziazione su Z]. Resta inteso che la presente nota
+> è una valutazione preventiva e non sostituisce la consulenza
+> personalizzata al cliente."
+```
+
+## Come usarle insieme
+
+In una giornata media di uno studio civilista, queste tre coprono:
+
+- 2-3 messe in mora la settimana (Skill 1)
+- 4-5 sentenze da leggere alla settimana (Skill 2)
+- 1-2 contratti da revisionare la settimana (Skill 3)
+
+Tempo risparmiato stimato: **5-7 ore alla settimana** per un singolo avvocato che le usa con regolarità. A tariffa interna conservativa €60/h sono €350+/settimana, circa €14.000 l'anno.
+
+<Nota tipo="suggerimento">
+Se condividi queste Skills con i collaboratori dello studio (Modulo 7 Cowork
+lo permette in modo controllato), tutti producono output coerente nello stile
+dello studio, senza che debba spiegare a ognuno come scrivere una messa in
+mora. È il momento in cui le Skills smettono di essere produttività individuale
+e diventano un asset organizzativo.
+</Nota>
+
+## Cosa imparare adesso
+
+Aprile e provarle. Iniziare dalla **messa in mora** sulla prossima vera che devi inviare, perché è il caso in cui il guadagno si vede subito al primo uso. Noterai due cose.
+
+1. Claude ti chiede tutti i dati prima di iniziare, e questo *ti obbliga* a metterli in ordine nella tua testa prima di scrivere. È metà del lavoro fatto.
+2. L'output è strutturalmente già corretto. Ti restano da fare 2-3 modifiche di tono e firma. 35 minuti diventano 8.
+
+Nella prossima lezione (in arrivo): tre Skills per il drafting di atti formali, pensate per chi fa contenzioso.

@@ -1,0 +1,130 @@
+---
+titolo: "Il contesto è tutto"
+sottotitolo: "Perché più dati nel prompt = output migliore, sempre"
+durata: 6
+ordine: 4
+aggiornato: "2026-05-23"
+quiz: true
+---
+
+C'è una regola che da sola spiega l'80% della differenza tra "Claude è inutile" e "Claude è il mio collega più produttivo": **il contesto è tutto**. Più rilevante è il contesto che porti nel prompt, migliore è l'output. Senza eccezioni.
+
+Questa lezione spiega come pensare al contesto e dove trovarlo.
+
+## La regola "porta tutto"
+
+Quando hai un task da fare con Claude, prima di scrivere il prompt fai questo esercizio:
+
+> Se dovessi spiegare questo task a un collega che non sa nulla di questo cliente, di questa pratica, di questo studio, cosa dovrei dirgli?
+
+La risposta è il tuo contesto. Va tutto nel prompt.
+
+## Quattro categorie di contesto
+
+### 1. Contesto sul cliente
+
+Chi è, da quanto è cliente, com'è il rapporto, quali sue caratteristiche cambiano il modo in cui scrivi.
+
+> "Il cliente è una srl manifatturiera di Bergamo, 30 dipendenti, ci segue da 5 anni, abituata a un linguaggio diretto, l'AD è laureato in economia non in giurisprudenza."
+
+### 2. Contesto sul caso
+
+I fatti, le date, gli importi, le parti, lo storico processuale, le posizioni delle controparti.
+
+> "Il contratto contestato è stato firmato il 12/03/2024, prevede una penale del 10% in caso di recesso anticipato, la controparte sostiene che la penale è vessatoria ex art. 1341 c.c., noi sosteniamo che è stata oggetto di trattativa specifica documentata da scambio email del 02-08/03/2024."
+
+### 3. Contesto sul tuo stile
+
+Come scrive il tuo studio, quali formule usate, quali NON usate. Cosa firmi, come ti rivolgi al cliente.
+
+> "Stile dello studio: diretto, niente formule arcaiche, niente 'spettabile' o 'in indirizzo'. Citazioni normative solo se strettamente necessarie. Paragrafi corti. Firma finale: 'Cordiali saluti, Avv. Mario Rossi'."
+
+### 4. Contesto sul vincolo
+
+Cos'è il deliverable? Email, lettera, parere, atto? Quanto lungo? Tono fermo o empatico? In risposta a chi?
+
+> "Output: email di 200 parole max, tono fermo ma non aggressivo, in risposta a un avvocato di controparte che ha chiesto una dilazione."
+
+## Esempio completo
+
+<Prompt>
+Sei l'assistente dell'Avv. Mario Rossi, civilista a Milano (studio di 4 persone, specializzato in diritto societario).
+
+**Cliente:** Studio Bianchi srl, manifattura tessile a Como, ci segue da 5 anni. L'AD (Sig. Bianchi) ha un MBA, capisce il linguaggio tecnico ma odia le formule arcaiche.
+
+**Caso:** Bianchi srl deve €14.500 al nostro studio per consulenza societaria erogata Q4 2025 (fattura n. 234, scadenza 15/12/2025). Pagamento non avvenuto. Già sollecitato due volte via email (10/02 e 25/03/2026), risposte vaghe ("è un periodo difficile"). Stiamo entrando nei tempi della messa in mora ex art. 1219 c.c.
+
+**Stile dello studio:** diretto, niente "spettabile", niente "in indirizzo", paragrafi corti, formula di chiusura "Cordiali saluti, Avv. Mario Rossi".
+
+**Task:** redigi una lettera di messa in mora formale, da inviare via PEC. Tono: fermo, professionale, non emotivo. Cita esplicitamente: l'importo, la data di scadenza originaria, i due solleciti precedenti, il termine di 15 giorni dalla ricezione, le conseguenze (decreto ingiuntivo). Lunghezza: 300 parole max.
+
+Output: solo il testo della lettera, pronto per l'invio.
+</Prompt>
+
+L'output di questo prompt è una lettera quasi pronta. Una rilettura, due piccole modifiche, PEC inviata. 10 minuti totali per qualcosa che senza Claude ne richiederebbe 30-40.
+
+<Esempio>
+L'Avv. Sara Lombardi, giuslavorista a Torino, ha tenuto un esperimento per due settimane sulla stessa tipologia di task, una risposta a istanza di conciliazione. Prima settimana, prompt scarni ("scrivimi una risposta a questa istanza", più il testo dell'istanza). Output: bozze quasi inutilizzabili, riscrittura completa di almeno il 60% del testo. Seconda settimana, stesso task ma con tutte e quattro le categorie di contesto in testa al prompt (cliente azienda metalmeccanica di Cuneo, posizioni della controparte, stile dello studio, vincolo "350 parole, tono fermo non emotivo"). Output: bozze utilizzabili dopo la revisione di un singolo paragrafo. Tempo medio sceso da 35 minuti a 12. Lei lo dice senza enfasi: "Non ho cambiato strumento, ho cambiato il prompt".
+</Esempio>
+
+## Da dove prende il contesto Claude
+
+Tre fonti, in ordine di importanza:
+
+1. **Il messaggio corrente**, quello che scrivi in questa conversazione. Massimo contesto.
+2. **La conversazione precedente** (Chat / Project), Claude ricorda cosa è stato detto sopra nella stessa chat.
+3. **Custom Instructions / Project Instructions**, istruzioni che Claude legge automaticamente a ogni nuova conversazione senza che tu le ripeta. Le imposti una volta in Impostazioni (per tutto l'account) o dentro un **Project** (uno spazio dentro Claude dove carichi documenti e istruzioni che restano disponibili in tutte le conversazioni di quel progetto).
+
+Più rilevante è la fonte da cui prendi il contesto, meglio. Esempio: lo stile dello studio va in Custom Instructions (lo metti una volta, lo applichi a tutto). Il singolo caso va nel Project o nel messaggio.
+
+## Quando "troppo contesto" diventa rumore
+
+Esiste un limite, non quanto puoi metterci, ma quanto è **rilevante**. Tecnicamente Claude misura il testo in **token** (le unità in cui Claude conta il testo, circa 0,75 parole italiane per token) e in una singola conversazione lavora dentro un **context window** (la quantità di testo che Claude può tenere in mente, circa 200 mila token, ovvero quanto un romanzo medio). Quindi spazio ce n'è. Il problema non è la capacità, è la rilevanza: se incolli 50 pagine di documenti per chiedere una bozza di una singola lettera, Claude si distrae. Meglio incollare i 3 paragrafi rilevanti.
+
+Regola pratica: includi solo il contesto che useresti spiegandolo a voce al praticante in 2 minuti. Se non lo diresti a voce, non incollarlo.
+
+<Nota tipo="suggerimento">
+Con Projects il problema della rilevanza si risolve: carichi tutti i documenti, Claude indicizza, e quando fai una domanda ne usa solo i pezzi rilevanti. Per pratiche complesse con tanti documenti, usa sempre Projects.
+</Nota>
+
+<Quiz
+ modulo="01-fondamenta"
+ lezione="04-contesto-e-tutto"
+ domande={[
+  {
+   domanda: "Le quattro categorie di contesto da portare nel prompt sono:",
+   opzioni: [
+    "Tempo, luogo, modo, mezzi",
+    "Cliente, caso, stile dello studio, vincolo del deliverable",
+    "Saluto, oggetto, corpo, firma",
+    "Date, importi, parti, fogli"
+   ],
+   corretta: 1,
+   spiega: "Queste quattro coprono il 95% del contesto utile. Mancarne anche solo una rende l'output generico."
+  },
+  {
+   domanda: "Dove è più appropriato mettere lo \"stile dello studio\"?",
+   opzioni: [
+    "Nel singolo prompt, ogni volta",
+    "Nelle Custom Instructions globali del tuo account Claude",
+    "Solo nella prima conversazione di ogni giornata",
+    "In una email che mandi a Claude"
+   ],
+   corretta: 1,
+   spiega: "Stile = informazione che si applica sempre. Una volta in Custom Instructions, applicato a ogni conversazione futura."
+  },
+  {
+   domanda: "Quando \"troppo contesto\" diventa controproducente?",
+   opzioni: [
+    "Mai, più dati = sempre meglio",
+    "Quando incolli grandi quantità di documenti non rilevanti per il task specifico",
+    "Quando supera le 100 parole",
+    "Quando includi date e importi"
+   ],
+   corretta: 1,
+   spiega: "Rilevanza vince su quantità. Solo il contesto utile al task. Per dossier grandi, usa Projects: Claude pesca solo i pezzi rilevanti."
+  }
+ ]}
+/>
+
+Nella prossima e ultima lezione di questo modulo, ti do il prompt template che puoi usare già da oggi per il 70% dei tuoi task.

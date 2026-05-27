@@ -1,0 +1,121 @@
+---
+titolo: "MCP, quando Claude parla coi tuoi tool"
+sottotitolo: "Connessioni a gestionale, Outlook, Drive, banche dati"
+durata: 7
+ordine: 5
+aggiornato: "2026-05-23"
+quiz: false
+---
+
+Pensa a quante volte alla settimana fai questa scena: apri Outlook, cerchi le email, copi, vai su Claude, incolli, chiedi una sintesi, torni su Outlook. Bene. MCP (**Model Context Protocol**) è il momento in cui smetti di fare quel copy-paste, perché Claude parla direttamente al gestionale, a Outlook, al Drive. È un protocollo standard che permette a Claude di connettersi a software esterni.
+
+È uno step più avanzato delle precedenti superfici. Richiede un setup iniziale (mezza giornata di lavoro con un consulente, o un'ora se sei tecnicamente confidente). Ma quando funziona, è il tipo di cosa che ti fa risparmiare ore al mese.
+
+## Cosa è realmente
+
+Pensa a MCP come a un **adattatore universale**. Da un lato si attacca a Claude (Chat, Code, qualsiasi superficie). Dall'altro si attacca a un software esterno: Outlook, Google Drive, Cliens, Cicero, un database, un CRM.
+
+Una volta che la connessione è stabilita, Claude può:
+
+- Leggere dati dal software esterno
+- A volte (con permessi appropriati) scrivere dati nel software esterno
+- Combinare dati di più tool in una sola risposta
+
+## Esempio: MCP per Outlook
+
+Setup una volta, connetti Claude al tuo account Outlook tramite un MCP server Outlook (esistono già scritti, gratuiti).
+
+Da quel momento puoi chiedere:
+
+> "Trova tutte le email del cliente Bianchi della settimana scorsa, sintetizzami i punti chiave, e dimmi quali richiedono una risposta entro venerdì."
+
+Claude:
+1. Si collega a Outlook via MCP
+2. Cerca email da/a indirizzi Bianchi degli ultimi 7 giorni
+3. Le legge
+4. Genera la sintesi richiesta
+
+Senza MCP, dovresti esportare manualmente le email, incollarle in Chat, e fare la stessa domanda. Con MCP: una riga, fatto.
+
+<Esempio>
+Lo Studio Romano-Ferri di Roma, sei avvocati e due praticanti, ha un cliente fisso, una catena di franchising, che manda mediamente 70-90 email a settimana fra ordini, contestazioni, sinistri. Il senior partner perdeva il venerdì pomeriggio a triagiare cosa era urgente e cosa no, in media tre ore. Hanno installato un MCP server per Outlook (gratuito, comunità) e ora il prompt è uno solo: "guarda le email del cliente Franchising X di questa settimana, dimmi le 5 urgenti, le 10 normali, e quelle che si possono delegare al praticante con due righe di istruzione". Tre ore diventano 20 minuti, e il partner sostiene che Claude azzecca la classificazione di urgenza meglio di lui quando è stanco di venerdì sera.
+</Esempio>
+
+## Esempio: MCP per il gestionale
+
+Cliens, Cicero, Lawnext, i gestionali italiani per studi legali stanno iniziando a esporre interfacce compatibili MCP. Quando lo fanno (o quando un consulente costruisce un adattatore custom), puoi chiedere:
+
+> "Elenca tutte le scadenze processuali della settimana prossima per i miei clienti, ordinate per urgenza, con stato attuale di ognuna."
+
+Claude legge il calendario e gli stati delle pratiche dal gestionale, risponde.
+
+> "Per ogni causa attiva, dimmi se ci sono attività non fatturate degli ultimi 90 giorni."
+
+Stesso meccanismo. Dati dal gestionale, ragionamento di Claude.
+
+## Esempio: MCP per Drive
+
+Connetti Claude al tuo Google Drive (o OneDrive). Da quel momento può leggere file dalla tua cartella `clienti/`:
+
+> "Apri la cartella 'cliente Bianchi/2026', leggi le ultime 3 lettere di corrispondenza, e dimmi se c'è qualcosa che dovrebbe finire in un sollecito."
+
+## MCP per banche dati legali
+
+Questo è il caso più potente, e quello che ancora è in fase iniziale di sviluppo nel mondo italiano. Quando DeJure, Pluris, o un'altra banca dati esporrà MCP (o un consulente costruirà un adattatore), potrai chiedere:
+
+> "Cerca giurisprudenza di Cassazione degli ultimi 24 mesi sull'art. 1341 c.c. in materia di clausole vessatorie nei contratti tra imprese. Per ognuna, riassumi in 3 righe la ratio decidendi."
+
+Claude:
+1. Interroga la banca dati via MCP
+2. Riceve i risultati grezzi
+3. Li sintetizza secondo la tua richiesta
+
+Oggi questo workflow richiede 30-40 minuti tra ricerca manuale, lettura, sintesi. Con MCP: 3-5 minuti.
+
+## Come si installa un MCP server
+
+Tre approcci, dal più semplice al più complesso:
+
+### 1. MCP server preesistente (community)
+
+Per i tool più popolari (Outlook, Drive, Slack, GitHub, ecc.) esistono già MCP server scritti da terzi, gratuiti, installabili in 5 minuti. Si trovano su `github.com/modelcontextprotocol`.
+
+### 2. MCP server commerciale
+
+Alcune aziende (incluso il futuro Cliens/Lawnext) stanno costruendo MCP server ufficiali. Setup: clicchi un bottone, autorizzi, fatto.
+
+### 3. MCP server custom
+
+Se il software del tuo studio non ha un MCP, un consulente può scriverne uno in qualche giorno. Costo orientativo: €1.500-5.000 a seconda della complessità del software da integrare.
+
+## Quanto è importante per uno studio singolo
+
+Honest answer: dipende dalla maturità tecnologica del tuo studio.
+
+- Se usi già attivamente Outlook + Drive + un gestionale → MCP cambia molto da subito
+- Se la tua tecnologia è "tutto su file locali e niente integrazioni" → MCP è meno urgente, parti da Projects + Skills
+
+Per la maggior parte degli avvocati italiani oggi (2026), il consiglio è: padroneggia prima Chat → Projects → Skills, le procedure riutilizzabili che insegni a Claude una volta sola e poi richiami con una frase (Modulo 5), poi quando senti il bisogno di tagliare il copy-paste con Outlook o il gestionale, valuta un consulente MCP.
+
+<Nota tipo="attenzione">
+Quando un MCP server accede a dati dei tuoi clienti, sei tu il **titolare del trattamento** ai sensi del GDPR. Devi verificare con il fornitore del servizio MCP dove vengono processati i dati, se vengono memorizzati, e includere il fornitore nei tuoi registri dei trattamenti. Il Modulo 6 entra nel dettaglio.
+</Nota>
+
+## Cosa fai questa settimana
+
+Probabilmente niente. MCP non è il primo step da fare. Ma una cosa puoi fare oggi:
+
+- Identifica i **tre tool** dove fai più spesso copy-paste con Claude (probabilmente: email, gestionale, e una banca dati).
+- Quando li identifichi, sai dove inizia il tuo ROI futuro di MCP.
+
+Quando il tempo perso in copy-paste diventa una giornata al mese (segnalo!), è il momento di chiamare un consulente per la prima integrazione.
+
+<Risorse items={[
+ { titolo: "Introduction to Model Context Protocol", url: "https://anthropic.skilljar.com", fonte: "Anthropic Academy", durata: "1 hr · 16 lezioni · 1 quiz" },
+ { titolo: "MCP Advanced Topics", url: "https://anthropic.skilljar.com", fonte: "Anthropic Academy", durata: "1.1 hr · 15 lezioni · 2 quiz" },
+ { titolo: "MCP specification + reference servers", url: "https://github.com/modelcontextprotocol", fonte: "GitHub, community" },
+]} />
+
+<RiferimentoCorso lezione="06-api" />
+
+Nella prossima e ultima lezione del modulo: l'API, l'ingrediente tecnico per chi vuole costruire integrazioni su misura.

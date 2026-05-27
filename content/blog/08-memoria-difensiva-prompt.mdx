@@ -1,0 +1,110 @@
+---
+titolo: "Come scrivere prompt per una memoria difensiva (senza compromettere la qualità)"
+sottotitolo: "Tre strategie testate per usare Claude come collega-junior, non come ghostwriter"
+data: "2026-04-29"
+autore: "Alessio Massaro"
+tempo: 10
+tag: ["Drafting", "Atti"]
+coverColor: "sage"
+coverIcon: "quill"
+estratto: "La memoria difensiva è un atto delicato: ogni paragrafo conta. Eppure Claude può accelerare 40-60% del lavoro, se sai come distribuirlo. Tre strategie concrete."
+---
+
+Una memoria difensiva non è una messa in mora. La posta è alta, ogni argomento può essere usato (o ribaltato) da controparte, e il tuo nome è alla firma. Per molti avvocati questo è il momento in cui smettono di usare Claude, *"per la memoria faccio da solo, è troppo importante"*.
+
+Capisco. Ma anche scartare lo strumento per intero è uno spreco. Esistono tre strategie per usare Claude su una memoria difensiva **senza** compromettere la qualità del prodotto finale. Le abbiamo testate per due anni. Funzionano.
+
+## Strategia 1, Claude struttura, tu scrivi
+
+L'errore: chiedere a Claude di scrivere la memoria.
+
+La strategia: chiedere a Claude di **strutturare** la memoria. Tu poi scrivi.
+
+Prompt-tipo:
+
+> Sei l'assistente di un avvocato civilista. Caso: [DESCRIVI CASO IN 200 PAROLE]. La controparte ha sollevato 4 eccezioni principali: (1)..., (2)..., (3)..., (4)... Devo redigere una memoria di risposta da 8-10 pagine.
+>
+> Output: solo la **struttura argomentativa** della memoria, in forma di indice annotato. Per ogni sezione: titolo, ordine di esposizione, argomento principale (1 frase), eventuali sub-argomenti, fonti di prova/giurisprudenza da menzionare (in generico, verifico io). NON scrivere il testo della memoria.
+
+Risultato: in 2 minuti hai uno scheletro argomentativo che, a mano, ti avrebbe richiesto 45 minuti di pensiero. Tu lo modifichi (probabilmente molto: l'output di Claude è il 70% di quello che ti serve, non il 100%), e poi scrivi i paragrafi tu.
+
+**Vantaggio chiave:** la voce è la tua, lo stile è il tuo, il rischio "suona artefatto" è zero. Hai accelerato la parte più meccanica (organizzare 4 controargomenti) e tenuto la parte di valore (la scrittura).
+
+## Strategia 2, Tu scrivi, Claude rivede
+
+L'altro estremo. Tu scrivi la memoria, poi la dai a Claude come reviewer.
+
+Prompt:
+
+> Sei un avvocato senior che fa la review di una memoria scritta da un collega. Leggi il testo sotto e dimmi:
+> 1. Tre punti che si possono **rafforzare** (argomenti deboli o poco supportati)
+> 2. Due o tre **passaggi poco chiari** o sintatticamente faticosi
+> 3. Eventuali **contraddizioni interne** o ripetizioni
+> 4. Tre potenziali **controargomenti** che la controparte potrebbe sollevare
+>
+> NON riscrivere il testo. Solo feedback puntuale, citando i passaggi specifici.
+>
+> [INCOLLA MEMORIA]
+
+Risultato: in 90 secondi hai un audit della memoria da una "seconda voce" che non conosce il caso emotivamente come te. Spesso emergono 2-3 punti che tu, troppo dentro al caso, non avresti visto.
+
+**Vantaggio chiave:** Claude come reviewer è particolarmente bravo a beccare:
+- Ripetizioni
+- Subordinate troppo lunghe
+- Passaggi logici implicite ("perché segue X da Y?")
+- Argomenti che assumono cose non dette
+
+## Strategia 3, Claude prima bozza dei paragrafi non-strategici
+
+Una memoria ha sempre:
+- **Parti strategiche:** ragionamento giuridico, scelte argomentative chiave, conclusioni
+- **Parti standard:** riepilogo dei fatti, narrazione cronologica, formule iniziali e finali
+
+Le parti strategiche le scrivi tu, sempre. Le parti standard puoi delegarle a Claude.
+
+Prompt-tipo per il riepilogo dei fatti:
+
+> Sei l'assistente di un avvocato civilista. Riassumi i seguenti documenti in una narrazione cronologica di 400 parole massimo. Tono: neutrale-fattuale (non difensivo, non accusatorio). Include solo fatti documentati. Se ci sono fatti contestati, segnalali esplicitamente come tali.
+>
+> [INCOLLA DOCUMENTI / CRONOLOGIA]
+
+Risultato: una narrazione decente che ti serve come **base**. La sistemi (forse riscrivi il 30%), e l'hai già allineata col resto della memoria.
+
+**Vantaggio chiave:** scrivere la narrazione dei fatti è lavoro mentalmente noioso ma che richiede ore. Claude la abbozza in 30 secondi. Tu sistemi.
+
+## Cosa non delegare mai
+
+- **Le conclusioni** (sono la tua firma argomentativa)
+- **Le citazioni di giurisprudenza** (allucinazioni)
+- **La valutazione di un argomento controintuitivo** (Claude tende al consenso)
+- **La scelta di cosa NON includere** (l'omissione strategica è giudizio puro)
+
+## Il workflow ottimale
+
+Mettendo tutto insieme, la memoria-tipo da 10 pagine la scriviamo così:
+
+1. **Strategia 1**, Claude struttura l'indice argomentativo (15 min: 5 prompt + 10 di revisione)
+2. **Strategia 3**, Claude bozza il riepilogo dei fatti (10 min: prompt + sistemazione)
+3. **Io scrivo** le sezioni strategiche, una per una (3-4 ore: il grosso del lavoro)
+4. **Strategia 2**, Claude reviewer sull'intera memoria (15 min: prompt + integrazione feedback)
+5. **Io rileggo** una volta finale, lentamente, ad alta voce (45 min)
+
+**Totale: 5 ore, 20 minuti.**
+
+Senza Claude, la stessa memoria mi prendeva 8-9 ore. Risparmio: 35-40%.
+
+E, punto cruciale, **la qualità è uguale o superiore**, perché Claude come reviewer ha sistematicamente migliorato la mia memoria su 2-3 punti che a mano avrei tralasciato.
+
+## La regola dell'occhio finale
+
+Non firmo mai una memoria toccata da Claude senza averla riletta intera ad alta voce. Letteralmente: ad alta voce, da seduto, una pagina alla volta. È la cosa che ti accorge di passaggi che, scritti, sembrano fluire ma parlati suonano artefatti.
+
+Su una memoria di 10 pagine, sono 45 minuti. Non sono negoziabili.
+
+## Il giudice non legge il prompt
+
+Il giudice legge **l'atto**. Non gli interessa se è uscito da Claude, da te, o da un mix. Gli interessa se è chiaro, ben argomentato, supportato.
+
+Il tuo lavoro non è "scriverlo a mano per orgoglio". Il tuo lavoro è **consegnare un atto eccellente al cliente**. Tutto quello che ti aiuta a farlo meglio, più rapido, con meno errori, fa parte del mestiere.
+
+Claude usato bene è un collega junior molto bravo. Usato male è un ghostwriter rischioso. La differenza è nei tre prompt sopra.

@@ -1,0 +1,119 @@
+---
+titolo: "Ricerca giurisprudenziale"
+sottotitolo: "Claude accelera la ricerca. Non la sostituisce."
+durata: 8
+ordine: 4
+aggiornato: "2026-05-23"
+quiz: false
+---
+
+Hai aperto DeJure, hai battuto la query, ti restituisce 60 risultati. Sai che 50 sono polvere e 10 vanno guardati, ma per capire quali servono ci passi due ore di pomeriggio. Qui Claude diventa molto utile, però con un'avvertenza non aggirabile: **non sostituisce la banca dati**. Claude non legge in tempo reale la Cassazione, non ha accesso a DeJure o Pluris, e può inventare riferimenti se non gli dici esplicitamente di non farlo.
+
+Detto questo, Claude è un ottimo **acceleratore** della ricerca giurisprudenziale, in tre modi precisi.
+
+## Modo 1: Sintetizzare sentenze trovate
+
+Hai cercato su DeJure "responsabilità professionale notaio 1218" e hai 47 risultati. Devi capire al volo quali sono rilevanti. Ne scarichi 10 in PDF.
+
+<Prompt>
+Ho allegato 10 sentenze sulla responsabilità professionale del notaio (art. 1218 c.c.).
+
+Per ognuna, dammi:
+- Organo, numero, data
+- Parti (in forma anonima)
+- Fattispecie in 2 righe (cos'è successo)
+- Decisione (accolta/rigettata)
+- Massima/ratio decidendi in 3 righe
+- **Rilevanza per un caso in cui il nostro cliente è notaio, contestato per omessa verifica di trascrizione precedente** (1-2 righe, stretta/media/scarsa)
+
+Output: tabella + classifica delle 10 dalla più rilevante alla meno rilevante per il nostro caso.
+</Prompt>
+
+Tempo: 5 minuti. Senza Claude: 1-2 ore di lettura attiva.
+
+<Esempio>
+L'Avv. Giulia Pellegrini, civilista a Torino, ha 6 cause attive di responsabilità medica ex art. 1218 c.c. Ogni cliente le porta cartelle cliniche di 80-200 pagine, più la sentenza di primo grado se ce n'è una, più le perizie. Prima leggeva tutto a mano in 4-5 ore per caso, evidenziatore in mano, post-it ovunque. Ora carica il PDF anonimizzato in un Project (uno spazio dentro Claude dove carichi documenti e istruzioni che restano disponibili in tutte le conversazioni), chiede a Claude di estrarre la timeline (date, atti chirurgici, terapie, annotazioni del personale) e di segnalare le incongruenze nelle annotazioni infermieristiche, e Claude le restituisce un documento di 6 pagine in 8 minuti. Lei lo verifica contro le cartelle in 30 minuti, contro le 4 ore di prima. Le 20 ore al mese liberate le passa a ragionare sulla strategia processuale, non sull'OCR mentale.
+</Esempio>
+
+## Modo 2: Identificare il filone giurisprudenziale
+
+Hai un quesito ma non sai bene da dove partire la ricerca.
+
+<Prompt>
+Quesito: in caso di compravendita immobiliare con vizio occulto rivelato dopo 6 mesi dalla consegna, quali sono i precedenti più importanti della Cassazione sull'individuazione del termine di prescrizione (1 anno ex art. 1495 vs prescrizione ordinaria decennale)?
+
+NON inventare sentenze specifiche. Invece:
+- Dimmi i **filoni interpretativi** principali (es. "filone A: applicazione strict del termine annuale", "filone B: distinzione tra vizio noto/occulto", etc.)
+- Per ognuno, indica gli articoli normativi su cui si fonda
+- Indica gli anni in cui ci sono stati arresti notevoli (es. "primi anni 2000", "post-2018")
+- Suggerisci **query di ricerca** specifiche da fare sulla banca dati per trovare le sentenze chiave
+
+Output: mappa del filone giurisprudenziale + 5-10 query DeJure/Pluris pronte da usare.
+</Prompt>
+
+Risultato: orientamento in 10 minuti, poi vai sulla banca dati con query mirate.
+
+## Modo 3: Verificare un'ipotesi
+
+Hai un'idea: "forse possiamo argomentare che la prescrizione è interrotta da X". Vuoi capire se la giurisprudenza la sostiene prima di costruirci sopra l'atto.
+
+<Prompt>
+Ipotesi argomentativa che voglio testare: in tema di prescrizione del diritto al risarcimento ex art. 2043, possiamo sostenere che la PEC contenente una semplice richiesta di informazioni (senza diffida formale ex 2943) interrompe la prescrizione?
+
+Dimmi:
+- **A favore di questa tesi:** quali articoli/orientamenti la supportano (in linea generale, NON citare sentenze specifiche)
+- **Contro:** quali orientamenti la contrastano
+- **Verdict pratico:** è una tesi sostenibile / tesi minoritaria ma argomentabile / tesi non sostenibile, e perché
+- **Cosa cercare in banca dati** per verificare (query specifiche)
+
+NON inventare riferimenti. Se non sei sicuro di un articolo, scrivi "verificare".
+</Prompt>
+
+Output: una valutazione orientativa che ti dice se la tesi merita ricerca approfondita o se è una strada chiusa. Risparmio: 1-2 ore di ricerca su una tesi che si rivelerebbe insostenibile.
+
+## Il workflow completo
+
+```
+[Banca dati]       [Claude]       [Banca dati]
+ricerca query   →  sintesi rilevanza  →  download
+ampia         triage 10→3        3 sentenze
+                         rilevanti
+```
+
+1. Banca dati: cerca con query ampia, scarica 10-15 sentenze in PDF
+2. Claude: triage, identifica le 3-5 più rilevanti
+3. Banca dati: torna alle sentenze chiave, leggi in dettaglio, eventualmente espandi la ricerca su sentenze citate
+
+Risultato: ricerca giurisprudenziale di qualità in 1 ora invece di 3-4.
+
+## I tre divieti assoluti
+
+### 1. Mai chiedere a Claude di "trovare" sentenze
+
+NO: "Trovami 5 sentenze recenti sull'art. 1341 c.c."
+Output: 5 sentenze inventate (numero, data, organo plausibili, ma false).
+
+SI: "Aiutami a costruire la query giusta su DeJure per cercare sentenze su art. 1341 c.c. in materia di vessatorietà clausole tra imprese."
+Output: query utile, che poi tu lanci sulla banca dati reale.
+
+### 2. Mai citare in atto una sentenza che non hai verificato direttamente
+
+Anche se nelle Custom Instructions (istruzioni che Claude legge automaticamente a ogni nuova conversazione) hai "non inventare", il rischio zero non esiste. Ogni sentenza citata in un atto va verificata sulla banca dati. Sempre.
+
+### 3. Mai usare Claude per "controllare se una sentenza esiste"
+
+Claude non sa se esiste. Sa solo costruire risposte plausibili. Per verificare l'esistenza di una sentenza, usa la banca dati.
+
+<Nota tipo="attenzione">
+La giurisprudenza è la cosa su cui Claude **allucina** più spesso. Trattalo come un assistente che ha letto molti libri di diritto ma non ha accesso a internet, può ragionare sui principi, non darti riferimenti precisi.
+</Nota>
+
+## Il futuro: MCP per banche dati
+
+Quando DeJure / Pluris esporranno interfacce MCP (il protocollo che permette a Claude di parlare con i tuoi software, gestionale, drive, calendar, vedi Modulo 2 lezione 5), questo limite sparirà. Claude potrà interrogare la banca dati direttamente. Già adesso esistono prototipi. Aspettativa: 12-24 mesi.
+
+Per ora, banca dati + Claude in due strumenti separati. Combo eccellente.
+
+<RiferimentoCorso lezione="05-email-cliente-difficile" />
+
+Nella prossima lezione: gestione della comunicazione difficile col cliente (contestazione parcelle, brutte notizie, gestione conflittuale).

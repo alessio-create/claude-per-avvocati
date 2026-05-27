@@ -1,0 +1,89 @@
+---
+titolo: "Output Styles, controllare il formato delle risposte"
+sottotitolo: "Quando vuoi sempre tabelle, sempre elenchi, sempre paragrafi corti"
+durata: 5
+ordine: 3
+aggiornato: "2026-05-23"
+quiz: false
+---
+
+Se le Custom Instructions hanno deciso CHI è Claude per te, manca il pezzo successivo: COME deve scriverti. È lì che entrano gli Output Styles. Sono complementari, entrambi si fanno una volta sola e ti seguono per sempre.
+
+Un **Output Style** è una preset che fissa il modo in cui Claude scrive (formale, telegrafico, schematico): in pratica, un nome alternativo per uno stile-template.
+
+## Cosa sono gli Output Styles
+
+Sono modalità di risposta predefinite che cambiano il **tono** e il **formato**. Anthropic ne offre alcune built-in, e in alcune interfacce (Claude Code, Projects) puoi crearne di personalizzate.
+
+Gli Output Styles built-in includono:
+
+- **Default**, risposte equilibrate, in italiano standard
+- **Concise**, risposte brevi, dirette
+- **Explanatory**, risposte didascaliche, con esempi
+- **Friendly**, tono più informale
+
+Per un avvocato l'ideale è quasi sempre **Concise** o un Output Style **custom** che codifica esattamente come vuoi le risposte.
+
+## Esempio: il tuo Output Style "avvocato pratico"
+
+Se hai accesso (Pro/Max/Team), crea un Output Style custom con istruzioni tipo:
+
+<Prompt>
+Risposte sempre nel formato:
+
+1. **Risposta diretta** (1-2 frasi)
+2. **Ragionamento** (3-5 punti)
+3. **Azione consigliata** (1-2 frasi)
+
+Niente preamboli. Niente "ottima domanda". Niente "spero di esserti utile".
+
+Se la mia domanda è ambigua, NON rispondere subito, chiedi chiarimento.
+
+Se devi citare normativa o giurisprudenza, fallo in nota a fine risposta. Mai inventare riferimenti.
+</Prompt>
+
+Da quando attivi questo Output Style, ogni risposta segue questa struttura, anche se nel singolo **prompt** (l'istruzione che dai a Claude, dal singolo messaggio al template strutturato) non lo specifichi.
+
+<Esempio>
+Lo Studio Marini di Verona aveva un problema piccolo ma fastidioso: tre associati, tre modi diversi di farsi rispondere da Claude su un parere veloce. Uno voleva il "TLDR" all'inizio, un altro la struttura classica, il terzo le citazioni in nota. Marini ha creato un unico Output Style "Parere flash dello studio" con risposta diretta in due righe, ragionamento in tre punti, normativa in fondo. Lo hanno impostato come default per tutti. Da quel mese i pareri brevi escono nella stessa forma a prescindere da chi prepara la bozza, e quando li rivede il partner risparmia circa 5 minuti a parere, senza più riscrivere l'incipit.
+</Esempio>
+
+## Output Styles vs Custom Instructions
+
+| | Custom Instructions | Output Styles |
+|---|---|---|
+| Cosa controlli | Chi è Claude | Come risponde |
+| Scope | Account globale | Per conversazione (scegli quale usare) |
+| Cambio | Vai in Settings | Scegli dal menu Output Style |
+| Use case | "Sono Avv. Rossi, scrivo così" | "Risposte sempre brevi e strutturate" |
+
+Le due si combinano: Custom Instructions dicono "chi", Output Styles dicono "come".
+
+## Limiti e bug comuni
+
+### 1. Cambiare Output Style mid-chat
+
+Funziona ma a volte Claude "ricorda" il vecchio stile. Per cambio netto, apri una nuova Chat.
+
+### 2. Output Styles ignorati per richieste molto specifiche
+
+Se chiedi "spiegami con un esempio dettagliato di 1000 parole", Claude segue la richiesta anche se l'Output Style dice "concise". È corretto, il prompt vince sull'Output Style.
+
+### 3. Solo su Pro+
+
+Su Free non puoi creare Output Styles custom. Su Pro hai accesso ai built-in + custom. Su Team puoi condividere Output Styles tra utenti.
+
+## Cosa fai oggi
+
+Se sei su Pro+:
+
+1. Apri Settings → Output Styles
+2. Crea uno custom "Pratica legale" col template sopra
+3. Imposta come default
+4. Apri una nuova Chat, prova un task, noti la differenza
+
+Se sei su Free, sali a Pro prima.
+
+<RiferimentoCorso lezione="04-configurazione-studio" />
+
+Nella prossima lezione: come configurare gli account per uno studio (multi-utente, sharing, deontologia).

@@ -1,0 +1,131 @@
+---
+titolo: "Trattare Claude come un collega, non un motore di ricerca"
+sottotitolo: "Il singolo cambio di mentalità che cambia tutto"
+durata: 7
+ordine: 2
+aggiornato: "2026-05-23"
+quiz: true
+---
+
+Se chiedi a Google "lettera di sollecito pagamento", ti aspetti una pagina di risultati. Se chiedi a Claude la stessa cosa, ricevi una lettera generica che non userai mai. Stessa frase, due strumenti diversi, due risultati diversi: il problema è che li tratti entrambi come motori di ricerca.
+
+Claude è invece un **collega**. Un giovane praticante molto preparato, con memoria zero, che ha bisogno di tre cose per essere utile: ruolo, contesto, vincoli.
+
+## La formula in tre righe
+
+Una nota sui termini: per **prompt** intendiamo l'istruzione che dai a Claude, dal singolo messaggio fino al template strutturato. Quando dico "prompt" in questo corso, immagina tutto quello che scrivi nella casella di testo prima di premere invio.
+
+Ogni prompt utile a uno studio legale risponde a tre domande:
+
+1. **Chi sei tu** (per Claude), "Sei un assistente di un avvocato civilista di Milano"
+2. **Cosa devi fare** (specifico), "Redigi una lettera di messa in mora per..."
+3. **Quali vincoli rispetti**, tono, lunghezza, firma, riservatezza
+
+## Esempio: scrivere una lettera di messa in mora
+
+<Confronto
+ senza={<>
+  <p><strong>Prompt:</strong></p>
+  <p>"Scrivimi una lettera di sollecito pagamento."</p>
+  <p><strong>Output:</strong></p>
+  <p>Una lettera generica con campi tipo [Nome cliente], [Importo], [Data], che potresti già scaricare da Altalex in 30 secondi.</p>
+ </>}
+ con={<>
+  <p><strong>Prompt:</strong></p>
+  <p>"Sei l'assistente dell'Avv. Mario Rossi, civilista di Milano. Redigi una lettera di messa in mora ex art. 1219 c.c. per il cliente Studio Bianchi srl, debitore di €14.500 da 6 mesi (fattura n. 234 del 15/11/2025, prestazione di consulenza societaria). Tono fermo, professionale, non aggressivo. Cita il termine di 15 giorni dalla ricezione per il pagamento, dopo il quale si procederà per le vie legali. Lunghezza: 250 parole max. Chiudi con 'Cordiali saluti, Avv. Mario Rossi'."</p>
+  <p><strong>Output:</strong></p>
+  <p>Una lettera già firmata, già datata, già strutturata, da rileggere e mandare in 5 minuti.</p>
+ </>}
+/>
+
+La differenza non è il modello di Claude. È quanto contesto ha ricevuto.
+
+<Esempio>
+L'Avv. Giulia Ferraro, civilista a Padova, riceve ogni mese 30-40 solleciti di pagamento dello stesso tenore. Prima li dettava alla segreteria, 90 minuti a settimana solo per dare la traccia. Ora ha un prompt-template salvato come scorciatoia nel suo blocco appunti (l'istruzione strutturata che dà a Claude, sempre la stessa): incolla i dati del debitore, importo, fattura, e in 8 secondi ha la bozza. Lei rilegge, firma, manda. 90 minuti a settimana diventano 15. La segretaria ha smesso di battere lettere identiche e si occupa di rispondere ai clienti che chiamano.
+</Esempio>
+
+## Il prompt-template che funziona sempre
+
+<Prompt>
+Sei [RUOLO: assistente di un avvocato civilista/penalista/lavorista a Milano/Roma/...].
+
+Il cliente è [DESCRIZIONE BREVE: persona fisica/srl/...].
+
+Il task è [VERBO PRECISO: redigere/rivedere/sintetizzare/riformulare] [OGGETTO] per [SCOPO].
+
+Vincoli:
+- Tono: [formale/colloquiale/fermo/empatico]
+- Lunghezza: [N parole / pagine]
+- Stile: [diretto / argomentativo / didascalico]
+- Firma: [come firmare]
+- Cose da NON fare: [es. niente formule arcaiche, niente "spettabile", niente "in indirizzo"]
+
+Contesto necessario: [INCOLLA i fatti, le date, gli importi, i nomi pertinenti].
+</Prompt>
+
+Salva questo template. Lo userai centinaia di volte.
+
+## Cosa fa Claude meglio di un motore di ricerca
+
+| Compito | Motore di ricerca | Claude |
+|---|---|---|
+| Trovare una sentenza specifica | ★★★★★ | ★ |
+| Capire di cosa parla una sentenza | ★ | ★★★★★ |
+| Riformulare un atto in tono diverso | ☆ | ★★★★★ |
+| Confrontare due bozze contrattuali | ☆ | ★★★★★ |
+| Generare 10 domande per un cliente | ☆ | ★★★★★ |
+| Sintetizzare 50 email di un thread | ☆ | ★★★★★ |
+
+Claude è una macchina di **trasformazione del linguaggio**. La banca dati è una macchina di **ricerca**. Non sono in competizione, si completano.
+
+## Il test del "ne sa abbastanza"
+
+C'è un controllo veloce che ti risparmia un sacco di output deludenti. Prima di mandare un prompt, leggilo a voce alta e chiediti: *se passassi questo testo a un praticante al primo giorno di studio, saprebbe cosa fare?*
+
+Se la risposta è no, manca contesto. Aggiungilo prima di mandare.
+
+<Nota tipo="attenzione">
+Mai includere dati riservati di clienti nei prompt finché non hai letto il **Modulo 6, Privacy & deontologia**. Puoi anonimizzare i nomi (sostituisci "Bianchi srl" con "il cliente C", "€14.500" con "€X.XXX") senza perdere utilità del prompt.
+</Nota>
+
+<Quiz
+ modulo="01-fondamenta"
+ lezione="02-collega-non-motore"
+ domande={[
+  {
+   domanda: "I tre elementi che ogni prompt utile dovrebbe contenere sono:",
+   opzioni: [
+    "Saluto, richiesta, ringraziamento",
+    "Ruolo, task specifico, vincoli",
+    "Citazione, articolo, comma",
+    "Cliente, importo, scadenza"
+   ],
+   corretta: 1,
+   spiega: "La formula \"Ruolo + Task + Vincoli\" è il template universale. Più contesto in ognuno = output migliore."
+  },
+  {
+   domanda: "Per quale task Claude batte oggettivamente un motore di ricerca?",
+   opzioni: [
+    "Trovare una sentenza per numero",
+    "Riformulare un atto in tono diverso",
+    "Cercare per parole chiave",
+    "Verificare se una norma è in vigore"
+   ],
+   corretta: 1,
+   spiega: "Claude eccelle nella trasformazione (riformulare, sintetizzare, confrontare). Le banche dati eccellono nella ricerca."
+  },
+  {
+   domanda: "Il \"test del praticante\" prima di mandare un prompt è:",
+   opzioni: [
+    "Verificare che il praticante abbia tempo libero",
+    "Far rileggere il prompt al praticante",
+    "Chiedersi: un praticante al primo giorno saprebbe cosa fare leggendo questo prompt?",
+    "Chiedere al praticante di scrivere il prompt al posto tuo"
+   ],
+   corretta: 2,
+   spiega: "Se la risposta è no, manca contesto. Vale per Claude come per ogni junior."
+  }
+ ]}
+/>
+
+Nella prossima lezione facciamo un giro veloce dell'intero ecosistema Claude: Chat, Projects, Code, Skills, MCP, API, cinque minuti per orientarti su cos'è ognuno.

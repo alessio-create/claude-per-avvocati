@@ -1,0 +1,70 @@
+---
+titolo: "Esame del Modulo 8"
+sottotitolo: "Verifica Claude Code prima di passare al Modulo 9"
+durata: 5
+ordine: 99
+aggiornato: "2026-05-26"
+quiz: true
+tipo: "esame"
+---
+
+<div className="border border-terracotta/30 bg-terracotta/5 rounded-md p-5 mb-8">
+ <div className="text-[11px] uppercase tracking-widest text-terracotta font-bold mb-1">Esame del modulo</div>
+ <div className="text-sm text-body leading-snug">
+  Rispondi alle 4 domande qui sotto per consolidare cosa è Claude Code, perché ti serve e come si installa. Devi rispondere correttamente ad almeno il 75% per proseguire con il <strong>Modulo 9, App e Schedule</strong> e guadagnare <strong>+3 ✦</strong>.
+ </div>
+</div>
+
+<Quiz
+ modulo="08-code-per-avvocati"
+ lezione="99-esame-modulo"
+ etichetta="Esame"
+ titolo="4 domande per chiudere il modulo."
+ passaCon={3}
+ domande={[
+  {
+   domanda: "In una frase, cosa distingue Claude Code dalla Chat che usi sul browser?",
+   opzioni: [
+    "Code può leggere, modificare e creare file direttamente sul tuo computer, con il tuo permesso",
+    "Code risponde in italiano, la Chat solo in inglese",
+    "Code è gratuito, la Chat è a pagamento",
+    "Code funziona solo su Mac, la Chat anche su Windows"
+   ],
+   corretta: 0,
+   spiega: "La differenza chiave è l'accesso ai tuoi file: Code lavora sull'archivio reale del tuo computer, la Chat no."
+  },
+  {
+   domanda: "Per quale di questi compiti uno studio legale ottiene il salto di produttività più grande con Code rispetto alla Chat?",
+   opzioni: [
+    "Spiegare al cliente cos'è una clausola compromissoria",
+    "Fare brainstorming sul nome di un nuovo studio",
+    "Rinominare 280 PDF di una causa secondo uno schema preciso",
+    "Scrivere una mail di cortesia a un collega"
+   ],
+   corretta: 2,
+   spiega: "Code vince per ordini di grandezza quando il task è ripetitivo, sequenziale e tocca molti file. Per task conversazionali la Chat resta più rapida."
+  },
+  {
+   domanda: "Prima di installare Claude Code, cosa devi installare sul tuo computer?",
+   opzioni: [
+    "Microsoft Office",
+    "Python",
+    "Docker",
+    "Node.js, versione LTS, scaricata da nodejs.org"
+   ],
+   corretta: 3,
+   spiega: "Code si installa come pacchetto npm, e npm arriva con Node.js. La versione LTS è quella stabile e supportata a lungo."
+  },
+  {
+   domanda: "Quale modalità di permesso è consigliata nei primi giorni di utilizzo di Code?",
+   opzioni: [
+    "Accetta sempre tutto, per non perdere tempo",
+    "Chiedi sempre, così vedi e approvi ogni operazione una per volta",
+    "Disattiva del tutto i permessi",
+    "Plan mode permanente, senza mai eseguire nulla"
+   ],
+   corretta: 1,
+   spiega: "Vedere ogni modifica prima che venga eseguita è il modo per costruire fiducia, imparare cosa Code fa davvero e lavorare in sicurezza sui file dello studio."
+  }
+ ]}
+/>

@@ -1,0 +1,70 @@
+---
+titolo: "Esame del Modulo 7"
+sottotitolo: "Verifica Cowork prima di passare al Modulo 8"
+durata: 5
+ordine: 99
+aggiornato: "2026-05-26"
+quiz: true
+tipo: "esame"
+---
+
+<div className="border border-terracotta/30 bg-terracotta/5 rounded-md p-5 mb-8">
+ <div className="text-[11px] uppercase tracking-widest text-terracotta font-bold mb-1">Esame del modulo</div>
+ <div className="text-sm text-body leading-snug">
+  Rispondi alle 4 domande qui sotto per consolidare Cowork (workspace condiviso, setup, workflow, governance). Devi rispondere correttamente ad almeno il 75% per proseguire con il <strong>Modulo 8, Claude Code per avvocati</strong> e guadagnare <strong>+3 ✦</strong>.
+ </div>
+</div>
+
+<Quiz
+ modulo="07-cowork"
+ lezione="99-esame-modulo"
+ etichetta="Esame"
+ titolo="4 domande per chiudere il modulo."
+ passaCon={3}
+ domande={[
+  {
+   domanda: "Qual è la differenza sostanziale tra usare Claude Pro individuale e Claude Cowork in uno studio?",
+   opzioni: [
+    "Cowork è semplicemente più economico per persona",
+    "Cowork trasforma Claude da assistente personale a collaboratore visibile all'intero studio, con Project, Skills e storia conversazioni condivisi",
+    "Cowork ha modelli più potenti rispetto a Pro",
+    "Cowork funziona solo da desktop, Pro anche da mobile"
+   ],
+   corretta: 1,
+   spiega: "Il salto non è tecnico ma organizzativo: da \"il mio strumento\" a \"strumento dello studio\", con workspace condiviso, libreria comune di Skills e audit log integrato."
+  },
+  {
+   domanda: "Qual è l'errore più frequente nel setup iniziale di Cowork?",
+   opzioni: [
+    "Invitare tutti i membri dello studio il giorno 1, senza un rollout graduale né convenzioni di sharing",
+    "Pagare l'abbonamento annuale anziché mensile",
+    "Scegliere come admin un partner senior invece di un associato",
+    "Definire le Workspace Custom Instructions prima di invitare le persone"
+   ],
+   corretta: 0,
+   spiega: "Aprire le porte a tutti contemporaneamente genera Project con nomi a caso, Skills duplicate e zero convenzioni. Il rollout va fatto a ondate: partner + un pilota, poi associati, poi praticanti."
+  },
+  {
+   domanda: "Nello scenario \"causa complessa\" con partner, associato e praticante che lavorano sullo stesso Project condiviso, qual è il vantaggio operativo principale di Cowork?",
+   opzioni: [
+    "Claude risponde più velocemente quando ci sono più utenti collegati",
+    "Il costo si abbatte perché viene diviso tra i tre profili",
+    "Le tariffe orarie al cliente si possono alzare grazie al bollino AI",
+    "Il lavoro diventa parallelo invece che sequenziale: ognuno apre lo stesso Project, vede storico e note degli altri e contribuisce senza ping-pong via email"
+   ],
+   corretta: 3,
+   spiega: "Una memoria che con account separati richiede 5-7 giorni di scambi via email esce in 2-3 giorni perché tutti vedono la stessa stanza e Claude mantiene il contesto comune."
+  },
+  {
+   domanda: "Dal punto di vista GDPR, cosa cambia quando uno studio passa da Pro individuali a Cowork?",
+   opzioni: [
+    "Lo studio (P.IVA) diventa titolare del trattamento per i dati che entrano nel workspace, con DPA firmato a livello workspace e responsabilità collettiva tracciabile via audit log",
+    "Non cambia nulla, ogni associato resta titolare del proprio uso come prima",
+    "Anthropic diventa titolare del trattamento al posto dello studio",
+    "Il GDPR smette di applicarsi perché i dati restano in un ambiente aziendale chiuso"
+   ],
+   corretta: 0,
+   spiega: "Con Cowork la responsabilità si sposta dal singolo allo studio: serve DPA a livello workspace, policy interna firmata, audit periodici e un admin che risponde di accessi e revoche."
+  }
+ ]}
+/>

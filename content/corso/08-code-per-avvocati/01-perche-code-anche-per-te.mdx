@@ -1,0 +1,121 @@
+---
+titolo: "Perché Claude Code ti riguarda anche se non programmi"
+sottotitolo: "Code non è (più) solo per sviluppatori"
+durata: 10
+ordine: 1
+aggiornato: "2026-05-24"
+quiz: true
+---
+
+So cosa pensi: "Code" suona da informatico, e tu fai l'avvocato. Resta con me cinque minuti, perché qui c'è un equivoco da sciogliere subito.
+
+**Claude Code** (la versione di Claude che vive sul tuo computer e può leggere, modificare e scrivere file con il tuo permesso, niente browser) **non** è un IDE per programmatori. È un assistente che vive nel Terminale del tuo computer, cioè l'app dove si scrive una riga di testo e si preme Invio (su Mac si chiama Terminale, su Windows è il PowerShell), e può **toccare i tuoi file**.
+
+Per un avvocato significa: rinominare 300 PDF di una causa, riorganizzare cartelle di clienti, generare un riassunto automatico ogni lunedì mattina dei movimenti di una pratica. Tutto in italiano, senza imparare Python.
+
+Questa lezione spiega quando ha senso aprire Code invece della chat normale, e perché il salto di produttività è di un ordine di grandezza.
+
+<Esempio>
+L'Avv. Andrea De Luca, civilista a Bologna, aveva 287 PDF di contratti di locazione del suo cliente immobiliare, tutti da rinominare con il formato `COGNOME-INDIRIZZO-DATA.pdf`. A mano: due giornate intere di copia-incolla dalla prima pagina di ogni contratto. Con Claude Code installato sul suo Mac, ha aperto la cartella e ha scritto: "leggi nome cognome del conduttore e indirizzo dell'immobile da ogni PDF e rinominali in formato COGNOME-INDIRIZZO-DATA.pdf". Claude ha rinominato tutti in 12 minuti, lui ha verificato un campione di 20 file alla cieca. Risultato: 16 ore di lavoro diventate 25 minuti, errori zero.
+</Esempio>
+
+La differenza con la chat che già conosci è proprio questa: Code lavora sui tuoi file reali, non su testo che tu copi e incolli.
+
+## Cosa cambia rispetto alla Chat
+
+<Confronto
+ senza={<>
+  <p><strong>Chat (claude.ai):</strong></p>
+  <ul>
+   <li>Tu copi e incolli testo</li>
+   <li>Tu salvi il risultato a mano</li>
+   <li>Tu rinomini i file a mano</li>
+   <li>Niente memoria del tuo file system (l'archivio di file e cartelle del tuo computer)</li>
+  </ul>
+ </>}
+ con={<>
+  <p><strong>Claude Code:</strong></p>
+  <ul>
+   <li>Legge i tuoi file direttamente</li>
+   <li>Scrive nuovi file dove gli dici</li>
+   <li>Esegue comandi (con il tuo permesso)</li>
+   <li>Ricorda la struttura del tuo lavoro</li>
+  </ul>
+ </>}
+/>
+
+## Tre scenari concreti per uno studio legale
+
+### 1. Riorganizzare un fascicolo
+
+Hai una cartella (in gergo tecnico directory) con 280 documenti di una causa: PDF, email salvate, foto del fascicolo cartaceo. Nomi tipo `IMG_3421.jpg` e `Scansione 12.pdf`. Apri Code in quella cartella e dici:
+
+> "Rinomina ogni file in questa cartella con uno schema `YYYY-MM-DD_tipo_breve-descrizione.estensione`. Per i PDF, aprili e leggi la prima pagina per dedurre data e tipo. Per le immagini, lascia il nome se non riesci a dedurre, ma raggruppale in `/immagini/`."
+
+In 30 minuti hai il fascicolo riordinato. A mano: 3 giorni.
+
+### 2. Estrarre dati da una serie di contratti
+
+Hai 40 contratti firmati nel 2025. Vuoi una tabella con: cliente, oggetto, importo, scadenza, presenza di clausola compromissoria. Code apre ogni file, estrae i campi, ti consegna un `.csv` aperto in Excel.
+
+### 3. Generare un report settimanale automatico
+
+Crei una **Skill** (una procedura riutilizzabile che insegni a Claude una volta sola, vedremo più avanti) che ogni lunedì legge la cartella `/pratiche/in-corso/`, identifica i fascicoli con scadenze nei prossimi 7 giorni, e ti consegna un PDF di riepilogo sul desktop. Niente click manuali.
+
+Tieni a mente l'idea: Code lavora sui file che hai già, dove li hai già messi. Non devi cambiare nulla del tuo modo di archiviare.
+
+## Quando NON usare Code
+
+- Per una singola domanda veloce → Chat è più rapida.
+- Quando il task è puramente conversazionale (brainstorming, scrittura libera) → Projects o Chat.
+- Quando i file contengono dati molto sensibili e non hai ancora configurato i permessi giusti (vedi Modulo 6).
+
+## La curva di apprendimento
+
+Il primo giorno fai fatica: l'interfaccia è un terminale, non c'è un pulsante "indietro". Il quarto giorno ti chiedi come hai fatto a vivere senza. Il decimo giorno hai 3 Skills personali che ti risparmiano 4-5 ore alla settimana.
+
+<Nota tipo="suggerimento">
+Code è incluso nei piani **Pro** e **Max** di Claude (Anthropic, l'azienda che fa Claude, lo include senza costi aggiuntivi). Se sei già abbonato Pro per la Chat, **già hai accesso a Code**, basta installarlo dal Terminale con `npm install -g @anthropic-ai/claude-code`. Il dettaglio dell'installazione lo vediamo nella prossima lezione, qui ti basta sapere che non paghi due volte.
+</Nota>
+
+<Quiz
+ modulo="08-code-per-avvocati"
+ lezione="01-perche-code-anche-per-te"
+ domande={[
+  {
+   domanda: "Cosa fa Claude Code che la Chat non fa?",
+   opzioni: [
+    "Risponde a domande di diritto",
+    "Legge, modifica e scrive direttamente file sul tuo computer",
+    "Si connette a Internet",
+    "Genera immagini"
+   ],
+   corretta: 1,
+   spiega: "La differenza chiave è l'accesso al file system: Code può aprire, rinominare, creare e organizzare file sul tuo computer (con il tuo permesso esplicito)."
+  },
+  {
+   domanda: "Per quale di questi task Code dà il massimo vantaggio rispetto alla Chat?",
+   opzioni: [
+    "Scrivere una singola email",
+    "Riorganizzare 280 documenti di un fascicolo seguendo uno schema",
+    "Brainstorming sul nome dello studio",
+    "Spiegare cos'è il pignoramento al cliente"
+   ],
+   corretta: 1,
+   spiega: "Quando il task è ripetitivo, sequenziale, e implica manipolare molti file, Code vince per ordini di grandezza. Per task one-off conversazionali, la Chat è più rapida."
+  },
+  {
+   domanda: "Claude Code richiede un abbonamento separato dalla Chat?",
+   opzioni: [
+    "Sì, è un prodotto a parte",
+    "No, è incluso nei piani Pro e Max",
+    "Solo per studi sopra i 10 dipendenti",
+    "Solo con contratto annuale"
+   ],
+   corretta: 1,
+   spiega: "Se sei già abbonato Pro, hai già accesso. Si installa con `npm install -g @anthropic-ai/claude-code` (richiede Node.js installato sul computer)."
+  }
+ ]}
+/>
+
+Nelle prossime lezioni: installazione passo-passo, primi tre comandi che cambiano la vita, e creare la tua prima Skill personale per uno workflow ricorrente.

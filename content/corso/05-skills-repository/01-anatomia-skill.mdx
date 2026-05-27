@@ -1,0 +1,216 @@
+---
+titolo: "Anatomia di una Skill"
+sottotitolo: "Cosa c'è davvero dentro una Skill ben scritta"
+durata: 8
+ordine: 1
+aggiornato: "2026-05-23"
+quiz: false
+---
+
+A questo punto del corso hai già visto le Skills nel Modulo 2 e nel Modulo 3, quando hai scritto la tua prima. Adesso apriamo il cofano. Una **Skill** è una procedura riutilizzabile (un file SKILL.md con istruzioni, esempi e magari file di supporto) che insegni a Claude una volta sola, poi la richiami con una frase. In questa lezione vediamo cosa rende una Skill robusta invece che fragile, come strutturarla, e quando conviene spaccarla in pezzi più piccoli.
+
+## La struttura di un file Skill
+
+Il cuore di una Skill è il **SKILL.md**, il file di testo dove descrivi la procedura, in formato Markdown. Sta dentro una cartella dedicata. Esempio:
+
+```
+.claude/skills/redazione-parere/
+├── SKILL.md       ← il file principale (sempre presente)
+└── references/      ← opzionale: file di supporto
+  ├── struttura-tipo.md
+  └── esempi-output.md
+```
+
+Il `SKILL.md` ha due parti:
+
+### Frontmatter (metadati)
+
+```yaml
+---
+name: redazione-parere
+description: Use when the user asks to draft a legal opinion (parere) for an Italian client.
+---
+```
+
+Due campi obbligatori:
+
+- **`name`**: identificatore univoco, kebab-case
+- **`description`**: una frase che dice **quando** Claude deve attivare la Skill. È in inglese per convenzione tecnica (Claude la matcha contro il task corrente).
+
+### Body (le istruzioni)
+
+Tutto il resto del file, in Markdown. È quello che Claude legge quando la Skill si attiva.
+
+## Cosa rende una Skill buona
+
+### 1. Description chirurgica
+
+La description determina **quando** la Skill si attiva. Vaghezza = Skill mai attivata. Specificità = Skill attiva al momento giusto.
+
+**Vago (male):** "Use for legal stuff"
+**Buono:** "Use when the user asks to draft a payment reminder letter (sollecito di pagamento), distinct from a formal demand letter (messa in mora)"
+
+### 2. Istruzioni in seconda persona
+
+Scrivi le istruzioni come parleresti a un assistente. "Quando produci un parere, struttura sempre in 5 sezioni", non "Il parere deve essere strutturato in 5 sezioni".
+
+### 3. Esempi concreti dove servono
+
+Se la Skill ha un formato di output complesso, includi 1-2 esempi. Esempio:
+
+```markdown
+## Esempio di output corretto
+
+> Cliente,
+>
+> Le confermo l'esito... [esempio completo]
+
+## Esempio di output errato (da evitare)
+
+> Caro Cliente, mi pregio... [troppo formale per il nostro stile]
+```
+
+### 4. Vincoli espliciti
+
+Sempre dichiara cosa NON fare, oltre a cosa fare.
+
+```markdown
+## Non fare mai:
+- "Spettabile" / "In indirizzo" / "Ai sensi e per gli effetti"
+- Citazioni giurisprudenziali inventate, se non sei certo, scrivi "verificare"
+- Concludere con "Resto in attesa di un Vostro cortese cenno"
+```
+
+### 5. Riferimenti per casi complessi
+
+Se la Skill è grande, dividila. Metti gli esempi e i template in file separati nella sottocartella `references/`, e nel `SKILL.md` rimanda:
+
+```markdown
+Per il template completo di parere ex art. 1453, vedi `references/template-1453.md`.
+
+Per esempi di output corretti, vedi `references/esempi.md`.
+```
+
+Claude carica i file referenziati solo quando servono, la Skill principale resta compatta.
+
+## Quanto è lunga una Skill ideale
+
+- **Minima utile:** 30 righe
+- **Buona:** 60-150 righe
+- **Massima manutenibile:** 200 righe
+- **Oltre 200:** spaccala in più Skills, oppure usa `references/`
+
+Se la tua Skill è cresciuta a 300+ righe, probabilmente sta facendo 2 cose. Spaccala:
+
+- `redazione-parere-civile`
+- `redazione-parere-penale`
+
+Anziché:
+
+- `redazione-parere` (con dentro logica per civile + penale)
+
+Funziona meglio. Description più precise → attivazioni più precise.
+
+## Tre Skills a confronto
+
+### Skill semplice (un task atomico)
+
+```markdown
+---
+name: sollecito-pagamento
+description: Use when user asks to draft a polite payment reminder (sollecito di pagamento), NOT a formal demand letter.
+---
+
+# Sollecito Pagamento
+
+Produci una lettera di sollecito con queste caratteristiche fisse:
+- Tono fermo ma cordiale
+- 200-250 parole
+- Cita: cliente, importo, n. fattura, data scadenza, giorni di ritardo
+- Richiedi pagamento entro 7 giorni
+- Lascia aperta porta a chiarimento
+- Firma: "Cordiali saluti, Avv. Rossi"
+
+Se mancano dati (cliente/importo/etc), CHIEDI prima di produrre.
+```
+
+40 righe. Funziona benissimo.
+
+<Esempio>
+L'Avv. Luca Romano di Firenze, civilista, scriveva ogni settimana 3-4 solleciti di pagamento con la stessa identica architettura: apertura cordiale, dati fattura nei primi paragrafi, termine a 7 giorni, chiusura senza accenni ad azioni legali. Ha messo questa struttura in un SKILL.md di 38 righe, chiamato `sollecito-pagamento`. Adesso digita "usa sollecito-pagamento, cliente Pinco SRL, fattura 142 del 14 marzo, importo 4.200, scaduta da 21 giorni" e Claude segue la struttura. 35 minuti di drafting diventano 8. La parte interessante: lo stile resta esattamente il suo, perché nel SKILL.md ha incollato un esempio reale di sollecito che secondo lui rappresentava il gold standard.
+</Esempio>
+
+### Skill articolata (workflow complesso)
+
+```markdown
+---
+name: revisione-nda
+description: Use when user pastes an NDA (non-disclosure agreement) and asks for review from our client's perspective.
+---
+
+# Revisione NDA
+
+## Step 1: Identifica posizione del cliente
+Determina se il nostro cliente è prevalentemente: ricevente / divulgante / entrambi.
+
+## Step 2: Analisi clausole standard
+Per ogni clausola tipica (vedi `references/clausole-nda-checklist.md`), valuta:
+- Presente? Sì/No/Parziale
+- Bilanciata per il nostro cliente? Sì/Problematica/Critica
+- Modifica suggerita
+
+## Step 3: Output
+Tabella con: clausola | status | note | modifica proposta
+
+## Step 4: Sintesi
+Coda della risposta: 3 punti chiave da negoziare con la controparte.
+```
+
+E `references/clausole-nda-checklist.md` contiene la lista delle 15-20 clausole tipiche che vuoi controllare. Skill principale: 30 righe. Reference: 100 righe. Manutenibile.
+
+### Skill meta (orchestra altre Skills)
+
+Per workflow che richiedono più step, una "skill orchestratrice" può richiamare altre skills:
+
+```markdown
+---
+name: nuova-causa-setup
+description: Use when user opens a new legal matter and wants the standard intake workflow.
+---
+
+# Setup Nuova Causa
+
+Workflow standard quando arriva una nuova causa:
+
+1. Crea il Project (chiama `create-project`)
+2. Genera lista 15 domande per il primo colloquio cliente (chiama `domande-primo-colloquio`)
+3. Bozza email di richiesta documentazione al cliente (chiama `email-richiesta-doc`)
+4. Genera checklist scadenze prossime (chiama `checklist-scadenze`)
+```
+
+Skills compongono workflow. Quando vedi questo pattern emergere nel tuo studio, è segno che siete avanti.
+
+## Errori da evitare
+
+### 1. Description in italiano
+
+La description tecnica viene matchata in inglese. Scrivi sempre in inglese, anche se le istruzioni nel body sono in italiano.
+
+### 2. Niente esempi
+
+Una Skill astratta è una Skill che si attiva poco e male. Includi sempre 1-2 esempi di output ideale.
+
+### 3. Skill troppo ambiziosa
+
+"Una Skill per tutto il drafting dello studio" → fragile, attivata in modo inconsistente.
+"Una Skill per ogni tipo di drafting (sollecito, messa in mora, parere, contratto, etc.)" → robusto.
+
+### 4. Ignorare le Project Instructions
+
+Un **Project** è uno spazio Claude dove carichi documenti e istruzioni che restano disponibili in tutte le conversazioni. Le **Custom Instructions** sono istruzioni che Claude legge a ogni nuova conversazione, senza che tu le ripeta. Se una Skill dice "rispondi in italiano informale" e le Project Instructions dicono "rispondi in italiano formale", c'è conflitto. La Skill vince, ma se non lo sai, ti chiedi perché Claude "non rispetta il tono". Tieni allineate Skill, Project Instructions, Custom Instructions.
+
+Sapere come è fatta una Skill è metà del lavoro. L'altra metà è non riscriverla quando esiste già.
+
+<RiferimentoCorso lezione="02-repository-pubblici" />
+
+Nella prossima lezione: i repository pubblici di Skills, perché reinventare quando puoi installare?

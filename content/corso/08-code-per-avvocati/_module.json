@@ -1,0 +1,12 @@
+{
+  "titolo": "Claude Code per avvocati",
+  "sottotitolo": "Quando il codice diventa la leva più forte di uno studio",
+  "ordine": 8,
+  "categoria": "Bonus · Automazione tecnica",
+  "icona": "code",
+  "coloreCover": "lavender",
+  "lezioniPianificate": 4,
+  "durataMinutiPianificati": 50,
+  "bonus": true,
+  "costoGemme": 40
+}

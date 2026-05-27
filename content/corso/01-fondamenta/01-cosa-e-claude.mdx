@@ -1,0 +1,111 @@
+---
+titolo: "Cos'è Claude, il modello mentale giusto"
+sottotitolo: "Prima di aprire l'app, capire cosa hai davanti"
+durata: 6
+ordine: 1
+aggiornato: "2026-05-23"
+quiz: true
+---
+
+Ti racconto la cosa più importante in tre righe, prima di tutto il resto. Claude non è "ChatGPT con un nome diverso". È una famiglia di interfacce costruite da Anthropic (l'azienda che fa Claude), ognuna pensata per un tipo diverso di lavoro. La differenza tra usarlo bene e abbandonarlo dopo due settimane sta quasi tutta in come lo pensi prima ancora di scriverci.
+
+Questa lezione è una mappa concettuale. Cinque pilastri da interiorizzare prima di toccare un singolo prompt.
+
+## I cinque pilastri di Claude per l'avvocato
+
+<Pillari items={[
+ { numero: "1", titolo: "Collega, non motore di ricerca", descrizione: "Pensalo come un giovane praticante molto preparato. Più contesto gli porti, fatti, vincoli, stile, più diventa utile. Senza contesto, risposte da manuale che potresti scrivere tu in 5 minuti." },
+ { numero: "2", titolo: "Le interfacce contano più del modello", descrizione: "Chat, Projects, Code, Skills, MCP, API: ognuna serve un tipo diverso di lavoro. Usare la superficie sbagliata è il motivo numero uno per cui gli avvocati abbandonano Claude." },
+ { numero: "3", titolo: "Il piano determina cosa puoi fare", descrizione: "Free, Pro (€18/mese), Max (€90/mese), Team (€25/utente). Non solo prezzi diversi, limiti, funzionalità e modelli diversi. Pro è il minimo serio per un avvocato singolo." },
+ { numero: "4", titolo: "Macchina di linguaggio, non banca dati", descrizione: "Claude non ha accesso a DeJure o Pluris. Non sostituisce le banche dati giurisprudenziali. È invece imbattibile nel trasformare testi: sintetizzare, riformulare, confrontare." },
+ { numero: "5", titolo: "Quello che non sa fa la differenza", descrizione: "Claude non sa il tuo nome, la specializzazione dello studio, lo stile delle vostre lettere. Tutto questo si insegna una volta tramite Custom Instructions, e Claude lo applica per sempre." }
+]} />
+
+## Approfondiamo: cosa significa "collega"
+
+Pensalo come un giovane praticante molto preparato: ha letto tutto, ma non ha mai visto la tua pratica. Non sa che il cliente Bianchi è un cliente difficile, non sa che lo studio ha una linea ferma sull'NDA reciproco, non sa che tu firmi sempre "Avv. Mario Rossi" e non "Mario Rossi".
+
+Più contesto gli porti, fatti, vincoli, esempi del tuo stile, più diventa utile. Senza contesto, ti dà risposte da manuale che potresti scrivere tu in cinque minuti.
+
+<Nota tipo="suggerimento">
+La differenza tra "scrivi una lettera di sollecito" e "scrivi una lettera di sollecito per un cliente civilista di Milano, debitore di €15.000 da 6 mesi, in tono fermo ma non aggressivo, firma Avv. Rossi" è la differenza tra un output inutile e uno utilizzabile dopo una rilettura.
+</Nota>
+
+<Esempio>
+L'Avv. Marco Tossi, civilista a Bologna, ha provato Claude per un mese scrivendo prompt da una riga ("riassumimi questa sentenza", "scrivimi una diffida"). Risultato: bozze talmente generiche che le buttava via. Stava per disdire l'abbonamento. Poi, per caso, in un prompt ha incollato anche tre paragrafi di contesto: chi era il cliente, cosa era successo, come scrive di solito lo studio. Stessa richiesta di sempre, ma output completamente diverso, utilizzabile dopo una rilettura. Da quel momento ha smesso di pensare a Claude come a un motore di ricerca. Tempo medio sulle lettere di sollecito: da 25 minuti a 8. Niente magia, solo aver capito che lo strumento si guarda da un'altra angolatura.
+</Esempio>
+
+## Approfondiamo: le sei superfici
+
+| Superficie | Per cosa | Setup richiesto |
+|---|---|---|
+| **Chat** | Task isolati, drafting veloce | Zero |
+| **Projects** | Una pratica, un cliente, dossier persistente | 10 minuti per Project |
+| **Claude Code** | Molti file insieme, da terminale | Mezz'ora setup |
+| **Skills** | Task ripetitivi automatizzati | 1 ora per skill |
+| **MCP** | Collegamento al gestionale / Outlook / Drive | Mezza giornata |
+| **API** | Tool custom su misura per lo studio | Settimane (sviluppatore) |
+
+Una nota veloce sui termini, così non torniamo indietro a chiederci cosa significano. Un **Project** è uno spazio dentro Claude dove carichi documenti e istruzioni che restano disponibili in tutte le conversazioni di quel progetto. Una **Skill** è una procedura riutilizzabile che insegni a Claude una volta sola e poi la richiami con una frase. **MCP** (Model Context Protocol) è il protocollo che permette a Claude di parlare con i tuoi software, gestionale, drive, calendar. **API** è l'accesso programmatico a Claude, ti serve solo se vuoi farti scrivere uno script o un'automazione, quindi quasi mai direttamente. Il Modulo 2 entra nel dettaglio di ognuna.
+
+Una parentesi sui termini che troverai in giro. Le **Custom Instructions** sono istruzioni che Claude legge automaticamente a ogni nuova conversazione, senza che tu le ripeta: il posto giusto dove mettere lo stile dello studio e la firma. Le rivedremo in dettaglio nel Modulo 2.
+
+## Approfondiamo: macchina di linguaggio
+
+Claude non ha accesso a DeJure, Pluris, o alle ultime sentenze della Cassazione (a meno che tu non gliele incolli). Non è un sostituto del tuo abbonamento alla banca dati giurisprudenziale.
+
+Quello che fa molto meglio della banca dati è **trasformare** testi: riassumere una sentenza, estrarre i punti rilevanti di un parere, riformulare un atto in tono diverso, confrontare due bozze contrattuali. Per la ricerca della giurisprudenza, parti dalla banca dati e poi usa Claude per ragionare sopra i risultati.
+
+<Cita autore="Adattato dal framework 'AI Fluency' di Anthropic">
+La differenza tra usare l'AI come oracolo e usarla come collega è la differenza tra dipendenza e potenziamento. La prima ti rende fragile. La seconda ti rende leva.
+</Cita>
+
+<Quiz
+ modulo="01-fondamenta"
+ lezione="01-cosa-e-claude"
+ domande={[
+  {
+   domanda: "Qual è il modello mentale corretto per pensare a Claude?",
+   opzioni: [
+    "Un motore di ricerca avanzato",
+    "Una banca dati giurisprudenziale",
+    "Un collega junior molto preparato ma senza memoria della tua pratica",
+    "Un sostituto del professionista"
+   ],
+   corretta: 2,
+   spiega: "Claude è una macchina di linguaggio che migliora con il contesto, non un sistema con memoria persistente o accesso a dati esterni."
+  },
+  {
+   domanda: "Cosa NON fa Claude per default?",
+   opzioni: [
+    "Trasformare e riformulare testi",
+    "Sintetizzare documenti lunghi",
+    "Accedere in tempo reale a DeJure o Pluris",
+    "Confrontare due bozze contrattuali"
+   ],
+   corretta: 2,
+   spiega: "Claude non legge le banche dati in tempo reale. Per la ricerca della giurisprudenza, parti dalla banca dati e poi usa Claude per ragionare sui risultati."
+  },
+  {
+   domanda: "Qual è il piano Claude minimo serio per un avvocato singolo?",
+   opzioni: [
+    "Free",
+    "Pro (€18/mese)",
+    "Max (€90/mese)",
+    "Team (€25/utente)"
+   ],
+   corretta: 1,
+   spiega: "Free è solo per provare. Pro è il minimo che dà Projects, Skills, MCP base e limiti generosi per uso professionale quotidiano."
+  }
+ ]}
+/>
+
+<Risorse items={[
+ { titolo: "Claude 101, Introduction (gratuito)", url: "https://anthropic.skilljar.com", fonte: "Anthropic Academy", durata: "1 hr video" },
+ { titolo: "AI Fluency: Framework & Foundations", url: "https://claude.com/resources/courses", fonte: "Anthropic Academy", durata: "1.1 hr · 14 lezioni · 1 quiz" },
+ { titolo: "Claude.com, pagina prodotto", url: "https://claude.com", fonte: "Anthropic" },
+]} />
+
+<RiferimentoCorso lezione="02-collega-non-motore" />
+
+Nella prossima lezione approfondiamo il primo pilastro, come trattare Claude da collega anziché da motore di ricerca, con esempi concreti su pareri e contratti.

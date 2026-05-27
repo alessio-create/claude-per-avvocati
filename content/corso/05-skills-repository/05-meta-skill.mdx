@@ -1,0 +1,113 @@
+---
+titolo: "Meta-Skills, Skills che scrivono Skills"
+sottotitolo: "Quando l'automazione automatizza sé stessa"
+durata: 6
+ordine: 5
+aggiornato: "2026-05-23"
+quiz: false
+---
+
+Arrivato a 10-15 Skills tue, ti accorgi di una cosa quasi ironica: scrivere una nuova Skill è di per sé un task ripetitivo. C'è una struttura ricorrente, ci sono pattern, ci sono errori che fai sempre. La soluzione è quella che ti aspetteresti da un ingegnere pigro nel senso buono: una **meta-skill**, ovvero una Skill che genera altre Skills, ti aiuta a costruirne di nuove in pochi minuti.
+
+Vediamo le tre più utili.
+
+## Meta-Skill 1: `skill-builder`
+
+Cosa fa: ti intervista su un task ricorrente, ti aiuta a strutturare la Skill, scrive il file `SKILL.md` finale.
+
+**Workflow:**
+
+> Tu: "Voglio una Skill per [DESCRIZIONE BREVE DEL TASK]"
+
+> skill-builder:
+> 1. Ti fa 3-6 domande mirate (quando si attiva? cosa NON deve fare? esempio di output?)
+> 2. Riassume le risposte in una struttura
+> 3. Genera il `SKILL.md` completo
+> 4. Suggerisce dove installarla
+
+Risultato: una Skill ben strutturata in 10-15 minuti, scritta in modo consistente con le best-practice.
+
+Per uno studio, è il modo per **scalare** la creazione di Skills senza che ogni avvocato debba imparare i dettagli tecnici. Un partner senior scrive una Skill in 15 minuti aiutato dal skill-builder; un associato fa lo stesso senza dover sapere troppo.
+
+## Meta-Skill 2: `skill-amplifier`
+
+Cosa fa: prende una Skill esistente che funziona "così così" e la migliora.
+
+**Workflow:**
+
+> Tu: "Migliora la Skill `redazione-parere`. Ecco gli ultimi 3 output che ha prodotto, ed ecco i miei feedback su ognuno: [INCOLLI]"
+
+> skill-amplifier:
+> 1. Analizza la Skill attuale + i feedback
+> 2. Identifica i pattern problematici (es. "esempi troppo astratti", "struttura confusa")
+> 3. Propone modifiche specifiche al `SKILL.md`
+> 4. Genera la versione migliorata
+
+Risultato: la Skill diventa più precisa nel tempo, basandosi sul feedback reale.
+
+## Meta-Skill 3: `skill-doctor`
+
+Cosa fa: revisione qualitativa di una Skill esistente.
+
+**Workflow:**
+
+> Tu: "Controlla la Skill `revisione-nda` e dimmi cosa potrebbe essere migliorato"
+
+> skill-doctor:
+> - Verifica frontmatter (description chirurgica? name kebab-case? etc.)
+> - Verifica struttura (esempi presenti? vincoli espliciti? riferimenti se Skill grande?)
+> - Verifica lunghezza (over-engineered? sotto-specificata?)
+> - Genera report con miglioramenti suggeriti
+
+Utile per ripulire Skills che hai scritto velocemente e che vorresti elevare a "qualità libreria".
+
+## Dove trovi queste meta-Skills
+
+Tutte e tre sono parte del repository `superpowers` o di repository simili (vedi lezione 2 di questo modulo).
+
+Installale UNA volta. Da quel momento, ogni nuova Skill che scrivi nasce con miglior architettura.
+
+<Esempio>
+L'Avv. Paolo Conti di Roma, penalista, era arrivato a 9 Skills tutte scritte di getto, alcune un po' confuse. Ha installato `skill-builder` e, invece di sbloccarsi a scrivere la decima da zero, ha lasciato che il meta-skill lo intervistasse: cinque domande sul task (memoria di replica), tre sui vincoli (mai citazioni inventate, sempre struttura in tre blocchi, max due pagine), una sull'esempio gold. In 14 minuti aveva un SKILL.md di 72 righe più pulito di tutti gli altri che aveva scritto. La settimana dopo ha passato `skill-doctor` sulle 9 precedenti: gli ha restituito un elenco di problemi per ognuna (description troppo vaga su tre, esempi assenti su quattro, lunghezza eccessiva su una). Ha sistemato in 3 ore tutto. Tasso di attivazione corretta delle Skills passato da circa 60% a oltre 90%.
+</Esempio>
+
+## La curva di apprendimento
+
+**Mese 1:** scrivi 5 Skills a mano. Impari l'anatomia (Modulo 5 lezione 1) facendo.
+
+**Mese 2:** installa `skill-builder`. Scrivi le successive 5 Skills con il suo aiuto. Sono migliori.
+
+**Mese 3:** scarica `skill-amplifier`. Ritorna sulle prime 5 Skills, miglioralle col feedback raccolto in 2 mesi di uso.
+
+**Mese 4+:** la tua libreria è matura. Skills nuove le crei in 15 minuti, le esistenti si migliorano da sole man mano che le usi.
+
+## Il ciclo Karpathy delle Skills
+
+Andrej Karpathy (ricercatore AI) ha popolarizzato un pattern di "miglioramento iterativo automatizzato": proponi → valuti → tieni o scarti. Applicato alle Skills:
+
+1. **Proponi:** skill-amplifier suggerisce una modifica alla Skill
+2. **Valuta:** la modifica produce output migliori sui tuoi ultimi 3-5 casi reali?
+3. **Tieni o scarta:** se migliora, mantieni. Se peggiora, torna alla versione precedente.
+
+Questo "ratchet" applicato sistematicamente fa convergere le tue Skills verso uno standard di qualità sempre più alto. Senza che tu debba pensarci attivamente: durante l'uso normale, raccogli feedback. Mensilmente, skill-amplifier propone iterazioni.
+
+## Quando NON usare meta-Skills
+
+- **Skills semplici e atomiche** (sotto 50 righe), il valore aggiunto di una meta-Skill è basso, scrivi a mano
+- **Skills per dominio molto specifico** dove il meta-Skill (generalista) può perdere sfumature, meglio scrivere a mano con expertise di dominio
+
+## Fine Modulo 5
+
+Hai una mappa completa di come Skills funzionano:
+
+- **Modulo 2 lezione 4:** cos'è una Skill (panoramica)
+- **Modulo 3 lezione 5:** scrivere la tua prima Skill
+- **Modulo 5 lezione 1:** anatomia dettagliata
+- **Modulo 5 lezione 2:** repository pubblici
+- **Modulo 5 lezione 3:** libreria dello studio
+- **Modulo 5 lezione 4:** condividere nello studio
+- **Modulo 5 lezione 5:** meta-Skills
+
+Hai gli strumenti per costruire, ampliare e mantenere una libreria di Skills che cresce nel tempo invece di invecchiare. Nell'ultimo modulo (Modulo 6) chiudiamo il cerchio con le **regole non negoziabili**: privacy, deontologia, segreto professionale. Lo studio che usa Claude senza il Modulo 6 è uno studio a rischio.
+
+<RiferimentoCorso lezione="01-cosa-puoi-mandare" />

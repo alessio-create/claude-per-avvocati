@@ -1,0 +1,130 @@
+---
+titolo: "Il prompt-template che funziona per il 70% dei task"
+sottotitolo: "Copia, adatta, usa, da oggi"
+durata: 5
+ordine: 5
+aggiornato: "2026-05-23"
+quiz: true
+---
+
+Questa lezione è pratica. Ti do il template che, adattato, funziona per la maggior parte dei task che un avvocato dà a Claude. Salvalo, fanne uno snippet sul tuo PC o un **Custom Instructions** di un Project (le istruzioni che Claude legge automaticamente a ogni nuova conversazione, senza che tu le ripeta), e da oggi smetti di scrivere prompt da zero.
+
+## Il template
+
+<Prompt>
+**Ruolo:** Sei l'assistente di [STUDIO / AVVOCATO], [SPECIALIZZAZIONE], [CITTÀ].
+
+**Cliente:** [DESCRIZIONE BREVE, chi è, settore, dimensione, da quanto è cliente, livello di comprensione tecnica].
+
+**Caso / contesto:**
+- [FATTO 1, con date e importi]
+- [FATTO 2]
+- [FATTO 3]
+- [Posizione/i delle controparti, se rilevante]
+- [Stato attuale: pre-causa / in causa / definito]
+
+**Task:** [VERBO PRECISO] [OGGETTO] [PER CHI / DESTINATARIO].
+Esempi di VERBO: redigere, riformulare, sintetizzare, confrontare, generare 5 domande per, estrarre i punti rilevanti di, tradurre in linguaggio comprensibile a un non-giurista.
+
+**Vincoli:**
+- Tono: [formale / colloquiale / fermo / empatico / didascalico]
+- Lunghezza: [N parole / N pagine / 3 paragrafi]
+- Stile dello studio: [diretto / argomentativo / niente formule arcaiche / etc.]
+- Firma: [come firmare / o "nessuna firma, è una bozza"]
+- Cose da NON fare: [es. niente "spettabile", niente "in indirizzo", niente citazioni normative non strettamente necessarie]
+
+**Output:** [solo il testo della lettera / 3 varianti con titoli / un elenco puntato / una tabella].
+</Prompt>
+
+Detto in astratto suona schematico. Sotto vedi cosa succede quando lo applichi su sei task reali, dal sollecito al primo colloquio con un cliente nuovo.
+
+<Esempio>
+Lo Studio di un avvocato di Firenze, due partner e una giuslavorista, ha deciso di standardizzare l'uso di Claude tra i tre. Hanno preso il template di questa lezione, l'hanno adattato al loro stile (firma, formule da evitare, tono medio), e l'hanno salvato in tre punti: Custom Instructions del Project di ogni cliente fisso, snippet nel gestionale per i task occasionali, file di testo condiviso sul Drive dello studio per i collaboratori esterni. Dopo due mesi hanno fatto i conti: 6,5 ore a settimana di drafting risparmiate sui tre, equivalenti a quasi mezza giornata di un collaboratore junior. Non hanno tagliato nessuno, hanno smesso di lavorare il sabato mattina.
+</Esempio>
+
+## Sei esempi pratici
+
+### Esempio 1, Lettera di sollecito
+
+> Ruolo: assistente Avv. Rossi, civilista Milano. Cliente: noi siamo creditori della Bianchi srl. Caso: fattura 234 di €14.500, scaduta 15/12/2025, già sollecitata. Task: redigi messa in mora ex art. 1219 c.c. da inviare via PEC. Vincoli: tono fermo non emotivo, 300 parole, niente formule arcaiche. Output: solo testo della lettera.
+
+### Esempio 2, Sintesi di una sentenza
+
+> Ruolo: assistente Avv. Bianchi, penalista. Task: leggi la sentenza incollata sotto e sintetizzami in 200 parole: 1) imputazione, 2) decisione, 3) motivazione principale, 4) potenziale rilevanza per casi simili. [INCOLLA SENTENZA]
+
+### Esempio 3, Confronto fra due NDA
+
+> Ruolo: assistente Avv. Rossi, diritto societario. Task: confronta le due bozze di NDA sotto e dammi una tabella con le differenze rilevanti. Per ogni differenza: clausola, versione A, versione B, quale dovremmo preferire e perché. [INCOLLA BOZZA A] --- [INCOLLA BOZZA B]
+
+### Esempio 4, Domande per il cliente
+
+> Ruolo: assistente Avv. Bianchi, lavoro. Cliente: una dipendente che vuole impugnare il licenziamento. Task: generami 10 domande chiave da farle al primo colloquio per capire se ha un caso forte. Output: elenco puntato.
+
+### Esempio 5, Email difficile
+
+> Ruolo: assistente Avv. Rossi. Cliente: studio aziendale, ci ha contestato la parcella di €8.000, dice che è eccessiva. Stiamo difendendo il valore della consulenza. Task: bozza di risposta via email, tono fermo ma collaborativo, 200 parole, ricorda il dettaglio delle attività svolte (vedi sotto), proponi un incontro per chiarire. [INCOLLA DETTAGLIO ATTIVITÀ].
+
+### Esempio 6, Spiegare al cliente
+
+> Ruolo: assistente Avv. Rossi. Cliente: persona fisica, non giurista, ansia rispetto al processo. Task: spiega in massimo 250 parole, linguaggio comprensibile a un non-avvocato, cosa succede tra l'atto di citazione (depositato ieri) e la prima udienza. Tono: rassicurante senza essere paternalistico.
+
+## La regola del 70/30
+
+Una premessa onesta, prima di passare oltre. Questo template copre circa il 70% dei task quotidiani. Il restante 30% sono task più specifici che imparerai nei moduli successivi:
+
+- **Pareri complessi**, Modulo 4
+- **Drafting di atti formali**, Modulo 4
+- **Ricerca giurisprudenziale**, Modulo 4
+- **Skills personalizzate per workflow ripetuti**, Modulo 5
+
+## Il tuo compito per oggi
+
+Apri claude.ai. Prendi un task del tuo backlog di oggi (anche piccolo, una email, una bozza di risposta). Scrivi il prompt seguendo il template. Manda. Confronta col risultato che avresti ottenuto scrivendo "fammi una bozza di X".
+
+Aspetta di vedere la differenza prima di passare al Modulo 2.
+
+<Nota tipo="suggerimento">
+Salva il template come **Custom Instructions** del tuo account Claude. Vai in Impostazioni → Custom Instructions, incolla "Quando rispondi, segui sempre la struttura: Ruolo, Cliente, Caso, Task, Vincoli, Output", e da quel momento Claude richiama questa struttura ad ogni conversazione anche se non la scrivi.
+</Nota>
+
+<Quiz
+ modulo="01-fondamenta"
+ lezione="05-prompt-base-avvocato"
+ domande={[
+  {
+   domanda: "Quali sono le cinque parti del prompt-template universale per uno studio legale?",
+   opzioni: [
+    "Introduzione, sviluppo, conclusione, firma, postilla",
+    "Ruolo, Cliente, Caso/Contesto, Task, Vincoli (con Output specifico)",
+    "Soggetto, verbo, complemento, oggetto, destinatario",
+    "Tribunale, attore, convenuto, fatti, conclusioni"
+   ],
+   corretta: 1,
+   spiega: "Questo template copre il 70% dei task quotidiani. Salvarlo come Custom Instructions o snippet ti permette di riusarlo senza riscriverlo."
+  },
+  {
+   domanda: "Per un task di drafting di una lettera al cliente, qual è il vincolo più importante da specificare?",
+   opzioni: [
+    "Il colore della firma",
+    "Il tono (formale/empatico/fermo) e la lunghezza",
+    "L'orario di invio",
+    "Il sistema operativo del cliente"
+   ],
+   corretta: 1,
+   spiega: "Tono e lunghezza sono i due assi che cambiano di più l'output. Sempre specifica entrambi nei vincoli del prompt."
+  },
+  {
+   domanda: "Cosa fare DOPO aver scritto il primo prompt seguendo il template?",
+   opzioni: [
+    "Mandarlo subito senza rileggerlo",
+    "Confrontare l'output di Claude con quello che avresti scritto a mano",
+    "Aspettare 24 ore prima di mandare",
+    "Tradurlo in inglese"
+   ],
+   corretta: 1,
+   spiega: "Aspettare di vedere la differenza prima di passare al Modulo 2 è il modo per interiorizzare quanto cambia un prompt fatto bene."
+  }
+ ]}
+/>
+
+Fine del Modulo 1. Hai le basi. Nel Modulo 2 entriamo nelle sei superfici di Claude una per una, con esempi pratici legali per ognuna.
