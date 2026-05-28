@@ -33,7 +33,7 @@ const tools: Tool[] = [
   { name: 'Cliens · Cicero', short: 'CL', color: '#d04428' /* , logo: '/logos/cliens.svg' */ },
   { name: 'ChatGPT',         short: 'GP', color: '#10a37f', logo: '/logos/chatgpt.svg' },
   { name: 'DocuSign',        short: 'DS', color: '#ffcc00', fg: '#1a1714', logo: '/logos/docusign.svg' },
-  { name: 'Lexis Italia',    short: 'LX', color: '#d41218' /* , logo: '/logos/lexis.svg' */ },
+  { name: 'Lexroom',         short: 'LR', color: '#1a1714', logo: '/logos/lexroom.svg' },
   { name: 'Notion',          short: 'N',  color: '#0f0f0f', logo: '/logos/notion.svg' },
   { name: 'Grammarly',       short: 'G',  color: '#15c39a' /* , logo: '/logos/grammarly.svg' */ },
 ];
