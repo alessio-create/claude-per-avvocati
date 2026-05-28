@@ -29,12 +29,12 @@ interface Tool {
 // The fallback monogram + brand color stays in place if `logo` is missing.
 const tools: Tool[] = [
   { name: 'DeJure',          short: 'DJ', color: '#1e5b3a' /* , logo: '/logos/dejure.svg' */ },
-  { name: 'Pluris Cedam',    short: 'PC', color: '#8c1d29' /* , logo: '/logos/pluris.svg' */ },
+  { name: 'Wolters Kluwer',  short: 'WK', color: '#007bc6', logo: '/logos/wolters-kluwer.svg' },
   { name: 'Cliens · Cicero', short: 'CL', color: '#d04428' /* , logo: '/logos/cliens.svg' */ },
-  { name: 'ChatGPT Plus',    short: 'GP', color: '#10a37f' /* , logo: '/logos/chatgpt.svg' */ },
-  { name: 'DocuSign',        short: 'DS', color: '#ffcc00', fg: '#1a1714' /* , logo: '/logos/docusign.svg' */ },
+  { name: 'ChatGPT',         short: 'GP', color: '#10a37f', logo: '/logos/chatgpt.svg' },
+  { name: 'DocuSign',        short: 'DS', color: '#ffcc00', fg: '#1a1714', logo: '/logos/docusign.svg' },
   { name: 'Lexis Italia',    short: 'LX', color: '#d41218' /* , logo: '/logos/lexis.svg' */ },
-  { name: 'Notion AI',       short: 'N',  color: '#0f0f0f' /* , logo: '/logos/notion.svg' */ },
+  { name: 'Notion',          short: 'N',  color: '#0f0f0f', logo: '/logos/notion.svg' },
   { name: 'Grammarly',       short: 'G',  color: '#15c39a' /* , logo: '/logos/grammarly.svg' */ },
 ];
 
