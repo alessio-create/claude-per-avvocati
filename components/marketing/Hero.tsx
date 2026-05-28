@@ -14,10 +14,10 @@ export function Hero() {
       </span>
 
       <h1 className="text-4xl sm:text-5xl font-bold leading-[1.05] mb-5 anim-rise anim-d-1">
-        Un parere in <span className="text-terracotta italic">25 minuti</span>.
+        Lo studio legale,
         <span className="hidden sm:inline"><br /></span>
         <span className="sm:hidden"> </span>
-        Il resto, sui clienti.
+        con <span className="text-terracotta italic">Claude</span> dentro.
       </h1>
 
       <p className="text-terracotta font-semibold text-xs sm:text-sm uppercase tracking-widest mb-4 anim-rise anim-d-2">
