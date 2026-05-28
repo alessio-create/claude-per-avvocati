@@ -35,7 +35,7 @@ const tools: Tool[] = [
   { name: 'DocuSign',        short: 'DS', color: '#ffcc00', fg: '#1a1714', logo: '/logos/docusign.svg' },
   { name: 'Lexroom',         short: 'LR', color: '#1a1714', logo: '/logos/lexroom.svg' },
   { name: 'Notion',          short: 'N',  color: '#0f0f0f', logo: '/logos/notion.svg' },
-  { name: 'Grammarly',       short: 'G',  color: '#15c39a' /* , logo: '/logos/grammarly.svg' */ },
+  { name: 'Grammarly',       short: 'G',  color: '#15c39a', logo: '/logos/grammarly.svg' },
 ];
 
 function ToolChip({ tool }: { tool: Tool }) {
