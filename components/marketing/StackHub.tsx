@@ -27,14 +27,13 @@ interface Tool {
 //   2. Save it as /public/logos/<name>.svg (or .png).
 //   3. Add `logo: '/logos/<name>.svg'` to the entry below.
 // The fallback monogram + brand color stays in place if `logo` is missing.
+// Symbol-only logomarks (no wordmarks/vertical lockups) for a cleaner look
+// at chip size. Wordmark brands previously shown here (Lefebvre Giuffrè,
+// Top24, DocuSign, Lexroom) were removed along with their SVGs.
 const tools: Tool[] = [
-  { name: 'Lefebvre Giuffrè', short: 'LG', color: '#1d1d1b', logo: '/logos/lefebvre-giuffre.svg' },
-  { name: 'Wolters Kluwer',  short: 'WK', color: '#007bc6', logo: '/logos/wolters-kluwer.svg' },
-  { name: 'Top24',           short: '24', color: '#1a1714', logo: '/logos/top24.svg' },
   { name: 'ChatGPT',         short: 'GP', color: '#10a37f', logo: '/logos/chatgpt.svg' },
-  { name: 'DocuSign',        short: 'DS', color: '#ffcc00', fg: '#1a1714', logo: '/logos/docusign.svg' },
-  { name: 'Lexroom',         short: 'LR', color: '#1a1714', logo: '/logos/lexroom.svg' },
   { name: 'Notion',          short: 'N',  color: '#0f0f0f', logo: '/logos/notion.svg' },
+  { name: 'Wolters Kluwer',  short: 'WK', color: '#007bc6', logo: '/logos/wolters-kluwer.svg' },
   { name: 'Grammarly',       short: 'G',  color: '#15c39a', logo: '/logos/grammarly.svg' },
 ];
 
@@ -86,7 +85,7 @@ export function StackHub() {
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-10 sm:mb-12">
           <div className="text-[10px] uppercase tracking-widest text-terracotta-soft font-bold">Il problema · Lo stack legale frammentato</div>
-          <h2 className="text-cream font-serif text-2xl sm:text-3xl font-bold mt-2 mb-3 leading-tight">Otto strumenti, otto abbonamenti, zero coordinamento.</h2>
+          <h2 className="text-cream font-serif text-2xl sm:text-3xl font-bold mt-2 mb-3 leading-tight">Tanti strumenti, tanti abbonamenti, zero coordinazione.</h2>
           <p className="text-muted text-sm max-w-xl mx-auto">Banche dati, contract automation, gestionali, mail. Per ogni strumento del tuo studio c&apos;è una capacità di Claude che lo consolida. <strong className="text-cream">Il corso ti insegna esattamente come farlo</strong>, senza rompere il flusso di lavoro.</p>
         </div>
 
@@ -98,19 +97,21 @@ export function StackHub() {
           </div>
         </div>
 
-        {/* DESKTOP layout: 3×3 grid with hub in the center cell */}
+        {/* DESKTOP layout: 3×3 grid with hub at center and the four chips at
+            the corners. Edge-midpoint cells stay empty so each chip radiates
+            outward from Claude. */}
         <div className="hidden md:grid grid-cols-3 gap-6 items-center justify-items-center max-w-3xl mx-auto min-h-[420px]">
           <ToolChip tool={tools[0]} />
+          <span aria-hidden />
           <ToolChip tool={tools[1]} />
-          <ToolChip tool={tools[2]} />
 
-          <ToolChip tool={tools[3]} />
+          <span aria-hidden />
           {hub}
-          <ToolChip tool={tools[4]} />
+          <span aria-hidden />
 
-          <ToolChip tool={tools[5]} />
-          <ToolChip tool={tools[6]} />
-          <ToolChip tool={tools[7]} />
+          <ToolChip tool={tools[2]} />
+          <span aria-hidden />
+          <ToolChip tool={tools[3]} />
         </div>
       </div>
     </section>
