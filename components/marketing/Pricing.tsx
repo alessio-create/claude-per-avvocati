@@ -14,60 +14,60 @@ interface Tier {
 const tiers: Tier[] = [
   {
     name: 'Praticante',
-    tag: 'Inizia gratis',
+    tag: 'Per capire se fa per te',
     price: '€0',
-    priceNote: 'sempre · email richiesta',
+    priceNote: 'per sempre · serve solo la email',
     href: '/iscriviti-gratis',
     free: true,
     cta: 'Inizia gratis',
     features: [
-      { label: 'Modulo 1 completo (5 lezioni + esame)', active: true },
-      { label: 'Sistema di gemme e progressi salvati', active: true },
-      { label: 'Moduli bonus sbloccabili con le gemme', active: true },
-      { label: 'Aggiornamenti gratuiti sui contenuti free', active: true },
-      { label: 'Moduli 2–6 (corso completo)', active: false },
-      { label: 'Certificato finale & condivisione LinkedIn', active: false },
+      { label: 'Modulo 1 intero: 5 lezioni più esame', active: true },
+      { label: 'Progressi salvati, riprendi quando vuoi', active: true },
+      { label: 'Gemme per sbloccare moduli bonus', active: true },
+      { label: 'Nuove lezioni gratis quando escono', active: true },
+      { label: 'Moduli 2-6, il percorso completo', active: false },
+      { label: 'Certificato finale, condivisibile su LinkedIn', active: false },
       { label: 'Fattura intestata allo studio', active: false },
-      { label: '14 giorni di rimborso', active: false },
+      { label: 'Rimborso entro 14 giorni', active: false },
     ],
   },
   {
     name: 'Avvocato',
-    tag: 'Per la pratica individuale',
+    tag: 'Per chi lavora da solo',
     price: '€79',
     priceNote: 'una tantum · IVA inclusa',
     href: '/checkout?tier=avvocato',
     featured: true,
     cta: 'Iscriviti, €79',
-    cert: { title: 'Certificato finale con punteggio', sub: 'condivisibile su LinkedIn in 1 click' },
+    cert: { title: 'Certificato finale con punteggio', sub: 'pronto da pubblicare su LinkedIn in un click' },
     features: [
-      { label: 'Tutto del piano Praticante', active: true },
-      { label: '6 moduli core + esami di modulo', active: true },
-      { label: '1 modulo bonus a scelta', active: true },
-      { label: 'Certificato finale + share LinkedIn', active: true },
+      { label: 'Tutto quello che hai in Praticante', active: true },
+      { label: '6 moduli completi, ognuno con esame', active: true },
+      { label: 'Scegli 1 modulo bonus tra i quattro', active: true },
+      { label: 'Certificato finale con share LinkedIn', active: true },
       { label: 'Fattura intestata allo studio', active: true },
-      { label: '14 giorni di rimborso senza domande', active: true },
-      { label: 'Aggiornamenti a vita', active: true },
-      { label: 'Accessi per più avvocati / Q&A 1:1', active: false },
+      { label: 'Rimborso entro 14 giorni, nessuna domanda', active: true },
+      { label: 'Aggiornamenti a vita, anche futuri moduli', active: true },
+      { label: 'Accessi multipli e Q&A 1:1 con il team', active: false },
     ],
   },
   {
     name: 'Studio',
-    tag: 'Fino a 5 avvocati',
+    tag: 'Fino a 5 avvocati, stessa licenza',
     price: '€149',
     priceNote: 'una tantum · IVA inclusa',
     href: '/checkout?tier=studio',
     cta: 'Iscrivi lo studio',
-    cert: { title: 'Certificati nominativi per ogni avvocato', sub: 'autoformazione professionale documentata' },
+    cert: { title: 'Certificato nominativo per ogni avvocato', sub: 'formazione documentata per il fascicolo dello studio' },
     features: [
-      { label: 'Tutto del piano Avvocato', active: true },
-      { label: '5 accessi nominativi per lo studio', active: true },
-      { label: 'Tutti i 4 moduli bonus inclusi', active: true },
-      { label: 'Q&A 1:1 di onboarding (30 min con il team)', active: true },
-      { label: 'Setup MCP di base per il gestionale', active: true },
-      { label: '2 prompt-template personalizzati sullo studio', active: true },
-      { label: 'Skill di esempio scaricabile', active: true },
-      { label: 'Codici sconto per colleghi (network)', active: true },
+      { label: 'Tutto quello che hai in Avvocato', active: true },
+      { label: '5 accessi nominativi, uno per collega', active: true },
+      { label: 'Tutti e 4 i moduli bonus, già sbloccati', active: true },
+      { label: 'Onboarding 1:1 con il team (30 minuti)', active: true },
+      { label: 'Setup MCP per collegare il gestionale', active: true },
+      { label: '2 prompt-template scritti sul tuo studio', active: true },
+      { label: 'Skill di esempio pronta da scaricare', active: true },
+      { label: 'Codici sconto da girare ai colleghi', active: true },
     ],
   },
 ];
@@ -78,9 +78,9 @@ export function Pricing() {
       <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at 50% 30%, rgba(217,119,87,0.12), transparent 50%)' }} />
       <div className="max-w-5xl mx-auto relative z-10">
         <div className="text-[10px] uppercase tracking-widest text-terracotta-soft font-bold">Iscrizione</div>
-        <h2 className="text-cream font-serif text-3xl sm:text-4xl font-bold mt-2 mb-3 leading-tight">Inizia gratis. Sblocca quando ti convince.</h2>
+        <h2 className="text-cream font-serif text-3xl sm:text-4xl font-bold mt-2 mb-3 leading-tight">Provi il primo modulo. Decidi dopo.</h2>
         <p className="text-muted text-sm max-w-md mx-auto mb-9">
-          Il Modulo 1 è gratis per tutti, niente carta. Quando vuoi il corso completo, due piani, uno per il singolo avvocato, uno per lo studio.
+          Modulo 1 gratis, senza carta e senza scadenza. Se ti convince, scegli il piano per te o per lo studio. Altrimenti, resti sul gratuito.
         </p>
         <div className="grid md:grid-cols-3 gap-8 md:gap-4 text-left items-stretch mt-12 md:mt-0">
           {tiers.map(t => (
@@ -140,7 +140,7 @@ export function Pricing() {
           ))}
         </div>
         <p className="text-[9.5px] text-muted mt-6">
-          Pagamento sicuro via Stripe · Fattura inclusa · Rimborso 14 giorni · Per ordini degli avvocati e fatturazione differita: <a href="mailto:fatture@claudeperavvocati.it" className="text-terracotta-soft hover:underline">fatture@claudeperavvocati.it</a>
+          Pagamento sicuro via Stripe · Fattura intestata allo studio · Rimborso entro 14 giorni · Per ordini tramite Ordine o fatturazione differita scrivi a <a href="mailto:fatture@claudeperavvocati.it" className="text-terracotta-soft hover:underline">fatture@claudeperavvocati.it</a>
         </p>
       </div>
     </section>

@@ -17,9 +17,9 @@ export function Programma() {
     <section id="programma" className="bg-[#0f0c0a] text-cream py-20 px-8">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-10">
-          <div className="text-[10px] uppercase tracking-widest text-terracotta-soft font-bold">Il programma</div>
-          <h2 className="text-cream font-serif text-3xl font-bold mt-2 mb-3">{idx.moduli.length} moduli, {totalLezioni} lezioni.</h2>
-          <p className="text-muted text-sm max-w-md mx-auto">Ogni modulo è un mini-corso a sé. Insieme formano la mappa completa.</p>
+          <div className="text-[10px] uppercase tracking-widest text-terracotta-soft font-bold">Il programma completo</div>
+          <h2 className="text-cream font-serif text-3xl font-bold mt-2 mb-3">{idx.moduli.length} moduli, {totalLezioni} lezioni. Niente di più, niente di meno.</h2>
+          <p className="text-muted text-sm max-w-md mx-auto">Ogni modulo è un mini-corso a sé, con un risultato concreto da portare a casa. Insieme, la mappa per far lavorare Claude nel tuo studio.</p>
         </div>
         <div className="grid md:grid-cols-3 gap-3.5">
           {idx.moduli.map(m => {

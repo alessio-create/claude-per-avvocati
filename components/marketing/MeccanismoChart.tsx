@@ -14,14 +14,14 @@ export function MeccanismoChart() {
   return (
     <div className="grid md:grid-cols-2 gap-14 items-center max-w-5xl mx-auto">
       <div className="order-2 md:order-1">
-        <div className="text-[10px] uppercase tracking-widest text-terracotta font-bold">Il meccanismo · 02</div>
-        <h2 className="font-serif text-2xl font-bold mt-2 mb-3 leading-tight">Pochi avvocati conoscono Claude. Ancora meno l'hanno applicato.</h2>
-        <p className="text-sm leading-relaxed text-body mb-3">Ogni puntino è una persona reale. Il quadrante in alto a destra è quasi vuoto, questo corso è la mappa per arrivarci.</p>
+        <div className="text-[10px] uppercase tracking-widest text-terracotta font-bold">Dove ti porta il corso · 02</div>
+        <h2 className="font-serif text-2xl font-bold mt-2 mb-3 leading-tight">Lo so che sei stanco dei corsi. Questo parte da un punto diverso.</h2>
+        <p className="text-sm leading-relaxed text-body mb-3">La maggior parte dei contenuti su AI o parla di Claude in astratto, o parla di diritto senza toccare gli strumenti. Il quadrante in alto a destra è quasi vuoto: il corso è costruito per portarti lì, partendo dal tuo lavoro reale.</p>
         <div className="mt-3.5 pt-3.5 border-t border-[#d4cdbf] space-y-2">
           {[
-            ['Avvocato medio', 'Non sa, non applica'],
-            ['Influencer AI', 'Sa, non applica al diritto'],
-            ['Tu dopo il corso', 'Sai e applichi'],
+            ['Avvocato medio', 'Sente parlare di AI, non la usa in studio'],
+            ['Influencer AI', 'Spiega Claude, mai visto un fascicolo'],
+            ['Tu dopo il corso', 'Conosci lo strumento e sai dove applicarlo'],
           ].map(([k, v]) => (
             <div key={k} className="flex gap-2.5 text-[11px] text-body"><span className="text-terracotta font-bold">→</span><span><strong>{k}</strong> · {v}</span></div>
           ))}

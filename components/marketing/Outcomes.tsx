@@ -12,12 +12,12 @@ interface OutcomeItem {
 }
 
 const items: OutcomeItem[] = [
-  { theme: 'pen',   variant: 'happy', tint: '#fef5ee', accent: '#d97757', title: 'Drafare un parere in 1/3 del tempo', sub: 'Senza compromettere qualità.' },
-  { theme: 'folder', variant: 'mid',  tint: '#fdf4e7', accent: '#cc8a73', title: 'Setup Projects per ogni cliente',  sub: 'Contesto persistente, niente copy-paste.' },
-  { theme: 'code',  variant: 'astro', tint: '#f3ede0', accent: '#1a1714', title: 'Claude Code per documenti massivi', sub: 'Cento contratti, una skill.' },
-  { theme: 'shield', variant: 'happy', tint: '#f0ebda', accent: '#6fa28b', title: 'Cosa puoi inviare a Claude',     sub: 'GDPR, deontologia, segreto.' },
-  { theme: 'blocks', variant: 'astro', tint: '#fceede', accent: '#d97757', title: 'Skills personalizzate per studio',  sub: 'Stile riusabile.' },
-  { theme: 'balance', variant: 'mid',  tint: '#f5e7d8', accent: '#c4623f', title: 'Quale piano Claude scegliere',    sub: 'Free vs Pro vs Max vs Team.' },
+  { theme: 'pen',   variant: 'happy', tint: '#fef5ee', accent: '#d97757', title: 'Scrivere la bozza di un parere in 25 minuti', sub: 'Stessa struttura, stesso tono, stesse citazioni che useresti tu.' },
+  { theme: 'folder', variant: 'mid',  tint: '#fdf4e7', accent: '#cc8a73', title: 'Aprire un Project dedicato per ogni cliente',  sub: 'Contesto del fascicolo sempre pronto, zero copia e incolla.' },
+  { theme: 'code',  variant: 'astro', tint: '#f3ede0', accent: '#1a1714', title: 'Analizzare 50 contratti in un pomeriggio', sub: 'Una skill di Claude Code, una griglia di clausole, un report.' },
+  { theme: 'shield', variant: 'happy', tint: '#f0ebda', accent: '#6fa28b', title: 'Sapere cosa caricare e cosa no', sub: 'Una checklist chiara fra GDPR, deontologia e segreto professionale.' },
+  { theme: 'blocks', variant: 'astro', tint: '#fceede', accent: '#d97757', title: 'Costruire 3 skill su misura per lo studio',  sub: 'Lo stile di scrittura del tuo studio, riusabile da tutto il team.' },
+  { theme: 'balance', variant: 'mid',  tint: '#f5e7d8', accent: '#c4623f', title: 'Scegliere il piano Claude giusto in 5 minuti',    sub: 'Free, Pro, Max o Team: quale serve a te, con i conti in mano.' },
 ];
 
 function Accessory({ theme }: { theme: Theme }) {
@@ -84,9 +84,9 @@ export function Outcomes() {
           <div className="relative z-10 anim-float"><ClaudeMascot variant="happy" size={100} /></div>
         </div>
         <div>
-          <div className="text-[10px] uppercase tracking-widest text-terracotta font-bold">Il risultato · Quello che il corso ti porta a casa</div>
-          <h2 className="font-serif text-3xl font-bold leading-tight mt-2 mb-3">Sei capacità nuove, lunedì mattina.</h2>
-          <p className="text-sm text-body leading-relaxed">Sei competenze concrete, ognuna costruita da uno o più moduli specifici. Non promesse: cose che usi sulla pratica del tuo studio già dalla prima settimana dopo il corso.</p>
+          <div className="text-[10px] uppercase tracking-widest text-terracotta font-bold">Il risultato · Cosa fai il giorno dopo il corso</div>
+          <h2 className="font-serif text-3xl font-bold leading-tight mt-2 mb-3">Sei cose nuove che sai fare lunedì mattina.</h2>
+          <p className="text-sm text-body leading-relaxed">Sei capacità concrete, ognuna costruita su uno o più moduli del corso. Non aspirazioni: gesti che entrano nella tua giornata in studio dalla prima pratica che apri.</p>
         </div>
       </div>
       <div className="grid md:grid-cols-2 gap-4">

@@ -4,14 +4,14 @@ interface Stat {
 }
 
 const stats: Stat[] = [
-  { num: <>8 <span className="text-terracotta-soft mx-0.5">→</span> 1</>, label: 'strumenti consolidati' },
-  { num: '12h', label: 'risparmiate a settimana' },
-  { num: '€2.400', label: 'risparmio annuo' },
-  { num: '68%', label: 'avvocati italiani entro fine 2026' },
-  { num: '44', label: 'lezioni nel corso' },
-  { num: '10', label: 'moduli totali' },
-  { num: '4', label: 'moduli bonus' },
+  { num: <>8 <span className="text-terracotta-soft mx-0.5">→</span> 1</>, label: 'strumenti sostituiti da Claude' },
+  { num: '12h', label: 'risparmiate a settimana in studio' },
+  { num: '400pp', label: 'di fascicolo riassunte in 6 minuti' },
+  { num: '44', label: 'lezioni, 10 moduli, 4 bonus' },
+  { num: '10gg', label: 'per finire il corso da zero' },
+  { num: '€97', label: 'una volta, accesso a vita' },
   { num: '14gg', label: 'rimborso senza domande' },
+  { num: '40+', label: 'studi italiani su cui ho testato' },
 ];
 
 export function Numeri() {

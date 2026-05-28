@@ -29,9 +29,10 @@ export function ChiSiamoProblema() {
         <div>
           <div className="text-[10px] uppercase tracking-widest text-terracotta font-bold mb-2">Il problema · Perché serve un corso fatto bene</div>
           <h2 className="font-serif text-3xl font-bold leading-tight mb-5">Hai aperto Claude. Hai provato. Hai chiuso. Sai perché.</h2>
-          <p className="text-sm leading-loose mb-3.5 text-body">Nessuno te lo spiega in italiano. Nessuno parte dal tuo lavoro. Nessuno ti dice se ti serve il piano Free, Pro, Max o Team.</p>
-          <p className="text-sm leading-loose mb-3.5 text-body"><strong className="text-ink">Claude per Avvocati è il corso che mancava.</strong> Da anni lavoro a fianco di studi legali italiani. Da quando esiste Claude, lo uso ogni giorno per produrre pareri, redigere contratti, gestire ricerca giurisprudenziale.</p>
-          <p className="text-sm leading-loose mb-3.5 text-body">Ho testato ogni superficie di Claude e ho codificato i workflow che funzionano. <strong className="text-ink">Il corso è la scorciatoia: 44 lezioni, sei mesi di lavoro miei, dieci giorni di studio tuoi.</strong></p>
+          <p className="text-sm leading-loose mb-3.5 text-body">Lunedì sera, le 19:40. Hai un parere da consegnare domani, 47 mail non lette, e una sentenza di Cassazione da leggere. Apri Claude, scrivi due righe, ottieni un testo generico che non puoi mandare al cliente. Chiudi.</p>
+          <p className="text-sm leading-loose mb-3.5 text-body">Il problema non sei tu. Nessuno te lo spiega in italiano, nessuno parte dal tuo fascicolo, nessuno ti dice se ti serve Free, Pro, Max o Team prima di farti spendere 200 euro a vuoto.</p>
+          <p className="text-sm leading-loose mb-3.5 text-body"><strong className="text-ink">Claude per Avvocati è il corso che mancava.</strong> Da anni lavoro a fianco di studi legali italiani. Uso Claude ogni giorno per pareri, contratti, ricerca giurisprudenziale, comparazione di clausole, riassunti di fascicoli da 400 pagine.</p>
+          <p className="text-sm leading-loose mb-3.5 text-body">Ho testato ogni funzione e ho codificato i workflow che reggono in studio. <strong className="text-ink">Il corso è la scorciatoia: 44 lezioni, sei mesi di lavoro miei, dieci giorni di studio tuoi.</strong></p>
           <p className="text-sm leading-loose text-body">Non è teoria. È quello che Claude fa oggi in uno studio italiano: clienti italiani, segreto professionale, GDPR e deontologia inclusi.</p>
         </div>
       </div>

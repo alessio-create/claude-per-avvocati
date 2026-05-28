@@ -23,15 +23,15 @@ export function MeccanismoPyramid() {
         </div>
       </div>
       <div>
-        <div className="text-[10px] uppercase tracking-widest text-terracotta font-bold">Il meccanismo · 01</div>
-        <h2 className="font-serif text-2xl font-bold mt-2 mb-3 leading-tight">Cinque livelli di libertà dell'avvocato.</h2>
-        <p className="text-sm leading-relaxed text-body mb-3">Claude non sostituisce l'avvocato. <strong className="text-ink">Lo fa crescere</strong>, un livello alla volta.</p>
+        <div className="text-[10px] uppercase tracking-widest text-terracotta font-bold">Come è strutturato il corso · 01</div>
+        <h2 className="font-serif text-2xl font-bold mt-2 mb-3 leading-tight">Cinque livelli, nell'ordine in cui ha senso impararli.</h2>
+        <p className="text-sm leading-relaxed text-body mb-3">Il corso segue la stessa progressione che farebbe un collega più avanti di te: prima togli il lavoro grezzo, poi liberi spazio per pensare. <strong className="text-ink">Un livello alla volta</strong>, senza saltare i passaggi.</p>
         <div className="mt-3.5 pt-3.5 border-t border-[#d4cdbf] space-y-2">
           {[
-            ['LV 1–2', 'Drafting, atti boilerplate'],
-            ['LV 3', 'Più pratiche in parallelo'],
-            ['LV 4', 'Tempo per strategia'],
-            ['LV 5', 'Pioniere della professione'],
+            ['LV 1–2', 'Smetti di scrivere a mano bozze e atti ripetitivi'],
+            ['LV 3', 'Gestisci più pratiche senza perdere il filo'],
+            ['LV 4', 'Recuperi le ore per ragionare sul caso'],
+            ['LV 5', 'Apri strade che gli altri studi non vedono ancora'],
           ].map(([k, v]) => (
             <div key={k} className="flex gap-2.5 text-[11px] text-body"><span className="text-terracotta font-bold">→</span><span><strong>{k}</strong> · {v}</span></div>
           ))}

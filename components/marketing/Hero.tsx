@@ -14,18 +14,18 @@ export function Hero() {
       </span>
 
       <h1 className="text-4xl sm:text-5xl font-bold leading-[1.05] mb-5 anim-rise anim-d-1">
-        <span className="text-terracotta italic">Claude</span>, applicato
+        <span className="text-terracotta italic">Claude</span>, al lavoro
         <span className="hidden sm:inline"><br /></span>
         <span className="sm:hidden"> </span>
-        allo studio legale.
+        nel tuo studio.
       </h1>
 
       <p className="text-terracotta font-semibold text-xs sm:text-sm uppercase tracking-widest mb-4 anim-rise anim-d-2">
-        Il corso che ti insegna a trasformare la tua pratica con l&apos;AI.
+        Il corso che ti fa redigere atti, pareri e contratti in metà tempo.
       </p>
 
       <p className="text-sm sm:text-base text-body leading-relaxed mb-6 max-w-xl mx-auto anim-rise anim-d-3">
-        Non solo prompting. Chat, Projects, Claude Code, Skills, MCP, API: quando usare cosa, come configurare il tuo studio, come stare a norma con GDPR e deontologia.
+        Alla fine sai quando aprire Chat, quando un Project, quando Claude Code; sai costruire Skills riusabili per le tue materie, collegare Claude ai tuoi gestionali via MCP, e usare l&apos;API senza far uscire dati dallo studio. Tutto a norma GDPR e deontologia forense.
       </p>
 
       <div className="flex flex-col items-center gap-4">
@@ -47,15 +47,15 @@ export function Hero() {
         <div className="flex flex-col sm:flex-row gap-2 sm:gap-5 justify-center items-center text-[11px] text-muted anim-rise anim-d-5">
           <span className="inline-flex items-center gap-1.5">
             <span className="text-[#6fa28b] font-bold">✓</span>
-            Modulo 1 gratis · niente carta
+            Modulo 1 gratis, senza carta
           </span>
           <span className="inline-flex items-center gap-1.5">
             <span className="text-[#6fa28b] font-bold">✓</span>
-            14 giorni di rimborso
+            Rimborso a 14 giorni
           </span>
           <span className="inline-flex items-center gap-1.5">
             <span className="text-[#6fa28b] font-bold">✓</span>
-            Fattura intestata allo studio
+            Fattura allo studio
           </span>
         </div>
       </div>
