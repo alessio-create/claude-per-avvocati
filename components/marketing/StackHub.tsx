@@ -28,7 +28,7 @@ interface Tool {
 //   3. Add `logo: '/logos/<name>.svg'` to the entry below.
 // The fallback monogram + brand color stays in place if `logo` is missing.
 const tools: Tool[] = [
-  { name: 'DeJure',          short: 'DJ', color: '#1e5b3a' /* , logo: '/logos/dejure.svg' */ },
+  { name: 'Lefebvre Giuffrè', short: 'LG', color: '#1d1d1b', logo: '/logos/lefebvre-giuffre.svg' },
   { name: 'Wolters Kluwer',  short: 'WK', color: '#007bc6', logo: '/logos/wolters-kluwer.svg' },
   { name: 'Top24',           short: '24', color: '#1a1714', logo: '/logos/top24.svg' },
   { name: 'ChatGPT',         short: 'GP', color: '#10a37f', logo: '/logos/chatgpt.svg' },
