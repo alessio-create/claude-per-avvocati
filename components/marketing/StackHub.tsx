@@ -30,7 +30,7 @@ interface Tool {
 const tools: Tool[] = [
   { name: 'DeJure',          short: 'DJ', color: '#1e5b3a' /* , logo: '/logos/dejure.svg' */ },
   { name: 'Wolters Kluwer',  short: 'WK', color: '#007bc6', logo: '/logos/wolters-kluwer.svg' },
-  { name: 'Cliens · Cicero', short: 'CL', color: '#d04428' /* , logo: '/logos/cliens.svg' */ },
+  { name: 'Top24',           short: '24', color: '#1a1714', logo: '/logos/top24.svg' },
   { name: 'ChatGPT',         short: 'GP', color: '#10a37f', logo: '/logos/chatgpt.svg' },
   { name: 'DocuSign',        short: 'DS', color: '#ffcc00', fg: '#1a1714', logo: '/logos/docusign.svg' },
   { name: 'Lexroom',         short: 'LR', color: '#1a1714', logo: '/logos/lexroom.svg' },
