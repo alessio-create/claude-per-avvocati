@@ -1,32 +1,15 @@
 import { ClaudeStar } from '../illustration/ClaudeStar';
 import { Lampadina } from '../illustration/Lampadina';
 
-// 8 tools arranged around the central hub in a 3x3 grid.
-// Grid position is (col, row), index 4 (center) is reserved for the hub.
-//
-// Each chip carries a monogram tile in the tool's well-known brand color
-// (nominative use, descriptive context — Claude consolidates these). We do
-// NOT reproduce trademarked logo artwork; we use brand-color + initials,
-// which keeps the styling uniform with the rest of the dark/terracotta page.
 interface Tool {
   name: string;
-  short: string;   // 1-2 letter monogram for the tile (fallback when no logo)
-  color: string;   // brand-evocative background for the monogram tile
-  fg?: string;     // override foreground when bg is light (e.g. DocuSign yellow)
-  /**
-   * Optional path to a real brand-logo image dropped into /public/logos/.
-   * When present, the chip renders the image instead of the monogram tile.
-   * Use SVG when possible. Recommended size: at least 64×64 transparent PNG/SVG.
-   */
+  short: string;   // monogram fallback if no logo
+  color: string;   // brand-color background for the monogram tile
+  fg?: string;
+  /** Optional logo file under /public/logos/ (SVG preferred). */
   logo?: string;
 }
 
-// To upgrade a chip from monogram to real logo:
-//   1. Download the official press-kit logo from the brand's own site
-//      (e.g. openai.com/brand, docusign.com/company/press-room).
-//   2. Save it as /public/logos/<name>.svg (or .png).
-//   3. Add `logo: '/logos/<name>.svg'` to the entry below.
-// The fallback monogram + brand color stays in place if `logo` is missing.
 // Symbol-only logomarks (no wordmarks/vertical lockups) for a cleaner look
 // at chip size. Wordmark brands previously shown here (Lefebvre Giuffrè,
 // Top24, DocuSign, Lexroom) were removed along with their SVGs.
@@ -37,16 +20,25 @@ const tools: Tool[] = [
   { name: 'Grammarly',       short: 'G',  color: '#15c39a', logo: '/logos/grammarly.svg' },
 ];
 
+// Manual workflows the lawyer does today, no paid tool involved.
+// Stylistically distinct from the brand chips (dashed border, no logo)
+// so the contrast reads: paid tools on one axis, manual labor on the other,
+// both consolidated into Claude.
+const manuals: { label: string; emoji: string }[] = [
+  { label: 'Drafting manuale',      emoji: '✍︎' },
+  { label: 'Ricerca giurisprudenziale', emoji: '⚖' },
+  { label: 'Email controparte',     emoji: '✉' },
+  { label: 'Sintesi atti',          emoji: '☰' },
+];
+
 function ToolChip({ tool }: { tool: Tool }) {
   return (
-    <div className="bg-[#2e2922] border border-[#3a342c] rounded-md pl-1 pr-3 py-1 text-xs text-muted font-semibold flex items-center gap-2 shadow-lg whitespace-nowrap">
+    <div className="bg-[#2e2922] border border-[#3a342c] rounded-md pl-1 pr-3 py-1 text-xs text-muted font-semibold flex items-center gap-2 shadow-lg whitespace-nowrap relative z-10">
       {tool.logo ? (
         <span
           className="w-8 h-8 rounded bg-white flex items-center justify-center p-1 shrink-0 ring-1 ring-black/5"
           aria-hidden
         >
-          {/* Plain <img> rather than next/image: keeps SSR simple and works with
-              both SVG and PNG drops at /public/logos/. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={tool.logo} alt="" className="max-w-full max-h-full object-contain" />
         </span>
@@ -65,10 +57,90 @@ function ToolChip({ tool }: { tool: Tool }) {
   );
 }
 
+function ManualChip({ label, emoji }: { label: string; emoji: string }) {
+  return (
+    <div className="bg-transparent border border-dashed border-[#4a4035] rounded-md pl-2 pr-3 py-1.5 text-xs text-muted font-medium italic flex items-center gap-2 whitespace-nowrap relative z-10">
+      <span className="w-6 h-6 rounded bg-[#2e2922] text-terracotta-soft flex items-center justify-center text-[12px] shrink-0" aria-hidden>
+        {emoji}
+      </span>
+      <span className="line-through text-[#7a6e60] non-italic">{label}</span>
+      <span className="bg-terracotta text-white text-[8px] px-1 py-0.5 rounded uppercase tracking-wider font-bold not-italic">−1h</span>
+    </div>
+  );
+}
+
+/**
+ * Animated SVG overlay that draws curved "energy" lines from each of the 8
+ * surrounding cells into the central hub. Counterclockwise bend for every
+ * curve gives the composition a unified swirl. `pointer-events-none` so
+ * chips above stay clickable.
+ *
+ * viewBox uses percentages of the grid area, so the curves stay anchored
+ * to the grid cells regardless of viewport width.
+ */
+function SpiralFlow() {
+  // Each path: starts at the chip cell center, curves via a control point
+  // that pulls counterclockwise, ends at the hub center (50,50).
+  const paths: { d: string; delay: string }[] = [
+    // Top row
+    { d: 'M 16 16 Q 45 8 50 50',  delay: '0s'    }, // TL: ChatGPT
+    { d: 'M 50 14 Q 32 30 50 50', delay: '0.15s' }, // TM: Drafting
+    { d: 'M 84 16 Q 92 45 50 50', delay: '0.3s'  }, // TR: Notion
+    // Middle row
+    { d: 'M 14 50 Q 30 68 50 50', delay: '0.45s' }, // ML: Ricerca
+    { d: 'M 86 50 Q 70 32 50 50', delay: '0.6s'  }, // MR: Email
+    // Bottom row
+    { d: 'M 16 84 Q 8 55 50 50',  delay: '0.75s' }, // BL: Wolters Kluwer
+    { d: 'M 50 86 Q 68 70 50 50', delay: '0.9s'  }, // BM: Sintesi
+    { d: 'M 84 84 Q 55 92 50 50', delay: '1.05s' }, // BR: Grammarly
+  ];
+
+  return (
+    <svg
+      className="absolute inset-0 w-full h-full pointer-events-none"
+      viewBox="0 0 100 100"
+      preserveAspectRatio="none"
+      aria-hidden
+    >
+      <defs>
+        {/* Each line fades from low-opacity at the chip end to brighter at the hub */}
+        <radialGradient id="hub-glow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"  stopColor="rgba(217,119,87,0.55)" />
+          <stop offset="60%" stopColor="rgba(217,119,87,0.18)" />
+          <stop offset="100%" stopColor="rgba(217,119,87,0)"   />
+        </radialGradient>
+      </defs>
+
+      {/* Faint static glow behind everything so the convergence point reads even before
+          the dashes animate in. */}
+      <circle cx="50" cy="50" r="40" fill="url(#hub-glow)" />
+
+      {/* The 8 flowing dashed curves */}
+      <g
+        fill="none"
+        stroke="#d97757"
+        strokeOpacity="0.7"
+        strokeWidth="0.35"
+        strokeLinecap="round"
+        strokeDasharray="0.6 2.4"
+      >
+        {paths.map((p, i) => (
+          <path
+            key={i}
+            d={p.d}
+            className="anim-spiral-flow"
+            style={{ animationDelay: p.delay }}
+          />
+        ))}
+      </g>
+    </svg>
+  );
+}
+
 export function StackHub() {
   const hub = (
     <div
-      className="w-36 h-36 sm:w-44 sm:h-44 rounded-full border-2 border-terracotta flex items-center justify-center relative bg-[radial-gradient(circle,#2e2922_0%,#1a1714_70%)] shrink-0"
+      className="w-36 h-36 sm:w-44 sm:h-44 rounded-full border-2 border-terracotta flex items-center justify-center relative bg-[radial-gradient(circle,#2e2922_0%,#1a1714_70%)] shrink-0 z-10"
       style={{ boxShadow: '0 0 60px rgba(217,119,87,0.3), inset 0 0 30px rgba(217,119,87,0.15)' }}
     >
       <div className="absolute -top-5 left-1/2 -translate-x-1/2 anim-bulb">
@@ -86,32 +158,36 @@ export function StackHub() {
         <div className="text-center mb-10 sm:mb-12">
           <div className="text-[10px] uppercase tracking-widest text-terracotta-soft font-bold">Il problema · Lo stack legale frammentato</div>
           <h2 className="text-cream font-serif text-2xl sm:text-3xl font-bold mt-2 mb-3 leading-tight">Tanti strumenti, tanti abbonamenti, zero coordinazione.</h2>
-          <p className="text-muted text-sm max-w-xl mx-auto">Banche dati, contract automation, gestionali, mail. Per ogni strumento del tuo studio c&apos;è una capacità di Claude che lo consolida. <strong className="text-cream">Il corso ti insegna esattamente come farlo</strong>, senza rompere il flusso di lavoro.</p>
+          <p className="text-muted text-sm max-w-xl mx-auto">Banche dati, contract automation, gestionali, mail, ore di drafting a mano. Per ognuno c&apos;è una capacità di Claude che lo consolida. <strong className="text-cream">Il corso ti insegna esattamente come farlo</strong>, senza rompere il flusso di lavoro.</p>
         </div>
 
-        {/* MOBILE layout: hub on top, chips stacked in 2 columns below */}
+        {/* MOBILE: hub on top, then all 8 chips (4 brands + 4 manuals) stacked */}
         <div className="md:hidden flex flex-col items-center gap-8">
           {hub}
           <div className="grid grid-cols-2 gap-3 w-full max-w-md mt-2">
             {tools.map((t) => <ToolChip key={t.name} tool={t} />)}
+            {manuals.map((m) => <ManualChip key={m.label} label={m.label} emoji={m.emoji} />)}
           </div>
         </div>
 
-        {/* DESKTOP layout: 3×3 grid with hub at center and the four chips at
-            the corners. Edge-midpoint cells stay empty so each chip radiates
-            outward from Claude. */}
-        <div className="hidden md:grid grid-cols-3 gap-6 items-center justify-items-center max-w-3xl mx-auto min-h-[420px]">
-          <ToolChip tool={tools[0]} />
-          <span aria-hidden />
-          <ToolChip tool={tools[1]} />
+        {/* DESKTOP: 3x3 grid with hub at center.
+            Corners = brand tools (paid subscriptions).
+            Edge midpoints = manual workflows (hours of human labor).
+            SpiralFlow overlay draws animated curves from every cell into the hub. */}
+        <div className="hidden md:grid grid-cols-3 gap-x-6 gap-y-10 items-center justify-items-center max-w-3xl mx-auto min-h-[460px] relative">
+          <SpiralFlow />
 
-          <span aria-hidden />
+          <ToolChip tool={tools[0]} />           {/* TL */}
+          <ManualChip {...manuals[0]} />         {/* TM */}
+          <ToolChip tool={tools[1]} />           {/* TR */}
+
+          <ManualChip {...manuals[1]} />         {/* ML */}
           {hub}
-          <span aria-hidden />
+          <ManualChip {...manuals[2]} />         {/* MR */}
 
-          <ToolChip tool={tools[2]} />
-          <span aria-hidden />
-          <ToolChip tool={tools[3]} />
+          <ToolChip tool={tools[2]} />           {/* BL */}
+          <ManualChip {...manuals[3]} />         {/* BM */}
+          <ToolChip tool={tools[3]} />           {/* BR */}
         </div>
       </div>
     </section>
