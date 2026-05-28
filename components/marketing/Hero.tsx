@@ -14,18 +14,18 @@ export function Hero() {
       </span>
 
       <h1 className="text-4xl sm:text-5xl font-bold leading-[1.05] mb-5 anim-rise anim-d-1">
-        <span className="text-terracotta italic">Claude</span>, al lavoro
+        Un parere in <span className="text-terracotta italic">25 minuti</span>.
         <span className="hidden sm:inline"><br /></span>
         <span className="sm:hidden"> </span>
-        nel tuo studio.
+        Il resto, sui clienti.
       </h1>
 
       <p className="text-terracotta font-semibold text-xs sm:text-sm uppercase tracking-widest mb-4 anim-rise anim-d-2">
-        Il corso che ti fa redigere atti, pareri e contratti in metà tempo.
+        Claude per Avvocati, il corso pratico in 44 lezioni.
       </p>
 
       <p className="text-sm sm:text-base text-body leading-relaxed mb-6 max-w-xl mx-auto anim-rise anim-d-3">
-        Alla fine sai quando aprire Chat, quando un Project, quando Claude Code; sai costruire Skills riusabili per le tue materie, collegare Claude ai tuoi gestionali via MCP, e usare l&apos;API senza far uscire dati dallo studio. Tutto a norma GDPR e deontologia forense.
+        Da Chat alle Skills, da Projects a Claude Code, dall&apos;API a MCP: ogni superficie spiegata col deliverable che ti consegna. Tutto a norma GDPR e deontologia forense.
       </p>
 
       <div className="flex flex-col items-center gap-4">
