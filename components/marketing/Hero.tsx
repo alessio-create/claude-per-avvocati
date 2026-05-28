@@ -25,7 +25,7 @@ export function Hero() {
       </p>
 
       <p className="text-sm sm:text-base text-body leading-relaxed mb-6 max-w-xl mx-auto anim-rise anim-d-3">
-        Da Chat alle Skills, da Projects a Claude Code, dall&apos;API a MCP: ogni superficie spiegata col deliverable che ti consegna. Tutto a norma GDPR e deontologia forense.
+        Quando Claude ti fa risparmiare due ore, quando ti fa perdere mezza giornata. E come tenerlo dentro i confini di GDPR e deontologia forense.
       </p>
 
       <div className="flex flex-col items-center gap-4">
