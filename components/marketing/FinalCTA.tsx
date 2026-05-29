@@ -22,9 +22,6 @@ export function FinalCTA() {
           Scopri i piani
         </a>
       </div>
-      <p className="text-xs text-muted mt-4">
-        Nessuna carta per il Modulo 1. Sui piani a pagamento, 14 giorni di rimborso senza domande.
-      </p>
     </section>
   );
 }
