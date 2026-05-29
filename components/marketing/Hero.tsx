@@ -43,21 +43,6 @@ export function Hero() {
             Vedi i piani
           </a>
         </div>
-
-        <div className="flex flex-col sm:flex-row gap-2 sm:gap-5 justify-center items-center text-[11px] text-muted anim-rise anim-d-5">
-          <span className="inline-flex items-center gap-1.5">
-            <span className="text-[#6fa28b] font-bold">✓</span>
-            Modulo 1 gratis, senza carta
-          </span>
-          <span className="inline-flex items-center gap-1.5">
-            <span className="text-[#6fa28b] font-bold">✓</span>
-            Rimborso a 14 giorni
-          </span>
-          <span className="inline-flex items-center gap-1.5">
-            <span className="text-[#6fa28b] font-bold">✓</span>
-            Fattura allo studio
-          </span>
-        </div>
       </div>
     </section>
   );
