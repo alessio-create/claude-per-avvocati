@@ -19,7 +19,7 @@ const tiers: Tier[] = [
     priceNote: 'per sempre · serve solo la email',
     href: '/iscriviti-gratis',
     free: true,
-    cta: 'Inizia gratis',
+    cta: 'Inizia col Modulo 1 gratis',
     features: [
       { label: 'Modulo 1 intero: 5 lezioni più esame', active: true },
       { label: 'Progressi salvati, riprendi quando vuoi', active: true },

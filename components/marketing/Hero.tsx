@@ -34,7 +34,7 @@ export function Hero() {
             href="/iscriviti-gratis"
             className="flex-1 sm:flex-none text-center bg-terracotta text-white px-6 sm:px-7 py-3 rounded font-bold text-sm shadow-lg anim-glow"
           >
-            Inizia gratis →
+            Inizia col Modulo 1 gratis →
           </a>
           <a
             href="#prezzi"

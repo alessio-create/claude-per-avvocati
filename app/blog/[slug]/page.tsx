@@ -94,7 +94,7 @@ export default async function BlogArticle({ params }: { params: Promise<Params> 
                 href="/iscriviti-gratis"
                 className="bg-terracotta text-white px-5 py-2.5 rounded font-bold text-sm hover:bg-terracotta/90"
               >
-                Inizia gratis →
+                Inizia col Modulo 1 gratis →
               </Link>
               <Link
                 href="/#prezzi"

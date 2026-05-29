@@ -130,7 +130,7 @@ export function LeadForm() {
         disabled={submitting}
         className="w-full bg-terracotta text-white py-3 rounded font-bold text-sm hover:bg-terracotta/90 disabled:bg-line disabled:text-muted disabled:cursor-not-allowed"
       >
-        {submitting ? 'Invio in corso…' : 'Inizia gratis →'}
+        {submitting ? 'Invio in corso…' : 'Inizia col Modulo 1 gratis →'}
       </button>
     </form>
   );

@@ -4,7 +4,7 @@ import { LeadForm } from '../../components/marketing/LeadForm';
 import { ClaudeMascot } from '../../components/illustration/ClaudeMascot';
 
 export const metadata = {
-  title: 'Inizia gratis, Claude per Avvocati',
+  title: 'Inizia col Modulo 1 gratis · Claude per Avvocati',
   description:
     'Modulo 1 completo gratis. Lascia nome ed email per ricevere il link di accesso e l\'aggiornamento sulle nuove lezioni.',
 };

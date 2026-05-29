@@ -13,7 +13,7 @@ export function FinalCTA() {
           href="/iscriviti-gratis"
           className="bg-terracotta text-white px-7 py-3.5 rounded font-bold text-sm shadow-xl anim-glow"
         >
-          Inizia il Modulo 1 →
+          Inizia col Modulo 1 gratis →
         </a>
         <a
           href="#prezzi"

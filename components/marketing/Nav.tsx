@@ -72,7 +72,7 @@ export function Nav() {
                 href="/iscriviti-gratis"
                 className="hidden sm:inline-block bg-terracotta text-white px-4 py-1.5 rounded font-bold text-xs shadow-sm hover:bg-terracotta/90"
               >
-                Inizia gratis
+                Inizia col Modulo 1 gratis
               </Link>
             </>
           )}
@@ -141,7 +141,7 @@ export function Nav() {
                     onClick={() => setOpen(false)}
                     className="block text-center bg-terracotta text-white py-3 rounded-md font-bold text-sm shadow"
                   >
-                    Inizia gratis
+                    Inizia col Modulo 1 gratis
                   </Link>
                 </li>
                 <li className="mt-2">
