@@ -24,16 +24,12 @@ export function Hero() {
         Claude per Avvocati, il corso pratico in 44 lezioni.
       </p>
 
-      <p className="text-sm sm:text-base text-body leading-relaxed mb-4 max-w-xl mx-auto anim-rise anim-d-3">
-        Quando Claude ti fa risparmiare due ore, quando ti fa perdere mezza giornata. E come tenerlo dentro i confini di GDPR e deontologia forense.
-      </p>
-
-      <p className="text-[11px] sm:text-xs uppercase tracking-widest font-bold text-ink mb-6 anim-rise anim-d-4">
-        Risparmi tempo <span className="text-line">·</span> Risparmi soldi <span className="text-line">·</span> <span className="text-terracotta">Tieni la qualità</span>
+      <p className="text-sm sm:text-base text-body leading-relaxed mb-6 max-w-xl mx-auto anim-rise anim-d-3">
+        Con Claude risparmi tempo speso in attività manuali ripetitive mantenendo la qualità, tutto dentro i confini del GDPR e della deontologia forense.
       </p>
 
       <div className="flex flex-col items-center gap-4">
-        <div className="flex gap-3 justify-center items-center flex-wrap w-full max-w-sm sm:max-w-none anim-rise anim-d-5">
+        <div className="flex gap-3 justify-center items-center flex-wrap w-full max-w-sm sm:max-w-none anim-rise anim-d-4">
           <a
             href="/iscriviti-gratis"
             className="flex-1 sm:flex-none text-center bg-terracotta text-white px-6 sm:px-7 py-3 rounded font-bold text-sm shadow-lg anim-glow"
@@ -48,7 +44,7 @@ export function Hero() {
           </a>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-2 sm:gap-5 justify-center items-center text-[11px] text-muted anim-rise anim-d-6">
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-5 justify-center items-center text-[11px] text-muted anim-rise anim-d-5">
           <span className="inline-flex items-center gap-1.5">
             <span className="text-[#6fa28b] font-bold">✓</span>
             Modulo 1 gratis, senza carta
