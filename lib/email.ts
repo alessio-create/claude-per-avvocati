@@ -15,7 +15,11 @@ export interface MagicLinkEmail { to: string; magicLink: string; tier: string }
 export async function sendMagicLink({ to, magicLink, tier }: MagicLinkEmail): Promise<void> {
   const from = process.env.RESEND_FROM_EMAIL;
   if (!from) throw new Error('RESEND_FROM_EMAIL not set');
-  await client().emails.send({
+  // Resend SDK does NOT throw on API errors. It returns { data, error }.
+  // We must inspect `error` ourselves and throw so the caller's try/catch
+  // (in /api/leads) can surface the real reason (bad API key, suppressed
+  // recipient, unverified sender, etc.).
+  const result = await client().emails.send({
     from,
     to,
     subject: 'Benvenuto in Claude per Avvocati',
@@ -26,4 +30,9 @@ export async function sendMagicLink({ to, magicLink, tier }: MagicLinkEmail): Pr
       <p style="font-size: 13px; color: #6b6055;">Il link è valido per 2 anni. Conservalo. Se hai bisogno di un nuovo link, vai su <a href="${process.env.SITE_URL}/sblocca">${process.env.SITE_URL}/sblocca</a>.</p>
     </div>`,
   });
+  if (result.error) {
+    throw new Error(
+      `Resend ${result.error.name ?? 'error'}: ${result.error.message ?? JSON.stringify(result.error)}`,
+    );
+  }
 }
