@@ -62,33 +62,15 @@ export async function POST(req: NextRequest) {
     await setBuyer(buyer);
   }
 
-  let debugError: string | null = null;
   try {
     const token = await signSession({ sub: email, sale: buyer.saleId, tier: buyer.tier });
     const magicLink = buildMagicLink(token);
     await sendMagicLink({ to: email, magicLink, tier: buyer.tier });
   } catch (err) {
-    debugError = err instanceof Error ? err.message : String(err);
+    // Server-side log only. Caller gets the generic OK so the form looks
+    // fine even on a transient Resend outage. The user can retry from
+    // /sblocca to request a fresh link.
     console.error('[api/leads] email send failed:', err);
-  }
-
-  // TEMPORARY: surface the error in the response so we can debug the Resend
-  // integration. Remove the `debug` block once email is reliably arriving.
-  if (debugError) {
-    const envProbe = {
-      JWT_SECRET: process.env.JWT_SECRET ? 'set' : 'MISSING',
-      SITE_URL: process.env.SITE_URL ?? 'MISSING',
-      RESEND_API_KEY: process.env.RESEND_API_KEY ? 'set' : 'MISSING',
-      RESEND_FROM_EMAIL: process.env.RESEND_FROM_EMAIL ?? 'MISSING',
-      KV_REST_API_URL: process.env.KV_REST_API_URL ? 'set' : 'MISSING',
-      KV_REST_API_TOKEN: process.env.KV_REST_API_TOKEN ? 'set' : 'MISSING',
-      // Variant spellings just in case
-      vars_starting_with_SITE: Object.keys(process.env).filter((k) => k.startsWith('SITE')),
-    };
-    return NextResponse.json(
-      { ...GENERIC, debug: debugError, env: envProbe },
-      { status: 200 },
-    );
   }
 
   // Tag the source if provided, useful for analytics later.
