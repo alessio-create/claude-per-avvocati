@@ -55,9 +55,11 @@ export function LeadForm() {
         </div>
         <h3 className="font-serif text-xl font-bold mb-2">Grazie {name}.</h3>
         <p className="text-sm text-body leading-relaxed mb-4">
-          Abbiamo registrato i tuoi dati. Prima cosa da fare:
-          apri il tour del corso in 7 punti, 3 minuti per orientarti.
-          Da lì decidi se partire dal Modulo 1 o fare prima il test di livello.
+          Ti abbiamo mandato un&apos;email con il <strong>link di accesso</strong> a {email} (controlla anche spam/promo).
+          Salvalo per accedere da qualsiasi dispositivo.
+        </p>
+        <p className="text-sm text-body leading-relaxed mb-4">
+          Intanto, puoi iniziare subito da qui: apri il tour del corso in 7 punti, 3 minuti per orientarti.
         </p>
         <Link
           href="/corso/benvenuto"
