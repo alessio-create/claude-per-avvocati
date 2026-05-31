@@ -35,8 +35,8 @@ export function Nav() {
     <>
       <nav className="sticky top-0 z-50 flex justify-between items-center px-4 sm:px-8 py-4 border-b border-line bg-cream text-sm">
         <div className="flex flex-col leading-tight">
-          <Link href="/" className="flex items-center gap-2 font-extrabold text-terracotta tracking-tight">
-            <ClaudeStar size={20} />
+          <Link href="/" className="flex items-center gap-2 font-extrabold text-terracotta tracking-tight text-lg leading-none">
+            <ClaudeStar size={22} />
             <span className="hidden xs:inline sm:inline">Claude per Avvocati</span>
             <span className="xs:hidden sm:hidden">Claude · Avvocati</span>
           </Link>
