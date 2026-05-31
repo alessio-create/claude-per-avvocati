@@ -206,7 +206,7 @@ export function CheckoutForm({ tier }: { tier: TierKey }) {
         </div>
 
         <p className="text-[10px] text-muted text-center px-2">
-          FutureLaw è lo studio di marketing legale di Alessio Massaro, il curatore del corso. <Link href="https://futurelaw.it" className="text-terracotta hover:underline" target="_blank" rel="noopener noreferrer">futurelaw.it</Link>
+          FutureLaw è lo studio di marketing legale di Alessio Massaro, il curatore del corso. <Link href="https://thefuturelawstudio.com" className="text-terracotta hover:underline" target="_blank" rel="noopener noreferrer">thefuturelawstudio.com</Link>
         </p>
       </aside>
 

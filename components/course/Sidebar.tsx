@@ -118,7 +118,7 @@ export function Sidebar({
           Claude per Avvocati
         </Link>
         <a
-          href="https://futurelaw.it"
+          href="https://thefuturelawstudio.com"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1 mt-0.5 ml-6 text-[8.5px] uppercase tracking-widest text-muted hover:text-ink transition-colors"

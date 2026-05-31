@@ -43,7 +43,7 @@ export function Nav() {
           {/* Tiny attribution row, links out to the parent studio. Grey to
               stay subordinate to the main logo above. */}
           <a
-            href="https://futurelaw.it"
+            href="https://thefuturelawstudio.com"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1 mt-0.5 ml-7 text-[8.5px] uppercase tracking-widest text-muted hover:text-ink transition-colors"
