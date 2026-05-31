@@ -62,14 +62,23 @@ export async function POST(req: NextRequest) {
     await setBuyer(buyer);
   }
 
+  let debugError: string | null = null;
   try {
     const token = await signSession({ sub: email, sale: buyer.saleId, tier: buyer.tier });
     const magicLink = buildMagicLink(token);
     await sendMagicLink({ to: email, magicLink, tier: buyer.tier });
   } catch (err) {
-    // Log server-side, return generic to caller so the form looks fine even
-    // if Resend has a transient outage. The user can retry from /sblocca.
+    debugError = err instanceof Error ? err.message : String(err);
     console.error('[api/leads] email send failed:', err);
+  }
+
+  // TEMPORARY: surface the error in the response so we can debug the Resend
+  // integration. Remove the `debug` field once email is reliably arriving.
+  if (debugError) {
+    return NextResponse.json(
+      { ...GENERIC, debug: debugError, hint_from: process.env.RESEND_FROM_EMAIL ?? '<not set>' },
+      { status: 200 },
+    );
   }
 
   // Tag the source if provided, useful for analytics later.
