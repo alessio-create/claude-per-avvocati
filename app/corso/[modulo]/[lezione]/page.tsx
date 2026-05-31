@@ -53,33 +53,51 @@ export default async function Lezione({ params }: { params: Promise<Params> }) {
       <LessonGate previous={previous} bonus={bonus} tierGate={tierGate}>
         <LessonReadTracker modulo={modulo} lezione={lezione} moduleAllLessonKeys={moduleAllLessonKeys} />
 
-        {/* Back-to-index button + breadcrumb + progress chip (replaces the
-            former wide sticky progress bar; lives inline with the breadcrumb). */}
-        <div className="flex flex-wrap items-center gap-3 mb-5">
-          <Link
-            href="/corso"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-line bg-white text-terracotta text-xs font-semibold hover:border-terracotta hover:bg-cream-panel transition-colors"
-          >
-            <span aria-hidden>←</span> Indice del corso
-          </Link>
-          <nav className="text-xs text-muted flex items-center gap-1.5">
-            <span className="text-line hidden sm:inline">·</span>
-            <span className="hidden sm:inline">M{String(mod.ordine).padStart(2, '0')} · {mod.titolo}</span>
+        {/* Back-to-index + breadcrumb (mobile: stacks; desktop: one row with
+            stats chip pushed right). On mobile we drop the module title in
+            the crumb to keep the row short and put the stats chip on its
+            own line above so it doesn't collide with the back button. */}
+        <div className="mb-5 space-y-2 sm:space-y-0">
+          <div className="flex items-center justify-between gap-2 sm:hidden">
+            <Link
+              href="/corso"
+              className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-md border border-line bg-white text-terracotta text-[11px] font-semibold"
+            >
+              <span aria-hidden>←</span> Indice
+            </Link>
+            <CourseStatsChip index={idx} />
+          </div>
+          <div className="hidden sm:flex flex-wrap items-center gap-3">
+            <Link
+              href="/corso"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-line bg-white text-terracotta text-xs font-semibold hover:border-terracotta hover:bg-cream-panel transition-colors"
+            >
+              <span aria-hidden>←</span> Indice del corso
+            </Link>
+            <nav className="text-xs text-muted flex items-center gap-1.5">
+              <span className="text-line">·</span>
+              <span>M{String(mod.ordine).padStart(2, '0')} · {mod.titolo}</span>
+              <span className="text-line">/</span>
+              <span className="text-ink">Lezione {lez.ordine}</span>
+            </nav>
+            <CourseStatsChip index={idx} className="ml-auto" />
+          </div>
+          <nav className="text-[10px] text-muted flex items-center gap-1.5 sm:hidden">
+            <span>M{String(mod.ordine).padStart(2, '0')}</span>
             <span className="text-line">/</span>
             <span className="text-ink">Lezione {lez.ordine}</span>
           </nav>
-          <CourseStatsChip index={idx} className="ml-auto" />
         </div>
 
         <ProgressDots index={idx} currentModulo={modulo} currentLezione={lezione} />
 
-        <div className="text-xs uppercase tracking-widest text-terracotta font-bold mb-3 mt-2">
+        <div className="text-[11px] sm:text-xs uppercase tracking-widest text-terracotta font-bold mb-3 mt-2">
           {lez.durata} min di lettura{hasQuiz ? ' · con verifica (+3 ✦)' : ''}
         </div>
 
-        <h1 className="font-serif text-4xl font-bold leading-tight mb-2">{lez.titolo}</h1>
-        <p className="font-serif text-lg text-muted leading-snug italic mb-1">{lez.sottotitolo}</p>
-        <div className="text-xs text-muted mb-10">Aggiornato {lez.aggiornato}</div>
+        <h1 className="font-serif text-3xl sm:text-4xl font-bold leading-tight mb-2">{lez.titolo}</h1>
+        <p className="font-serif text-base sm:text-lg text-muted leading-snug italic mb-1">{lez.sottotitolo}</p>
+        <div className="text-[11px] sm:text-xs text-muted mb-8 sm:mb-10">Aggiornato {lez.aggiornato}</div>
 
         <div className="max-w-none">
           <MDX />

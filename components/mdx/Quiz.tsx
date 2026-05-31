@@ -1,7 +1,8 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { hasPassedQuiz, rewardQuizPass } from '../../lib/gems';
+import { hasPassedQuiz, rewardEsamePass, rewardQuizPass } from '../../lib/gems';
 import { markCompleted } from '../../lib/progress';
+import { ExamCelebration } from './ExamCelebration';
 
 interface Domanda {
   domanda: string;
@@ -18,8 +19,11 @@ interface QuizProps {
   /** Override the header eyebrow + title. Defaults: "Verifica" / "Hai capito? Tre domande." */
   etichetta?: string;
   titolo?: string;
-  /** Reward shown in the corner; default "+3 ✦" */
+  /** Reward shown in the corner. Defaults: "+3 ✦" (verifica) or "+5–10 ✦" (esame). */
   ricompensa?: string;
+  /** "verifica" = end-of-lesson quiz (3 gems flat). "esame" = end-of-module exam
+   *  (random 5–10 gems on first pass + Duolingo-style celebration overlay). */
+  tipo?: 'verifica' | 'esame';
 }
 
 type AnswerState = number | null;
@@ -33,15 +37,21 @@ export function Quiz({
   passaCon,
   etichetta = 'Verifica',
   titolo,
-  ricompensa = '+3 ✦',
+  ricompensa,
+  tipo = 'verifica',
 }: QuizProps) {
+  const isEsame = tipo === 'esame';
   const need = passaCon ?? domande.length;
   const titleFinal = titolo ?? `Hai capito? ${NUMERI_IT[domande.length] ?? domande.length} domande.`;
+  const ricompensaFinal = ricompensa ?? (isEsame ? '+5–10 ✦' : '+3 ✦');
 
   const [answers, setAnswers] = useState<AnswerState[]>(() => domande.map(() => null));
   const [submitted, setSubmitted] = useState(false);
   const [alreadyPassed, setAlreadyPassed] = useState(false);
   const [justEarnedGems, setJustEarnedGems] = useState(false);
+  /** When > 0, the ExamCelebration overlay is shown with this gem count.
+   *  Only fires for tipo='esame' on first pass; cleared on dismiss. */
+  const [celebrationGems, setCelebrationGems] = useState(0);
 
   // On mount, check if this quiz was already passed in a previous session
   useEffect(() => {
@@ -63,9 +73,18 @@ export function Quiz({
   const onSubmit = () => {
     setSubmitted(true);
     if (correctCount >= need) {
-      const newlyAwarded = rewardQuizPass(modulo, lezione);
-      markCompleted(modulo, lezione);
-      if (newlyAwarded) setJustEarnedGems(true);
+      if (isEsame) {
+        const gems = rewardEsamePass(modulo, lezione);
+        markCompleted(modulo, lezione);
+        if (gems > 0) {
+          setJustEarnedGems(true);
+          setCelebrationGems(gems);
+        }
+      } else {
+        const newlyAwarded = rewardQuizPass(modulo, lezione);
+        markCompleted(modulo, lezione);
+        if (newlyAwarded) setJustEarnedGems(true);
+      }
     }
   };
 
@@ -85,7 +104,7 @@ export function Quiz({
         <div className="text-xs text-muted shrink-0 text-right">
           Pass: <strong className="text-ink">{need}/{domande.length}</strong>
           <br />
-          Ricompensa: <strong className="text-terracotta">{ricompensa}</strong>
+          Ricompensa: <strong className="text-terracotta">{ricompensaFinal}</strong>
         </div>
       </div>
 
@@ -160,7 +179,11 @@ export function Quiz({
           <div className="flex items-center justify-between gap-4 flex-wrap">
             <div className="text-sm text-ink">
               ✓ <strong className="text-[#6fa28b]">Passato</strong> con {correctCount}/{domande.length}.
-              {justEarnedGems && <span className="ml-2 text-terracotta font-bold">{ricompensa} guadagnati!</span>}
+              {justEarnedGems && (
+                <span className="ml-2 text-terracotta font-bold">
+                  {isEsame && celebrationGems > 0 ? `+${celebrationGems} ✦` : ricompensaFinal} guadagnati!
+                </span>
+              )}
               <span className="block text-xs text-muted mt-1">La prossima lezione è ora sbloccata.</span>
             </div>
             <button type="button" onClick={onRetry} className="text-xs text-muted hover:text-terracotta underline">
@@ -183,6 +206,13 @@ export function Quiz({
           </div>
         )}
       </div>
+
+      {celebrationGems > 0 && (
+        <ExamCelebration
+          gems={celebrationGems}
+          onClose={() => setCelebrationGems(0)}
+        />
+      )}
     </section>
   );
 }

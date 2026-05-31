@@ -83,6 +83,19 @@ export function rewardQuizPass(modulo: string, lezione: string): boolean {
   return true;
 }
 
+/** Award a random 5–10 gems on first exam pass. Idempotent. Returns the
+ *  number of gems awarded (0 when this exam was already passed). */
+export function rewardEsamePass(modulo: string, lezione: string): number {
+  const s = read();
+  const key = lessonKey(modulo, lezione);
+  if (s.quizPasses.includes(key)) return 0;
+  const gems = 5 + Math.floor(Math.random() * 6); // 5..10 inclusive
+  s.quizPasses.push(key);
+  s.total += gems;
+  write(s);
+  return gems;
+}
+
 /** Award 10 gems on first time all lessons in a module are quiz-passed. Idempotent. */
 export function rewardModuleComplete(moduloSlug: string, allLessonKeysInModule: string[]): boolean {
   const s = read();

@@ -1,3 +1,5 @@
+import { HeroCTAs } from './HeroCTAs';
+
 export function FinalCTA() {
   return (
     <section className="py-20 px-8 text-center max-w-md mx-auto">
@@ -8,20 +10,7 @@ export function FinalCTA() {
       <p className="text-sm text-muted mb-5">
         Ogni settimana che rimandi sono ore perse su bozze, ricerche e mail che Claude può scrivere con te. Il Modulo 1 è gratis, senza carta: lo apri, lo guardi, decidi dopo.
       </p>
-      <div className="flex gap-3 justify-center items-center flex-wrap">
-        <a
-          href="/iscriviti-gratis"
-          className="bg-terracotta text-white px-7 py-3.5 rounded font-bold text-sm shadow-xl anim-glow"
-        >
-          Inizia col Modulo 1 gratis →
-        </a>
-        <a
-          href="#prezzi"
-          className="border border-line bg-white text-ink px-5 py-3.5 rounded font-semibold text-sm hover:border-terracotta hover:text-terracotta transition-colors"
-        >
-          Scopri i piani
-        </a>
-      </div>
+      <HeroCTAs glow />
     </section>
   );
 }

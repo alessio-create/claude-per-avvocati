@@ -25,28 +25,36 @@ export function LessonNav({
   }, [hasQuiz, modulo, lezione]);
 
   return (
-    <nav className="flex justify-between items-start mt-12 pt-6 border-t border-line text-sm gap-4">
+    <nav className="flex flex-col sm:flex-row sm:justify-between sm:items-start mt-10 sm:mt-12 pt-6 border-t border-line text-sm gap-4">
       {prev ? (
-        <Link href={`/corso/${prev.modulo}/${prev.lezione}`} className="text-terracotta hover:underline">
-          ← {prev.titolo}
+        <Link
+          href={`/corso/${prev.modulo}/${prev.lezione}`}
+          className="text-terracotta hover:underline inline-flex items-start gap-1 max-w-full sm:max-w-[45%]"
+        >
+          <span aria-hidden>←</span>
+          <span className="break-words">{prev.titolo}</span>
         </Link>
-      ) : <span />}
+      ) : <span className="hidden sm:block" />}
 
       {next ? (
         unlocked ? (
-          <Link href={`/corso/${next.modulo}/${next.lezione}`} className="text-terracotta hover:underline text-right">
-            {next.titolo} →
+          <Link
+            href={`/corso/${next.modulo}/${next.lezione}`}
+            className="text-terracotta hover:underline inline-flex items-start gap-1 max-w-full sm:max-w-[45%] sm:text-right sm:flex-row-reverse"
+          >
+            <span aria-hidden>→</span>
+            <span className="break-words">{next.titolo}</span>
           </Link>
         ) : (
-          <div className="text-right">
-            <span className="text-muted text-[11px] inline-flex items-center justify-end gap-1 leading-tight">
+          <div className="sm:text-right max-w-full sm:max-w-[45%]">
+            <span className="text-muted text-[11px] inline-flex items-center gap-1 leading-tight">
               <LockIcon size={11} className="text-muted" />
               Supera la verifica per sbloccare
             </span>
-            <div className="text-muted opacity-60 text-sm">{next.titolo}</div>
+            <div className="text-muted opacity-60 text-sm break-words">{next.titolo}</div>
           </div>
         )
-      ) : <span />}
+      ) : <span className="hidden sm:block" />}
     </nav>
   );
 }
