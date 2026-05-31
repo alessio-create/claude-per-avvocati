@@ -14,8 +14,8 @@ export function UpsellBanner() {
   if (isPaid(me.tier)) return null;
 
   return (
-    <section className="mb-10 rounded-xl border-2 border-terracotta bg-gradient-to-br from-white via-cream-panel to-[#fff4ec] p-6 shadow-md relative overflow-hidden">
-      <span className="absolute -top-3 left-5 bg-terracotta text-white px-2.5 py-1 rounded-full text-[10px] uppercase tracking-widest font-bold shadow">
+    <section className="mb-10 rounded-xl border-2 border-terracotta bg-gradient-to-br from-white via-cream-panel to-[#fff4ec] p-6 shadow-md">
+      <span className="inline-block bg-terracotta text-white px-2.5 py-1 rounded-full text-[10px] uppercase tracking-widest font-bold shadow mb-4">
         Sei sul piano gratis
       </span>
       <div className="flex items-start gap-5 flex-wrap">
