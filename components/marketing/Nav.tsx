@@ -34,11 +34,26 @@ export function Nav() {
   return (
     <>
       <nav className="sticky top-0 z-50 flex justify-between items-center px-4 sm:px-8 py-4 border-b border-line bg-cream text-sm">
-        <Link href="/" className="flex items-center gap-2 font-extrabold text-terracotta tracking-tight">
-          <ClaudeStar size={20} />
-          <span className="hidden xs:inline sm:inline">Claude per Avvocati</span>
-          <span className="xs:hidden sm:hidden">Claude · Avvocati</span>
-        </Link>
+        <div className="flex flex-col leading-tight">
+          <Link href="/" className="flex items-center gap-2 font-extrabold text-terracotta tracking-tight">
+            <ClaudeStar size={20} />
+            <span className="hidden xs:inline sm:inline">Claude per Avvocati</span>
+            <span className="xs:hidden sm:hidden">Claude · Avvocati</span>
+          </Link>
+          {/* Tiny attribution row, links out to the parent studio. Grey to
+              stay subordinate to the main logo above. */}
+          <a
+            href="https://futurelaw.it"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 mt-0.5 ml-7 text-[8.5px] uppercase tracking-widest text-muted hover:text-ink transition-colors"
+          >
+            <span>by</span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/logos/futurelaw.svg" alt="" className="h-3 w-3 opacity-60" />
+            <span className="font-semibold">The Future Law Studio</span>
+          </a>
+        </div>
 
         {/* Desktop links */}
         <div className="hidden md:flex gap-6 text-muted text-xs font-medium">

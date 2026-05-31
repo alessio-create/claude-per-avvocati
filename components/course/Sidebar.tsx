@@ -112,10 +112,23 @@ export function Sidebar({
           fixed top-0 bottom-0 left-0 z-40 w-[80vw] max-w-[300px] transition-transform
           ${mobileOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full md:translate-x-0'}`}
       >
-      <Link href="/corso" className="flex items-center gap-2 mb-4 font-bold text-terracotta">
-        <ClaudeStar size={18} />
-        Claude per Avvocati
-      </Link>
+      <div className="flex flex-col leading-tight mb-4">
+        <Link href="/corso" className="flex items-center gap-2 font-bold text-terracotta">
+          <ClaudeStar size={18} />
+          Claude per Avvocati
+        </Link>
+        <a
+          href="https://futurelaw.it"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1 mt-0.5 ml-6 text-[8.5px] uppercase tracking-widest text-muted hover:text-ink transition-colors"
+        >
+          <span>by</span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logos/futurelaw.svg" alt="" className="h-3 w-3 opacity-60" />
+          <span className="font-semibold">The Future Law Studio</span>
+        </a>
+      </div>
 
       {/* Compact progress + search, consolidated from the old wide top bar. */}
       <div className="mb-4 space-y-2">
