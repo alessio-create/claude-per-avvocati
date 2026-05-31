@@ -35,8 +35,8 @@ export function Nav() {
     <>
       <nav className="sticky top-0 z-50 flex justify-between items-center px-4 sm:px-8 py-4 border-b border-line bg-cream text-sm">
         <div className="flex flex-col leading-tight">
-          <Link href="/" className="flex items-center gap-2 font-extrabold text-terracotta tracking-tight text-lg leading-none">
-            <ClaudeStar size={22} />
+          <Link href="/" className="flex items-center gap-2 font-extrabold text-terracotta tracking-tight text-xl leading-none">
+            <ClaudeStar size={24} />
             <span className="hidden xs:inline sm:inline">Claude per Avvocati</span>
             <span className="xs:hidden sm:hidden">Claude · Avvocati</span>
           </Link>
@@ -46,7 +46,7 @@ export function Nav() {
             href="https://thefuturelawstudio.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 mt-0.5 ml-[30px] text-[8.5px] uppercase tracking-widest text-muted hover:text-ink transition-colors"
+            className="inline-flex items-center gap-1 mt-0.5 ml-[32px] text-[8.5px] uppercase tracking-widest text-muted hover:text-ink transition-colors"
           >
             <span>by</span>
             {/* eslint-disable-next-line @next/next/no-img-element */}
