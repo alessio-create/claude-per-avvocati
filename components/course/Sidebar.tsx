@@ -121,7 +121,7 @@ export function Sidebar({
           href="https://thefuturelawstudio.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 mt-0.5 ml-6 text-[8.5px] uppercase tracking-widest text-muted hover:text-ink transition-colors"
+          className="inline-flex items-center gap-1 mt-0.5 ml-[26px] text-[8.5px] uppercase tracking-widest text-muted hover:text-ink transition-colors"
         >
           <span>by</span>
           {/* eslint-disable-next-line @next/next/no-img-element */}
