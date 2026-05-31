@@ -161,10 +161,12 @@ export function StackHub() {
           <p className="text-muted text-sm max-w-xl mx-auto">Banche dati, contract automation, gestionali, mail, ore di drafting a mano. Per ognuno c&apos;è una capacità di Claude che lo consolida. <strong className="text-cream">Il corso ti insegna esattamente come farlo</strong>, senza rompere il flusso di lavoro.</p>
         </div>
 
-        {/* MOBILE: hub on top, then all 8 chips (4 brands + 4 manuals) stacked */}
+        {/* MOBILE: hub on top, then all 8 chips (4 brands + 4 manuals) stacked.
+            Single column below sm (long manual labels overflow a half-viewport
+            with whitespace-nowrap), two columns from sm up to md. */}
         <div className="md:hidden flex flex-col items-center gap-8">
           {hub}
-          <div className="grid grid-cols-2 gap-3 w-full max-w-md mt-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-md mt-2">
             {tools.map((t) => <ToolChip key={t.name} tool={t} />)}
             {manuals.map((m) => <ManualChip key={m.label} label={m.label} emoji={m.emoji} />)}
           </div>
